@@ -1,6 +1,8 @@
 grammar BeepBoop ;
 
-beepboop : expr ;
+beepboop : statement+ ;
+
+statement : expr+ ;
 
 expr 
     : term             #termExpr

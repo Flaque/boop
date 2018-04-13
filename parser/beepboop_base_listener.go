@@ -27,6 +27,12 @@ func (s *BaseBeepBoopListener) EnterBeepboop(ctx *BeepboopContext) {}
 // ExitBeepboop is called when production beepboop is exited.
 func (s *BaseBeepBoopListener) ExitBeepboop(ctx *BeepboopContext) {}
 
+// EnterStatement is called when production statement is entered.
+func (s *BaseBeepBoopListener) EnterStatement(ctx *StatementContext) {}
+
+// ExitStatement is called when production statement is exited.
+func (s *BaseBeepBoopListener) ExitStatement(ctx *StatementContext) {}
+
 // EnterAddExpr is called when production addExpr is entered.
 func (s *BaseBeepBoopListener) EnterAddExpr(ctx *AddExprContext) {}
 

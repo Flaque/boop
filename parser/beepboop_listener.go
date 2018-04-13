@@ -11,6 +11,9 @@ type BeepBoopListener interface {
 	// EnterBeepboop is called when entering the beepboop production.
 	EnterBeepboop(c *BeepboopContext)
 
+	// EnterStatement is called when entering the statement production.
+	EnterStatement(c *StatementContext)
+
 	// EnterAddExpr is called when entering the addExpr production.
 	EnterAddExpr(c *AddExprContext)
 
@@ -25,6 +28,9 @@ type BeepBoopListener interface {
 
 	// ExitBeepboop is called when exiting the beepboop production.
 	ExitBeepboop(c *BeepboopContext)
+
+	// ExitStatement is called when exiting the statement production.
+	ExitStatement(c *StatementContext)
 
 	// ExitAddExpr is called when exiting the addExpr production.
 	ExitAddExpr(c *AddExprContext)

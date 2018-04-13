@@ -12,6 +12,10 @@ import (
 
 var stack *s.Stack
 
+func RuleToInt(rule antlr.ParseTree) (int, error) {
+	return strconv.Atoi(rule.GetText())
+}
+
 type BeepBoopVisitor struct {
 	*parser.BaseBeepBoopVisitor
 }
@@ -20,22 +24,52 @@ func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 	return tree.Accept(v)
 }
 
+func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
+	return v.Visit(ctx.Statement(0))
+}
+
+func (v *BeepBoopVisitor) VisitStatement(ctx *parser.StatementContext) interface{} {
+
+	return v.Visit(ctx.Expr(0))
+}
+
+func (v *BeepBoopVisitor) VisitTermExpr(ctx *parser.TermExprContext) interface{} {
+	return v.Visit(ctx.Term())
+}
+
 func (v *BeepBoopVisitor) VisitAddExpr(ctx *parser.AddExprContext) interface{} {
-	fmt.Println("Math")
+	a, oka := v.Visit(ctx.Expr(0)).(int)
+	b, okb := v.Visit(ctx.Expr(1)).(int)
 
-	a, _ := strconv.Atoi(ctx.Expr(0).GetText())
-	b, _ := strconv.Atoi(ctx.Expr(1).GetText())
+	total := 0
 
-	fmt.Println(a + b)
+	if oka {
+		total += a
+	}
 
-	return v.VisitChildren(ctx) // TODO: Change to v.Visit(INT) + v.VISIT(INT) or something
+	if okb {
+		total += b
+	}
+
+	return total
 }
 
 func (v *BeepBoopVisitor) VisitTerm(ctx *parser.TermContext) interface{} {
-	return ctx.INT()
+	i, _ := RuleToInt(ctx.INT())
+	return i
 }
 
 func main() {
+	if len(os.Args) <= 1 {
+		fmt.Println("File required as input")
+		os.Exit(1)
+	}
+
+	if _, err := os.Stat(os.Args[1]); os.IsNotExist(err) {
+		fmt.Println("File does not exist")
+		os.Exit(1)
+	}
+
 	stack = s.New()
 
 	input, _ := antlr.NewFileStream(os.Args[1])
@@ -45,8 +79,11 @@ func main() {
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 
 	p.BuildParseTrees = true
-	tree := p.Expr()
+	tree := p.Beepboop()
 
 	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}}
-	visitor.Visit(tree)
+	x := visitor.Visit(tree)
+
+	// Final output
+	fmt.Println(x)
 }

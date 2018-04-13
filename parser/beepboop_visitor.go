@@ -11,6 +11,9 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#beepboop.
 	VisitBeepboop(ctx *BeepboopContext) interface{}
 
+	// Visit a parse tree produced by BeepBoopParser#statement.
+	VisitStatement(ctx *StatementContext) interface{}
+
 	// Visit a parse tree produced by BeepBoopParser#addExpr.
 	VisitAddExpr(ctx *AddExprContext) interface{}
 
