@@ -22,24 +22,24 @@ var parserATN = []uint16{
 	4, 3, 4, 3, 4, 2, 3, 4, 5, 2, 4, 6, 2, 2, 2, 25, 2, 8, 3, 2, 2, 2, 4, 10,
 	3, 2, 2, 2, 6, 24, 3, 2, 2, 2, 8, 9, 5, 4, 3, 2, 9, 3, 3, 2, 2, 2, 10,
 	11, 8, 3, 1, 2, 11, 12, 5, 6, 4, 2, 12, 21, 3, 2, 2, 2, 13, 14, 12, 4,
-	2, 2, 14, 15, 7, 3, 2, 2, 15, 20, 5, 6, 4, 2, 16, 17, 12, 3, 2, 2, 17,
-	18, 7, 4, 2, 2, 18, 20, 5, 6, 4, 2, 19, 13, 3, 2, 2, 2, 19, 16, 3, 2, 2,
+	2, 2, 14, 15, 7, 6, 2, 2, 15, 20, 5, 4, 3, 5, 16, 17, 12, 3, 2, 2, 17,
+	18, 7, 7, 2, 2, 18, 20, 5, 4, 3, 4, 19, 13, 3, 2, 2, 2, 19, 16, 3, 2, 2,
 	2, 20, 23, 3, 2, 2, 2, 21, 19, 3, 2, 2, 2, 21, 22, 3, 2, 2, 2, 22, 5, 3,
-	2, 2, 2, 23, 21, 3, 2, 2, 2, 24, 25, 7, 7, 2, 2, 25, 7, 3, 2, 2, 2, 4,
+	2, 2, 2, 23, 21, 3, 2, 2, 2, 24, 25, 7, 5, 2, 2, 25, 7, 3, 2, 2, 2, 4,
 	19, 21,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "'+'", "'-'", "", "' '",
+	"", "", "' '", "", "'+'", "'-'",
 }
 var symbolicNames = []string{
-	"", "", "", "NEWLINE", "WHITESPACE", "INT",
+	"", "NEWLINE", "WHITESPACE", "INT", "PLUS", "MINUS",
 }
 
 var ruleNames = []string{
-	"beepboop", "math", "term",
+	"beepboop", "expr", "term",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -70,17 +70,17 @@ func NewBeepBoopParser(input antlr.TokenStream) *BeepBoopParser {
 // BeepBoopParser tokens.
 const (
 	BeepBoopParserEOF        = antlr.TokenEOF
-	BeepBoopParserT__0       = 1
-	BeepBoopParserT__1       = 2
-	BeepBoopParserNEWLINE    = 3
-	BeepBoopParserWHITESPACE = 4
-	BeepBoopParserINT        = 5
+	BeepBoopParserNEWLINE    = 1
+	BeepBoopParserWHITESPACE = 2
+	BeepBoopParserINT        = 3
+	BeepBoopParserPLUS       = 4
+	BeepBoopParserMINUS      = 5
 )
 
 // BeepBoopParser rules.
 const (
 	BeepBoopParserRULE_beepboop = 0
-	BeepBoopParserRULE_math     = 1
+	BeepBoopParserRULE_expr     = 1
 	BeepBoopParserRULE_term     = 2
 )
 
@@ -122,14 +122,14 @@ func NewBeepboopContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 
 func (s *BeepboopContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *BeepboopContext) Math() IMathContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IMathContext)(nil)).Elem(), 0)
+func (s *BeepboopContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IMathContext)
+	return t.(IExprContext)
 }
 
 func (s *BeepboopContext) GetRuleContext() antlr.RuleContext {
@@ -185,51 +185,148 @@ func (p *BeepBoopParser) Beepboop() (localctx IBeepboopContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(6)
-		p.math(0)
+		p.expr(0)
 	}
 
 	return localctx
 }
 
-// IMathContext is an interface to support dynamic dispatch.
-type IMathContext interface {
+// IExprContext is an interface to support dynamic dispatch.
+type IExprContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsMathContext differentiates from other interfaces.
-	IsMathContext()
+	// IsExprContext differentiates from other interfaces.
+	IsExprContext()
 }
 
-type MathContext struct {
+type ExprContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyMathContext() *MathContext {
-	var p = new(MathContext)
+func NewEmptyExprContext() *ExprContext {
+	var p = new(ExprContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = BeepBoopParserRULE_math
+	p.RuleIndex = BeepBoopParserRULE_expr
 	return p
 }
 
-func (*MathContext) IsMathContext() {}
+func (*ExprContext) IsExprContext() {}
 
-func NewMathContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MathContext {
-	var p = new(MathContext)
+func NewExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprContext {
+	var p = new(ExprContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = BeepBoopParserRULE_math
+	p.RuleIndex = BeepBoopParserRULE_expr
 
 	return p
 }
 
-func (s *MathContext) GetParser() antlr.Parser { return s.parser }
+func (s *ExprContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *MathContext) Term() ITermContext {
+func (s *ExprContext) CopyFrom(ctx *ExprContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+}
+
+func (s *ExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ExprContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+type AddExprContext struct {
+	*ExprContext
+}
+
+func NewAddExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *AddExprContext {
+	var p = new(AddExprContext)
+
+	p.ExprContext = NewEmptyExprContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *AddExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AddExprContext) AllExpr() []IExprContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExprContext)(nil)).Elem())
+	var tst = make([]IExprContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IExprContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *AddExprContext) Expr(i int) IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *AddExprContext) PLUS() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserPLUS, 0)
+}
+
+func (s *AddExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterAddExpr(s)
+	}
+}
+
+func (s *AddExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitAddExpr(s)
+	}
+}
+
+func (s *AddExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitAddExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type TermExprContext struct {
+	*ExprContext
+}
+
+func NewTermExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TermExprContext {
+	var p = new(TermExprContext)
+
+	p.ExprContext = NewEmptyExprContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *TermExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *TermExprContext) Term() ITermContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -239,58 +336,107 @@ func (s *MathContext) Term() ITermContext {
 	return t.(ITermContext)
 }
 
-func (s *MathContext) Math() IMathContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IMathContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IMathContext)
-}
-
-func (s *MathContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *MathContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *MathContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *TermExprContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterMath(s)
+		listenerT.EnterTermExpr(s)
 	}
 }
 
-func (s *MathContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *TermExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitMath(s)
+		listenerT.ExitTermExpr(s)
 	}
 }
 
-func (s *MathContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *TermExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitMath(s)
+		return t.VisitTermExpr(s)
 
 	default:
 		return t.VisitChildren(s)
 	}
 }
 
-func (p *BeepBoopParser) Math() (localctx IMathContext) {
-	return p.math(0)
+type MinusExprContext struct {
+	*ExprContext
 }
 
-func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
+func NewMinusExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *MinusExprContext {
+	var p = new(MinusExprContext)
+
+	p.ExprContext = NewEmptyExprContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *MinusExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MinusExprContext) AllExpr() []IExprContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExprContext)(nil)).Elem())
+	var tst = make([]IExprContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IExprContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *MinusExprContext) Expr(i int) IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *MinusExprContext) MINUS() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserMINUS, 0)
+}
+
+func (s *MinusExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterMinusExpr(s)
+	}
+}
+
+func (s *MinusExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitMinusExpr(s)
+	}
+}
+
+func (s *MinusExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitMinusExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *BeepBoopParser) Expr() (localctx IExprContext) {
+	return p.expr(0)
+}
+
+func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
 	_parentState := p.GetState()
-	localctx = NewMathContext(p, p.GetParserRuleContext(), _parentState)
-	var _prevctx IMathContext = localctx
+	localctx = NewExprContext(p, p.GetParserRuleContext(), _parentState)
+	var _prevctx IExprContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 2
-	p.EnterRecursionRule(localctx, 2, BeepBoopParserRULE_math, _p)
+	p.EnterRecursionRule(localctx, 2, BeepBoopParserRULE_expr, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -311,6 +457,10 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
+	localctx = NewTermExprContext(p, localctx)
+	p.SetParserRuleContext(localctx)
+	_prevctx = localctx
+
 	{
 		p.SetState(9)
 		p.Term()
@@ -331,8 +481,8 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 			p.GetErrorHandler().Sync(p)
 			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 0, p.GetParserRuleContext()) {
 			case 1:
-				localctx = NewMathContext(p, _parentctx, _parentState)
-				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
+				localctx = NewAddExprContext(p, NewExprContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_expr)
 				p.SetState(11)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
@@ -340,16 +490,16 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(12)
-					p.Match(BeepBoopParserT__0)
+					p.Match(BeepBoopParserPLUS)
 				}
 				{
 					p.SetState(13)
-					p.Term()
+					p.expr(3)
 				}
 
 			case 2:
-				localctx = NewMathContext(p, _parentctx, _parentState)
-				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
+				localctx = NewMinusExprContext(p, NewExprContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_expr)
 				p.SetState(14)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 1)) {
@@ -357,11 +507,11 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(15)
-					p.Match(BeepBoopParserT__1)
+					p.Match(BeepBoopParserMINUS)
 				}
 				{
 					p.SetState(16)
-					p.Term()
+					p.expr(2)
 				}
 
 			}
@@ -479,18 +629,18 @@ func (p *BeepBoopParser) Term() (localctx ITermContext) {
 func (p *BeepBoopParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
 	case 1:
-		var t *MathContext = nil
+		var t *ExprContext = nil
 		if localctx != nil {
-			t = localctx.(*MathContext)
+			t = localctx.(*ExprContext)
 		}
-		return p.Math_Sempred(t, predIndex)
+		return p.Expr_Sempred(t, predIndex)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(ruleIndex))
 	}
 }
 
-func (p *BeepBoopParser) Math_Sempred(localctx antlr.RuleContext, predIndex int) bool {
+func (p *BeepBoopParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
 		return p.Precpred(p.GetParserRuleContext(), 2)

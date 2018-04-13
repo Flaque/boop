@@ -1,10 +1,18 @@
 grammar BeepBoop ;
 
-beepboop : math ;
+beepboop : expr ;
 
-math : term | math '+' term | math '-' term ;
+expr 
+    : term             #termExpr
+    | expr PLUS expr   #addExpr
+    | expr MINUS expr  #minusExpr
+    ;
+
+
 term : INT ;
 
 NEWLINE : [\r\n]+ ;
 WHITESPACE : ' ' -> skip ;
 INT : [0-9]+ ;
+PLUS : '+';
+MINUS : '-';

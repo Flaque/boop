@@ -27,11 +27,23 @@ func (s *BaseBeepBoopListener) EnterBeepboop(ctx *BeepboopContext) {}
 // ExitBeepboop is called when production beepboop is exited.
 func (s *BaseBeepBoopListener) ExitBeepboop(ctx *BeepboopContext) {}
 
-// EnterMath is called when production math is entered.
-func (s *BaseBeepBoopListener) EnterMath(ctx *MathContext) {}
+// EnterAddExpr is called when production addExpr is entered.
+func (s *BaseBeepBoopListener) EnterAddExpr(ctx *AddExprContext) {}
 
-// ExitMath is called when production math is exited.
-func (s *BaseBeepBoopListener) ExitMath(ctx *MathContext) {}
+// ExitAddExpr is called when production addExpr is exited.
+func (s *BaseBeepBoopListener) ExitAddExpr(ctx *AddExprContext) {}
+
+// EnterTermExpr is called when production termExpr is entered.
+func (s *BaseBeepBoopListener) EnterTermExpr(ctx *TermExprContext) {}
+
+// ExitTermExpr is called when production termExpr is exited.
+func (s *BaseBeepBoopListener) ExitTermExpr(ctx *TermExprContext) {}
+
+// EnterMinusExpr is called when production minusExpr is entered.
+func (s *BaseBeepBoopListener) EnterMinusExpr(ctx *MinusExprContext) {}
+
+// ExitMinusExpr is called when production minusExpr is exited.
+func (s *BaseBeepBoopListener) ExitMinusExpr(ctx *MinusExprContext) {}
 
 // EnterTerm is called when production term is entered.
 func (s *BaseBeepBoopListener) EnterTerm(ctx *TermContext) {}

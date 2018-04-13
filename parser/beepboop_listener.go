@@ -11,8 +11,14 @@ type BeepBoopListener interface {
 	// EnterBeepboop is called when entering the beepboop production.
 	EnterBeepboop(c *BeepboopContext)
 
-	// EnterMath is called when entering the math production.
-	EnterMath(c *MathContext)
+	// EnterAddExpr is called when entering the addExpr production.
+	EnterAddExpr(c *AddExprContext)
+
+	// EnterTermExpr is called when entering the termExpr production.
+	EnterTermExpr(c *TermExprContext)
+
+	// EnterMinusExpr is called when entering the minusExpr production.
+	EnterMinusExpr(c *MinusExprContext)
 
 	// EnterTerm is called when entering the term production.
 	EnterTerm(c *TermContext)
@@ -20,8 +26,14 @@ type BeepBoopListener interface {
 	// ExitBeepboop is called when exiting the beepboop production.
 	ExitBeepboop(c *BeepboopContext)
 
-	// ExitMath is called when exiting the math production.
-	ExitMath(c *MathContext)
+	// ExitAddExpr is called when exiting the addExpr production.
+	ExitAddExpr(c *AddExprContext)
+
+	// ExitTermExpr is called when exiting the termExpr production.
+	ExitTermExpr(c *TermExprContext)
+
+	// ExitMinusExpr is called when exiting the minusExpr production.
+	ExitMinusExpr(c *MinusExprContext)
 
 	// ExitTerm is called when exiting the term production.
 	ExitTerm(c *TermContext)

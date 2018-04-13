@@ -12,7 +12,15 @@ func (v *BaseBeepBoopVisitor) VisitBeepboop(ctx *BeepboopContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitMath(ctx *MathContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitAddExpr(ctx *AddExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitTermExpr(ctx *TermExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitMinusExpr(ctx *MinusExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

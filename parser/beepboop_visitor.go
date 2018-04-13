@@ -11,8 +11,14 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#beepboop.
 	VisitBeepboop(ctx *BeepboopContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#math.
-	VisitMath(ctx *MathContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#addExpr.
+	VisitAddExpr(ctx *AddExprContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#termExpr.
+	VisitTermExpr(ctx *TermExprContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#minusExpr.
+	VisitMinusExpr(ctx *MinusExprContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#term.
 	VisitTerm(ctx *TermContext) interface{}
