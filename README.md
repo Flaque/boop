@@ -95,13 +95,13 @@ If statements look like this:
 if $thing do
     # stuff
 end
-``
+```
 
 You can also just ignore the `do` block and return something:
 
 ```
 if $blah return "cats"
-``
+```
 
 Else statements don't exist are discouraged to avoid large, nested if else blocks.
 
