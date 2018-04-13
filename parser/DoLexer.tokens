@@ -1,0 +1,8 @@
+T__0=1
+T__1=2
+NEWLINE=3
+WHITESPACE=4
+INT=5
+'+'=1
+'-'=2
+' '=4
