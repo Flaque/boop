@@ -1,13 +1,15 @@
 grammar BeepBoop ;
 
-beepboop : statement+ ;
+beepboop : block EOF ;
 
-statement : expr+ ;
+block : statement+ ;
+
+statement : expr NEWLINE;
 
 expr 
-    : term             #termExpr
-    | expr PLUS expr   #addExpr
-    | expr MINUS expr  #minusExpr
+    : term                         #termExpr
+    | MINUS expr                   #unaryMinusExpr
+    | expr op=(PLUS | MINUS) expr  #additiveExpr
     ;
 
 

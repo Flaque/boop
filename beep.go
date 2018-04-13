@@ -3,60 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr"
-	"github.com/flaque/beep/parser"
-	s "github.com/golang-collections/collections/stack"
+	"github.com/flaque/beep/runtime"
 )
 
-var stack *s.Stack
-
-func RuleToInt(rule antlr.ParseTree) (int, error) {
-	return strconv.Atoi(rule.GetText())
-}
-
-type BeepBoopVisitor struct {
-	*parser.BaseBeepBoopVisitor
-}
-
-func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
-	return tree.Accept(v)
-}
-
-func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
-	return v.Visit(ctx.Statement(0))
-}
-
-func (v *BeepBoopVisitor) VisitStatement(ctx *parser.StatementContext) interface{} {
-
-	return v.Visit(ctx.Expr(0))
-}
-
-func (v *BeepBoopVisitor) VisitTermExpr(ctx *parser.TermExprContext) interface{} {
-	return v.Visit(ctx.Term())
-}
-
-func (v *BeepBoopVisitor) VisitAddExpr(ctx *parser.AddExprContext) interface{} {
-	a, oka := v.Visit(ctx.Expr(0)).(int)
-	b, okb := v.Visit(ctx.Expr(1)).(int)
-
-	total := 0
-
-	if oka {
-		total += a
-	}
-
-	if okb {
-		total += b
-	}
-
-	return total
-}
-
-func (v *BeepBoopVisitor) VisitTerm(ctx *parser.TermContext) interface{} {
-	i, _ := RuleToInt(ctx.INT())
-	return i
+func addNewLineToEndOfFile(filename string) {
+	f, _ := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	f.WriteString("\n")
+	f.Close()
 }
 
 func main() {
@@ -70,20 +24,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	stack = s.New()
+	// Fixes ocasional bugs where there's no new line at the end of the file
+	// TODO: Definitely not the best way to solve this
+	addNewLineToEndOfFile(os.Args[1])
 
-	input, _ := antlr.NewFileStream(os.Args[1])
-	lexer := parser.NewBeepBoopLexer(input)
-	stream := antlr.NewCommonTokenStream(lexer, 0)
-	p := parser.NewBeepBoopParser(stream)
-	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
-
-	p.BuildParseTrees = true
-	tree := p.Beepboop()
-
-	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}}
-	x := visitor.Visit(tree)
-
-	// Final output
-	fmt.Println(x)
+	// Run and print output
+	fmt.Println(runtime.Run(os.Args[1]))
 }

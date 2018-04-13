@@ -11,17 +11,20 @@ type BeepBoopListener interface {
 	// EnterBeepboop is called when entering the beepboop production.
 	EnterBeepboop(c *BeepboopContext)
 
+	// EnterBlock is called when entering the block production.
+	EnterBlock(c *BlockContext)
+
 	// EnterStatement is called when entering the statement production.
 	EnterStatement(c *StatementContext)
 
-	// EnterAddExpr is called when entering the addExpr production.
-	EnterAddExpr(c *AddExprContext)
+	// EnterUnaryMinusExpr is called when entering the unaryMinusExpr production.
+	EnterUnaryMinusExpr(c *UnaryMinusExprContext)
 
 	// EnterTermExpr is called when entering the termExpr production.
 	EnterTermExpr(c *TermExprContext)
 
-	// EnterMinusExpr is called when entering the minusExpr production.
-	EnterMinusExpr(c *MinusExprContext)
+	// EnterAdditiveExpr is called when entering the additiveExpr production.
+	EnterAdditiveExpr(c *AdditiveExprContext)
 
 	// EnterTerm is called when entering the term production.
 	EnterTerm(c *TermContext)
@@ -29,17 +32,20 @@ type BeepBoopListener interface {
 	// ExitBeepboop is called when exiting the beepboop production.
 	ExitBeepboop(c *BeepboopContext)
 
+	// ExitBlock is called when exiting the block production.
+	ExitBlock(c *BlockContext)
+
 	// ExitStatement is called when exiting the statement production.
 	ExitStatement(c *StatementContext)
 
-	// ExitAddExpr is called when exiting the addExpr production.
-	ExitAddExpr(c *AddExprContext)
+	// ExitUnaryMinusExpr is called when exiting the unaryMinusExpr production.
+	ExitUnaryMinusExpr(c *UnaryMinusExprContext)
 
 	// ExitTermExpr is called when exiting the termExpr production.
 	ExitTermExpr(c *TermExprContext)
 
-	// ExitMinusExpr is called when exiting the minusExpr production.
-	ExitMinusExpr(c *MinusExprContext)
+	// ExitAdditiveExpr is called when exiting the additiveExpr production.
+	ExitAdditiveExpr(c *AdditiveExprContext)
 
 	// ExitTerm is called when exiting the term production.
 	ExitTerm(c *TermContext)
