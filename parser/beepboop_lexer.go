@@ -1,4 +1,4 @@
-// Code generated from parser/Do.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from parser/BeepBoop.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
 package parser
 
@@ -53,7 +53,7 @@ var lexerRuleNames = []string{
 	"T__0", "T__1", "NEWLINE", "WHITESPACE", "INT",
 }
 
-type DoLexer struct {
+type BeepBoopLexer struct {
 	*antlr.BaseLexer
 	channelNames []string
 	modeNames    []string
@@ -68,9 +68,9 @@ func init() {
 	}
 }
 
-func NewDoLexer(input antlr.CharStream) *DoLexer {
+func NewBeepBoopLexer(input antlr.CharStream) *BeepBoopLexer {
 
-	l := new(DoLexer)
+	l := new(BeepBoopLexer)
 
 	l.BaseLexer = antlr.NewBaseLexer(input)
 	l.Interpreter = antlr.NewLexerATNSimulator(l, lexerAtn, lexerDecisionToDFA, antlr.NewPredictionContextCache())
@@ -80,17 +80,17 @@ func NewDoLexer(input antlr.CharStream) *DoLexer {
 	l.RuleNames = lexerRuleNames
 	l.LiteralNames = lexerLiteralNames
 	l.SymbolicNames = lexerSymbolicNames
-	l.GrammarFileName = "Do.g4"
+	l.GrammarFileName = "BeepBoop.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 
 	return l
 }
 
-// DoLexer tokens.
+// BeepBoopLexer tokens.
 const (
-	DoLexerT__0       = 1
-	DoLexerT__1       = 2
-	DoLexerNEWLINE    = 3
-	DoLexerWHITESPACE = 4
-	DoLexerINT        = 5
+	BeepBoopLexerT__0       = 1
+	BeepBoopLexerT__1       = 2
+	BeepBoopLexerNEWLINE    = 3
+	BeepBoopLexerWHITESPACE = 4
+	BeepBoopLexerINT        = 5
 )

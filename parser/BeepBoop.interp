@@ -15,7 +15,7 @@ WHITESPACE
 INT
 
 rule names:
-do
+beepboop
 math
 term
 

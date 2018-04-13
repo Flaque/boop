@@ -1,6 +1,6 @@
-// Code generated from parser/Do.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from parser/BeepBoop.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
-package parser // Do
+package parser // BeepBoop
 
 import (
 	"fmt"
@@ -39,7 +39,7 @@ var symbolicNames = []string{
 }
 
 var ruleNames = []string{
-	"do", "math", "term",
+	"beepboop", "math", "term",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -49,12 +49,12 @@ func init() {
 	}
 }
 
-type DoParser struct {
+type BeepBoopParser struct {
 	*antlr.BaseParser
 }
 
-func NewDoParser(input antlr.TokenStream) *DoParser {
-	this := new(DoParser)
+func NewBeepBoopParser(input antlr.TokenStream) *BeepBoopParser {
+	this := new(BeepBoopParser)
 
 	this.BaseParser = antlr.NewBaseParser(input)
 
@@ -62,67 +62,67 @@ func NewDoParser(input antlr.TokenStream) *DoParser {
 	this.RuleNames = ruleNames
 	this.LiteralNames = literalNames
 	this.SymbolicNames = symbolicNames
-	this.GrammarFileName = "Do.g4"
+	this.GrammarFileName = "BeepBoop.g4"
 
 	return this
 }
 
-// DoParser tokens.
+// BeepBoopParser tokens.
 const (
-	DoParserEOF        = antlr.TokenEOF
-	DoParserT__0       = 1
-	DoParserT__1       = 2
-	DoParserNEWLINE    = 3
-	DoParserWHITESPACE = 4
-	DoParserINT        = 5
+	BeepBoopParserEOF        = antlr.TokenEOF
+	BeepBoopParserT__0       = 1
+	BeepBoopParserT__1       = 2
+	BeepBoopParserNEWLINE    = 3
+	BeepBoopParserWHITESPACE = 4
+	BeepBoopParserINT        = 5
 )
 
-// DoParser rules.
+// BeepBoopParser rules.
 const (
-	DoParserRULE_do   = 0
-	DoParserRULE_math = 1
-	DoParserRULE_term = 2
+	BeepBoopParserRULE_beepboop = 0
+	BeepBoopParserRULE_math     = 1
+	BeepBoopParserRULE_term     = 2
 )
 
-// IDoContext is an interface to support dynamic dispatch.
-type IDoContext interface {
+// IBeepboopContext is an interface to support dynamic dispatch.
+type IBeepboopContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsDoContext differentiates from other interfaces.
-	IsDoContext()
+	// IsBeepboopContext differentiates from other interfaces.
+	IsBeepboopContext()
 }
 
-type DoContext struct {
+type BeepboopContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyDoContext() *DoContext {
-	var p = new(DoContext)
+func NewEmptyBeepboopContext() *BeepboopContext {
+	var p = new(BeepboopContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = DoParserRULE_do
+	p.RuleIndex = BeepBoopParserRULE_beepboop
 	return p
 }
 
-func (*DoContext) IsDoContext() {}
+func (*BeepboopContext) IsBeepboopContext() {}
 
-func NewDoContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DoContext {
-	var p = new(DoContext)
+func NewBeepboopContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *BeepboopContext {
+	var p = new(BeepboopContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = DoParserRULE_do
+	p.RuleIndex = BeepBoopParserRULE_beepboop
 
 	return p
 }
 
-func (s *DoContext) GetParser() antlr.Parser { return s.parser }
+func (s *BeepboopContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *DoContext) Math() IMathContext {
+func (s *BeepboopContext) Math() IMathContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IMathContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -132,39 +132,39 @@ func (s *DoContext) Math() IMathContext {
 	return t.(IMathContext)
 }
 
-func (s *DoContext) GetRuleContext() antlr.RuleContext {
+func (s *BeepboopContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *DoContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *BeepboopContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *DoContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
-		listenerT.EnterDo(s)
+func (s *BeepboopContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterBeepboop(s)
 	}
 }
 
-func (s *DoContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
-		listenerT.ExitDo(s)
+func (s *BeepboopContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitBeepboop(s)
 	}
 }
 
-func (s *DoContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *BeepboopContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
-	case DoVisitor:
-		return t.VisitDo(s)
+	case BeepBoopVisitor:
+		return t.VisitBeepboop(s)
 
 	default:
 		return t.VisitChildren(s)
 	}
 }
 
-func (p *DoParser) Do() (localctx IDoContext) {
-	localctx = NewDoContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 0, DoParserRULE_do)
+func (p *BeepBoopParser) Beepboop() (localctx IBeepboopContext) {
+	localctx = NewBeepboopContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 0, BeepBoopParserRULE_beepboop)
 
 	defer func() {
 		p.ExitRule()
@@ -210,7 +210,7 @@ type MathContext struct {
 func NewEmptyMathContext() *MathContext {
 	var p = new(MathContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = DoParserRULE_math
+	p.RuleIndex = BeepBoopParserRULE_math
 	return p
 }
 
@@ -222,7 +222,7 @@ func NewMathContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = DoParserRULE_math
+	p.RuleIndex = BeepBoopParserRULE_math
 
 	return p
 }
@@ -258,20 +258,20 @@ func (s *MathContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *MathContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
 		listenerT.EnterMath(s)
 	}
 }
 
 func (s *MathContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
 		listenerT.ExitMath(s)
 	}
 }
 
 func (s *MathContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
-	case DoVisitor:
+	case BeepBoopVisitor:
 		return t.VisitMath(s)
 
 	default:
@@ -279,18 +279,18 @@ func (s *MathContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	}
 }
 
-func (p *DoParser) Math() (localctx IMathContext) {
+func (p *BeepBoopParser) Math() (localctx IMathContext) {
 	return p.math(0)
 }
 
-func (p *DoParser) math(_p int) (localctx IMathContext) {
+func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
 	_parentState := p.GetState()
 	localctx = NewMathContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IMathContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 2
-	p.EnterRecursionRule(localctx, 2, DoParserRULE_math, _p)
+	p.EnterRecursionRule(localctx, 2, BeepBoopParserRULE_math, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -332,7 +332,7 @@ func (p *DoParser) math(_p int) (localctx IMathContext) {
 			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 0, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewMathContext(p, _parentctx, _parentState)
-				p.PushNewRecursionContext(localctx, _startState, DoParserRULE_math)
+				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
 				p.SetState(11)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
@@ -340,7 +340,7 @@ func (p *DoParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(12)
-					p.Match(DoParserT__0)
+					p.Match(BeepBoopParserT__0)
 				}
 				{
 					p.SetState(13)
@@ -349,7 +349,7 @@ func (p *DoParser) math(_p int) (localctx IMathContext) {
 
 			case 2:
 				localctx = NewMathContext(p, _parentctx, _parentState)
-				p.PushNewRecursionContext(localctx, _startState, DoParserRULE_math)
+				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
 				p.SetState(14)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 1)) {
@@ -357,7 +357,7 @@ func (p *DoParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(15)
-					p.Match(DoParserT__1)
+					p.Match(BeepBoopParserT__1)
 				}
 				{
 					p.SetState(16)
@@ -394,7 +394,7 @@ type TermContext struct {
 func NewEmptyTermContext() *TermContext {
 	var p = new(TermContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = DoParserRULE_term
+	p.RuleIndex = BeepBoopParserRULE_term
 	return p
 }
 
@@ -406,7 +406,7 @@ func NewTermContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = DoParserRULE_term
+	p.RuleIndex = BeepBoopParserRULE_term
 
 	return p
 }
@@ -414,7 +414,7 @@ func NewTermContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *TermContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *TermContext) INT() antlr.TerminalNode {
-	return s.GetToken(DoParserINT, 0)
+	return s.GetToken(BeepBoopParserINT, 0)
 }
 
 func (s *TermContext) GetRuleContext() antlr.RuleContext {
@@ -426,20 +426,20 @@ func (s *TermContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *TermContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
 		listenerT.EnterTerm(s)
 	}
 }
 
 func (s *TermContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(DoListener); ok {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
 		listenerT.ExitTerm(s)
 	}
 }
 
 func (s *TermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
-	case DoVisitor:
+	case BeepBoopVisitor:
 		return t.VisitTerm(s)
 
 	default:
@@ -447,9 +447,9 @@ func (s *TermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	}
 }
 
-func (p *DoParser) Term() (localctx ITermContext) {
+func (p *BeepBoopParser) Term() (localctx ITermContext) {
 	localctx = NewTermContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, DoParserRULE_term)
+	p.EnterRule(localctx, 4, BeepBoopParserRULE_term)
 
 	defer func() {
 		p.ExitRule()
@@ -470,13 +470,13 @@ func (p *DoParser) Term() (localctx ITermContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(22)
-		p.Match(DoParserINT)
+		p.Match(BeepBoopParserINT)
 	}
 
 	return localctx
 }
 
-func (p *DoParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
+func (p *BeepBoopParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
 	case 1:
 		var t *MathContext = nil
@@ -490,7 +490,7 @@ func (p *DoParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int)
 	}
 }
 
-func (p *DoParser) Math_Sempred(localctx antlr.RuleContext, predIndex int) bool {
+func (p *BeepBoopParser) Math_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
 		return p.Precpred(p.GetParserRuleContext(), 2)

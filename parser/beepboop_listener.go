@@ -1,15 +1,15 @@
-// Code generated from parser/Do.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from parser/BeepBoop.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
-package parser // Do
+package parser // BeepBoop
 
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
-// DoListener is a complete listener for a parse tree produced by DoParser.
-type DoListener interface {
+// BeepBoopListener is a complete listener for a parse tree produced by BeepBoopParser.
+type BeepBoopListener interface {
 	antlr.ParseTreeListener
 
-	// EnterDo is called when entering the do production.
-	EnterDo(c *DoContext)
+	// EnterBeepboop is called when entering the beepboop production.
+	EnterBeepboop(c *BeepboopContext)
 
 	// EnterMath is called when entering the math production.
 	EnterMath(c *MathContext)
@@ -17,8 +17,8 @@ type DoListener interface {
 	// EnterTerm is called when entering the term production.
 	EnterTerm(c *TermContext)
 
-	// ExitDo is called when exiting the do production.
-	ExitDo(c *DoContext)
+	// ExitBeepboop is called when exiting the beepboop production.
+	ExitBeepboop(c *BeepboopContext)
 
 	// ExitMath is called when exiting the math production.
 	ExitMath(c *MathContext)

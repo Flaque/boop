@@ -1,6 +1,6 @@
-grammar Do ;
+grammar BeepBoop ;
 
-do : math ;
+beepboop : math ;
 
 math : term | math '+' term | math '-' term ;
 term : INT ;
