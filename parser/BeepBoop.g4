@@ -15,9 +15,9 @@ assignment
     ;
 
 expr 
-    : term                         #termExpr
+    : expr op=(PLUS | MINUS) expr  #additiveExpr
     | MINUS expr                   #unaryMinusExpr
-    | expr op=(PLUS | MINUS) expr  #additiveExpr
+    | term                         #termExpr
     ;
 
 fncall

@@ -35,9 +35,9 @@ var parserATN = []uint16{
 	35, 5, 16, 9, 2, 35, 36, 7, 9, 2, 2, 36, 37, 5, 10, 6, 2, 37, 43, 3, 2,
 	2, 2, 38, 39, 5, 16, 9, 2, 39, 40, 7, 9, 2, 2, 40, 41, 5, 12, 7, 2, 41,
 	43, 3, 2, 2, 2, 42, 34, 3, 2, 2, 2, 42, 38, 3, 2, 2, 2, 43, 9, 3, 2, 2,
-	2, 44, 45, 8, 6, 1, 2, 45, 49, 5, 14, 8, 2, 46, 47, 7, 8, 2, 2, 47, 49,
-	5, 10, 6, 4, 48, 44, 3, 2, 2, 2, 48, 46, 3, 2, 2, 2, 49, 55, 3, 2, 2, 2,
-	50, 51, 12, 3, 2, 2, 51, 52, 9, 2, 2, 2, 52, 54, 5, 10, 6, 4, 53, 50, 3,
+	2, 44, 45, 8, 6, 1, 2, 45, 46, 7, 8, 2, 2, 46, 49, 5, 10, 6, 4, 47, 49,
+	5, 14, 8, 2, 48, 44, 3, 2, 2, 2, 48, 47, 3, 2, 2, 2, 49, 55, 3, 2, 2, 2,
+	50, 51, 12, 5, 2, 2, 51, 52, 9, 2, 2, 2, 52, 54, 5, 10, 6, 6, 53, 50, 3,
 	2, 2, 2, 54, 57, 3, 2, 2, 2, 55, 53, 3, 2, 2, 2, 55, 56, 3, 2, 2, 2, 56,
 	11, 3, 2, 2, 2, 57, 55, 3, 2, 2, 2, 58, 66, 7, 10, 2, 2, 59, 61, 7, 10,
 	2, 2, 60, 62, 5, 14, 8, 2, 61, 60, 3, 2, 2, 2, 62, 63, 3, 2, 2, 2, 63,
@@ -998,27 +998,27 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case BeepBoopParserT__0, BeepBoopParserINT, BeepBoopParserSTRING:
-		localctx = NewTermExprContext(p, localctx)
+	case BeepBoopParserMINUS:
+		localctx = NewUnaryMinusExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 
 		{
 			p.SetState(43)
-			p.Term()
-		}
-
-	case BeepBoopParserMINUS:
-		localctx = NewUnaryMinusExprContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
-			p.SetState(44)
 			p.Match(BeepBoopParserMINUS)
 		}
 		{
-			p.SetState(45)
+			p.SetState(44)
 			p.expr(2)
+		}
+
+	case BeepBoopParserT__0, BeepBoopParserINT, BeepBoopParserSTRING:
+		localctx = NewTermExprContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
+		{
+			p.SetState(45)
+			p.Term()
 		}
 
 	default:
@@ -1039,8 +1039,8 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 			p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_expr)
 			p.SetState(48)
 
-			if !(p.Precpred(p.GetParserRuleContext(), 1)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
+			if !(p.Precpred(p.GetParserRuleContext(), 3)) {
+				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 			}
 			{
 				p.SetState(49)
@@ -1062,7 +1062,7 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 			}
 			{
 				p.SetState(50)
-				p.expr(2)
+				p.expr(4)
 			}
 
 		}
@@ -1591,7 +1591,7 @@ func (p *BeepBoopParser) Sempred(localctx antlr.RuleContext, ruleIndex, predInde
 func (p *BeepBoopParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 1)
+		return p.Precpred(p.GetParserRuleContext(), 3)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

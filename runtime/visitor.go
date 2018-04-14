@@ -1,9 +1,7 @@
 package runtime
 
 import (
-	"bytes"
 	"fmt"
-	"os/exec"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/flaque/beep/parser"
@@ -46,12 +44,16 @@ func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContex
 }
 
 func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interface{} {
-	label := ctx.Label().GetText()
-	value := ctx.Expr().GetText()
 
-	v.stack.Set(label, value)
+	// Make sure we visit the label, even though we might be using it
+	v.Visit(ctx.Label())
 
-	return v.VisitChildren(ctx)
+	// Grab expression value
+	value := v.Visit(ctx.Expr())
+
+	v.stack.Set(ctx.Label().GetText(), value)
+
+	return nil
 }
 
 func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
@@ -60,7 +62,7 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	// Collect args
 	args := []string{}
 	for _, term := range ctx.AllTerm() {
-		s, _ := v.Visit(term).(string)
+		s, _ := AnythingToString(v.Visit(term))
 		args = append(args, s)
 	}
 
@@ -71,20 +73,12 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 
 	name := ctx.STRING().GetText()
 
-	// Attempt to call if from the command line
-	cmd := exec.Command(name, args...)
+	output := RunCmd(name, args...)
 
-	//TODO Set stdin
-
-	// Set stdout
-	var out bytes.Buffer
-	cmd.Stdout = &out
-
-	// Launch command
-	cmd.Run()
-
-	output := out.String()
-	fmt.Print(output)
+	// Echo is the only command allowed to output
+	if name == "echo" {
+		fmt.Print(output)
+	}
 
 	return output
 }
@@ -130,8 +124,10 @@ func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext)
 
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
 	label := ctx.Label().GetText()
-	// TODO, throw a runtime error here if the label isn't in the stack
-	return v.stack.Get(label)
+
+	val := v.stack.Get(label)
+
+	return val
 }
 
 func (v *BeepBoopVisitor) VisitStringTerm(ctx *parser.StringTermContext) interface{} {

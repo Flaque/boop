@@ -16,10 +16,16 @@ As such, hello world in BeepBoop is just:
 echo Hello World
 ```
 
+You can pass any number of arguments (seperated by a space) into a function:
+
+```
+echo My a e s t h e t i c is emoji punk
+```
+
 Pipes are also a thing in BeepBoop and they work like they do in Unix.
 
 ```
-ls | grep *.bb | echo
+ls | grep *.beep | echo
 ```
 
 ## stdout in BeepBoop
