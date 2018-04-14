@@ -5,8 +5,8 @@ import (
 	"github.com/flaque/beep/parser"
 )
 
-func Run(filename string) interface{} {
-	input, _ := antlr.NewFileStream(filename)
+func Run(code string) interface{} {
+	input := antlr.NewInputStream(code)
 	lexer := parser.NewBeepBoopLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, 0)
 	p := parser.NewBeepBoopParser(stream)

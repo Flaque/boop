@@ -2,10 +2,26 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 
 	"github.com/flaque/beep/runtime"
 )
+
+func killf(str string, args ...interface{}) {
+	fmt.Printf(str+"\n", args...)
+	os.Exit(1)
+}
+
+func read(filename string) string {
+	dat, err := ioutil.ReadFile(filename)
+
+	if err != nil {
+		killf("Error reading file %s. Messagife: %s", filename, err)
+	}
+
+	return string(dat)
+}
 
 func addNewLineToEndOfFile(filename string) {
 	f, _ := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
@@ -15,19 +31,20 @@ func addNewLineToEndOfFile(filename string) {
 
 func main() {
 	if len(os.Args) <= 1 {
-		fmt.Println("File required as input")
-		os.Exit(1)
+		killf("File required as input!")
 	}
 
-	if _, err := os.Stat(os.Args[1]); os.IsNotExist(err) {
-		fmt.Println("File does not exist")
-		os.Exit(1)
+	if val, err := os.Stat(os.Args[1]); os.IsNotExist(err) {
+		killf("File '%s' does not exist", val)
 	}
 
-	// Fixes ocasional bugs where there's no new line at the end of the file
-	// TODO: Definitely not the best way to solve this
-	addNewLineToEndOfFile(os.Args[1])
+	// Read file
+	code := read(os.Args[1])
 
-	// Run
-	runtime.Run(os.Args[1])
+	// Code must have a new line at the end for the grammar
+	// So we'll fix it here just in case
+	code += "\n"
+
+	// Run program
+	runtime.Run(code)
 }
