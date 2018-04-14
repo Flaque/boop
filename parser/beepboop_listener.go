@@ -14,11 +14,11 @@ type BeepBoopListener interface {
 	// EnterBlock is called when entering the block production.
 	EnterBlock(c *BlockContext)
 
-	// EnterExprStatement is called when entering the exprStatement production.
-	EnterExprStatement(c *ExprStatementContext)
-
 	// EnterAssignStatement is called when entering the assignStatement production.
 	EnterAssignStatement(c *AssignStatementContext)
+
+	// EnterFncallStatement is called when entering the fncallStatement production.
+	EnterFncallStatement(c *FncallStatementContext)
 
 	// EnterAssignment is called when entering the assignment production.
 	EnterAssignment(c *AssignmentContext)
@@ -31,6 +31,9 @@ type BeepBoopListener interface {
 
 	// EnterAdditiveExpr is called when entering the additiveExpr production.
 	EnterAdditiveExpr(c *AdditiveExprContext)
+
+	// EnterFncall is called when entering the fncall production.
+	EnterFncall(c *FncallContext)
 
 	// EnterLabelTerm is called when entering the labelTerm production.
 	EnterLabelTerm(c *LabelTermContext)
@@ -50,11 +53,11 @@ type BeepBoopListener interface {
 	// ExitBlock is called when exiting the block production.
 	ExitBlock(c *BlockContext)
 
-	// ExitExprStatement is called when exiting the exprStatement production.
-	ExitExprStatement(c *ExprStatementContext)
-
 	// ExitAssignStatement is called when exiting the assignStatement production.
 	ExitAssignStatement(c *AssignStatementContext)
+
+	// ExitFncallStatement is called when exiting the fncallStatement production.
+	ExitFncallStatement(c *FncallStatementContext)
 
 	// ExitAssignment is called when exiting the assignment production.
 	ExitAssignment(c *AssignmentContext)
@@ -67,6 +70,9 @@ type BeepBoopListener interface {
 
 	// ExitAdditiveExpr is called when exiting the additiveExpr production.
 	ExitAdditiveExpr(c *AdditiveExprContext)
+
+	// ExitFncall is called when exiting the fncall production.
+	ExitFncall(c *FncallContext)
 
 	// ExitLabelTerm is called when exiting the labelTerm production.
 	ExitLabelTerm(c *LabelTermContext)

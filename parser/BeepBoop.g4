@@ -5,12 +5,13 @@ beepboop : block EOF ;
 block : statement+ ;
 
 statement 
-    : expr NEWLINE       #exprStatement
-    | assignment NEWLINE #assignStatement
+    : assignment NEWLINE #assignStatement
+    | fncall NEWLINE     #fncallStatement
     ;
 
 assignment
-    : label ASSIGN expr 
+    : label ASSIGN expr   
+    | label ASSIGN fncall
     ;
 
 expr 
@@ -19,6 +20,10 @@ expr
     | expr op=(PLUS | MINUS) expr  #additiveExpr
     ;
 
+fncall
+    : STRING       
+    | STRING expr+ 
+    ;
 
 term 
    : label  #labelTerm
@@ -34,4 +39,4 @@ INT : [0-9]+ ;
 PLUS : '+' ;
 MINUS : '-' ;
 ASSIGN : '=' ;
-STRING : [a-zA-Z] ;
+STRING : [a-zA-Z]+ ;

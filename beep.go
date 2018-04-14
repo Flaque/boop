@@ -28,6 +28,6 @@ func main() {
 	// TODO: Definitely not the best way to solve this
 	addNewLineToEndOfFile(os.Args[1])
 
-	// Run and print output
-	fmt.Println(runtime.Run(os.Args[1]))
+	// Run
+	runtime.Run(os.Args[1])
 }

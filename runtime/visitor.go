@@ -1,6 +1,10 @@
 package runtime
 
 import (
+	"bytes"
+	"fmt"
+	"os/exec"
+
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/flaque/beep/parser"
 )
@@ -23,18 +27,22 @@ func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{}
 func (v *BeepBoopVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
 	v.stack.Push(NewFrame())
-	val := v.Visit(ctx.Statement(0))
+
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		v.Visit(ctx.Statement(0))
+	}
+
 	v.stack.Pop()
 
-	return val
-}
-
-func (v *BeepBoopVisitor) VisitExprStatement(ctx *parser.ExprStatementContext) interface{} {
-	return v.Visit(ctx.Expr())
+	return nil
 }
 
 func (v *BeepBoopVisitor) VisitAssignStatement(ctx *parser.AssignStatementContext) interface{} {
 	return v.Visit(ctx.Assignment())
+}
+
+func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContext) interface{} {
+	return v.Visit(ctx.Fncall())
 }
 
 func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interface{} {
@@ -44,6 +52,40 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	v.stack.Set(label, value)
 
 	return v.VisitChildren(ctx)
+}
+
+func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
+	fn := v.stack.Get(ctx.STRING().GetText())
+
+	// Collect args
+	args := []string{}
+	for _, expr := range ctx.AllExpr() {
+		args = append(args, expr.GetText())
+	}
+
+	if fn != nil {
+		// TODO: do a real function
+		return nil
+	}
+
+	name := ctx.STRING().GetText()
+
+	// Attempt to call if from the command line
+	cmd := exec.Command(name, args...)
+
+	//TODO Set stdin
+
+	// Set stdout
+	var out bytes.Buffer
+	cmd.Stdout = &out
+
+	// Launch command
+	cmd.Run()
+
+	output := out.String()
+	fmt.Print(output)
+
+	return output
 }
 
 func (v *BeepBoopVisitor) VisitTermExpr(ctx *parser.TermExprContext) interface{} {
