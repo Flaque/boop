@@ -40,7 +40,15 @@ func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interf
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitTerm(ctx *TermContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitLabelTerm(ctx *LabelTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitStringTerm(ctx *StringTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitIntTerm(ctx *IntTermContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

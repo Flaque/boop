@@ -41,7 +41,7 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	label := ctx.Label().GetText()
 	value := ctx.Expr().GetText()
 
-	v.stack.Add(label, value)
+	v.stack.Set(label, value)
 
 	return v.VisitChildren(ctx)
 }
@@ -85,7 +85,17 @@ func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext)
 	return total
 }
 
-func (v *BeepBoopVisitor) VisitTerm(ctx *parser.TermContext) interface{} {
+func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
+	label := ctx.Label().GetText()
+	// TODO, throw a runtime error here if the label isn't in the stack
+	return v.stack.Get(label)
+}
+
+func (v *BeepBoopVisitor) VisitStringTerm(ctx *parser.StringTermContext) interface{} {
+	return ctx.STRING().GetText()
+}
+
+func (v *BeepBoopVisitor) VisitIntTerm(ctx *parser.IntTermContext) interface{} {
 	i, _ := RuleToInt(ctx.INT())
 	return i
 }

@@ -69,11 +69,23 @@ func (s *BaseBeepBoopListener) EnterAdditiveExpr(ctx *AdditiveExprContext) {}
 // ExitAdditiveExpr is called when production additiveExpr is exited.
 func (s *BaseBeepBoopListener) ExitAdditiveExpr(ctx *AdditiveExprContext) {}
 
-// EnterTerm is called when production term is entered.
-func (s *BaseBeepBoopListener) EnterTerm(ctx *TermContext) {}
+// EnterLabelTerm is called when production labelTerm is entered.
+func (s *BaseBeepBoopListener) EnterLabelTerm(ctx *LabelTermContext) {}
 
-// ExitTerm is called when production term is exited.
-func (s *BaseBeepBoopListener) ExitTerm(ctx *TermContext) {}
+// ExitLabelTerm is called when production labelTerm is exited.
+func (s *BaseBeepBoopListener) ExitLabelTerm(ctx *LabelTermContext) {}
+
+// EnterStringTerm is called when production stringTerm is entered.
+func (s *BaseBeepBoopListener) EnterStringTerm(ctx *StringTermContext) {}
+
+// ExitStringTerm is called when production stringTerm is exited.
+func (s *BaseBeepBoopListener) ExitStringTerm(ctx *StringTermContext) {}
+
+// EnterIntTerm is called when production intTerm is entered.
+func (s *BaseBeepBoopListener) EnterIntTerm(ctx *IntTermContext) {}
+
+// ExitIntTerm is called when production intTerm is exited.
+func (s *BaseBeepBoopListener) ExitIntTerm(ctx *IntTermContext) {}
 
 // EnterLabel is called when production label is entered.
 func (s *BaseBeepBoopListener) EnterLabel(ctx *LabelContext) {}

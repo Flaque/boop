@@ -29,7 +29,12 @@ func (st *Stack) Len() int {
 	return st.lower.Len()
 }
 
-func (st *Stack) Add(key string, value interface{}) {
+func (st *Stack) Set(key string, value interface{}) {
 	f := st.Peek()
 	f.Set(key, value)
+}
+
+func (st *Stack) Get(key string) interface{} {
+	f := st.Peek()
+	return f.Get(key)
 }

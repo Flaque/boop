@@ -32,8 +32,14 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#additiveExpr.
 	VisitAdditiveExpr(ctx *AdditiveExprContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#term.
-	VisitTerm(ctx *TermContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#labelTerm.
+	VisitLabelTerm(ctx *LabelTermContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#stringTerm.
+	VisitStringTerm(ctx *StringTermContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#intTerm.
+	VisitIntTerm(ctx *IntTermContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#label.
 	VisitLabel(ctx *LabelContext) interface{}

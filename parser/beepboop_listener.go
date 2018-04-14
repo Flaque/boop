@@ -32,8 +32,14 @@ type BeepBoopListener interface {
 	// EnterAdditiveExpr is called when entering the additiveExpr production.
 	EnterAdditiveExpr(c *AdditiveExprContext)
 
-	// EnterTerm is called when entering the term production.
-	EnterTerm(c *TermContext)
+	// EnterLabelTerm is called when entering the labelTerm production.
+	EnterLabelTerm(c *LabelTermContext)
+
+	// EnterStringTerm is called when entering the stringTerm production.
+	EnterStringTerm(c *StringTermContext)
+
+	// EnterIntTerm is called when entering the intTerm production.
+	EnterIntTerm(c *IntTermContext)
 
 	// EnterLabel is called when entering the label production.
 	EnterLabel(c *LabelContext)
@@ -62,8 +68,14 @@ type BeepBoopListener interface {
 	// ExitAdditiveExpr is called when exiting the additiveExpr production.
 	ExitAdditiveExpr(c *AdditiveExprContext)
 
-	// ExitTerm is called when exiting the term production.
-	ExitTerm(c *TermContext)
+	// ExitLabelTerm is called when exiting the labelTerm production.
+	ExitLabelTerm(c *LabelTermContext)
+
+	// ExitStringTerm is called when exiting the stringTerm production.
+	ExitStringTerm(c *StringTermContext)
+
+	// ExitIntTerm is called when exiting the intTerm production.
+	ExitIntTerm(c *IntTermContext)
 
 	// ExitLabel is called when exiting the label production.
 	ExitLabel(c *LabelContext)

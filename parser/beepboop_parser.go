@@ -16,27 +16,29 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 10, 56, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 10, 59, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
 	8, 9, 8, 3, 2, 3, 2, 3, 2, 3, 3, 6, 3, 21, 10, 3, 13, 3, 14, 3, 22, 3,
 	4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 5, 4, 31, 10, 4, 3, 5, 3, 5, 3, 5, 3,
 	5, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 41, 10, 6, 3, 6, 3, 6, 3, 6, 7, 6, 46,
-	10, 6, 12, 6, 14, 6, 49, 11, 6, 3, 7, 3, 7, 3, 8, 3, 8, 3, 8, 3, 8, 2,
-	3, 10, 9, 2, 4, 6, 8, 10, 12, 14, 2, 3, 3, 2, 7, 8, 2, 52, 2, 16, 3, 2,
-	2, 2, 4, 20, 3, 2, 2, 2, 6, 30, 3, 2, 2, 2, 8, 32, 3, 2, 2, 2, 10, 40,
-	3, 2, 2, 2, 12, 50, 3, 2, 2, 2, 14, 52, 3, 2, 2, 2, 16, 17, 5, 4, 3, 2,
-	17, 18, 7, 2, 2, 3, 18, 3, 3, 2, 2, 2, 19, 21, 5, 6, 4, 2, 20, 19, 3, 2,
-	2, 2, 21, 22, 3, 2, 2, 2, 22, 20, 3, 2, 2, 2, 22, 23, 3, 2, 2, 2, 23, 5,
-	3, 2, 2, 2, 24, 25, 5, 10, 6, 2, 25, 26, 7, 4, 2, 2, 26, 31, 3, 2, 2, 2,
-	27, 28, 5, 8, 5, 2, 28, 29, 7, 4, 2, 2, 29, 31, 3, 2, 2, 2, 30, 24, 3,
-	2, 2, 2, 30, 27, 3, 2, 2, 2, 31, 7, 3, 2, 2, 2, 32, 33, 5, 14, 8, 2, 33,
-	34, 7, 9, 2, 2, 34, 35, 5, 10, 6, 2, 35, 9, 3, 2, 2, 2, 36, 37, 8, 6, 1,
-	2, 37, 41, 5, 12, 7, 2, 38, 39, 7, 8, 2, 2, 39, 41, 5, 10, 6, 4, 40, 36,
-	3, 2, 2, 2, 40, 38, 3, 2, 2, 2, 41, 47, 3, 2, 2, 2, 42, 43, 12, 3, 2, 2,
-	43, 44, 9, 2, 2, 2, 44, 46, 5, 10, 6, 4, 45, 42, 3, 2, 2, 2, 46, 49, 3,
-	2, 2, 2, 47, 45, 3, 2, 2, 2, 47, 48, 3, 2, 2, 2, 48, 11, 3, 2, 2, 2, 49,
-	47, 3, 2, 2, 2, 50, 51, 7, 6, 2, 2, 51, 13, 3, 2, 2, 2, 52, 53, 7, 3, 2,
-	2, 53, 54, 7, 10, 2, 2, 54, 15, 3, 2, 2, 2, 6, 22, 30, 40, 47,
+	10, 6, 12, 6, 14, 6, 49, 11, 6, 3, 7, 3, 7, 3, 7, 5, 7, 54, 10, 7, 3, 8,
+	3, 8, 3, 8, 3, 8, 2, 3, 10, 9, 2, 4, 6, 8, 10, 12, 14, 2, 3, 3, 2, 7, 8,
+	2, 57, 2, 16, 3, 2, 2, 2, 4, 20, 3, 2, 2, 2, 6, 30, 3, 2, 2, 2, 8, 32,
+	3, 2, 2, 2, 10, 40, 3, 2, 2, 2, 12, 53, 3, 2, 2, 2, 14, 55, 3, 2, 2, 2,
+	16, 17, 5, 4, 3, 2, 17, 18, 7, 2, 2, 3, 18, 3, 3, 2, 2, 2, 19, 21, 5, 6,
+	4, 2, 20, 19, 3, 2, 2, 2, 21, 22, 3, 2, 2, 2, 22, 20, 3, 2, 2, 2, 22, 23,
+	3, 2, 2, 2, 23, 5, 3, 2, 2, 2, 24, 25, 5, 10, 6, 2, 25, 26, 7, 4, 2, 2,
+	26, 31, 3, 2, 2, 2, 27, 28, 5, 8, 5, 2, 28, 29, 7, 4, 2, 2, 29, 31, 3,
+	2, 2, 2, 30, 24, 3, 2, 2, 2, 30, 27, 3, 2, 2, 2, 31, 7, 3, 2, 2, 2, 32,
+	33, 5, 14, 8, 2, 33, 34, 7, 9, 2, 2, 34, 35, 5, 10, 6, 2, 35, 9, 3, 2,
+	2, 2, 36, 37, 8, 6, 1, 2, 37, 41, 5, 12, 7, 2, 38, 39, 7, 8, 2, 2, 39,
+	41, 5, 10, 6, 4, 40, 36, 3, 2, 2, 2, 40, 38, 3, 2, 2, 2, 41, 47, 3, 2,
+	2, 2, 42, 43, 12, 3, 2, 2, 43, 44, 9, 2, 2, 2, 44, 46, 5, 10, 6, 4, 45,
+	42, 3, 2, 2, 2, 46, 49, 3, 2, 2, 2, 47, 45, 3, 2, 2, 2, 47, 48, 3, 2, 2,
+	2, 48, 11, 3, 2, 2, 2, 49, 47, 3, 2, 2, 2, 50, 54, 5, 14, 8, 2, 51, 54,
+	7, 10, 2, 2, 52, 54, 7, 6, 2, 2, 53, 50, 3, 2, 2, 2, 53, 51, 3, 2, 2, 2,
+	53, 52, 3, 2, 2, 2, 54, 13, 3, 2, 2, 2, 55, 56, 7, 3, 2, 2, 56, 57, 7,
+	10, 2, 2, 57, 15, 3, 2, 2, 2, 7, 22, 30, 40, 47, 53,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -333,7 +335,7 @@ func (p *BeepBoopParser) Block() (localctx IBlockContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<BeepBoopParserT__0)|(1<<BeepBoopParserINT)|(1<<BeepBoopParserMINUS))) != 0) {
+	for ok := true; ok; ok = (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<BeepBoopParserT__0)|(1<<BeepBoopParserINT)|(1<<BeepBoopParserMINUS)|(1<<BeepBoopParserSTRING))) != 0) {
 		{
 			p.SetState(17)
 			p.Statement()
@@ -527,9 +529,8 @@ func (p *BeepBoopParser) Statement() (localctx IStatementContext) {
 
 	p.SetState(28)
 	p.GetErrorHandler().Sync(p)
-
-	switch p.GetTokenStream().LA(1) {
-	case BeepBoopParserINT, BeepBoopParserMINUS:
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
+	case 1:
 		localctx = NewExprStatementContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
@@ -541,7 +542,7 @@ func (p *BeepBoopParser) Statement() (localctx IStatementContext) {
 			p.Match(BeepBoopParserNEWLINE)
 		}
 
-	case BeepBoopParserT__0:
+	case 2:
 		localctx = NewAssignStatementContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
@@ -553,8 +554,6 @@ func (p *BeepBoopParser) Statement() (localctx IStatementContext) {
 			p.Match(BeepBoopParserNEWLINE)
 		}
 
-	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -956,7 +955,7 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case BeepBoopParserINT:
+	case BeepBoopParserT__0, BeepBoopParserINT, BeepBoopParserSTRING:
 		localctx = NewTermExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
@@ -1070,8 +1069,8 @@ func NewTermContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *TermContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TermContext) INT() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserINT, 0)
+func (s *TermContext) CopyFrom(ctx *TermContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *TermContext) GetRuleContext() antlr.RuleContext {
@@ -1082,22 +1081,138 @@ func (s *TermContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *TermContext) EnterRule(listener antlr.ParseTreeListener) {
+type StringTermContext struct {
+	*TermContext
+}
+
+func NewStringTermContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *StringTermContext {
+	var p = new(StringTermContext)
+
+	p.TermContext = NewEmptyTermContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*TermContext))
+
+	return p
+}
+
+func (s *StringTermContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StringTermContext) STRING() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserSTRING, 0)
+}
+
+func (s *StringTermContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterTerm(s)
+		listenerT.EnterStringTerm(s)
 	}
 }
 
-func (s *TermContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *StringTermContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitTerm(s)
+		listenerT.ExitStringTerm(s)
 	}
 }
 
-func (s *TermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *StringTermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitTerm(s)
+		return t.VisitStringTerm(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type LabelTermContext struct {
+	*TermContext
+}
+
+func NewLabelTermContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LabelTermContext {
+	var p = new(LabelTermContext)
+
+	p.TermContext = NewEmptyTermContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*TermContext))
+
+	return p
+}
+
+func (s *LabelTermContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *LabelTermContext) Label() ILabelContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILabelContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILabelContext)
+}
+
+func (s *LabelTermContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterLabelTerm(s)
+	}
+}
+
+func (s *LabelTermContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitLabelTerm(s)
+	}
+}
+
+func (s *LabelTermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitLabelTerm(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type IntTermContext struct {
+	*TermContext
+}
+
+func NewIntTermContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IntTermContext {
+	var p = new(IntTermContext)
+
+	p.TermContext = NewEmptyTermContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*TermContext))
+
+	return p
+}
+
+func (s *IntTermContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IntTermContext) INT() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserINT, 0)
+}
+
+func (s *IntTermContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterIntTerm(s)
+	}
+}
+
+func (s *IntTermContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitIntTerm(s)
+	}
+}
+
+func (s *IntTermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitIntTerm(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -1124,10 +1239,36 @@ func (p *BeepBoopParser) Term() (localctx ITermContext) {
 		}
 	}()
 
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(48)
-		p.Match(BeepBoopParserINT)
+	p.SetState(51)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case BeepBoopParserT__0:
+		localctx = NewLabelTermContext(p, localctx)
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(48)
+			p.Label()
+		}
+
+	case BeepBoopParserSTRING:
+		localctx = NewStringTermContext(p, localctx)
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(49)
+			p.Match(BeepBoopParserSTRING)
+		}
+
+	case BeepBoopParserINT:
+		localctx = NewIntTermContext(p, localctx)
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(50)
+			p.Match(BeepBoopParserINT)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -1227,11 +1368,11 @@ func (p *BeepBoopParser) Label() (localctx ILabelContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(50)
+		p.SetState(53)
 		p.Match(BeepBoopParserT__0)
 	}
 	{
-		p.SetState(51)
+		p.SetState(54)
 		p.Match(BeepBoopParserSTRING)
 	}
 

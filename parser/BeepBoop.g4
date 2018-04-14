@@ -20,7 +20,12 @@ expr
     ;
 
 
-term : INT ;
+term 
+   : label  #labelTerm
+   | STRING #stringTerm
+   | INT    #intTerm
+   ;
+
 label : '$'STRING ; 
 
 NEWLINE : [\r\n]+ ;
