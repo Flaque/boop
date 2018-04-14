@@ -40,7 +40,7 @@ var parserATN = []uint16{
 	50, 51, 12, 3, 2, 2, 51, 52, 9, 2, 2, 2, 52, 54, 5, 10, 6, 4, 53, 50, 3,
 	2, 2, 2, 54, 57, 3, 2, 2, 2, 55, 53, 3, 2, 2, 2, 55, 56, 3, 2, 2, 2, 56,
 	11, 3, 2, 2, 2, 57, 55, 3, 2, 2, 2, 58, 66, 7, 10, 2, 2, 59, 61, 7, 10,
-	2, 2, 60, 62, 5, 10, 6, 2, 61, 60, 3, 2, 2, 2, 62, 63, 3, 2, 2, 2, 63,
+	2, 2, 60, 62, 5, 14, 8, 2, 61, 60, 3, 2, 2, 2, 62, 63, 3, 2, 2, 2, 63,
 	61, 3, 2, 2, 2, 63, 64, 3, 2, 2, 2, 64, 66, 3, 2, 2, 2, 65, 58, 3, 2, 2,
 	2, 65, 59, 3, 2, 2, 2, 66, 13, 3, 2, 2, 2, 67, 71, 5, 16, 9, 2, 68, 71,
 	7, 10, 2, 2, 69, 71, 7, 6, 2, 2, 70, 67, 3, 2, 2, 2, 70, 68, 3, 2, 2, 2,
@@ -1116,27 +1116,27 @@ func (s *FncallContext) STRING() antlr.TerminalNode {
 	return s.GetToken(BeepBoopParserSTRING, 0)
 }
 
-func (s *FncallContext) AllExpr() []IExprContext {
-	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExprContext)(nil)).Elem())
-	var tst = make([]IExprContext, len(ts))
+func (s *FncallContext) AllTerm() []ITermContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*ITermContext)(nil)).Elem())
+	var tst = make([]ITermContext, len(ts))
 
 	for i, t := range ts {
 		if t != nil {
-			tst[i] = t.(IExprContext)
+			tst[i] = t.(ITermContext)
 		}
 	}
 
 	return tst
 }
 
-func (s *FncallContext) Expr(i int) IExprContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), i)
+func (s *FncallContext) Term(i int) ITermContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IExprContext)
+	return t.(ITermContext)
 }
 
 func (s *FncallContext) GetRuleContext() antlr.RuleContext {
@@ -1210,10 +1210,10 @@ func (p *BeepBoopParser) Fncall() (localctx IFncallContext) {
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		for ok := true; ok; ok = (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<BeepBoopParserT__0)|(1<<BeepBoopParserINT)|(1<<BeepBoopParserMINUS)|(1<<BeepBoopParserSTRING))) != 0) {
+		for ok := true; ok; ok = (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<BeepBoopParserT__0)|(1<<BeepBoopParserINT)|(1<<BeepBoopParserSTRING))) != 0) {
 			{
 				p.SetState(58)
-				p.expr(0)
+				p.Term()
 			}
 
 			p.SetState(61)

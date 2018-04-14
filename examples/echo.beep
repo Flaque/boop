@@ -1,3 +1,2 @@
-echo hello world
-
-
+$a = 5
+echo hello $a

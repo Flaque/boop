@@ -22,7 +22,7 @@ expr
 
 fncall
     : STRING       
-    | STRING expr+ 
+    | STRING term+ 
     ;
 
 term 

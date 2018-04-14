@@ -29,7 +29,7 @@ func (v *BeepBoopVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 	v.stack.Push(NewFrame())
 
 	for i := 0; i < ctx.GetChildCount(); i++ {
-		v.Visit(ctx.Statement(0))
+		v.Visit(ctx.Statement(i))
 	}
 
 	v.stack.Pop()
@@ -59,8 +59,9 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 
 	// Collect args
 	args := []string{}
-	for _, expr := range ctx.AllExpr() {
-		args = append(args, expr.GetText())
+	for _, term := range ctx.AllTerm() {
+		s, _ := v.Visit(term).(string)
+		args = append(args, s)
 	}
 
 	if fn != nil {
