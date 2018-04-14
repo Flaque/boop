@@ -33,11 +33,23 @@ func (s *BaseBeepBoopListener) EnterBlock(ctx *BlockContext) {}
 // ExitBlock is called when production block is exited.
 func (s *BaseBeepBoopListener) ExitBlock(ctx *BlockContext) {}
 
-// EnterStatement is called when production statement is entered.
-func (s *BaseBeepBoopListener) EnterStatement(ctx *StatementContext) {}
+// EnterExprStatement is called when production exprStatement is entered.
+func (s *BaseBeepBoopListener) EnterExprStatement(ctx *ExprStatementContext) {}
 
-// ExitStatement is called when production statement is exited.
-func (s *BaseBeepBoopListener) ExitStatement(ctx *StatementContext) {}
+// ExitExprStatement is called when production exprStatement is exited.
+func (s *BaseBeepBoopListener) ExitExprStatement(ctx *ExprStatementContext) {}
+
+// EnterAssignStatement is called when production assignStatement is entered.
+func (s *BaseBeepBoopListener) EnterAssignStatement(ctx *AssignStatementContext) {}
+
+// ExitAssignStatement is called when production assignStatement is exited.
+func (s *BaseBeepBoopListener) ExitAssignStatement(ctx *AssignStatementContext) {}
+
+// EnterAssignment is called when production assignment is entered.
+func (s *BaseBeepBoopListener) EnterAssignment(ctx *AssignmentContext) {}
+
+// ExitAssignment is called when production assignment is exited.
+func (s *BaseBeepBoopListener) ExitAssignment(ctx *AssignmentContext) {}
 
 // EnterUnaryMinusExpr is called when production unaryMinusExpr is entered.
 func (s *BaseBeepBoopListener) EnterUnaryMinusExpr(ctx *UnaryMinusExprContext) {}
@@ -62,3 +74,9 @@ func (s *BaseBeepBoopListener) EnterTerm(ctx *TermContext) {}
 
 // ExitTerm is called when production term is exited.
 func (s *BaseBeepBoopListener) ExitTerm(ctx *TermContext) {}
+
+// EnterLabel is called when production label is entered.
+func (s *BaseBeepBoopListener) EnterLabel(ctx *LabelContext) {}
+
+// ExitLabel is called when production label is exited.
+func (s *BaseBeepBoopListener) ExitLabel(ctx *LabelContext) {}

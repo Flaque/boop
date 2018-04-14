@@ -16,35 +16,40 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 7, 40, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 3, 2, 3, 2, 3,
-	2, 3, 3, 6, 3, 17, 10, 3, 13, 3, 14, 3, 18, 3, 4, 3, 4, 3, 4, 3, 5, 3,
-	5, 3, 5, 3, 5, 5, 5, 28, 10, 5, 3, 5, 3, 5, 3, 5, 7, 5, 33, 10, 5, 12,
-	5, 14, 5, 36, 11, 5, 3, 6, 3, 6, 3, 6, 2, 3, 8, 7, 2, 4, 6, 8, 10, 2, 4,
-	3, 3, 3, 3, 3, 2, 6, 7, 2, 37, 2, 12, 3, 2, 2, 2, 4, 16, 3, 2, 2, 2, 6,
-	20, 3, 2, 2, 2, 8, 27, 3, 2, 2, 2, 10, 37, 3, 2, 2, 2, 12, 13, 5, 4, 3,
-	2, 13, 14, 7, 2, 2, 3, 14, 3, 3, 2, 2, 2, 15, 17, 5, 6, 4, 2, 16, 15, 3,
-	2, 2, 2, 17, 18, 3, 2, 2, 2, 18, 16, 3, 2, 2, 2, 18, 19, 3, 2, 2, 2, 19,
-	5, 3, 2, 2, 2, 20, 21, 5, 8, 5, 2, 21, 22, 9, 2, 2, 2, 22, 7, 3, 2, 2,
-	2, 23, 24, 8, 5, 1, 2, 24, 28, 5, 10, 6, 2, 25, 26, 7, 7, 2, 2, 26, 28,
-	5, 8, 5, 4, 27, 23, 3, 2, 2, 2, 27, 25, 3, 2, 2, 2, 28, 34, 3, 2, 2, 2,
-	29, 30, 12, 3, 2, 2, 30, 31, 9, 3, 2, 2, 31, 33, 5, 8, 5, 4, 32, 29, 3,
-	2, 2, 2, 33, 36, 3, 2, 2, 2, 34, 32, 3, 2, 2, 2, 34, 35, 3, 2, 2, 2, 35,
-	9, 3, 2, 2, 2, 36, 34, 3, 2, 2, 2, 37, 38, 7, 5, 2, 2, 38, 11, 3, 2, 2,
-	2, 5, 18, 27, 34,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 10, 56, 4,
+	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
+	8, 9, 8, 3, 2, 3, 2, 3, 2, 3, 3, 6, 3, 21, 10, 3, 13, 3, 14, 3, 22, 3,
+	4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 5, 4, 31, 10, 4, 3, 5, 3, 5, 3, 5, 3,
+	5, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 41, 10, 6, 3, 6, 3, 6, 3, 6, 7, 6, 46,
+	10, 6, 12, 6, 14, 6, 49, 11, 6, 3, 7, 3, 7, 3, 8, 3, 8, 3, 8, 3, 8, 2,
+	3, 10, 9, 2, 4, 6, 8, 10, 12, 14, 2, 3, 3, 2, 7, 8, 2, 52, 2, 16, 3, 2,
+	2, 2, 4, 20, 3, 2, 2, 2, 6, 30, 3, 2, 2, 2, 8, 32, 3, 2, 2, 2, 10, 40,
+	3, 2, 2, 2, 12, 50, 3, 2, 2, 2, 14, 52, 3, 2, 2, 2, 16, 17, 5, 4, 3, 2,
+	17, 18, 7, 2, 2, 3, 18, 3, 3, 2, 2, 2, 19, 21, 5, 6, 4, 2, 20, 19, 3, 2,
+	2, 2, 21, 22, 3, 2, 2, 2, 22, 20, 3, 2, 2, 2, 22, 23, 3, 2, 2, 2, 23, 5,
+	3, 2, 2, 2, 24, 25, 5, 10, 6, 2, 25, 26, 7, 4, 2, 2, 26, 31, 3, 2, 2, 2,
+	27, 28, 5, 8, 5, 2, 28, 29, 7, 4, 2, 2, 29, 31, 3, 2, 2, 2, 30, 24, 3,
+	2, 2, 2, 30, 27, 3, 2, 2, 2, 31, 7, 3, 2, 2, 2, 32, 33, 5, 14, 8, 2, 33,
+	34, 7, 9, 2, 2, 34, 35, 5, 10, 6, 2, 35, 9, 3, 2, 2, 2, 36, 37, 8, 6, 1,
+	2, 37, 41, 5, 12, 7, 2, 38, 39, 7, 8, 2, 2, 39, 41, 5, 10, 6, 4, 40, 36,
+	3, 2, 2, 2, 40, 38, 3, 2, 2, 2, 41, 47, 3, 2, 2, 2, 42, 43, 12, 3, 2, 2,
+	43, 44, 9, 2, 2, 2, 44, 46, 5, 10, 6, 4, 45, 42, 3, 2, 2, 2, 46, 49, 3,
+	2, 2, 2, 47, 45, 3, 2, 2, 2, 47, 48, 3, 2, 2, 2, 48, 11, 3, 2, 2, 2, 49,
+	47, 3, 2, 2, 2, 50, 51, 7, 6, 2, 2, 51, 13, 3, 2, 2, 2, 52, 53, 7, 3, 2,
+	2, 53, 54, 7, 10, 2, 2, 54, 15, 3, 2, 2, 2, 6, 22, 30, 40, 47,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "", "' '", "", "'+'", "'-'",
+	"", "'$'", "", "' '", "", "'+'", "'-'", "'='",
 }
 var symbolicNames = []string{
-	"", "NEWLINE", "WHITESPACE", "INT", "PLUS", "MINUS",
+	"", "", "NEWLINE", "WHITESPACE", "INT", "PLUS", "MINUS", "ASSIGN", "STRING",
 }
 
 var ruleNames = []string{
-	"beepboop", "block", "statement", "expr", "term",
+	"beepboop", "block", "statement", "assignment", "expr", "term", "label",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -75,20 +80,25 @@ func NewBeepBoopParser(input antlr.TokenStream) *BeepBoopParser {
 // BeepBoopParser tokens.
 const (
 	BeepBoopParserEOF        = antlr.TokenEOF
-	BeepBoopParserNEWLINE    = 1
-	BeepBoopParserWHITESPACE = 2
-	BeepBoopParserINT        = 3
-	BeepBoopParserPLUS       = 4
-	BeepBoopParserMINUS      = 5
+	BeepBoopParserT__0       = 1
+	BeepBoopParserNEWLINE    = 2
+	BeepBoopParserWHITESPACE = 3
+	BeepBoopParserINT        = 4
+	BeepBoopParserPLUS       = 5
+	BeepBoopParserMINUS      = 6
+	BeepBoopParserASSIGN     = 7
+	BeepBoopParserSTRING     = 8
 )
 
 // BeepBoopParser rules.
 const (
-	BeepBoopParserRULE_beepboop  = 0
-	BeepBoopParserRULE_block     = 1
-	BeepBoopParserRULE_statement = 2
-	BeepBoopParserRULE_expr      = 3
-	BeepBoopParserRULE_term      = 4
+	BeepBoopParserRULE_beepboop   = 0
+	BeepBoopParserRULE_block      = 1
+	BeepBoopParserRULE_statement  = 2
+	BeepBoopParserRULE_assignment = 3
+	BeepBoopParserRULE_expr       = 4
+	BeepBoopParserRULE_term       = 5
+	BeepBoopParserRULE_label      = 6
 )
 
 // IBeepboopContext is an interface to support dynamic dispatch.
@@ -195,11 +205,11 @@ func (p *BeepBoopParser) Beepboop() (localctx IBeepboopContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(10)
+		p.SetState(14)
 		p.Block()
 	}
 	{
-		p.SetState(11)
+		p.SetState(15)
 		p.Match(BeepBoopParserEOF)
 	}
 
@@ -319,17 +329,17 @@ func (p *BeepBoopParser) Block() (localctx IBlockContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(14)
+	p.SetState(18)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = _la == BeepBoopParserINT || _la == BeepBoopParserMINUS {
+	for ok := true; ok; ok = (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<BeepBoopParserT__0)|(1<<BeepBoopParserINT)|(1<<BeepBoopParserMINUS))) != 0) {
 		{
-			p.SetState(13)
+			p.SetState(17)
 			p.Statement()
 		}
 
-		p.SetState(16)
+		p.SetState(20)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -375,22 +385,8 @@ func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StatementContext) Expr() IExprContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExprContext)
-}
-
-func (s *StatementContext) NEWLINE() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserNEWLINE, 0)
-}
-
-func (s *StatementContext) EOF() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserEOF, 0)
+func (s *StatementContext) CopyFrom(ctx *StatementContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *StatementContext) GetRuleContext() antlr.RuleContext {
@@ -401,22 +397,108 @@ func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
+type ExprStatementContext struct {
+	*StatementContext
+}
+
+func NewExprStatementContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprStatementContext {
+	var p = new(ExprStatementContext)
+
+	p.StatementContext = NewEmptyStatementContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*StatementContext))
+
+	return p
+}
+
+func (s *ExprStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ExprStatementContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *ExprStatementContext) NEWLINE() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserNEWLINE, 0)
+}
+
+func (s *ExprStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterStatement(s)
+		listenerT.EnterExprStatement(s)
 	}
 }
 
-func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ExprStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitStatement(s)
+		listenerT.ExitExprStatement(s)
 	}
 }
 
-func (s *StatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *ExprStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitStatement(s)
+		return t.VisitExprStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type AssignStatementContext struct {
+	*StatementContext
+}
+
+func NewAssignStatementContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *AssignStatementContext {
+	var p = new(AssignStatementContext)
+
+	p.StatementContext = NewEmptyStatementContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*StatementContext))
+
+	return p
+}
+
+func (s *AssignStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AssignStatementContext) Assignment() IAssignmentContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IAssignmentContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IAssignmentContext)
+}
+
+func (s *AssignStatementContext) NEWLINE() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserNEWLINE, 0)
+}
+
+func (s *AssignStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterAssignStatement(s)
+	}
+}
+
+func (s *AssignStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitAssignStatement(s)
+	}
+}
+
+func (s *AssignStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitAssignStatement(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -426,7 +508,153 @@ func (s *StatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 func (p *BeepBoopParser) Statement() (localctx IStatementContext) {
 	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, BeepBoopParserRULE_statement)
-	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(28)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case BeepBoopParserINT, BeepBoopParserMINUS:
+		localctx = NewExprStatementContext(p, localctx)
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(22)
+			p.expr(0)
+		}
+		{
+			p.SetState(23)
+			p.Match(BeepBoopParserNEWLINE)
+		}
+
+	case BeepBoopParserT__0:
+		localctx = NewAssignStatementContext(p, localctx)
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(25)
+			p.Assignment()
+		}
+		{
+			p.SetState(26)
+			p.Match(BeepBoopParserNEWLINE)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// IAssignmentContext is an interface to support dynamic dispatch.
+type IAssignmentContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsAssignmentContext differentiates from other interfaces.
+	IsAssignmentContext()
+}
+
+type AssignmentContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyAssignmentContext() *AssignmentContext {
+	var p = new(AssignmentContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = BeepBoopParserRULE_assignment
+	return p
+}
+
+func (*AssignmentContext) IsAssignmentContext() {}
+
+func NewAssignmentContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AssignmentContext {
+	var p = new(AssignmentContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = BeepBoopParserRULE_assignment
+
+	return p
+}
+
+func (s *AssignmentContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *AssignmentContext) Label() ILabelContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILabelContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILabelContext)
+}
+
+func (s *AssignmentContext) ASSIGN() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserASSIGN, 0)
+}
+
+func (s *AssignmentContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *AssignmentContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AssignmentContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *AssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterAssignment(s)
+	}
+}
+
+func (s *AssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitAssignment(s)
+	}
+}
+
+func (s *AssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitAssignment(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *BeepBoopParser) Assignment() (localctx IAssignmentContext) {
+	localctx = NewAssignmentContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, BeepBoopParserRULE_assignment)
 
 	defer func() {
 		p.ExitRule()
@@ -446,19 +674,16 @@ func (p *BeepBoopParser) Statement() (localctx IStatementContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(18)
-		p.expr(0)
+		p.SetState(30)
+		p.Label()
 	}
 	{
-		p.SetState(19)
-		_la = p.GetTokenStream().LA(1)
-
-		if !(_la == BeepBoopParserEOF || _la == BeepBoopParserNEWLINE) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
-		}
+		p.SetState(31)
+		p.Match(BeepBoopParserASSIGN)
+	}
+	{
+		p.SetState(32)
+		p.expr(0)
 	}
 
 	return localctx
@@ -704,8 +929,8 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 	localctx = NewExprContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 6
-	p.EnterRecursionRule(localctx, 6, BeepBoopParserRULE_expr, _p)
+	_startState := 8
+	p.EnterRecursionRule(localctx, 8, BeepBoopParserRULE_expr, _p)
 	var _la int
 
 	defer func() {
@@ -727,7 +952,7 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(25)
+	p.SetState(38)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -737,7 +962,7 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 		_prevctx = localctx
 
 		{
-			p.SetState(22)
+			p.SetState(35)
 			p.Term()
 		}
 
@@ -746,11 +971,11 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(23)
+			p.SetState(36)
 			p.Match(BeepBoopParserMINUS)
 		}
 		{
-			p.SetState(24)
+			p.SetState(37)
 			p.expr(2)
 		}
 
@@ -758,9 +983,9 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(32)
+	p.SetState(45)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -770,13 +995,13 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 			_prevctx = localctx
 			localctx = NewAdditiveExprContext(p, NewExprContext(p, _parentctx, _parentState))
 			p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_expr)
-			p.SetState(27)
+			p.SetState(40)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 1)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
 			}
 			{
-				p.SetState(28)
+				p.SetState(41)
 
 				var _lt = p.GetTokenStream().LT(1)
 
@@ -794,14 +1019,14 @@ func (p *BeepBoopParser) expr(_p int) (localctx IExprContext) {
 				}
 			}
 			{
-				p.SetState(29)
+				p.SetState(42)
 				p.expr(2)
 			}
 
 		}
-		p.SetState(34)
+		p.SetState(47)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -881,7 +1106,7 @@ func (s *TermContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 
 func (p *BeepBoopParser) Term() (localctx ITermContext) {
 	localctx = NewTermContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, BeepBoopParserRULE_term)
+	p.EnterRule(localctx, 10, BeepBoopParserRULE_term)
 
 	defer func() {
 		p.ExitRule()
@@ -901,8 +1126,113 @@ func (p *BeepBoopParser) Term() (localctx ITermContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(35)
+		p.SetState(48)
 		p.Match(BeepBoopParserINT)
+	}
+
+	return localctx
+}
+
+// ILabelContext is an interface to support dynamic dispatch.
+type ILabelContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsLabelContext differentiates from other interfaces.
+	IsLabelContext()
+}
+
+type LabelContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyLabelContext() *LabelContext {
+	var p = new(LabelContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = BeepBoopParserRULE_label
+	return p
+}
+
+func (*LabelContext) IsLabelContext() {}
+
+func NewLabelContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LabelContext {
+	var p = new(LabelContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = BeepBoopParserRULE_label
+
+	return p
+}
+
+func (s *LabelContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *LabelContext) STRING() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserSTRING, 0)
+}
+
+func (s *LabelContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *LabelContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *LabelContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterLabel(s)
+	}
+}
+
+func (s *LabelContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitLabel(s)
+	}
+}
+
+func (s *LabelContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitLabel(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *BeepBoopParser) Label() (localctx ILabelContext) {
+	localctx = NewLabelContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, BeepBoopParserRULE_label)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(50)
+		p.Match(BeepBoopParserT__0)
+	}
+	{
+		p.SetState(51)
+		p.Match(BeepBoopParserSTRING)
 	}
 
 	return localctx
@@ -910,7 +1240,7 @@ func (p *BeepBoopParser) Term() (localctx ITermContext) {
 
 func (p *BeepBoopParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
-	case 3:
+	case 4:
 		var t *ExprContext = nil
 		if localctx != nil {
 			t = localctx.(*ExprContext)

@@ -16,7 +16,15 @@ func (v *BaseBeepBoopVisitor) VisitBlock(ctx *BlockContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitStatement(ctx *StatementContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitExprStatement(ctx *ExprStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitAssignStatement(ctx *AssignStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitAssignment(ctx *AssignmentContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -33,5 +41,9 @@ func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interf
 }
 
 func (v *BaseBeepBoopVisitor) VisitTerm(ctx *TermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLabel(ctx *LabelContext) interface{} {
 	return v.VisitChildren(ctx)
 }
