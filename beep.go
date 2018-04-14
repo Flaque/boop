@@ -38,13 +38,8 @@ func main() {
 		killf("File '%s' does not exist", val)
 	}
 
-	// Read file
 	code := read(os.Args[1])
 
-	// Code must have a new line at the end for the grammar
-	// So we'll fix it here just in case
-	code += "\n"
-
-	// Run program
-	runtime.Run(code)
+	// Main run command
+	runtime.Run(code, os.Stdout)
 }

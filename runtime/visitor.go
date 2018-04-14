@@ -1,8 +1,6 @@
 package runtime
 
 import (
-	"fmt"
-
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/flaque/beep/parser"
 )
@@ -12,6 +10,9 @@ type BeepBoopVisitor struct {
 
 	// Stack of Hashmap frames to store variables
 	stack *Stack
+
+	// where to print to
+	logger *Logger
 }
 
 func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
@@ -77,7 +78,7 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 
 	// Echo is the only command allowed to output
 	if name == "echo" {
-		fmt.Print(output)
+		v.logger.Print(output)
 	}
 
 	return output
