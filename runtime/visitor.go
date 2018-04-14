@@ -1,19 +1,15 @@
 package runtime
 
 import (
-	"fmt"
-
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/flaque/beep/parser"
-
-	s "github.com/golang-collections/collections/stack"
 )
 
 type BeepBoopVisitor struct {
 	*parser.BaseBeepBoopVisitor
 
 	// Stack of Hashmap frames to store variables
-	stack *s.Stack
+	stack *Stack
 }
 
 func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
@@ -25,7 +21,12 @@ func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
-	return v.Visit(ctx.Statement(0))
+
+	v.stack.Push(NewFrame())
+	val := v.Visit(ctx.Statement(0))
+	v.stack.Pop()
+
+	return val
 }
 
 func (v *BeepBoopVisitor) VisitExprStatement(ctx *parser.ExprStatementContext) interface{} {
@@ -40,7 +41,7 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	label := ctx.Label().GetText()
 	value := ctx.Expr().GetText()
 
-	fmt.Println(label, value)
+	v.stack.Add(label, value)
 
 	return v.VisitChildren(ctx)
 }

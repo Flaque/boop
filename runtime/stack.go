@@ -28,3 +28,8 @@ func (st *Stack) Pop() Frame {
 func (st *Stack) Len() int {
 	return st.lower.Len()
 }
+
+func (st *Stack) Add(key string, value interface{}) {
+	f := st.Peek()
+	f.Set(key, value)
+}
