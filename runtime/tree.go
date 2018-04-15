@@ -1,7 +1,11 @@
 package runtime
 
+import (
+	"fmt"
+)
+
 type Tree struct {
-	value  *Frame
+	frame  *Frame
 	parent *Tree
 }
 
@@ -15,7 +19,14 @@ func NewTree(parent *Tree) Tree {
 }
 
 func (t *Tree) Get(label string) (interface{}, error) {
-	return "", nil
+
+	val := t.frame.Get(label)
+
+	if val != nil {
+		return val, nil
+	}
+
+	return val, fmt.Errorf("Variable named %s is not defined", label)
 }
 
 func (t *Tree) Set(label string, value interface{}) {
