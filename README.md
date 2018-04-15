@@ -1,16 +1,16 @@
-# BeepBoop
+# Beep
 
 This is a programming language experiment. Take everything with a grain of salt, nothing's working right now and I have no plans at this time to support this language.
 
 ## Overview
 
-BeepBoop is a sane scripting language for... scripting. 
+Beep (boop) is a sane scripting language for... scripting. 
 
-It's main claim to fame is every command in your $PATH is a function in BeepBoop by default.
+It's main claim to fame is every command in your $PATH is a function in Beep by default.
 
 In other words, all standard unix commands like `cd`, `grep`, `ls` all work by default. All commands you've `brew install`'d or `apt-get`'d work too.
 
-As such, hello world in BeepBoop is just:
+As such, hello world in Beep is just:
 
 ```
 echo Hello World
@@ -22,13 +22,13 @@ You can pass any number of arguments (seperated by a space) into a function:
 echo My a e s t h e t i c is emoji punk
 ```
 
-Pipes are also a thing in BeepBoop and they work like they do in Unix.
+Pipes are also a thing in Beep and they work like they do in Unix.
 
 ```
 ls | grep *.beep | echo
 ```
 
-## stdout in BeepBoop
+## stdout in Beep
 
 Unlike bash, stdout is not the default for commands. If you want the results of a command, you'll need to `echo` it.
 
@@ -44,7 +44,7 @@ However, add an `echo` and we're all good.
 grep hello file.txt | echo 
 ```
 
-In BeepBoop, it's preferable to have commands speak only when allowed.
+In Beep, it's preferable to have commands speak only when allowed.
 
 ## Variables
 
