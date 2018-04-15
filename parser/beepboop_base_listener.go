@@ -45,6 +45,48 @@ func (s *BaseBeepBoopListener) EnterFncallStatement(ctx *FncallStatementContext)
 // ExitFncallStatement is called when production fncallStatement is exited.
 func (s *BaseBeepBoopListener) ExitFncallStatement(ctx *FncallStatementContext) {}
 
+// EnterReturnStatement is called when production returnStatement is entered.
+func (s *BaseBeepBoopListener) EnterReturnStatement(ctx *ReturnStatementContext) {}
+
+// ExitReturnStatement is called when production returnStatement is exited.
+func (s *BaseBeepBoopListener) ExitReturnStatement(ctx *ReturnStatementContext) {}
+
+// EnterPipeStatement is called when production pipeStatement is entered.
+func (s *BaseBeepBoopListener) EnterPipeStatement(ctx *PipeStatementContext) {}
+
+// ExitPipeStatement is called when production pipeStatement is exited.
+func (s *BaseBeepBoopListener) ExitPipeStatement(ctx *PipeStatementContext) {}
+
+// EnterExprIfStatement is called when production exprIfStatement is entered.
+func (s *BaseBeepBoopListener) EnterExprIfStatement(ctx *ExprIfStatementContext) {}
+
+// ExitExprIfStatement is called when production exprIfStatement is exited.
+func (s *BaseBeepBoopListener) ExitExprIfStatement(ctx *ExprIfStatementContext) {}
+
+// EnterFncallIfStatement is called when production fncallIfStatement is entered.
+func (s *BaseBeepBoopListener) EnterFncallIfStatement(ctx *FncallIfStatementContext) {}
+
+// ExitFncallIfStatement is called when production fncallIfStatement is exited.
+func (s *BaseBeepBoopListener) ExitFncallIfStatement(ctx *FncallIfStatementContext) {}
+
+// EnterFuncdef is called when production funcdef is entered.
+func (s *BaseBeepBoopListener) EnterFuncdef(ctx *FuncdefContext) {}
+
+// ExitFuncdef is called when production funcdef is exited.
+func (s *BaseBeepBoopListener) ExitFuncdef(ctx *FuncdefContext) {}
+
+// EnterExprReturn is called when production exprReturn is entered.
+func (s *BaseBeepBoopListener) EnterExprReturn(ctx *ExprReturnContext) {}
+
+// ExitExprReturn is called when production exprReturn is exited.
+func (s *BaseBeepBoopListener) ExitExprReturn(ctx *ExprReturnContext) {}
+
+// EnterFncallReturn is called when production fncallReturn is entered.
+func (s *BaseBeepBoopListener) EnterFncallReturn(ctx *FncallReturnContext) {}
+
+// ExitFncallReturn is called when production fncallReturn is exited.
+func (s *BaseBeepBoopListener) ExitFncallReturn(ctx *FncallReturnContext) {}
+
 // EnterAssignment is called when production assignment is entered.
 func (s *BaseBeepBoopListener) EnterAssignment(ctx *AssignmentContext) {}
 
@@ -68,6 +110,12 @@ func (s *BaseBeepBoopListener) EnterAdditiveExpr(ctx *AdditiveExprContext) {}
 
 // ExitAdditiveExpr is called when production additiveExpr is exited.
 func (s *BaseBeepBoopListener) ExitAdditiveExpr(ctx *AdditiveExprContext) {}
+
+// EnterPipe is called when production pipe is entered.
+func (s *BaseBeepBoopListener) EnterPipe(ctx *PipeContext) {}
+
+// ExitPipe is called when production pipe is exited.
+func (s *BaseBeepBoopListener) ExitPipe(ctx *PipeContext) {}
 
 // EnterFncall is called when production fncall is entered.
 func (s *BaseBeepBoopListener) EnterFncall(ctx *FncallContext) {}

@@ -24,6 +24,34 @@ func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitReturnStatement(ctx *ReturnStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitExprIfStatement(ctx *ExprIfStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallIfStatement(ctx *FncallIfStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitExprReturn(ctx *ExprReturnContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallReturn(ctx *FncallReturnContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitAssignment(ctx *AssignmentContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -37,6 +65,10 @@ func (v *BaseBeepBoopVisitor) VisitTermExpr(ctx *TermExprContext) interface{} {
 }
 
 func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

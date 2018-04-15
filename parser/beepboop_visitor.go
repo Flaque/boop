@@ -20,6 +20,27 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#fncallStatement.
 	VisitFncallStatement(ctx *FncallStatementContext) interface{}
 
+	// Visit a parse tree produced by BeepBoopParser#returnStatement.
+	VisitReturnStatement(ctx *ReturnStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#pipeStatement.
+	VisitPipeStatement(ctx *PipeStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#exprIfStatement.
+	VisitExprIfStatement(ctx *ExprIfStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#fncallIfStatement.
+	VisitFncallIfStatement(ctx *FncallIfStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#funcdef.
+	VisitFuncdef(ctx *FuncdefContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#exprReturn.
+	VisitExprReturn(ctx *ExprReturnContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#fncallReturn.
+	VisitFncallReturn(ctx *FncallReturnContext) interface{}
+
 	// Visit a parse tree produced by BeepBoopParser#assignment.
 	VisitAssignment(ctx *AssignmentContext) interface{}
 
@@ -31,6 +52,9 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#additiveExpr.
 	VisitAdditiveExpr(ctx *AdditiveExprContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#pipe.
+	VisitPipe(ctx *PipeContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#fncall.
 	VisitFncall(ctx *FncallContext) interface{}
