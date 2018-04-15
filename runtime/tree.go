@@ -30,5 +30,5 @@ func (t *Tree) Get(label string) (interface{}, error) {
 }
 
 func (t *Tree) Set(label string, value interface{}) {
-	// Do something
+	t.frame.Set(label, value)
 }
