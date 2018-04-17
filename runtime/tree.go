@@ -10,6 +10,9 @@ type Tree struct {
 	parent *Tree
 }
 
+var UNABLE_TO_RESOLVE_VARIABLE = errors.New("Something terribly wrong has happened in frame tree." +
+	" If you see this error, please contact the Beep maintainer.")
+
 func NewTree(parent *Tree) Tree {
 	f := NewFrame()
 
@@ -24,6 +27,10 @@ func isFramePointer(val interface{}) bool {
 	return ok
 }
 
+func (t *Tree) pointToParent(label string) {
+	t.frame.Set(label, t.parent.frame)
+}
+
 func (t *Tree) Get(label string) (interface{}, error) {
 
 	// Search current
@@ -35,11 +42,11 @@ func (t *Tree) Get(label string) (interface{}, error) {
 		// If the parent doesnt exist, but we've got a pointer to a parent, then
 		// some serious fuckery has gone ary
 		if t.parent == nil {
-			return nil, errors.New("Something terribly wrong has happened in frame tree." +
-				" If you see this error, please contact the Beep maintainer.")
+			return nil, UNABLE_TO_RESOLVE_VARIABLE
 		}
 
-		return t.parent.Get(label)
+		owner := t.frame.Resolve(label)
+		return owner.Get(label), nil
 	}
 
 	// The value exists in normal form inside this node
@@ -60,34 +67,14 @@ func (t *Tree) Get(label string) (interface{}, error) {
 
 func (t *Tree) Set(label string, value interface{}) {
 
-	// If there's no parent, then we don't need to check it
-	if t.parent == nil {
+	// Attempt to find it's original owner
+	owner := t.frame.Resolve(label)
+
+	// There is no owner, we can claim ownership
+	if owner == nil {
 		t.frame.Set(label, value)
 		return
 	}
 
-	// If there is a parent, and it has the item, we should
-	// point our new value to the parent's memory location
-	if val, err := t.parent.Get(label); err == nil {
-
-		// If the value is a pointer to a hash table, then it's not the
-		// owner of the label
-		// This parent is the owner of the original value, so we can reset it here
-		if !isFramePointer(val) {
-			t.parent.frame.Set(label, value)
-
-			// Let future generations know where to find the label owner
-			t.frame.Set(label, t.parent.frame)
-
-			return
-		}
-
-		//This parent is NOT the owner, so we need to keep searching
-		t.parent.Set(label, value)
-		t.frame.Set(label, t.parent.frame)
-	}
-
-	// There is a parent, but it doesn't know about the label so
-	// we can just set it here.
-	t.frame.Set(label, value)
+	// There is an owner, let's set it's value
 }
