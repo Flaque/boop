@@ -1,6 +1,6 @@
 grammar BeepBoop;
 
-beepboop: block EOF;
+beepboop: NEWLINE+ block EOF | block EOF;
 
 block: statement+;
 
@@ -35,8 +35,10 @@ term: label # labelTerm | STRING # stringTerm | INT # intTerm;
 
 label: '$' STRING;
 
+COMMENT: '#' ~[\r\n]* -> skip;
 NEWLINE: [\r\n]+;
-WHITESPACE: ' ' -> skip;
+WHITESPACE: ' ' -> channel(HIDDEN);
+TABSPACE: [\t]+ -> channel(HIDDEN);
 INT: [0-9]+;
 PLUS: '+';
 MINUS: '-';
@@ -54,3 +56,5 @@ FUNC: 'func';
 RETURN: 'return';
 FOR: 'for';
 IS: 'is';
+
+UNKNOWN: . -> skip;

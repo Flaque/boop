@@ -1,18 +1,10 @@
 package test
 
 import (
-	"bytes"
 	"testing"
 
-	"github.com/Flaque/boop/runtime"
 	"github.com/stretchr/testify/assert"
 )
-
-func run(code string) string {
-	var buf bytes.Buffer
-	runtime.Run(code, &buf)
-	return buf.String()
-}
 
 func TestEcho(t *testing.T) {
 	code := `echo hello`
