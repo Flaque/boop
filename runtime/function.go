@@ -1,13 +1,15 @@
 package runtime
 
-import "github.com/Flaque/boop/parser"
+import (
+	"github.com/Flaque/boop/parser"
+)
 
 type Function struct {
-	name  string
-	args  []string
-	block parser.IBlockContext
+	name string
+	args []string
+	guts parser.IFuncgutsContext
 }
 
-func NewFunc(name string, args []string, block parser.IBlockContext) Function {
-	return Function{name, args, block}
+func NewFunc(name string, args []string, guts parser.IFuncgutsContext) Function {
+	return Function{name, args, guts}
 }

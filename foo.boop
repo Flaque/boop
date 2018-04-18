@@ -1,0 +1,10 @@
+func jazz do 
+    $a = 2
+end
+
+func jazz $a $b do 
+    $a = 2
+    echo $a
+end
+
+jazz 3

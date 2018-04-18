@@ -20,15 +20,11 @@ func (v *BaseBeepBoopVisitor) VisitFuncdefCode(ctx *FuncdefCodeContext) interfac
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitBlock(ctx *BlockContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseBeepBoopVisitor) VisitAssignStatement(ctx *AssignStatementContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -40,7 +36,19 @@ func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) inte
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitNoopStatement(ctx *NoopStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFuncguts(ctx *FuncgutsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncall(ctx *FncallContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -77,10 +85,6 @@ func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interf
 }
 
 func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitFncall(ctx *FncallContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

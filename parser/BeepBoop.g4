@@ -2,21 +2,27 @@ grammar BeepBoop;
 
 beepboop: NEWLINE+ code+ EOF | code+ EOF;
 
-code: statement+ # statementCode | funcdef+ # funcdefCode;
-
-block: statement+;
+code: statement # statementCode | funcdef # funcdefCode;
 
 statement:
-	assignment NEWLINE+		# assignStatement
-	| fncall NEWLINE+		# fncallStatement
-	| returnStat NEWLINE+	# returnStatement
-	| pipe NEWLINE+			# pipeStatement;
+	fncall NEWLINE			# fncallStatement
+	| assignment NEWLINE	# assignStatement
+	| returnStat NEWLINE	# returnStatement
+	| pipe NEWLINE			# pipeStatement
+	| NEWLINE				# noopStatement;
 
-funcdef: FUNC STRING label+ DO block END NEWLINE+;
+funcguts: statement+;
+
+funcdef:
+	FUNC STRING label+ DO funcguts END NEWLINE
+	| FUNC STRING DO funcguts END NEWLINE
+	| FUNC STRING DO END NEWLINE;
+
+fncall: STRING | STRING term+;
 
 ifstat:
-	IF expr DO block END		# exprIfStatement
-	| IF fncall DO block END	# fncallIfStatement;
+	IF expr DO code END		# exprIfStatement
+	| IF fncall DO code END	# fncallIfStatement;
 
 returnStat:
 	RETURN expr		# exprReturn
@@ -31,16 +37,23 @@ expr:
 
 pipe: fncall PIPE fncall | fncall NEWLINE+;
 
-fncall: STRING | STRING term+;
-
 term: label # labelTerm | STRING # stringTerm | INT # intTerm;
 
-label: '$' STRING;
-
+// Comments and whitespace
 COMMENT: '#' ~[\r\n]* -> skip;
-NEWLINE: [\r\n]+;
+NEWLINE: [\r\n] | [\r\n]+;
 WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
-INT: [0-9]+;
+
+// Keywords
+IF: 'if';
+DO: 'do';
+END: 'end';
+FUNC: 'func';
+RETURN: 'return';
+FOR: 'for';
+IS: 'is';
+
+label: '$' STRING;
 PLUS: '+';
 MINUS: '-';
 MULT: '*';
@@ -49,11 +62,5 @@ ASSIGN: '=';
 PIPE: '|';
 LPAREN: '(';
 RPAREN: ')';
+INT: [0-9]+;
 STRING: [a-zA-Z]+;
-IF: 'if';
-DO: 'do';
-END: 'end';
-FUNC: 'func';
-RETURN: 'return';
-FOR: 'for';
-IS: 'is';

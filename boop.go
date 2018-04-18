@@ -40,6 +40,12 @@ func main() {
 
 	code := read(os.Args[1])
 
+	valFlag := len(os.Args) > 2 && os.Args[2] == "-c"
+	if valFlag {
+		runtime.Validate(code)
+		return
+	}
+
 	// Main run command
 	runtime.Run(code, os.Stdout)
 }

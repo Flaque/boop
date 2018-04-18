@@ -8,8 +8,7 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-func Run(code string, out io.Writer) interface{} {
-
+func prepCode(code string) string {
 	// Code should have no new lines in the front
 	code = strings.Trim(code, "\n")
 
@@ -17,19 +16,49 @@ func Run(code string, out io.Writer) interface{} {
 	// So we'll fix it here just in case
 	code += "\n"
 
-	// Setup ANTLR's parser
+	return code
+}
+
+func getParser(code string) *parser.BeepBoopParser {
 	input := antlr.NewInputStream(code)
 	lexer := parser.NewBeepBoopLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, 0)
 	p := parser.NewBeepBoopParser(stream)
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
+	return p
+}
+
+type Listener struct {
+	*antlr.BaseParseTreeListener
+}
+
+func (this *Listener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+	// fmt.Println(ctx.GetStart())
+}
+
+func Validate(code string) {
+	code = prepCode(code)
+
+	p := getParser(code)
+	listener := &Listener{}
+	antlr.ParseTreeWalkerDefault.Walk(listener, p.Beepboop())
+}
+
+func Run(code string, out io.Writer) interface{} {
+	code = prepCode(code)
+
+	// Setup ANTLR's parser
+	p := getParser(code)
 	tree := p.Beepboop()
 
 	// Stack of Hashtree's to store variables
 	stack := NewTree(nil)
 	logger := NewLogger(out)
+	visits := []string{}
 
-	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &stack, &logger}
-	return visitor.Visit(tree)
+	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &stack, &logger, visits}
+	output := visitor.Visit(tree)
+
+	return output
 }

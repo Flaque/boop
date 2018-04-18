@@ -17,14 +17,11 @@ type BeepBoopListener interface {
 	// EnterFuncdefCode is called when entering the funcdefCode production.
 	EnterFuncdefCode(c *FuncdefCodeContext)
 
-	// EnterBlock is called when entering the block production.
-	EnterBlock(c *BlockContext)
+	// EnterFncallStatement is called when entering the fncallStatement production.
+	EnterFncallStatement(c *FncallStatementContext)
 
 	// EnterAssignStatement is called when entering the assignStatement production.
 	EnterAssignStatement(c *AssignStatementContext)
-
-	// EnterFncallStatement is called when entering the fncallStatement production.
-	EnterFncallStatement(c *FncallStatementContext)
 
 	// EnterReturnStatement is called when entering the returnStatement production.
 	EnterReturnStatement(c *ReturnStatementContext)
@@ -32,8 +29,17 @@ type BeepBoopListener interface {
 	// EnterPipeStatement is called when entering the pipeStatement production.
 	EnterPipeStatement(c *PipeStatementContext)
 
+	// EnterNoopStatement is called when entering the noopStatement production.
+	EnterNoopStatement(c *NoopStatementContext)
+
+	// EnterFuncguts is called when entering the funcguts production.
+	EnterFuncguts(c *FuncgutsContext)
+
 	// EnterFuncdef is called when entering the funcdef production.
 	EnterFuncdef(c *FuncdefContext)
+
+	// EnterFncall is called when entering the fncall production.
+	EnterFncall(c *FncallContext)
 
 	// EnterExprIfStatement is called when entering the exprIfStatement production.
 	EnterExprIfStatement(c *ExprIfStatementContext)
@@ -62,9 +68,6 @@ type BeepBoopListener interface {
 	// EnterPipe is called when entering the pipe production.
 	EnterPipe(c *PipeContext)
 
-	// EnterFncall is called when entering the fncall production.
-	EnterFncall(c *FncallContext)
-
 	// EnterLabelTerm is called when entering the labelTerm production.
 	EnterLabelTerm(c *LabelTermContext)
 
@@ -86,14 +89,11 @@ type BeepBoopListener interface {
 	// ExitFuncdefCode is called when exiting the funcdefCode production.
 	ExitFuncdefCode(c *FuncdefCodeContext)
 
-	// ExitBlock is called when exiting the block production.
-	ExitBlock(c *BlockContext)
+	// ExitFncallStatement is called when exiting the fncallStatement production.
+	ExitFncallStatement(c *FncallStatementContext)
 
 	// ExitAssignStatement is called when exiting the assignStatement production.
 	ExitAssignStatement(c *AssignStatementContext)
-
-	// ExitFncallStatement is called when exiting the fncallStatement production.
-	ExitFncallStatement(c *FncallStatementContext)
 
 	// ExitReturnStatement is called when exiting the returnStatement production.
 	ExitReturnStatement(c *ReturnStatementContext)
@@ -101,8 +101,17 @@ type BeepBoopListener interface {
 	// ExitPipeStatement is called when exiting the pipeStatement production.
 	ExitPipeStatement(c *PipeStatementContext)
 
+	// ExitNoopStatement is called when exiting the noopStatement production.
+	ExitNoopStatement(c *NoopStatementContext)
+
+	// ExitFuncguts is called when exiting the funcguts production.
+	ExitFuncguts(c *FuncgutsContext)
+
 	// ExitFuncdef is called when exiting the funcdef production.
 	ExitFuncdef(c *FuncdefContext)
+
+	// ExitFncall is called when exiting the fncall production.
+	ExitFncall(c *FncallContext)
 
 	// ExitExprIfStatement is called when exiting the exprIfStatement production.
 	ExitExprIfStatement(c *ExprIfStatementContext)
@@ -130,9 +139,6 @@ type BeepBoopListener interface {
 
 	// ExitPipe is called when exiting the pipe production.
 	ExitPipe(c *PipeContext)
-
-	// ExitFncall is called when exiting the fncall production.
-	ExitFncall(c *FncallContext)
 
 	// ExitLabelTerm is called when exiting the labelTerm production.
 	ExitLabelTerm(c *LabelTermContext)

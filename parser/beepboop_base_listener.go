@@ -39,23 +39,17 @@ func (s *BaseBeepBoopListener) EnterFuncdefCode(ctx *FuncdefCodeContext) {}
 // ExitFuncdefCode is called when production funcdefCode is exited.
 func (s *BaseBeepBoopListener) ExitFuncdefCode(ctx *FuncdefCodeContext) {}
 
-// EnterBlock is called when production block is entered.
-func (s *BaseBeepBoopListener) EnterBlock(ctx *BlockContext) {}
+// EnterFncallStatement is called when production fncallStatement is entered.
+func (s *BaseBeepBoopListener) EnterFncallStatement(ctx *FncallStatementContext) {}
 
-// ExitBlock is called when production block is exited.
-func (s *BaseBeepBoopListener) ExitBlock(ctx *BlockContext) {}
+// ExitFncallStatement is called when production fncallStatement is exited.
+func (s *BaseBeepBoopListener) ExitFncallStatement(ctx *FncallStatementContext) {}
 
 // EnterAssignStatement is called when production assignStatement is entered.
 func (s *BaseBeepBoopListener) EnterAssignStatement(ctx *AssignStatementContext) {}
 
 // ExitAssignStatement is called when production assignStatement is exited.
 func (s *BaseBeepBoopListener) ExitAssignStatement(ctx *AssignStatementContext) {}
-
-// EnterFncallStatement is called when production fncallStatement is entered.
-func (s *BaseBeepBoopListener) EnterFncallStatement(ctx *FncallStatementContext) {}
-
-// ExitFncallStatement is called when production fncallStatement is exited.
-func (s *BaseBeepBoopListener) ExitFncallStatement(ctx *FncallStatementContext) {}
 
 // EnterReturnStatement is called when production returnStatement is entered.
 func (s *BaseBeepBoopListener) EnterReturnStatement(ctx *ReturnStatementContext) {}
@@ -69,11 +63,29 @@ func (s *BaseBeepBoopListener) EnterPipeStatement(ctx *PipeStatementContext) {}
 // ExitPipeStatement is called when production pipeStatement is exited.
 func (s *BaseBeepBoopListener) ExitPipeStatement(ctx *PipeStatementContext) {}
 
+// EnterNoopStatement is called when production noopStatement is entered.
+func (s *BaseBeepBoopListener) EnterNoopStatement(ctx *NoopStatementContext) {}
+
+// ExitNoopStatement is called when production noopStatement is exited.
+func (s *BaseBeepBoopListener) ExitNoopStatement(ctx *NoopStatementContext) {}
+
+// EnterFuncguts is called when production funcguts is entered.
+func (s *BaseBeepBoopListener) EnterFuncguts(ctx *FuncgutsContext) {}
+
+// ExitFuncguts is called when production funcguts is exited.
+func (s *BaseBeepBoopListener) ExitFuncguts(ctx *FuncgutsContext) {}
+
 // EnterFuncdef is called when production funcdef is entered.
 func (s *BaseBeepBoopListener) EnterFuncdef(ctx *FuncdefContext) {}
 
 // ExitFuncdef is called when production funcdef is exited.
 func (s *BaseBeepBoopListener) ExitFuncdef(ctx *FuncdefContext) {}
+
+// EnterFncall is called when production fncall is entered.
+func (s *BaseBeepBoopListener) EnterFncall(ctx *FncallContext) {}
+
+// ExitFncall is called when production fncall is exited.
+func (s *BaseBeepBoopListener) ExitFncall(ctx *FncallContext) {}
 
 // EnterExprIfStatement is called when production exprIfStatement is entered.
 func (s *BaseBeepBoopListener) EnterExprIfStatement(ctx *ExprIfStatementContext) {}
@@ -128,12 +140,6 @@ func (s *BaseBeepBoopListener) EnterPipe(ctx *PipeContext) {}
 
 // ExitPipe is called when production pipe is exited.
 func (s *BaseBeepBoopListener) ExitPipe(ctx *PipeContext) {}
-
-// EnterFncall is called when production fncall is entered.
-func (s *BaseBeepBoopListener) EnterFncall(ctx *FncallContext) {}
-
-// ExitFncall is called when production fncall is exited.
-func (s *BaseBeepBoopListener) ExitFncall(ctx *FncallContext) {}
 
 // EnterLabelTerm is called when production labelTerm is entered.
 func (s *BaseBeepBoopListener) EnterLabelTerm(ctx *LabelTermContext) {}

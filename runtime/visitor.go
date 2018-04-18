@@ -1,8 +1,6 @@
 package runtime
 
 import (
-	"fmt"
-
 	"github.com/Flaque/boop/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
@@ -15,6 +13,8 @@ type BeepBoopVisitor struct {
 
 	// where to print to
 	logger *Logger
+
+	visits []string
 }
 
 func (v *BeepBoopVisitor) StartScope() {
@@ -31,6 +31,7 @@ func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 }
 
 func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
+	v.visits = append(v.visits, "beepboop")
 
 	// Create new tree context
 	v.StartScope()
@@ -47,32 +48,27 @@ func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitStatementCode(ctx *parser.StatementCodeContext) interface{} {
-
-	for i := 0; i < ctx.GetChildCount(); i++ {
-		v.Visit(ctx.Statement(i))
-	}
-
-	return nil
+	v.visits = append(v.visits, "statementcode")
+	return v.Visit(ctx.Statement())
 }
 
 func (v *BeepBoopVisitor) VisitFuncdefCode(ctx *parser.FuncdefCodeContext) interface{} {
-
-	for i := 0; i < ctx.GetChildCount(); i++ {
-		v.Visit(ctx.Funcdef(i))
-	}
-
-	return nil
+	v.visits = append(v.visits, "funcdefcode")
+	return v.Visit(ctx.Funcdef())
 }
 
 func (v *BeepBoopVisitor) VisitAssignStatement(ctx *parser.AssignStatementContext) interface{} {
+	v.visits = append(v.visits, "assignstatement")
 	return v.Visit(ctx.Assignment())
 }
 
 func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContext) interface{} {
+	v.visits = append(v.visits, "fncallstatement")
 	return v.Visit(ctx.Fncall())
 }
 
 func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interface{} {
+	v.visits = append(v.visits, "assignment")
 
 	// Make sure we visit the label, even though we might not be using it
 	v.Visit(ctx.Label())
@@ -87,7 +83,6 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 }
 
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
-	fmt.Println("func def")
 	name := ctx.STRING().GetText()
 
 	args := []string{}
@@ -96,14 +91,15 @@ func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
 		args = append(args, s)
 	}
 
-	block := ctx.Block()
+	guts := ctx.Funcguts()
 
-	v.tree.Set(name, NewFunc(name, args, block))
+	v.tree.Set(name, NewFunc(name, args, guts))
 
 	return nil
 }
 
 func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
+	v.visits = append(v.visits, "fncall")
 
 	// Collect args
 	args := []string{}
@@ -125,11 +121,12 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 			v.tree.Set(label, args[i])
 		}
 
-		total := v.Visit(function.block)
-
+		if function.guts != nil {
+			v.Visit(function.guts)
+		}
 		v.EndScope()
 
-		return total
+		return nil
 	}
 
 	// Run a command line function
@@ -146,10 +143,13 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 }
 
 func (v *BeepBoopVisitor) VisitTermExpr(ctx *parser.TermExprContext) interface{} {
+	v.visits = append(v.visits, "termexpr")
 	return v.Visit(ctx.Term())
 }
 
 func (v *BeepBoopVisitor) VisitAdditiveExpr(ctx *parser.AdditiveExprContext) interface{} {
+	v.visits = append(v.visits, "additiveexpr")
+
 	a, oka := v.Visit(ctx.Expr(0)).(int)
 	b, okb := v.Visit(ctx.Expr(1)).(int)
 
@@ -173,6 +173,8 @@ func (v *BeepBoopVisitor) VisitAdditiveExpr(ctx *parser.AdditiveExprContext) int
 }
 
 func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext) interface{} {
+	v.visits = append(v.visits, "unaryminusexpr")
+
 	a, ok := v.Visit(ctx.Expr()).(int)
 
 	total := 0
@@ -185,6 +187,7 @@ func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext)
 }
 
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
+	v.visits = append(v.visits, "labelterm")
 	label := ctx.Label().GetText()
 
 	val, err := v.tree.Get(label)
@@ -198,10 +201,12 @@ func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface
 }
 
 func (v *BeepBoopVisitor) VisitStringTerm(ctx *parser.StringTermContext) interface{} {
+	v.visits = append(v.visits, "stringterm")
 	return ctx.STRING().GetText()
 }
 
 func (v *BeepBoopVisitor) VisitIntTerm(ctx *parser.IntTermContext) interface{} {
+	v.visits = append(v.visits, "intterm")
 	i, _ := RuleToInt(ctx.INT())
 	return i
 }
