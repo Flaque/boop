@@ -1,12 +1,12 @@
-# Beep
+# Boop
 
 This is a programming language experiment. Take everything with a grain of salt, nothing's working right now and I have no plans at this time to support this language.
 
 ## Overview
 
-Beep (boop) is a sane scripting language for... scripting. 
+Boop is a sane scripting language for... scripting.
 
-It's main claim to fame is every command in your $PATH is a function in Beep by default.
+It's main claim to fame is every command in your $PATH is a function in Boop by default.
 
 In other words, all standard unix commands like `cd`, `grep`, `ls` all work by default. All commands you've `brew install`'d or `apt-get`'d work too.
 
@@ -22,10 +22,10 @@ You can pass any number of arguments (seperated by a space) into a function:
 echo My a e s t h e t i c is emoji punk
 ```
 
-Pipes are also a thing in Beep and they work like they do in Unix.
+Pipes are also a thing in Boop and they work like they do in Unix.
 
 ```
-ls | grep *.beep | echo
+ls | grep *.boop | echo
 ```
 
 ## stdout in Beep
@@ -41,10 +41,10 @@ grep hello file.txt
 However, add an `echo` and we're all good.
 
 ```
-grep hello file.txt | echo 
+grep hello file.txt | echo
 ```
 
-In Beep, it's preferable to have commands speak only when allowed.
+In Boop, it's preferable to have commands speak only when allowed.
 
 ## Variables
 
@@ -59,7 +59,8 @@ Unlike bash, you need to use a `$` even when assigning the variable:
 ```
 $dogs = "puppers"
 ```
-## Functions 
+
+## Functions
 
 A function that doesn't take any arguments and doesn't return anything looks like this:
 
@@ -72,17 +73,17 @@ end
 A function with arguments looks like this:
 
 ```
-func stuff $a $b $c do 
+func stuff $a $b $c do
   echo $a
-  echo $b 
+  echo $b
   echo $c
-end 
+end
 ```
 
 You can return something like this:
 
 ```
-func stuff do 
+func stuff do
   return "hello"
 end
 ```
@@ -90,7 +91,7 @@ end
 You call your functions like you do bash commands:
 
 ```
-stuff 1 2 3 
+stuff 1 2 3
 ```
 
 ## If statements
@@ -114,9 +115,9 @@ Else statements don't exist are discouraged to avoid large, nested if else block
 Rather, prefer a "guard" pattern.
 
 ```
-func gradeTest $score do 
+func gradeTest $score do
   if $score < 50 return "fail"
-  
+
   return "pass"
 end
 ```

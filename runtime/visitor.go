@@ -2,7 +2,7 @@ package runtime
 
 import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
-	"github.com/flaque/beep/parser"
+	"github.com/flaque/boop/parser"
 )
 
 type BeepBoopVisitor struct {
