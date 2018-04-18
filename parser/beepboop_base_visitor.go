@@ -28,6 +28,10 @@ func (v *BaseBeepBoopVisitor) VisitReturnStatement(ctx *ReturnStatementContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitExprIfStatement(ctx *ExprIfStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -61,6 +65,10 @@ func (v *BaseBeepBoopVisitor) VisitTermExpr(ctx *TermExprContext) interface{} {
 }
 
 func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

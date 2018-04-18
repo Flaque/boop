@@ -7,7 +7,8 @@ block: statement+;
 statement:
 	assignment NEWLINE		# assignStatement
 	| fncall NEWLINE		# fncallStatement
-	| returnStat NEWLINE	# returnStatement;
+	| returnStat NEWLINE	# returnStatement
+	| pipe NEWLINE			# pipeStatement;
 
 ifstat:
 	IF expr DO block END		# exprIfStatement
@@ -25,6 +26,8 @@ expr:
 	expr op = (PLUS | MINUS) expr	# additiveExpr
 	| MINUS expr					# unaryMinusExpr
 	| term							# termExpr;
+
+pipe: fncall PIPE fncall | fncall NEWLINE;
 
 fncall: STRING | STRING term+;
 
