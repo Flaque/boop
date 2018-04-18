@@ -23,9 +23,6 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#returnStatement.
 	VisitReturnStatement(ctx *ReturnStatementContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#pipeStatement.
-	VisitPipeStatement(ctx *PipeStatementContext) interface{}
-
 	// Visit a parse tree produced by BeepBoopParser#exprIfStatement.
 	VisitExprIfStatement(ctx *ExprIfStatementContext) interface{}
 
@@ -52,9 +49,6 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#additiveExpr.
 	VisitAdditiveExpr(ctx *AdditiveExprContext) interface{}
-
-	// Visit a parse tree produced by BeepBoopParser#pipe.
-	VisitPipe(ctx *PipeContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#fncall.
 	VisitFncall(ctx *FncallContext) interface{}

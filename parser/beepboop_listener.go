@@ -23,9 +23,6 @@ type BeepBoopListener interface {
 	// EnterReturnStatement is called when entering the returnStatement production.
 	EnterReturnStatement(c *ReturnStatementContext)
 
-	// EnterPipeStatement is called when entering the pipeStatement production.
-	EnterPipeStatement(c *PipeStatementContext)
-
 	// EnterExprIfStatement is called when entering the exprIfStatement production.
 	EnterExprIfStatement(c *ExprIfStatementContext)
 
@@ -52,9 +49,6 @@ type BeepBoopListener interface {
 
 	// EnterAdditiveExpr is called when entering the additiveExpr production.
 	EnterAdditiveExpr(c *AdditiveExprContext)
-
-	// EnterPipe is called when entering the pipe production.
-	EnterPipe(c *PipeContext)
 
 	// EnterFncall is called when entering the fncall production.
 	EnterFncall(c *FncallContext)
@@ -86,9 +80,6 @@ type BeepBoopListener interface {
 	// ExitReturnStatement is called when exiting the returnStatement production.
 	ExitReturnStatement(c *ReturnStatementContext)
 
-	// ExitPipeStatement is called when exiting the pipeStatement production.
-	ExitPipeStatement(c *PipeStatementContext)
-
 	// ExitExprIfStatement is called when exiting the exprIfStatement production.
 	ExitExprIfStatement(c *ExprIfStatementContext)
 
@@ -115,9 +106,6 @@ type BeepBoopListener interface {
 
 	// ExitAdditiveExpr is called when exiting the additiveExpr production.
 	ExitAdditiveExpr(c *AdditiveExprContext)
-
-	// ExitPipe is called when exiting the pipe production.
-	ExitPipe(c *PipeContext)
 
 	// ExitFncall is called when exiting the fncall production.
 	ExitFncall(c *FncallContext)
