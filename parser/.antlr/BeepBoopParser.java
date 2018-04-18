@@ -16,27 +16,27 @@ public class BeepBoopParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, COMMENT=2, NEWLINE=3, WHITESPACE=4, TABSPACE=5, INT=6, PLUS=7, 
-		MINUS=8, MULT=9, DIVIDE=10, ASSIGN=11, PIPE=12, LPAREN=13, RPAREN=14, 
-		STRING=15, IF=16, DO=17, END=18, FUNC=19, RETURN=20, FOR=21, IS=22, UNKNOWN=23;
+		T__0=1, COMMENT=2, NEWLINE=3, WHITESPACE=4, INT=5, PLUS=6, MINUS=7, MULT=8, 
+		DIVIDE=9, ASSIGN=10, PIPE=11, LPAREN=12, RPAREN=13, STRING=14, IF=15, 
+		DO=16, END=17, FUNC=18, RETURN=19, FOR=20, IS=21;
 	public static final int
-		RULE_beepboop = 0, RULE_block = 1, RULE_statement = 2, RULE_ifstat = 3, 
-		RULE_funcdef = 4, RULE_returnStat = 5, RULE_assignment = 6, RULE_expr = 7, 
-		RULE_pipe = 8, RULE_fncall = 9, RULE_term = 10, RULE_label = 11;
+		RULE_beepboop = 0, RULE_code = 1, RULE_block = 2, RULE_statement = 3, 
+		RULE_funcdef = 4, RULE_ifstat = 5, RULE_returnStat = 6, RULE_assignment = 7, 
+		RULE_expr = 8, RULE_pipe = 9, RULE_fncall = 10, RULE_term = 11, RULE_label = 12;
 	public static final String[] ruleNames = {
-		"beepboop", "block", "statement", "ifstat", "funcdef", "returnStat", "assignment", 
-		"expr", "pipe", "fncall", "term", "label"
+		"beepboop", "code", "block", "statement", "funcdef", "ifstat", "returnStat", 
+		"assignment", "expr", "pipe", "fncall", "term", "label"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'$'", null, null, "' '", null, null, "'+'", "'-'", "'*'", "'/'", 
-		"'='", "'|'", "'('", "')'", null, "'if'", "'do'", "'end'", "'func'", "'return'", 
+		null, "'$'", null, null, null, null, "'+'", "'-'", "'*'", "'/'", "'='", 
+		"'|'", "'('", "')'", null, "'if'", "'do'", "'end'", "'func'", "'return'", 
 		"'for'", "'is'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "COMMENT", "NEWLINE", "WHITESPACE", "TABSPACE", "INT", "PLUS", 
-		"MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE", "LPAREN", "RPAREN", "STRING", 
-		"IF", "DO", "END", "FUNC", "RETURN", "FOR", "IS", "UNKNOWN"
+		null, null, "COMMENT", "NEWLINE", "WHITESPACE", "INT", "PLUS", "MINUS", 
+		"MULT", "DIVIDE", "ASSIGN", "PIPE", "LPAREN", "RPAREN", "STRING", "IF", 
+		"DO", "END", "FUNC", "RETURN", "FOR", "IS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -88,13 +88,16 @@ public class BeepBoopParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class BeepboopContext extends ParserRuleContext {
-		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
-		}
 		public TerminalNode EOF() { return getToken(BeepBoopParser.EOF, 0); }
 		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
 			return getToken(BeepBoopParser.NEWLINE, i);
+		}
+		public List<CodeContext> code() {
+			return getRuleContexts(CodeContext.class);
+		}
+		public CodeContext code(int i) {
+			return getRuleContext(CodeContext.class,i);
 		}
 		public BeepboopContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -107,41 +110,173 @@ public class BeepBoopParser extends Parser {
 		enterRule(_localctx, 0, RULE_beepboop);
 		int _la;
 		try {
-			setState(35);
+			setState(45);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NEWLINE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(25); 
+				setState(27); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(24);
+					setState(26);
 					match(NEWLINE);
 					}
 					}
-					setState(27); 
+					setState(29); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==NEWLINE );
-				setState(29);
-				block();
-				setState(30);
+				setState(32); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(31);
+					code();
+					}
+					}
+					setState(34); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << STRING) | (1L << FUNC) | (1L << RETURN))) != 0) );
+				setState(36);
 				match(EOF);
 				}
 				break;
 			case T__0:
 			case STRING:
+			case FUNC:
 			case RETURN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(32);
-				block();
-				setState(33);
+				setState(39); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(38);
+					code();
+					}
+					}
+					setState(41); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << STRING) | (1L << FUNC) | (1L << RETURN))) != 0) );
+				setState(43);
 				match(EOF);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class CodeContext extends ParserRuleContext {
+		public CodeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_code; }
+	 
+		public CodeContext() { }
+		public void copyFrom(CodeContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class StatementCodeContext extends CodeContext {
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
+		}
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
+		}
+		public StatementCodeContext(CodeContext ctx) { copyFrom(ctx); }
+	}
+	public static class FuncdefCodeContext extends CodeContext {
+		public List<FuncdefContext> funcdef() {
+			return getRuleContexts(FuncdefContext.class);
+		}
+		public FuncdefContext funcdef(int i) {
+			return getRuleContext(FuncdefContext.class,i);
+		}
+		public FuncdefCodeContext(CodeContext ctx) { copyFrom(ctx); }
+	}
+
+	public final CodeContext code() throws RecognitionException {
+		CodeContext _localctx = new CodeContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_code);
+		try {
+			int _alt;
+			setState(57);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case T__0:
+			case STRING:
+			case RETURN:
+				_localctx = new StatementCodeContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(48); 
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+					case 1:
+						{
+						{
+						setState(47);
+						statement();
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(50); 
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				}
+				break;
+			case FUNC:
+				_localctx = new FuncdefCodeContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(53); 
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+					case 1:
+						{
+						{
+						setState(52);
+						funcdef();
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(55); 
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
 				break;
 			default:
@@ -174,22 +309,22 @@ public class BeepBoopParser extends Parser {
 
 	public final BlockContext block() throws RecognitionException {
 		BlockContext _localctx = new BlockContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_block);
+		enterRule(_localctx, 4, RULE_block);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38); 
+			setState(60); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(37);
+				setState(59);
 				statement();
 				}
 				}
-				setState(40); 
+				setState(62); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << STRING) | (1L << RETURN))) != 0) );
@@ -221,78 +356,221 @@ public class BeepBoopParser extends Parser {
 		public PipeContext pipe() {
 			return getRuleContext(PipeContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
 		public PipeStatementContext(StatementContext ctx) { copyFrom(ctx); }
 	}
 	public static class AssignStatementContext extends StatementContext {
 		public AssignmentContext assignment() {
 			return getRuleContext(AssignmentContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
 		public AssignStatementContext(StatementContext ctx) { copyFrom(ctx); }
 	}
 	public static class ReturnStatementContext extends StatementContext {
 		public ReturnStatContext returnStat() {
 			return getRuleContext(ReturnStatContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
 		public ReturnStatementContext(StatementContext ctx) { copyFrom(ctx); }
 	}
 	public static class FncallStatementContext extends StatementContext {
 		public FncallContext fncall() {
 			return getRuleContext(FncallContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
 		public FncallStatementContext(StatementContext ctx) { copyFrom(ctx); }
 	}
 
 	public final StatementContext statement() throws RecognitionException {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_statement);
+		enterRule(_localctx, 6, RULE_statement);
+		int _la;
 		try {
-			setState(54);
+			setState(88);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				_localctx = new AssignStatementContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(42);
+				setState(64);
 				assignment();
-				setState(43);
-				match(NEWLINE);
+				setState(66); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(65);
+					match(NEWLINE);
+					}
+					}
+					setState(68); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==NEWLINE );
 				}
 				break;
 			case 2:
 				_localctx = new FncallStatementContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(45);
+				setState(70);
 				fncall();
-				setState(46);
-				match(NEWLINE);
+				setState(72); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(71);
+					match(NEWLINE);
+					}
+					}
+					setState(74); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==NEWLINE );
 				}
 				break;
 			case 3:
 				_localctx = new ReturnStatementContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(48);
+				setState(76);
 				returnStat();
-				setState(49);
-				match(NEWLINE);
+				setState(78); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(77);
+					match(NEWLINE);
+					}
+					}
+					setState(80); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==NEWLINE );
 				}
 				break;
 			case 4:
 				_localctx = new PipeStatementContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(51);
+				setState(82);
 				pipe();
-				setState(52);
-				match(NEWLINE);
+				setState(84); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(83);
+					match(NEWLINE);
+					}
+					}
+					setState(86); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==NEWLINE );
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FuncdefContext extends ParserRuleContext {
+		public TerminalNode FUNC() { return getToken(BeepBoopParser.FUNC, 0); }
+		public TerminalNode STRING() { return getToken(BeepBoopParser.STRING, 0); }
+		public TerminalNode DO() { return getToken(BeepBoopParser.DO, 0); }
+		public BlockContext block() {
+			return getRuleContext(BlockContext.class,0);
+		}
+		public TerminalNode END() { return getToken(BeepBoopParser.END, 0); }
+		public List<LabelContext> label() {
+			return getRuleContexts(LabelContext.class);
+		}
+		public LabelContext label(int i) {
+			return getRuleContext(LabelContext.class,i);
+		}
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
+		public FuncdefContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_funcdef; }
+	}
+
+	public final FuncdefContext funcdef() throws RecognitionException {
+		FuncdefContext _localctx = new FuncdefContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_funcdef);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(90);
+			match(FUNC);
+			setState(91);
+			match(STRING);
+			setState(93); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(92);
+				label();
+				}
+				}
+				setState(95); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( _la==T__0 );
+			setState(97);
+			match(DO);
+			setState(98);
+			block();
+			setState(99);
+			match(END);
+			setState(101); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(100);
+				match(NEWLINE);
+				}
+				}
+				setState(103); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( _la==NEWLINE );
 			}
 		}
 		catch (RecognitionException re) {
@@ -344,24 +622,24 @@ public class BeepBoopParser extends Parser {
 
 	public final IfstatContext ifstat() throws RecognitionException {
 		IfstatContext _localctx = new IfstatContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_ifstat);
+		enterRule(_localctx, 10, RULE_ifstat);
 		try {
-			setState(68);
+			setState(117);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				_localctx = new ExprIfStatementContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(56);
+				setState(105);
 				match(IF);
-				setState(57);
+				setState(106);
 				expr(0);
-				setState(58);
+				setState(107);
 				match(DO);
-				setState(59);
+				setState(108);
 				block();
-				setState(60);
+				setState(109);
 				match(END);
 				}
 				break;
@@ -369,82 +647,18 @@ public class BeepBoopParser extends Parser {
 				_localctx = new FncallIfStatementContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(62);
+				setState(111);
 				match(IF);
-				setState(63);
+				setState(112);
 				fncall();
-				setState(64);
+				setState(113);
 				match(DO);
-				setState(65);
+				setState(114);
 				block();
-				setState(66);
+				setState(115);
 				match(END);
 				}
 				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class FuncdefContext extends ParserRuleContext {
-		public TerminalNode FUNC() { return getToken(BeepBoopParser.FUNC, 0); }
-		public TerminalNode STRING() { return getToken(BeepBoopParser.STRING, 0); }
-		public TerminalNode DO() { return getToken(BeepBoopParser.DO, 0); }
-		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
-		}
-		public TerminalNode END() { return getToken(BeepBoopParser.END, 0); }
-		public List<LabelContext> label() {
-			return getRuleContexts(LabelContext.class);
-		}
-		public LabelContext label(int i) {
-			return getRuleContext(LabelContext.class,i);
-		}
-		public FuncdefContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_funcdef; }
-	}
-
-	public final FuncdefContext funcdef() throws RecognitionException {
-		FuncdefContext _localctx = new FuncdefContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_funcdef);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(70);
-			match(FUNC);
-			setState(71);
-			match(STRING);
-			setState(73); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(72);
-				label();
-				}
-				}
-				setState(75); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==T__0 );
-			setState(77);
-			match(DO);
-			setState(78);
-			block();
-			setState(79);
-			match(END);
 			}
 		}
 		catch (RecognitionException re) {
@@ -486,18 +700,18 @@ public class BeepBoopParser extends Parser {
 
 	public final ReturnStatContext returnStat() throws RecognitionException {
 		ReturnStatContext _localctx = new ReturnStatContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_returnStat);
+		enterRule(_localctx, 12, RULE_returnStat);
 		try {
-			setState(85);
+			setState(123);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				_localctx = new ExprReturnContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(81);
+				setState(119);
 				match(RETURN);
-				setState(82);
+				setState(120);
 				expr(0);
 				}
 				break;
@@ -505,9 +719,9 @@ public class BeepBoopParser extends Parser {
 				_localctx = new FncallReturnContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(83);
+				setState(121);
 				match(RETURN);
-				setState(84);
+				setState(122);
 				fncall();
 				}
 				break;
@@ -543,30 +757,30 @@ public class BeepBoopParser extends Parser {
 
 	public final AssignmentContext assignment() throws RecognitionException {
 		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_assignment);
+		enterRule(_localctx, 14, RULE_assignment);
 		try {
-			setState(95);
+			setState(133);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(87);
+				setState(125);
 				label();
-				setState(88);
+				setState(126);
 				match(ASSIGN);
-				setState(89);
+				setState(127);
 				expr(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(91);
+				setState(129);
 				label();
-				setState(92);
+				setState(130);
 				match(ASSIGN);
-				setState(93);
+				setState(131);
 				fncall();
 				}
 				break;
@@ -629,14 +843,14 @@ public class BeepBoopParser extends Parser {
 		int _parentState = getState();
 		ExprContext _localctx = new ExprContext(_ctx, _parentState);
 		ExprContext _prevctx = _localctx;
-		int _startState = 14;
-		enterRecursionRule(_localctx, 14, RULE_expr, _p);
+		int _startState = 16;
+		enterRecursionRule(_localctx, 16, RULE_expr, _p);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(101);
+			setState(139);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case MINUS:
@@ -645,9 +859,9 @@ public class BeepBoopParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(98);
+				setState(136);
 				match(MINUS);
-				setState(99);
+				setState(137);
 				expr(2);
 				}
 				break;
@@ -658,7 +872,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new TermExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(100);
+				setState(138);
 				term();
 				}
 				break;
@@ -666,9 +880,9 @@ public class BeepBoopParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(108);
+			setState(146);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -677,9 +891,9 @@ public class BeepBoopParser extends Parser {
 					{
 					_localctx = new AdditiveExprContext(new ExprContext(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(103);
+					setState(141);
 					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-					setState(104);
+					setState(142);
 					((AdditiveExprContext)_localctx).op = _input.LT(1);
 					_la = _input.LA(1);
 					if ( !(_la==PLUS || _la==MINUS) ) {
@@ -690,14 +904,14 @@ public class BeepBoopParser extends Parser {
 						_errHandler.reportMatch(this);
 						consume();
 					}
-					setState(105);
+					setState(143);
 					expr(4);
 					}
 					} 
 				}
-				setState(110);
+				setState(148);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 			}
 			}
 		}
@@ -720,7 +934,10 @@ public class BeepBoopParser extends Parser {
 			return getRuleContext(FncallContext.class,i);
 		}
 		public TerminalNode PIPE() { return getToken(BeepBoopParser.PIPE, 0); }
-		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(BeepBoopParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(BeepBoopParser.NEWLINE, i);
+		}
 		public PipeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -729,29 +946,48 @@ public class BeepBoopParser extends Parser {
 
 	public final PipeContext pipe() throws RecognitionException {
 		PipeContext _localctx = new PipeContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_pipe);
+		enterRule(_localctx, 18, RULE_pipe);
 		try {
-			setState(118);
+			int _alt;
+			setState(159);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(111);
+				setState(149);
 				fncall();
-				setState(112);
+				setState(150);
 				match(PIPE);
-				setState(113);
+				setState(151);
 				fncall();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(115);
+				setState(153);
 				fncall();
-				setState(116);
-				match(NEWLINE);
+				setState(155); 
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+					case 1:
+						{
+						{
+						setState(154);
+						match(NEWLINE);
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(157); 
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,20,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
 				break;
 			}
@@ -783,35 +1019,35 @@ public class BeepBoopParser extends Parser {
 
 	public final FncallContext fncall() throws RecognitionException {
 		FncallContext _localctx = new FncallContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_fncall);
+		enterRule(_localctx, 20, RULE_fncall);
 		int _la;
 		try {
-			setState(127);
+			setState(168);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(120);
+				setState(161);
 				match(STRING);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(121);
+				setState(162);
 				match(STRING);
-				setState(123); 
+				setState(164); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(122);
+					setState(163);
 					term();
 					}
 					}
-					setState(125); 
+					setState(166); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << INT) | (1L << STRING))) != 0) );
@@ -858,16 +1094,16 @@ public class BeepBoopParser extends Parser {
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_term);
+		enterRule(_localctx, 22, RULE_term);
 		try {
-			setState(132);
+			setState(173);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__0:
 				_localctx = new LabelTermContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(129);
+				setState(170);
 				label();
 				}
 				break;
@@ -875,7 +1111,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new StringTermContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(130);
+				setState(171);
 				match(STRING);
 				}
 				break;
@@ -883,7 +1119,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new IntTermContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(131);
+				setState(172);
 				match(INT);
 				}
 				break;
@@ -912,13 +1148,13 @@ public class BeepBoopParser extends Parser {
 
 	public final LabelContext label() throws RecognitionException {
 		LabelContext _localctx = new LabelContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_label);
+		enterRule(_localctx, 24, RULE_label);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(175);
 			match(T__0);
-			setState(135);
+			setState(176);
 			match(STRING);
 			}
 		}
@@ -935,7 +1171,7 @@ public class BeepBoopParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 7:
+		case 8:
 			return expr_sempred((ExprContext)_localctx, predIndex);
 		}
 		return true;
@@ -949,42 +1185,60 @@ public class BeepBoopParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\31\u008c\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\27\u00b5\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\3\2\6\2\34\n\2\r\2\16\2\35\3\2\3\2\3\2\3\2\3\2\3"+
-		"\2\5\2&\n\2\3\3\6\3)\n\3\r\3\16\3*\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\5\49\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5"+
-		"\5\5G\n\5\3\6\3\6\3\6\6\6L\n\6\r\6\16\6M\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3"+
-		"\7\5\7X\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bb\n\b\3\t\3\t\3\t\3\t\5"+
-		"\th\n\t\3\t\3\t\3\t\7\tm\n\t\f\t\16\tp\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\5\ny\n\n\3\13\3\13\3\13\6\13~\n\13\r\13\16\13\177\5\13\u0082\n\13\3"+
-		"\f\3\f\3\f\5\f\u0087\n\f\3\r\3\r\3\r\3\r\2\3\20\16\2\4\6\b\n\f\16\20\22"+
-		"\24\26\30\2\3\3\2\t\n\2\u0090\2%\3\2\2\2\4(\3\2\2\2\68\3\2\2\2\bF\3\2"+
-		"\2\2\nH\3\2\2\2\fW\3\2\2\2\16a\3\2\2\2\20g\3\2\2\2\22x\3\2\2\2\24\u0081"+
-		"\3\2\2\2\26\u0086\3\2\2\2\30\u0088\3\2\2\2\32\34\7\5\2\2\33\32\3\2\2\2"+
-		"\34\35\3\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36\37\3\2\2\2\37 \5\4\3\2 "+
-		"!\7\2\2\3!&\3\2\2\2\"#\5\4\3\2#$\7\2\2\3$&\3\2\2\2%\33\3\2\2\2%\"\3\2"+
-		"\2\2&\3\3\2\2\2\')\5\6\4\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+\5"+
-		"\3\2\2\2,-\5\16\b\2-.\7\5\2\2.9\3\2\2\2/\60\5\24\13\2\60\61\7\5\2\2\61"+
-		"9\3\2\2\2\62\63\5\f\7\2\63\64\7\5\2\2\649\3\2\2\2\65\66\5\22\n\2\66\67"+
-		"\7\5\2\2\679\3\2\2\28,\3\2\2\28/\3\2\2\28\62\3\2\2\28\65\3\2\2\29\7\3"+
-		"\2\2\2:;\7\22\2\2;<\5\20\t\2<=\7\23\2\2=>\5\4\3\2>?\7\24\2\2?G\3\2\2\2"+
-		"@A\7\22\2\2AB\5\24\13\2BC\7\23\2\2CD\5\4\3\2DE\7\24\2\2EG\3\2\2\2F:\3"+
-		"\2\2\2F@\3\2\2\2G\t\3\2\2\2HI\7\25\2\2IK\7\21\2\2JL\5\30\r\2KJ\3\2\2\2"+
-		"LM\3\2\2\2MK\3\2\2\2MN\3\2\2\2NO\3\2\2\2OP\7\23\2\2PQ\5\4\3\2QR\7\24\2"+
-		"\2R\13\3\2\2\2ST\7\26\2\2TX\5\20\t\2UV\7\26\2\2VX\5\24\13\2WS\3\2\2\2"+
-		"WU\3\2\2\2X\r\3\2\2\2YZ\5\30\r\2Z[\7\r\2\2[\\\5\20\t\2\\b\3\2\2\2]^\5"+
-		"\30\r\2^_\7\r\2\2_`\5\24\13\2`b\3\2\2\2aY\3\2\2\2a]\3\2\2\2b\17\3\2\2"+
-		"\2cd\b\t\1\2de\7\n\2\2eh\5\20\t\4fh\5\26\f\2gc\3\2\2\2gf\3\2\2\2hn\3\2"+
-		"\2\2ij\f\5\2\2jk\t\2\2\2km\5\20\t\6li\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3"+
-		"\2\2\2o\21\3\2\2\2pn\3\2\2\2qr\5\24\13\2rs\7\16\2\2st\5\24\13\2ty\3\2"+
-		"\2\2uv\5\24\13\2vw\7\5\2\2wy\3\2\2\2xq\3\2\2\2xu\3\2\2\2y\23\3\2\2\2z"+
-		"\u0082\7\21\2\2{}\7\21\2\2|~\5\26\f\2}|\3\2\2\2~\177\3\2\2\2\177}\3\2"+
-		"\2\2\177\u0080\3\2\2\2\u0080\u0082\3\2\2\2\u0081z\3\2\2\2\u0081{\3\2\2"+
-		"\2\u0082\25\3\2\2\2\u0083\u0087\5\30\r\2\u0084\u0087\7\21\2\2\u0085\u0087"+
-		"\7\b\2\2\u0086\u0083\3\2\2\2\u0086\u0084\3\2\2\2\u0086\u0085\3\2\2\2\u0087"+
-		"\27\3\2\2\2\u0088\u0089\7\3\2\2\u0089\u008a\7\21\2\2\u008a\31\3\2\2\2"+
-		"\20\35%*8FMWagnx\177\u0081\u0086";
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\6\2\36\n\2\r\2\16\2\37\3\2\6\2#\n"+
+		"\2\r\2\16\2$\3\2\3\2\3\2\6\2*\n\2\r\2\16\2+\3\2\3\2\5\2\60\n\2\3\3\6\3"+
+		"\63\n\3\r\3\16\3\64\3\3\6\38\n\3\r\3\16\39\5\3<\n\3\3\4\6\4?\n\4\r\4\16"+
+		"\4@\3\5\3\5\6\5E\n\5\r\5\16\5F\3\5\3\5\6\5K\n\5\r\5\16\5L\3\5\3\5\6\5"+
+		"Q\n\5\r\5\16\5R\3\5\3\5\6\5W\n\5\r\5\16\5X\5\5[\n\5\3\6\3\6\3\6\6\6`\n"+
+		"\6\r\6\16\6a\3\6\3\6\3\6\3\6\6\6h\n\6\r\6\16\6i\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7x\n\7\3\b\3\b\3\b\3\b\5\b~\n\b\3\t\3\t\3"+
+		"\t\3\t\3\t\3\t\3\t\3\t\5\t\u0088\n\t\3\n\3\n\3\n\3\n\5\n\u008e\n\n\3\n"+
+		"\3\n\3\n\7\n\u0093\n\n\f\n\16\n\u0096\13\n\3\13\3\13\3\13\3\13\3\13\3"+
+		"\13\6\13\u009e\n\13\r\13\16\13\u009f\5\13\u00a2\n\13\3\f\3\f\3\f\6\f\u00a7"+
+		"\n\f\r\f\16\f\u00a8\5\f\u00ab\n\f\3\r\3\r\3\r\5\r\u00b0\n\r\3\16\3\16"+
+		"\3\16\3\16\2\3\22\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\3\3\2\b\t\2\u00c3"+
+		"\2/\3\2\2\2\4;\3\2\2\2\6>\3\2\2\2\bZ\3\2\2\2\n\\\3\2\2\2\fw\3\2\2\2\16"+
+		"}\3\2\2\2\20\u0087\3\2\2\2\22\u008d\3\2\2\2\24\u00a1\3\2\2\2\26\u00aa"+
+		"\3\2\2\2\30\u00af\3\2\2\2\32\u00b1\3\2\2\2\34\36\7\5\2\2\35\34\3\2\2\2"+
+		"\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!#\5\4\3\2\"!\3\2\2"+
+		"\2#$\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%&\3\2\2\2&\'\7\2\2\3\'\60\3\2\2\2(*"+
+		"\5\4\3\2)(\3\2\2\2*+\3\2\2\2+)\3\2\2\2+,\3\2\2\2,-\3\2\2\2-.\7\2\2\3."+
+		"\60\3\2\2\2/\35\3\2\2\2/)\3\2\2\2\60\3\3\2\2\2\61\63\5\b\5\2\62\61\3\2"+
+		"\2\2\63\64\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65<\3\2\2\2\668\5\n\6\2"+
+		"\67\66\3\2\2\289\3\2\2\29\67\3\2\2\29:\3\2\2\2:<\3\2\2\2;\62\3\2\2\2;"+
+		"\67\3\2\2\2<\5\3\2\2\2=?\5\b\5\2>=\3\2\2\2?@\3\2\2\2@>\3\2\2\2@A\3\2\2"+
+		"\2A\7\3\2\2\2BD\5\20\t\2CE\7\5\2\2DC\3\2\2\2EF\3\2\2\2FD\3\2\2\2FG\3\2"+
+		"\2\2G[\3\2\2\2HJ\5\26\f\2IK\7\5\2\2JI\3\2\2\2KL\3\2\2\2LJ\3\2\2\2LM\3"+
+		"\2\2\2M[\3\2\2\2NP\5\16\b\2OQ\7\5\2\2PO\3\2\2\2QR\3\2\2\2RP\3\2\2\2RS"+
+		"\3\2\2\2S[\3\2\2\2TV\5\24\13\2UW\7\5\2\2VU\3\2\2\2WX\3\2\2\2XV\3\2\2\2"+
+		"XY\3\2\2\2Y[\3\2\2\2ZB\3\2\2\2ZH\3\2\2\2ZN\3\2\2\2ZT\3\2\2\2[\t\3\2\2"+
+		"\2\\]\7\24\2\2]_\7\20\2\2^`\5\32\16\2_^\3\2\2\2`a\3\2\2\2a_\3\2\2\2ab"+
+		"\3\2\2\2bc\3\2\2\2cd\7\22\2\2de\5\6\4\2eg\7\23\2\2fh\7\5\2\2gf\3\2\2\2"+
+		"hi\3\2\2\2ig\3\2\2\2ij\3\2\2\2j\13\3\2\2\2kl\7\21\2\2lm\5\22\n\2mn\7\22"+
+		"\2\2no\5\6\4\2op\7\23\2\2px\3\2\2\2qr\7\21\2\2rs\5\26\f\2st\7\22\2\2t"+
+		"u\5\6\4\2uv\7\23\2\2vx\3\2\2\2wk\3\2\2\2wq\3\2\2\2x\r\3\2\2\2yz\7\25\2"+
+		"\2z~\5\22\n\2{|\7\25\2\2|~\5\26\f\2}y\3\2\2\2}{\3\2\2\2~\17\3\2\2\2\177"+
+		"\u0080\5\32\16\2\u0080\u0081\7\f\2\2\u0081\u0082\5\22\n\2\u0082\u0088"+
+		"\3\2\2\2\u0083\u0084\5\32\16\2\u0084\u0085\7\f\2\2\u0085\u0086\5\26\f"+
+		"\2\u0086\u0088\3\2\2\2\u0087\177\3\2\2\2\u0087\u0083\3\2\2\2\u0088\21"+
+		"\3\2\2\2\u0089\u008a\b\n\1\2\u008a\u008b\7\t\2\2\u008b\u008e\5\22\n\4"+
+		"\u008c\u008e\5\30\r\2\u008d\u0089\3\2\2\2\u008d\u008c\3\2\2\2\u008e\u0094"+
+		"\3\2\2\2\u008f\u0090\f\5\2\2\u0090\u0091\t\2\2\2\u0091\u0093\5\22\n\6"+
+		"\u0092\u008f\3\2\2\2\u0093\u0096\3\2\2\2\u0094\u0092\3\2\2\2\u0094\u0095"+
+		"\3\2\2\2\u0095\23\3\2\2\2\u0096\u0094\3\2\2\2\u0097\u0098\5\26\f\2\u0098"+
+		"\u0099\7\r\2\2\u0099\u009a\5\26\f\2\u009a\u00a2\3\2\2\2\u009b\u009d\5"+
+		"\26\f\2\u009c\u009e\7\5\2\2\u009d\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f"+
+		"\u009d\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u00a2\3\2\2\2\u00a1\u0097\3\2"+
+		"\2\2\u00a1\u009b\3\2\2\2\u00a2\25\3\2\2\2\u00a3\u00ab\7\20\2\2\u00a4\u00a6"+
+		"\7\20\2\2\u00a5\u00a7\5\30\r\2\u00a6\u00a5\3\2\2\2\u00a7\u00a8\3\2\2\2"+
+		"\u00a8\u00a6\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00ab\3\2\2\2\u00aa\u00a3"+
+		"\3\2\2\2\u00aa\u00a4\3\2\2\2\u00ab\27\3\2\2\2\u00ac\u00b0\5\32\16\2\u00ad"+
+		"\u00b0\7\20\2\2\u00ae\u00b0\7\7\2\2\u00af\u00ac\3\2\2\2\u00af\u00ad\3"+
+		"\2\2\2\u00af\u00ae\3\2\2\2\u00b0\31\3\2\2\2\u00b1\u00b2\7\3\2\2\u00b2"+
+		"\u00b3\7\20\2\2\u00b3\33\3\2\2\2\33\37$+/\649;@FLRXZaiw}\u0087\u008d\u0094"+
+		"\u009f\u00a1\u00a8\u00aa\u00af";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,0 +1,6 @@
+func jazz $a $b do
+    $val = $a + $b
+    echo $val
+end
+
+jazz 1 2

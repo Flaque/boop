@@ -27,6 +27,18 @@ func (s *BaseBeepBoopListener) EnterBeepboop(ctx *BeepboopContext) {}
 // ExitBeepboop is called when production beepboop is exited.
 func (s *BaseBeepBoopListener) ExitBeepboop(ctx *BeepboopContext) {}
 
+// EnterStatementCode is called when production statementCode is entered.
+func (s *BaseBeepBoopListener) EnterStatementCode(ctx *StatementCodeContext) {}
+
+// ExitStatementCode is called when production statementCode is exited.
+func (s *BaseBeepBoopListener) ExitStatementCode(ctx *StatementCodeContext) {}
+
+// EnterFuncdefCode is called when production funcdefCode is entered.
+func (s *BaseBeepBoopListener) EnterFuncdefCode(ctx *FuncdefCodeContext) {}
+
+// ExitFuncdefCode is called when production funcdefCode is exited.
+func (s *BaseBeepBoopListener) ExitFuncdefCode(ctx *FuncdefCodeContext) {}
+
 // EnterBlock is called when production block is entered.
 func (s *BaseBeepBoopListener) EnterBlock(ctx *BlockContext) {}
 
@@ -57,6 +69,12 @@ func (s *BaseBeepBoopListener) EnterPipeStatement(ctx *PipeStatementContext) {}
 // ExitPipeStatement is called when production pipeStatement is exited.
 func (s *BaseBeepBoopListener) ExitPipeStatement(ctx *PipeStatementContext) {}
 
+// EnterFuncdef is called when production funcdef is entered.
+func (s *BaseBeepBoopListener) EnterFuncdef(ctx *FuncdefContext) {}
+
+// ExitFuncdef is called when production funcdef is exited.
+func (s *BaseBeepBoopListener) ExitFuncdef(ctx *FuncdefContext) {}
+
 // EnterExprIfStatement is called when production exprIfStatement is entered.
 func (s *BaseBeepBoopListener) EnterExprIfStatement(ctx *ExprIfStatementContext) {}
 
@@ -68,12 +86,6 @@ func (s *BaseBeepBoopListener) EnterFncallIfStatement(ctx *FncallIfStatementCont
 
 // ExitFncallIfStatement is called when production fncallIfStatement is exited.
 func (s *BaseBeepBoopListener) ExitFncallIfStatement(ctx *FncallIfStatementContext) {}
-
-// EnterFuncdef is called when production funcdef is entered.
-func (s *BaseBeepBoopListener) EnterFuncdef(ctx *FuncdefContext) {}
-
-// ExitFuncdef is called when production funcdef is exited.
-func (s *BaseBeepBoopListener) ExitFuncdef(ctx *FuncdefContext) {}
 
 // EnterExprReturn is called when production exprReturn is entered.
 func (s *BaseBeepBoopListener) EnterExprReturn(ctx *ExprReturnContext) {}

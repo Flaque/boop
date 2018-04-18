@@ -12,6 +12,14 @@ func (v *BaseBeepBoopVisitor) VisitBeepboop(ctx *BeepboopContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitStatementCode(ctx *StatementCodeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFuncdefCode(ctx *FuncdefCodeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitBlock(ctx *BlockContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -32,15 +40,15 @@ func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) inte
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitExprIfStatement(ctx *ExprIfStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseBeepBoopVisitor) VisitFncallIfStatement(ctx *FncallIfStatementContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

@@ -1,20 +1,22 @@
 grammar BeepBoop;
 
-beepboop: NEWLINE+ block EOF | block EOF;
+beepboop: NEWLINE+ code+ EOF | code+ EOF;
+
+code: statement+ # statementCode | funcdef+ # funcdefCode;
 
 block: statement+;
 
 statement:
-	assignment NEWLINE		# assignStatement
-	| fncall NEWLINE		# fncallStatement
-	| returnStat NEWLINE	# returnStatement
-	| pipe NEWLINE			# pipeStatement;
+	assignment NEWLINE+		# assignStatement
+	| fncall NEWLINE+		# fncallStatement
+	| returnStat NEWLINE+	# returnStatement
+	| pipe NEWLINE+			# pipeStatement;
+
+funcdef: FUNC STRING label+ DO block END NEWLINE+;
 
 ifstat:
 	IF expr DO block END		# exprIfStatement
 	| IF fncall DO block END	# fncallIfStatement;
-
-funcdef: FUNC STRING label+ DO block END;
 
 returnStat:
 	RETURN expr		# exprReturn
@@ -27,7 +29,7 @@ expr:
 	| MINUS expr					# unaryMinusExpr
 	| term							# termExpr;
 
-pipe: fncall PIPE fncall | fncall NEWLINE;
+pipe: fncall PIPE fncall | fncall NEWLINE+;
 
 fncall: STRING | STRING term+;
 
@@ -37,8 +39,7 @@ label: '$' STRING;
 
 COMMENT: '#' ~[\r\n]* -> skip;
 NEWLINE: [\r\n]+;
-WHITESPACE: ' ' -> channel(HIDDEN);
-TABSPACE: [\t]+ -> channel(HIDDEN);
+WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
 INT: [0-9]+;
 PLUS: '+';
 MINUS: '-';
@@ -56,5 +57,3 @@ FUNC: 'func';
 RETURN: 'return';
 FOR: 'for';
 IS: 'is';
-
-UNKNOWN: . -> skip;

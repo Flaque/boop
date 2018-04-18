@@ -1,12 +1,11 @@
 package runtime
 
 import (
-	"fmt"
 	"os"
 )
 
-func ThrowRuntimeError(message string) {
+func ThrowRuntimeError(logger *Logger, message string) {
 
-	fmt.Println(message)
+	logger.Println("Error:", message)
 	os.Exit(1)
 }

@@ -11,6 +11,12 @@ type BeepBoopListener interface {
 	// EnterBeepboop is called when entering the beepboop production.
 	EnterBeepboop(c *BeepboopContext)
 
+	// EnterStatementCode is called when entering the statementCode production.
+	EnterStatementCode(c *StatementCodeContext)
+
+	// EnterFuncdefCode is called when entering the funcdefCode production.
+	EnterFuncdefCode(c *FuncdefCodeContext)
+
 	// EnterBlock is called when entering the block production.
 	EnterBlock(c *BlockContext)
 
@@ -26,14 +32,14 @@ type BeepBoopListener interface {
 	// EnterPipeStatement is called when entering the pipeStatement production.
 	EnterPipeStatement(c *PipeStatementContext)
 
+	// EnterFuncdef is called when entering the funcdef production.
+	EnterFuncdef(c *FuncdefContext)
+
 	// EnterExprIfStatement is called when entering the exprIfStatement production.
 	EnterExprIfStatement(c *ExprIfStatementContext)
 
 	// EnterFncallIfStatement is called when entering the fncallIfStatement production.
 	EnterFncallIfStatement(c *FncallIfStatementContext)
-
-	// EnterFuncdef is called when entering the funcdef production.
-	EnterFuncdef(c *FuncdefContext)
 
 	// EnterExprReturn is called when entering the exprReturn production.
 	EnterExprReturn(c *ExprReturnContext)
@@ -74,6 +80,12 @@ type BeepBoopListener interface {
 	// ExitBeepboop is called when exiting the beepboop production.
 	ExitBeepboop(c *BeepboopContext)
 
+	// ExitStatementCode is called when exiting the statementCode production.
+	ExitStatementCode(c *StatementCodeContext)
+
+	// ExitFuncdefCode is called when exiting the funcdefCode production.
+	ExitFuncdefCode(c *FuncdefCodeContext)
+
 	// ExitBlock is called when exiting the block production.
 	ExitBlock(c *BlockContext)
 
@@ -89,14 +101,14 @@ type BeepBoopListener interface {
 	// ExitPipeStatement is called when exiting the pipeStatement production.
 	ExitPipeStatement(c *PipeStatementContext)
 
+	// ExitFuncdef is called when exiting the funcdef production.
+	ExitFuncdef(c *FuncdefContext)
+
 	// ExitExprIfStatement is called when exiting the exprIfStatement production.
 	ExitExprIfStatement(c *ExprIfStatementContext)
 
 	// ExitFncallIfStatement is called when exiting the fncallIfStatement production.
 	ExitFncallIfStatement(c *FncallIfStatementContext)
-
-	// ExitFuncdef is called when exiting the funcdef production.
-	ExitFuncdef(c *FuncdefContext)
 
 	// ExitExprReturn is called when exiting the exprReturn production.
 	ExitExprReturn(c *ExprReturnContext)

@@ -1,6 +1,8 @@
 package runtime
 
 import (
+	"fmt"
+
 	"github.com/Flaque/boop/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
@@ -33,17 +35,30 @@ func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{}
 	// Create new tree context
 	v.StartScope()
 
-	val := v.Visit(ctx.Block())
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		if c := ctx.Code(i); c != nil {
+			v.Visit(ctx.Code(i))
+		}
+	}
 
 	// Pop off this tree context
 	v.EndScope()
-	return val
+	return nil
 }
 
-func (v *BeepBoopVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
+func (v *BeepBoopVisitor) VisitStatementCode(ctx *parser.StatementCodeContext) interface{} {
 
 	for i := 0; i < ctx.GetChildCount(); i++ {
 		v.Visit(ctx.Statement(i))
+	}
+
+	return nil
+}
+
+func (v *BeepBoopVisitor) VisitFuncdefCode(ctx *parser.FuncdefCodeContext) interface{} {
+
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		v.Visit(ctx.Funcdef(i))
 	}
 
 	return nil
@@ -59,18 +74,20 @@ func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContex
 
 func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interface{} {
 
-	// Make sure we visit the label, even though we might be using it
+	// Make sure we visit the label, even though we might not be using it
 	v.Visit(ctx.Label())
 
 	// Grab expression value
 	value := v.Visit(ctx.Expr())
+	label := ctx.Label().GetText()
 
-	v.tree.Set(ctx.Label().GetText(), value)
+	v.tree.Set(label, value)
 
 	return nil
 }
 
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
+	fmt.Println("func def")
 	name := ctx.STRING().GetText()
 
 	args := []string{}
@@ -170,9 +187,12 @@ func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext)
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
 	label := ctx.Label().GetText()
 
-	val, _ := v.tree.Get(label)
+	val, err := v.tree.Get(label)
 
-	// TODO throw label doesn't exist term here
+	if err != nil {
+		ThrowRuntimeError(v.logger, err.Error())
+		return nil
+	}
 
 	return val
 }
