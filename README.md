@@ -10,7 +10,7 @@ It's main claim to fame is every command in your $PATH is a function in Boop by 
 
 In other words, all standard unix commands like `cd`, `grep`, `ls` all work by default. All commands you've `brew install`'d or `apt-get`'d work too.
 
-As such, hello world in Beep is just:
+As such, hello world in Boop is just:
 
 ```
 echo Hello World
@@ -28,7 +28,7 @@ Pipes are also a thing in Boop and they work like they do in Unix.
 ls | grep *.boop | echo
 ```
 
-## stdout in Beep
+## stdout in Boop
 
 Unlike bash, stdout is not the default for commands. If you want the results of a command, you'll need to `echo` it.
 
