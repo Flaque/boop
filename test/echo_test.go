@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/flaque/boop/runtime"
+	"github.com/Flaque/boop/runtime"
 	"github.com/stretchr/testify/assert"
 )
 

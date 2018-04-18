@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/flaque/boop/runtime"
+	"github.com/Flaque/boop/runtime"
 )
 
 func killf(str string, args ...interface{}) {

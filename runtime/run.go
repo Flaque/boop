@@ -4,8 +4,8 @@ import (
 	"io"
 	"strings"
 
+	"github.com/Flaque/boop/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
-	"github.com/flaque/boop/parser"
 )
 
 func Run(code string, out io.Writer) interface{} {
