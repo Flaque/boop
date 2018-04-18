@@ -22,64 +22,41 @@ func NewTree(parent *Tree) Tree {
 	}
 }
 
-func isFramePointer(val interface{}) bool {
-	_, ok := val.(*Frame)
-	return ok
-}
-
 func notDefinedError(label string) error {
 	return fmt.Errorf("Label '%s' is not defined.", label)
 }
 
-func (t *Tree) pointToParent(label string) {
-	t.frame.Set(label, t.parent.frame)
-}
-
-func (t *Tree) getFromFrame(label string) (interface{}, error) {
+func (t *Tree) owner(label string) *Tree {
 	val := t.frame.Get(label)
-	if val == nil {
-		return nil, notDefinedError(label)
+
+	if val != nil {
+		return t
 	}
-	return val, nil
+
+	if t.parent == nil {
+		return nil // no owner
+	}
+
+	return t.parent.owner(label)
 }
 
 func (t *Tree) Get(label string) (interface{}, error) {
-
-	// if there's no parent, check self
-	if t.parent == nil {
-		return t.getFromFrame(label)
+	owner := t.owner(label)
+	if owner == nil {
+		return nil, notDefinedError(label)
 	}
 
-	// Check parent
-	owner := t.parent.frame.Resolve(label)
-
-	// If there's an owner, let's check it
-	if owner != nil {
-		return owner.Get(label), nil
-	}
-
-	// If there's no owner, then it doesn't exist
-	return nil, notDefinedError(label)
+	return owner.frame.Get(label), nil
 }
 
 func (t *Tree) Set(label string, value interface{}) {
+	owner := t.owner(label)
 
-	// If there's no parent, we can just set this frame
-	if t.parent == nil {
-		t.frame.Set(label, value)
-		return
-	}
-
-	// Attempt to find it's original owner
-	owner := t.parent.frame.Resolve(label)
-
-	// There is no owner, we can claim ownership
+	// No owner, we'll claim it
 	if owner == nil {
 		t.frame.Set(label, value)
 		return
 	}
 
-	// There is an owner, let's set it's value and leave a trail for children
-	owner.Set(label, value)
-	t.pointToParent(label)
+	owner.frame.Set(label, value)
 }
