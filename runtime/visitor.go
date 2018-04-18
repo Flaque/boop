@@ -15,6 +15,15 @@ type BeepBoopVisitor struct {
 	logger *Logger
 }
 
+func (v *BeepBoopVisitor) StartScope() {
+	tree := NewTree(v.tree)
+	v.tree = &tree
+}
+
+func (v *BeepBoopVisitor) EndScope() {
+	v.tree = v.tree.Parent
+}
+
 func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 	return tree.Accept(v)
 }
@@ -22,14 +31,12 @@ func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
 
 	// Create new tree context
-	tree := NewTree(v.tree)
-	v.tree = &tree
+	v.StartScope()
 
 	val := v.Visit(ctx.Block())
 
 	// Pop off this tree context
-	v.tree = v.tree.Parent
-
+	v.EndScope()
 	return val
 }
 
@@ -63,13 +70,23 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	return nil
 }
 
-func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
-	fn, err := v.tree.Get(ctx.STRING().GetText())
+func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
+	name := ctx.STRING().GetText()
 
-	// TODO Check if a function doesn't exist
-	if err != nil {
-
+	args := []string{}
+	for _, label := range ctx.AllLabel() {
+		s, _ := AnythingToString(v.Visit(label))
+		args = append(args, s)
 	}
+
+	block := ctx.Block()
+
+	v.tree.Set(name, NewFunc(name, args, block))
+
+	return nil
+}
+
+func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 
 	// Collect args
 	args := []string{}
@@ -78,11 +95,27 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 		args = append(args, s)
 	}
 
-	if fn != nil {
-		// TODO: do a real function
-		return nil
+	// Collect function name
+	fn, err := v.tree.Get(ctx.STRING().GetText())
+
+	// Run a real function
+	if err == nil {
+		function, _ := fn.(Function)
+
+		// Inject arguments into a new scope
+		v.StartScope()
+		for i, label := range function.args {
+			v.tree.Set(label, args[i])
+		}
+
+		total := v.Visit(function.block)
+
+		v.EndScope()
+
+		return total
 	}
 
+	// Run a command line function
 	name := ctx.STRING().GetText()
 
 	output := RunCmd(name, args...)
