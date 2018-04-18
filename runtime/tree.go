@@ -27,48 +27,51 @@ func isFramePointer(val interface{}) bool {
 	return ok
 }
 
+func notDefinedError(label string) error {
+	return fmt.Errorf("Label '%s' is not defined.", label)
+}
+
 func (t *Tree) pointToParent(label string) {
 	t.frame.Set(label, t.parent.frame)
 }
 
+func (t *Tree) getFromFrame(label string) (interface{}, error) {
+	val := t.frame.Get(label)
+	if val == nil {
+		return nil, notDefinedError(label)
+	}
+	return val, nil
+}
+
 func (t *Tree) Get(label string) (interface{}, error) {
 
-	// Search current
-	val := t.frame.Get(label)
+	// if there's no parent, check self
+	if t.parent == nil {
+		return t.getFromFrame(label)
+	}
 
-	// If we're looking at a frame pointer, we're looking in the wrong place
-	if isFramePointer(val) {
+	// Check parent
+	owner := t.parent.frame.Resolve(label)
 
-		// If the parent doesnt exist, but we've got a pointer to a parent, then
-		// some serious fuckery has gone ary
-		if t.parent == nil {
-			return nil, UNABLE_TO_RESOLVE_VARIABLE
-		}
-
-		owner := t.frame.Resolve(label)
+	// If there's an owner, let's check it
+	if owner != nil {
 		return owner.Get(label), nil
 	}
 
-	// The value exists in normal form inside this node
-	if val != nil {
-		return val, nil
-	}
-
-	// Check if parent exists
-	if t.parent == nil {
-
-		// We've reached the end with nothing to show for it :(
-		return nil, fmt.Errorf("Variable named %s is not defined", label)
-	}
-
-	// Search parent
-	return t.parent.Get(label)
+	// If there's no owner, then it doesn't exist
+	return nil, notDefinedError(label)
 }
 
 func (t *Tree) Set(label string, value interface{}) {
 
+	// If there's no parent, we can just set this frame
+	if t.parent == nil {
+		t.frame.Set(label, value)
+		return
+	}
+
 	// Attempt to find it's original owner
-	owner := t.frame.Resolve(label)
+	owner := t.parent.frame.Resolve(label)
 
 	// There is no owner, we can claim ownership
 	if owner == nil {
@@ -76,5 +79,7 @@ func (t *Tree) Set(label string, value interface{}) {
 		return
 	}
 
-	// There is an owner, let's set it's value
+	// There is an owner, let's set it's value and leave a trail for children
+	owner.Set(label, value)
+	t.pointToParent(label)
 }
