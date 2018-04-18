@@ -8,8 +8,8 @@ import (
 type BeepBoopVisitor struct {
 	*parser.BaseBeepBoopVisitor
 
-	// Stack of Hashmap frames to store variables
-	stack *Stack
+	// Tree of Hashmap frames to store variables
+	tree *Tree
 
 	// where to print to
 	logger *Logger
@@ -20,18 +20,24 @@ func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 }
 
 func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
-	return v.Visit(ctx.Block())
+
+	// Create new tree context
+	tree := NewTree(v.tree)
+	v.tree = &tree
+
+	val := v.Visit(ctx.Block())
+
+	// Pop off this tree context
+	v.tree = v.tree.Parent
+
+	return val
 }
 
 func (v *BeepBoopVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
-	v.stack.Push(NewFrame())
-
 	for i := 0; i < ctx.GetChildCount(); i++ {
 		v.Visit(ctx.Statement(i))
 	}
-
-	v.stack.Pop()
 
 	return nil
 }
@@ -52,13 +58,18 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	// Grab expression value
 	value := v.Visit(ctx.Expr())
 
-	v.stack.Set(ctx.Label().GetText(), value)
+	v.tree.Set(ctx.Label().GetText(), value)
 
 	return nil
 }
 
 func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
-	fn := v.stack.Get(ctx.STRING().GetText())
+	fn, err := v.tree.Get(ctx.STRING().GetText())
+
+	// TODO Check if a function doesn't exist
+	if err != nil {
+
+	}
 
 	// Collect args
 	args := []string{}
@@ -126,7 +137,9 @@ func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext)
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
 	label := ctx.Label().GetText()
 
-	val := v.stack.Get(label)
+	val, _ := v.tree.Get(label)
+
+	// TODO throw label doesn't exist term here
 
 	return val
 }

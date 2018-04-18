@@ -7,7 +7,7 @@ import (
 
 type Tree struct {
 	frame  *Frame
-	parent *Tree
+	Parent *Tree
 }
 
 var UNABLE_TO_RESOLVE_VARIABLE = errors.New("Something terribly wrong has happened in frame tree." +
@@ -33,11 +33,11 @@ func (t *Tree) owner(label string) *Tree {
 		return t
 	}
 
-	if t.parent == nil {
+	if t.Parent == nil {
 		return nil // no owner
 	}
 
-	return t.parent.owner(label)
+	return t.Parent.owner(label)
 }
 
 func (t *Tree) Get(label string) (interface{}, error) {
