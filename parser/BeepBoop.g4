@@ -8,6 +8,7 @@ statement:
 	fncall NEWLINE			# fncallStatement
 	| assignment NEWLINE	# assignStatement
 	| returnStat NEWLINE	# returnStatement
+	| ifstat NEWLINE		# ifStatement
 	| pipe NEWLINE			# pipeStatement
 	| NEWLINE				# noopStatement;
 

@@ -32,6 +32,10 @@ func (v *BaseBeepBoopVisitor) VisitReturnStatement(ctx *ReturnStatementContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitIfStatement(ctx *IfStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }

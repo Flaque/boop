@@ -30,7 +30,7 @@ var serializedLexerAtn = []uint16{
 	124, 2, 2, 23, 3, 3, 5, 4, 7, 5, 9, 6, 11, 7, 13, 8, 15, 9, 17, 10, 19,
 	11, 21, 12, 23, 13, 25, 14, 27, 15, 29, 16, 31, 17, 33, 18, 35, 19, 37,
 	20, 39, 21, 41, 22, 43, 23, 3, 2, 6, 4, 2, 12, 12, 15, 15, 4, 2, 11, 11,
-	34, 34, 3, 2, 50, 59, 4, 2, 67, 92, 99, 124, 2, 131, 2, 3, 3, 2, 2, 2,
+	34, 34, 4, 2, 67, 92, 99, 124, 3, 2, 50, 59, 2, 131, 2, 3, 3, 2, 2, 2,
 	2, 5, 3, 2, 2, 2, 2, 7, 3, 2, 2, 2, 2, 9, 3, 2, 2, 2, 2, 11, 3, 2, 2, 2,
 	2, 13, 3, 2, 2, 2, 2, 15, 3, 2, 2, 2, 2, 17, 3, 2, 2, 2, 2, 19, 3, 2, 2,
 	2, 2, 21, 3, 2, 2, 2, 2, 23, 3, 2, 2, 2, 2, 25, 3, 2, 2, 2, 2, 27, 3, 2,
@@ -90,13 +90,13 @@ var lexerLiteralNames = []string{
 var lexerSymbolicNames = []string{
 	"", "", "COMMENT", "NEWLINE", "WHITESPACE", "IF", "DO", "END", "FUNC",
 	"RETURN", "FOR", "IS", "PLUS", "MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE",
-	"LPAREN", "RPAREN", "INT", "STRING",
+	"LPAREN", "RPAREN", "STRING", "INT",
 }
 
 var lexerRuleNames = []string{
 	"T__0", "COMMENT", "NEWLINE", "WHITESPACE", "IF", "DO", "END", "FUNC",
 	"RETURN", "FOR", "IS", "PLUS", "MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE",
-	"LPAREN", "RPAREN", "INT", "STRING",
+	"LPAREN", "RPAREN", "STRING", "INT",
 }
 
 type BeepBoopLexer struct {
@@ -153,6 +153,6 @@ const (
 	BeepBoopLexerPIPE       = 17
 	BeepBoopLexerLPAREN     = 18
 	BeepBoopLexerRPAREN     = 19
-	BeepBoopLexerINT        = 20
-	BeepBoopLexerSTRING     = 21
+	BeepBoopLexerSTRING     = 20
+	BeepBoopLexerINT        = 21
 )

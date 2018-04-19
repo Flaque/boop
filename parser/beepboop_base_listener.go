@@ -57,6 +57,12 @@ func (s *BaseBeepBoopListener) EnterReturnStatement(ctx *ReturnStatementContext)
 // ExitReturnStatement is called when production returnStatement is exited.
 func (s *BaseBeepBoopListener) ExitReturnStatement(ctx *ReturnStatementContext) {}
 
+// EnterIfStatement is called when production ifStatement is entered.
+func (s *BaseBeepBoopListener) EnterIfStatement(ctx *IfStatementContext) {}
+
+// ExitIfStatement is called when production ifStatement is exited.
+func (s *BaseBeepBoopListener) ExitIfStatement(ctx *IfStatementContext) {}
+
 // EnterPipeStatement is called when production pipeStatement is entered.
 func (s *BaseBeepBoopListener) EnterPipeStatement(ctx *PipeStatementContext) {}
 

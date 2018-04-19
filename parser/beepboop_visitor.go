@@ -26,6 +26,9 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#returnStatement.
 	VisitReturnStatement(ctx *ReturnStatementContext) interface{}
 
+	// Visit a parse tree produced by BeepBoopParser#ifStatement.
+	VisitIfStatement(ctx *IfStatementContext) interface{}
+
 	// Visit a parse tree produced by BeepBoopParser#pipeStatement.
 	VisitPipeStatement(ctx *PipeStatementContext) interface{}
 
