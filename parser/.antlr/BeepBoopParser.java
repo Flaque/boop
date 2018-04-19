@@ -735,6 +735,27 @@ public class BeepBoopParser extends Parser {
 	}
 
 	public static class AssignmentContext extends ParserRuleContext {
+		public AssignmentContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_assignment; }
+	 
+		public AssignmentContext() { }
+		public void copyFrom(AssignmentContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class FncallAssignContext extends AssignmentContext {
+		public LabelContext label() {
+			return getRuleContext(LabelContext.class,0);
+		}
+		public TerminalNode ASSIGN() { return getToken(BeepBoopParser.ASSIGN, 0); }
+		public FncallContext fncall() {
+			return getRuleContext(FncallContext.class,0);
+		}
+		public FncallAssignContext(AssignmentContext ctx) { copyFrom(ctx); }
+	}
+	public static class ExprAssignContext extends AssignmentContext {
 		public LabelContext label() {
 			return getRuleContext(LabelContext.class,0);
 		}
@@ -742,13 +763,7 @@ public class BeepBoopParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public FncallContext fncall() {
-			return getRuleContext(FncallContext.class,0);
-		}
-		public AssignmentContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_assignment; }
+		public ExprAssignContext(AssignmentContext ctx) { copyFrom(ctx); }
 	}
 
 	public final AssignmentContext assignment() throws RecognitionException {
@@ -759,6 +774,7 @@ public class BeepBoopParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
+				_localctx = new ExprAssignContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(126);
@@ -770,6 +786,7 @@ public class BeepBoopParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new FncallAssignContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(130);

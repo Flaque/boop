@@ -28,7 +28,9 @@ returnStat:
 	RETURN expr		# exprReturn
 	| RETURN fncall	# fncallReturn;
 
-assignment: label ASSIGN expr | label ASSIGN fncall;
+assignment:
+	label ASSIGN expr		# exprAssign
+	| label ASSIGN fncall	# fncallAssign;
 
 expr:
 	expr op = (PLUS | MINUS) expr	# additiveExpr

@@ -53,8 +53,11 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#fncallReturn.
 	VisitFncallReturn(ctx *FncallReturnContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#assignment.
-	VisitAssignment(ctx *AssignmentContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#exprAssign.
+	VisitExprAssign(ctx *ExprAssignContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#fncallAssign.
+	VisitFncallAssign(ctx *FncallAssignContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#unaryMinusExpr.
 	VisitUnaryMinusExpr(ctx *UnaryMinusExprContext) interface{}

@@ -68,7 +68,11 @@ func (v *BaseBeepBoopVisitor) VisitFncallReturn(ctx *FncallReturnContext) interf
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitAssignment(ctx *AssignmentContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitExprAssign(ctx *ExprAssignContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallAssign(ctx *FncallAssignContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

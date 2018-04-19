@@ -111,11 +111,17 @@ func (s *BaseBeepBoopListener) EnterFncallReturn(ctx *FncallReturnContext) {}
 // ExitFncallReturn is called when production fncallReturn is exited.
 func (s *BaseBeepBoopListener) ExitFncallReturn(ctx *FncallReturnContext) {}
 
-// EnterAssignment is called when production assignment is entered.
-func (s *BaseBeepBoopListener) EnterAssignment(ctx *AssignmentContext) {}
+// EnterExprAssign is called when production exprAssign is entered.
+func (s *BaseBeepBoopListener) EnterExprAssign(ctx *ExprAssignContext) {}
 
-// ExitAssignment is called when production assignment is exited.
-func (s *BaseBeepBoopListener) ExitAssignment(ctx *AssignmentContext) {}
+// ExitExprAssign is called when production exprAssign is exited.
+func (s *BaseBeepBoopListener) ExitExprAssign(ctx *ExprAssignContext) {}
+
+// EnterFncallAssign is called when production fncallAssign is entered.
+func (s *BaseBeepBoopListener) EnterFncallAssign(ctx *FncallAssignContext) {}
+
+// ExitFncallAssign is called when production fncallAssign is exited.
+func (s *BaseBeepBoopListener) ExitFncallAssign(ctx *FncallAssignContext) {}
 
 // EnterUnaryMinusExpr is called when production unaryMinusExpr is entered.
 func (s *BaseBeepBoopListener) EnterUnaryMinusExpr(ctx *UnaryMinusExprContext) {}

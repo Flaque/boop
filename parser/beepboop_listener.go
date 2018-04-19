@@ -53,8 +53,11 @@ type BeepBoopListener interface {
 	// EnterFncallReturn is called when entering the fncallReturn production.
 	EnterFncallReturn(c *FncallReturnContext)
 
-	// EnterAssignment is called when entering the assignment production.
-	EnterAssignment(c *AssignmentContext)
+	// EnterExprAssign is called when entering the exprAssign production.
+	EnterExprAssign(c *ExprAssignContext)
+
+	// EnterFncallAssign is called when entering the fncallAssign production.
+	EnterFncallAssign(c *FncallAssignContext)
 
 	// EnterUnaryMinusExpr is called when entering the unaryMinusExpr production.
 	EnterUnaryMinusExpr(c *UnaryMinusExprContext)
@@ -125,8 +128,11 @@ type BeepBoopListener interface {
 	// ExitFncallReturn is called when exiting the fncallReturn production.
 	ExitFncallReturn(c *FncallReturnContext)
 
-	// ExitAssignment is called when exiting the assignment production.
-	ExitAssignment(c *AssignmentContext)
+	// ExitExprAssign is called when exiting the exprAssign production.
+	ExitExprAssign(c *ExprAssignContext)
+
+	// ExitFncallAssign is called when exiting the fncallAssign production.
+	ExitFncallAssign(c *FncallAssignContext)
 
 	// ExitUnaryMinusExpr is called when exiting the unaryMinusExpr production.
 	ExitUnaryMinusExpr(c *UnaryMinusExprContext)

@@ -2005,38 +2005,8 @@ func NewAssignmentContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 
 func (s *AssignmentContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *AssignmentContext) Label() ILabelContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILabelContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILabelContext)
-}
-
-func (s *AssignmentContext) ASSIGN() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserASSIGN, 0)
-}
-
-func (s *AssignmentContext) Expr() IExprContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExprContext)
-}
-
-func (s *AssignmentContext) Fncall() IFncallContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFncallContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFncallContext)
+func (s *AssignmentContext) CopyFrom(ctx *AssignmentContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *AssignmentContext) GetRuleContext() antlr.RuleContext {
@@ -2047,22 +2017,128 @@ func (s *AssignmentContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *AssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+type FncallAssignContext struct {
+	*AssignmentContext
+}
+
+func NewFncallAssignContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FncallAssignContext {
+	var p = new(FncallAssignContext)
+
+	p.AssignmentContext = NewEmptyAssignmentContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*AssignmentContext))
+
+	return p
+}
+
+func (s *FncallAssignContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FncallAssignContext) Label() ILabelContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILabelContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILabelContext)
+}
+
+func (s *FncallAssignContext) ASSIGN() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserASSIGN, 0)
+}
+
+func (s *FncallAssignContext) Fncall() IFncallContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFncallContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFncallContext)
+}
+
+func (s *FncallAssignContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterAssignment(s)
+		listenerT.EnterFncallAssign(s)
 	}
 }
 
-func (s *AssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *FncallAssignContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitAssignment(s)
+		listenerT.ExitFncallAssign(s)
 	}
 }
 
-func (s *AssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *FncallAssignContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitAssignment(s)
+		return t.VisitFncallAssign(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type ExprAssignContext struct {
+	*AssignmentContext
+}
+
+func NewExprAssignContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprAssignContext {
+	var p = new(ExprAssignContext)
+
+	p.AssignmentContext = NewEmptyAssignmentContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*AssignmentContext))
+
+	return p
+}
+
+func (s *ExprAssignContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ExprAssignContext) Label() ILabelContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILabelContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILabelContext)
+}
+
+func (s *ExprAssignContext) ASSIGN() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserASSIGN, 0)
+}
+
+func (s *ExprAssignContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *ExprAssignContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterExprAssign(s)
+	}
+}
+
+func (s *ExprAssignContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitExprAssign(s)
+	}
+}
+
+func (s *ExprAssignContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitExprAssign(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -2093,6 +2169,7 @@ func (p *BeepBoopParser) Assignment() (localctx IAssignmentContext) {
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext()) {
 	case 1:
+		localctx = NewExprAssignContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(126)
@@ -2108,6 +2185,7 @@ func (p *BeepBoopParser) Assignment() (localctx IAssignmentContext) {
 		}
 
 	case 2:
+		localctx = NewFncallAssignContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(130)
