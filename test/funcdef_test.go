@@ -29,3 +29,27 @@ func TestFuncDefWithArgs(t *testing.T) {
 
 	assert.Equal(t, "3\n", output)
 }
+
+func TestFuncDefWithStringArgs(t *testing.T) {
+	output := run(`
+	func jazz $a $b do
+		echo $a $b
+	end
+
+	jazz hello there
+	`)
+
+	assert.Equal(t, "hello there\n", output)
+}
+
+func TestFuncDefWithVariableArgs(t *testing.T) {
+	output := run(`
+	func jazz $str $num do
+		echo $num
+		echo $str
+	end
+
+	jazz cats 3`)
+
+	assert.Equal(t, "3\ncats\n", output)
+}

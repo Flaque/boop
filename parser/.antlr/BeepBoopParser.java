@@ -18,7 +18,7 @@ public class BeepBoopParser extends Parser {
 	public static final int
 		T__0=1, COMMENT=2, NEWLINE=3, WHITESPACE=4, IF=5, DO=6, END=7, FUNC=8, 
 		RETURN=9, FOR=10, IS=11, PLUS=12, MINUS=13, MULT=14, DIVIDE=15, ASSIGN=16, 
-		PIPE=17, LPAREN=18, RPAREN=19, INT=20, STRING=21;
+		PIPE=17, LPAREN=18, RPAREN=19, STRING=20, INT=21;
 	public static final int
 		RULE_beepboop = 0, RULE_code = 1, RULE_statement = 2, RULE_funcguts = 3, 
 		RULE_funcdef = 4, RULE_fncall = 5, RULE_ifstat = 6, RULE_returnStat = 7, 
@@ -35,7 +35,7 @@ public class BeepBoopParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, "COMMENT", "NEWLINE", "WHITESPACE", "IF", "DO", "END", "FUNC", 
 		"RETURN", "FOR", "IS", "PLUS", "MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE", 
-		"LPAREN", "RPAREN", "INT", "STRING"
+		"LPAREN", "RPAREN", "STRING", "INT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -564,7 +564,7 @@ public class BeepBoopParser extends Parser {
 					setState(102); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << INT) | (1L << STRING))) != 0) );
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << STRING) | (1L << INT))) != 0) );
 				}
 				break;
 			}
@@ -862,8 +862,8 @@ public class BeepBoopParser extends Parser {
 				}
 				break;
 			case T__0:
-			case INT:
 			case STRING:
+			case INT:
 				{
 				_localctx = new TermExprContext(_localctx);
 				_ctx = _localctx;
@@ -1142,12 +1142,12 @@ public class BeepBoopParser extends Parser {
 		"\5\f\7\2\66\67\7\5\2\2\67C\3\2\2\289\5\22\n\29:\7\5\2\2:C\3\2\2\2;<\5"+
 		"\20\t\2<=\7\5\2\2=C\3\2\2\2>?\5\26\f\2?@\7\5\2\2@C\3\2\2\2AC\7\5\2\2B"+
 		"\65\3\2\2\2B8\3\2\2\2B;\3\2\2\2B>\3\2\2\2BA\3\2\2\2C\7\3\2\2\2DF\5\6\4"+
-		"\2ED\3\2\2\2FG\3\2\2\2GE\3\2\2\2GH\3\2\2\2H\t\3\2\2\2IJ\7\n\2\2JL\7\27"+
+		"\2ED\3\2\2\2FG\3\2\2\2GE\3\2\2\2GH\3\2\2\2H\t\3\2\2\2IJ\7\n\2\2JL\7\26"+
 		"\2\2KM\5\32\16\2LK\3\2\2\2MN\3\2\2\2NL\3\2\2\2NO\3\2\2\2OP\3\2\2\2PQ\7"+
-		"\b\2\2QR\5\b\5\2RS\7\t\2\2ST\7\5\2\2Tb\3\2\2\2UV\7\n\2\2VW\7\27\2\2WX"+
-		"\7\b\2\2XY\5\b\5\2YZ\7\t\2\2Z[\7\5\2\2[b\3\2\2\2\\]\7\n\2\2]^\7\27\2\2"+
+		"\b\2\2QR\5\b\5\2RS\7\t\2\2ST\7\5\2\2Tb\3\2\2\2UV\7\n\2\2VW\7\26\2\2WX"+
+		"\7\b\2\2XY\5\b\5\2YZ\7\t\2\2Z[\7\5\2\2[b\3\2\2\2\\]\7\n\2\2]^\7\26\2\2"+
 		"^_\7\b\2\2_`\7\t\2\2`b\7\5\2\2aI\3\2\2\2aU\3\2\2\2a\\\3\2\2\2b\13\3\2"+
-		"\2\2ck\7\27\2\2df\7\27\2\2eg\5\30\r\2fe\3\2\2\2gh\3\2\2\2hf\3\2\2\2hi"+
+		"\2\2ck\7\26\2\2df\7\26\2\2eg\5\30\r\2fe\3\2\2\2gh\3\2\2\2hf\3\2\2\2hi"+
 		"\3\2\2\2ik\3\2\2\2jc\3\2\2\2jd\3\2\2\2k\r\3\2\2\2lm\7\7\2\2mn\5\24\13"+
 		"\2no\7\b\2\2op\5\4\3\2pq\7\t\2\2qy\3\2\2\2rs\7\7\2\2st\5\f\7\2tu\7\b\2"+
 		"\2uv\5\4\3\2vw\7\t\2\2wy\3\2\2\2xl\3\2\2\2xr\3\2\2\2y\17\3\2\2\2z{\7\13"+
@@ -1164,9 +1164,9 @@ public class BeepBoopParser extends Parser {
 		"\2\2\2\u009c\u009e\5\f\7\2\u009d\u009f\7\5\2\2\u009e\u009d\3\2\2\2\u009f"+
 		"\u00a0\3\2\2\2\u00a0\u009e\3\2\2\2\u00a0\u00a1\3\2\2\2\u00a1\u00a3\3\2"+
 		"\2\2\u00a2\u0098\3\2\2\2\u00a2\u009c\3\2\2\2\u00a3\27\3\2\2\2\u00a4\u00a8"+
-		"\5\32\16\2\u00a5\u00a8\7\27\2\2\u00a6\u00a8\7\26\2\2\u00a7\u00a4\3\2\2"+
+		"\5\32\16\2\u00a5\u00a8\7\26\2\2\u00a6\u00a8\7\27\2\2\u00a7\u00a4\3\2\2"+
 		"\2\u00a7\u00a5\3\2\2\2\u00a7\u00a6\3\2\2\2\u00a8\31\3\2\2\2\u00a9\u00aa"+
-		"\7\3\2\2\u00aa\u00ab\7\27\2\2\u00ab\33\3\2\2\2\25\37$+/\63BGNahjx~\u0088"+
+		"\7\3\2\2\u00aa\u00ab\7\26\2\2\u00ab\33\3\2\2\2\25\37$+/\63BGNahjx~\u0088"+
 		"\u008e\u0095\u00a0\u00a2\u00a7";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());

@@ -18,7 +18,7 @@ public class BeepBoopLexer extends Lexer {
 	public static final int
 		T__0=1, COMMENT=2, NEWLINE=3, WHITESPACE=4, IF=5, DO=6, END=7, FUNC=8, 
 		RETURN=9, FOR=10, IS=11, PLUS=12, MINUS=13, MULT=14, DIVIDE=15, ASSIGN=16, 
-		PIPE=17, LPAREN=18, RPAREN=19, INT=20, STRING=21;
+		PIPE=17, LPAREN=18, RPAREN=19, STRING=20, INT=21;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -30,7 +30,7 @@ public class BeepBoopLexer extends Lexer {
 	public static final String[] ruleNames = {
 		"T__0", "COMMENT", "NEWLINE", "WHITESPACE", "IF", "DO", "END", "FUNC", 
 		"RETURN", "FOR", "IS", "PLUS", "MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE", 
-		"LPAREN", "RPAREN", "INT", "STRING"
+		"LPAREN", "RPAREN", "STRING", "INT"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -40,7 +40,7 @@ public class BeepBoopLexer extends Lexer {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, "COMMENT", "NEWLINE", "WHITESPACE", "IF", "DO", "END", "FUNC", 
 		"RETURN", "FOR", "IS", "PLUS", "MINUS", "MULT", "DIVIDE", "ASSIGN", "PIPE", 
-		"LPAREN", "RPAREN", "INT", "STRING"
+		"LPAREN", "RPAREN", "STRING", "INT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -110,8 +110,8 @@ public class BeepBoopLexer extends Lexer {
 		"\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\23\3\23\3"+
 		"\24\3\24\3\25\6\25v\n\25\r\25\16\25w\3\26\6\26{\n\26\r\26\16\26|\2\2\27"+
 		"\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31\16\33\17\35\20"+
-		"\37\21!\22#\23%\24\'\25)\26+\27\3\2\6\4\2\f\f\17\17\4\2\13\13\"\"\3\2"+
-		"\62;\4\2C\\c|\2\u0083\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2"+
+		"\37\21!\22#\23%\24\'\25)\26+\27\3\2\6\4\2\f\f\17\17\4\2\13\13\"\"\4\2"+
+		"C\\c|\3\2\62;\2\u0083\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2"+
 		"\2\13\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25"+
 		"\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2"+
 		"\2\2\2!\3\2\2\2\2#\3\2\2\2\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2"+

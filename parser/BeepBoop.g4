@@ -62,5 +62,5 @@ ASSIGN: '=';
 PIPE: '|';
 LPAREN: '(';
 RPAREN: ')';
-INT: [0-9]+;
 STRING: [a-zA-Z]+;
+INT: [0-9]+;
