@@ -1,7 +1,6 @@
 package runtime
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -9,9 +8,6 @@ type Tree struct {
 	frame  *Frame
 	Parent *Tree
 }
-
-var UNABLE_TO_RESOLVE_VARIABLE = errors.New("Something terribly wrong has happened in frame tree." +
-	" If you see this error, please contact the Beep maintainer.")
 
 func NewTree(parent *Tree) Tree {
 	f := NewFrame()
@@ -23,7 +19,7 @@ func NewTree(parent *Tree) Tree {
 }
 
 func notDefinedError(label string) error {
-	return fmt.Errorf("Label '%s' is not defined.", label)
+	return fmt.Errorf("label '%s' is not defined", label)
 }
 
 func (t *Tree) owner(label string) *Tree {

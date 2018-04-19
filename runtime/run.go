@@ -33,10 +33,11 @@ type Listener struct {
 	*antlr.BaseParseTreeListener
 }
 
-func (this *Listener) EnterEveryRule(ctx antlr.ParserRuleContext) {
-	// fmt.Println(ctx.GetStart())
+func (l *Listener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+	// Do nothing
 }
 
+// Validate checks code is syntactically correct
 func Validate(code string) {
 	code = prepCode(code)
 
@@ -45,6 +46,7 @@ func Validate(code string) {
 	antlr.ParseTreeWalkerDefault.Walk(listener, p.Beepboop())
 }
 
+// Run runs code and returns visiter output
 func Run(code string, out io.Writer) interface{} {
 	code = prepCode(code)
 

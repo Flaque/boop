@@ -23,12 +23,6 @@ func read(filename string) string {
 	return string(dat)
 }
 
-func addNewLineToEndOfFile(filename string) {
-	f, _ := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
-	f.WriteString("\n")
-	f.Close()
-}
-
 func main() {
 	if len(os.Args) <= 1 {
 		killf("File required as input!")
