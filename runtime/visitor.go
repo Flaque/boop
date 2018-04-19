@@ -1,6 +1,8 @@
 package runtime
 
 import (
+	"strconv"
+
 	"github.com/Flaque/boop/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
@@ -70,9 +72,6 @@ func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContex
 func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interface{} {
 	v.visits = append(v.visits, "assignment")
 
-	// Make sure we visit the label, even though we might not be using it
-	v.Visit(ctx.Label())
-
 	// Grab expression value
 	value := v.Visit(ctx.Expr())
 	label := ctx.Label().GetText()
@@ -82,12 +81,19 @@ func (v *BeepBoopVisitor) VisitAssignment(ctx *parser.AssignmentContext) interfa
 	return nil
 }
 
+func (v *BeepBoopVisitor) VisitFuncguts(ctx *parser.FuncgutsContext) interface{} {
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		v.Visit(ctx.Statement(i))
+	}
+	return nil
+}
+
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
 	name := ctx.STRING().GetText()
 
 	args := []string{}
 	for _, label := range ctx.AllLabel() {
-		s, _ := AnythingToString(v.Visit(label))
+		s, _ := AnythingToString(label.GetText())
 		args = append(args, s)
 	}
 
@@ -114,6 +120,11 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	// Run a real function
 	if err == nil {
 		function, _ := fn.(Function)
+
+		if len(args) != len(function.args) {
+			ThrowIncorrectFunctionCall(v.logger, function.name, len(function.args), len(args))
+			return nil
+		}
 
 		// Inject arguments into a new scope
 		v.StartScope()
@@ -197,7 +208,20 @@ func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface
 		return nil
 	}
 
-	return val
+	// Attempt to get it as an int
+	if vint, ok := val.(int); ok {
+		return vint
+	}
+
+	// Attempt to get it as a string
+	str := val.(string)
+
+	// Attempt to parse as an int if we can
+	if v, err := strconv.Atoi(str); err == nil {
+		return v
+	}
+
+	return str
 }
 
 func (v *BeepBoopVisitor) VisitStringTerm(ctx *parser.StringTermContext) interface{} {
