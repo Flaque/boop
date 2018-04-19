@@ -8,7 +8,6 @@ statement:
 	fncall NEWLINE			# fncallStatement
 	| assignment NEWLINE	# assignStatement
 	| returnStat NEWLINE	# returnStatement
-	| ifstat NEWLINE		# ifStatement
 	| pipe NEWLINE			# pipeStatement
 	| NEWLINE				# noopStatement;
 
@@ -63,5 +62,5 @@ ASSIGN: '=';
 PIPE: '|';
 LPAREN: '(';
 RPAREN: ')';
-STRING: [a-zA-Z]+;
 INT: [0-9]+;
+STRING: [a-zA-Z]+;

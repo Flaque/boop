@@ -26,9 +26,6 @@ type BeepBoopListener interface {
 	// EnterReturnStatement is called when entering the returnStatement production.
 	EnterReturnStatement(c *ReturnStatementContext)
 
-	// EnterIfStatement is called when entering the ifStatement production.
-	EnterIfStatement(c *IfStatementContext)
-
 	// EnterPipeStatement is called when entering the pipeStatement production.
 	EnterPipeStatement(c *PipeStatementContext)
 
@@ -100,9 +97,6 @@ type BeepBoopListener interface {
 
 	// ExitReturnStatement is called when exiting the returnStatement production.
 	ExitReturnStatement(c *ReturnStatementContext)
-
-	// ExitIfStatement is called when exiting the ifStatement production.
-	ExitIfStatement(c *IfStatementContext)
 
 	// ExitPipeStatement is called when exiting the pipeStatement production.
 	ExitPipeStatement(c *PipeStatementContext)
