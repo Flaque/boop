@@ -30,7 +30,7 @@ func (v *BeepBoopVisitor) Visit(tree antlr.ParseTree) interface{} {
 	return tree.Accept(v)
 }
 
-func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BeepboopContext) interface{} {
+func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BoopContext) interface{} {
 
 	// Create new tree context
 	v.StartScope()
@@ -55,7 +55,7 @@ func (v *BeepBoopVisitor) VisitFuncdefCode(ctx *parser.FuncdefCodeContext) inter
 }
 
 func (v *BeepBoopVisitor) VisitAssignStatement(ctx *parser.AssignStatementContext) interface{} {
-	return v.Visit(ctx.Assignment())
+	return v.Visit(ctx.Assignstat())
 }
 
 func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContext) interface{} {
@@ -65,7 +65,7 @@ func (v *BeepBoopVisitor) VisitFncallStatement(ctx *parser.FncallStatementContex
 func (v *BeepBoopVisitor) VisitExprAssign(ctx *parser.ExprAssignContext) interface{} {
 
 	// Grab expression value
-	value := v.Visit(ctx.Expr())
+	value := v.Visit(ctx.Term())
 	label := ctx.Label().GetText()
 
 	v.tree.Set(label, value)
@@ -93,10 +93,17 @@ func (v *BeepBoopVisitor) VisitFuncguts(ctx *parser.FuncgutsContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
-	name := ctx.STRING().GetText()
+	name := ctx.Label(0).GetText()
 
 	args := []string{}
-	for _, label := range ctx.AllLabel() {
+	for i, label := range ctx.AllLabel() {
+
+		// Skip name
+		if i == 0 {
+			continue
+		}
+
+		// Rest args
 		s, _ := AnythingToString(label.GetText())
 		args = append(args, s)
 	}
@@ -118,7 +125,8 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	}
 
 	// Collect function name
-	fn, err := v.tree.Get(ctx.STRING().GetText())
+	name := ctx.Label().GetText()
+	fn, err := v.tree.Get(name)
 
 	// Run a real function
 	if err == nil {
@@ -144,8 +152,6 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	}
 
 	// Run a command line function
-	name := ctx.STRING().GetText()
-
 	output := RunCmd(name, args...)
 
 	// Echo is the only command allowed to output
@@ -154,55 +160,6 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	}
 
 	return output
-}
-
-func (v *BeepBoopVisitor) VisitExprReturn(ctx *parser.ExprReturnContext) interface{} {
-	return v.Visit(ctx.Expr())
-}
-
-func (v *BeepBoopVisitor) VisitFncallReturn(ctx *parser.FncallReturnContext) interface{} {
-	return v.Visit(ctx.Fncall())
-}
-
-func (v *BeepBoopVisitor) VisitTermExpr(ctx *parser.TermExprContext) interface{} {
-	return v.Visit(ctx.Term())
-}
-
-func (v *BeepBoopVisitor) VisitAdditiveExpr(ctx *parser.AdditiveExprContext) interface{} {
-
-	a, oka := v.Visit(ctx.Expr(0)).(int)
-	b, okb := v.Visit(ctx.Expr(1)).(int)
-
-	isAdd := ctx.MINUS() == nil
-
-	total := 0
-
-	if oka {
-		total += a
-	}
-
-	if okb {
-		if isAdd {
-			total += b
-		} else {
-			total -= b
-		}
-	}
-
-	return total
-}
-
-func (v *BeepBoopVisitor) VisitUnaryMinusExpr(ctx *parser.UnaryMinusExprContext) interface{} {
-
-	a, ok := v.Visit(ctx.Expr()).(int)
-
-	total := 0
-
-	if ok {
-		total -= a
-	}
-
-	return total
 }
 
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
@@ -229,13 +186,4 @@ func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface
 	}
 
 	return str
-}
-
-func (v *BeepBoopVisitor) VisitStringTerm(ctx *parser.StringTermContext) interface{} {
-	return ctx.STRING().GetText()
-}
-
-func (v *BeepBoopVisitor) VisitIntTerm(ctx *parser.IntTermContext) interface{} {
-	i, _ := RuleToInt(ctx.INT())
-	return i
 }

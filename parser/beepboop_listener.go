@@ -8,17 +8,20 @@ import "github.com/antlr/antlr4/runtime/Go/antlr"
 type BeepBoopListener interface {
 	antlr.ParseTreeListener
 
-	// EnterBeepboop is called when entering the beepboop production.
-	EnterBeepboop(c *BeepboopContext)
-
-	// EnterStatementCode is called when entering the statementCode production.
-	EnterStatementCode(c *StatementCodeContext)
+	// EnterBoop is called when entering the boop production.
+	EnterBoop(c *BoopContext)
 
 	// EnterFuncdefCode is called when entering the funcdefCode production.
 	EnterFuncdefCode(c *FuncdefCodeContext)
 
-	// EnterFncallStatement is called when entering the fncallStatement production.
-	EnterFncallStatement(c *FncallStatementContext)
+	// EnterStatementCode is called when entering the statementCode production.
+	EnterStatementCode(c *StatementCodeContext)
+
+	// EnterFuncdef is called when entering the funcdef production.
+	EnterFuncdef(c *FuncdefContext)
+
+	// EnterFuncguts is called when entering the funcguts production.
+	EnterFuncguts(c *FuncgutsContext)
 
 	// EnterAssignStatement is called when entering the assignStatement production.
 	EnterAssignStatement(c *AssignStatementContext)
@@ -26,32 +29,29 @@ type BeepBoopListener interface {
 	// EnterReturnStatement is called when entering the returnStatement production.
 	EnterReturnStatement(c *ReturnStatementContext)
 
+	// EnterFncallStatement is called when entering the fncallStatement production.
+	EnterFncallStatement(c *FncallStatementContext)
+
+	// EnterIfStatement is called when entering the ifStatement production.
+	EnterIfStatement(c *IfStatementContext)
+
 	// EnterPipeStatement is called when entering the pipeStatement production.
 	EnterPipeStatement(c *PipeStatementContext)
 
-	// EnterNoopStatement is called when entering the noopStatement production.
-	EnterNoopStatement(c *NoopStatementContext)
+	// EnterNewlineStatement is called when entering the newlineStatement production.
+	EnterNewlineStatement(c *NewlineStatementContext)
 
-	// EnterFuncguts is called when entering the funcguts production.
-	EnterFuncguts(c *FuncgutsContext)
+	// EnterIfstat is called when entering the ifstat production.
+	EnterIfstat(c *IfstatContext)
 
-	// EnterFuncdef is called when entering the funcdef production.
-	EnterFuncdef(c *FuncdefContext)
+	// EnterReturnstat is called when entering the returnstat production.
+	EnterReturnstat(c *ReturnstatContext)
 
-	// EnterFncall is called when entering the fncall production.
-	EnterFncall(c *FncallContext)
+	// EnterStructexpr is called when entering the structexpr production.
+	EnterStructexpr(c *StructexprContext)
 
-	// EnterExprIfStatement is called when entering the exprIfStatement production.
-	EnterExprIfStatement(c *ExprIfStatementContext)
-
-	// EnterFncallIfStatement is called when entering the fncallIfStatement production.
-	EnterFncallIfStatement(c *FncallIfStatementContext)
-
-	// EnterExprReturn is called when entering the exprReturn production.
-	EnterExprReturn(c *ExprReturnContext)
-
-	// EnterFncallReturn is called when entering the fncallReturn production.
-	EnterFncallReturn(c *FncallReturnContext)
+	// EnterAssignstat is called when entering the assignstat production.
+	EnterAssignstat(c *AssignstatContext)
 
 	// EnterExprAssign is called when entering the exprAssign production.
 	EnterExprAssign(c *ExprAssignContext)
@@ -59,41 +59,104 @@ type BeepBoopListener interface {
 	// EnterFncallAssign is called when entering the fncallAssign production.
 	EnterFncallAssign(c *FncallAssignContext)
 
-	// EnterUnaryMinusExpr is called when entering the unaryMinusExpr production.
-	EnterUnaryMinusExpr(c *UnaryMinusExprContext)
+	// EnterParen_fncall is called when entering the paren_fncall production.
+	EnterParen_fncall(c *Paren_fncallContext)
 
-	// EnterTermExpr is called when entering the termExpr production.
-	EnterTermExpr(c *TermExprContext)
-
-	// EnterAdditiveExpr is called when entering the additiveExpr production.
-	EnterAdditiveExpr(c *AdditiveExprContext)
-
-	// EnterPipe is called when entering the pipe production.
-	EnterPipe(c *PipeContext)
+	// EnterFncall is called when entering the fncall production.
+	EnterFncall(c *FncallContext)
 
 	// EnterLabelTerm is called when entering the labelTerm production.
 	EnterLabelTerm(c *LabelTermContext)
 
-	// EnterStringTerm is called when entering the stringTerm production.
-	EnterStringTerm(c *StringTermContext)
+	// EnterLiteralTerm is called when entering the literalTerm production.
+	EnterLiteralTerm(c *LiteralTermContext)
 
-	// EnterIntTerm is called when entering the intTerm production.
-	EnterIntTerm(c *IntTermContext)
+	// EnterMathTerm is called when entering the mathTerm production.
+	EnterMathTerm(c *MathTermContext)
+
+	// EnterParenfncallTerm is called when entering the parenfncallTerm production.
+	EnterParenfncallTerm(c *ParenfncallTermContext)
+
+	// EnterStructTerm is called when entering the structTerm production.
+	EnterStructTerm(c *StructTermContext)
+
+	// EnterListTerm is called when entering the listTerm production.
+	EnterListTerm(c *ListTermContext)
+
+	// EnterList is called when entering the list production.
+	EnterList(c *ListContext)
+
+	// EnterListterm is called when entering the listterm production.
+	EnterListterm(c *ListtermContext)
+
+	// EnterGthanequalsCond is called when entering the gthanequalsCond production.
+	EnterGthanequalsCond(c *GthanequalsCondContext)
+
+	// EnterEqualsCond is called when entering the equalsCond production.
+	EnterEqualsCond(c *EqualsCondContext)
+
+	// EnterOrCond is called when entering the orCond production.
+	EnterOrCond(c *OrCondContext)
+
+	// EnterGthanCond is called when entering the gthanCond production.
+	EnterGthanCond(c *GthanCondContext)
+
+	// EnterAndCond is called when entering the andCond production.
+	EnterAndCond(c *AndCondContext)
+
+	// EnterLthanCond is called when entering the lthanCond production.
+	EnterLthanCond(c *LthanCondContext)
+
+	// EnterLthanequalsCond is called when entering the lthanequalsCond production.
+	EnterLthanequalsCond(c *LthanequalsCondContext)
+
+	// EnterBoolCond is called when entering the boolCond production.
+	EnterBoolCond(c *BoolCondContext)
+
+	// EnterSoloMath is called when entering the soloMath production.
+	EnterSoloMath(c *SoloMathContext)
+
+	// EnterAdditiveMath is called when entering the additiveMath production.
+	EnterAdditiveMath(c *AdditiveMathContext)
+
+	// EnterUnarySubMath is called when entering the unarySubMath production.
+	EnterUnarySubMath(c *UnarySubMathContext)
+
+	// EnterLiteral is called when entering the literal production.
+	EnterLiteral(c *LiteralContext)
+
+	// EnterNum is called when entering the num production.
+	EnterNum(c *NumContext)
+
+	// EnterBoolexpr is called when entering the boolexpr production.
+	EnterBoolexpr(c *BoolexprContext)
+
+	// EnterPipe is called when entering the pipe production.
+	EnterPipe(c *PipeContext)
 
 	// EnterLabel is called when entering the label production.
 	EnterLabel(c *LabelContext)
 
-	// ExitBeepboop is called when exiting the beepboop production.
-	ExitBeepboop(c *BeepboopContext)
+	// EnterQuoted is called when entering the quoted production.
+	EnterQuoted(c *QuotedContext)
 
-	// ExitStatementCode is called when exiting the statementCode production.
-	ExitStatementCode(c *StatementCodeContext)
+	// EnterStringornew is called when entering the stringornew production.
+	EnterStringornew(c *StringornewContext)
+
+	// ExitBoop is called when exiting the boop production.
+	ExitBoop(c *BoopContext)
 
 	// ExitFuncdefCode is called when exiting the funcdefCode production.
 	ExitFuncdefCode(c *FuncdefCodeContext)
 
-	// ExitFncallStatement is called when exiting the fncallStatement production.
-	ExitFncallStatement(c *FncallStatementContext)
+	// ExitStatementCode is called when exiting the statementCode production.
+	ExitStatementCode(c *StatementCodeContext)
+
+	// ExitFuncdef is called when exiting the funcdef production.
+	ExitFuncdef(c *FuncdefContext)
+
+	// ExitFuncguts is called when exiting the funcguts production.
+	ExitFuncguts(c *FuncgutsContext)
 
 	// ExitAssignStatement is called when exiting the assignStatement production.
 	ExitAssignStatement(c *AssignStatementContext)
@@ -101,32 +164,29 @@ type BeepBoopListener interface {
 	// ExitReturnStatement is called when exiting the returnStatement production.
 	ExitReturnStatement(c *ReturnStatementContext)
 
+	// ExitFncallStatement is called when exiting the fncallStatement production.
+	ExitFncallStatement(c *FncallStatementContext)
+
+	// ExitIfStatement is called when exiting the ifStatement production.
+	ExitIfStatement(c *IfStatementContext)
+
 	// ExitPipeStatement is called when exiting the pipeStatement production.
 	ExitPipeStatement(c *PipeStatementContext)
 
-	// ExitNoopStatement is called when exiting the noopStatement production.
-	ExitNoopStatement(c *NoopStatementContext)
+	// ExitNewlineStatement is called when exiting the newlineStatement production.
+	ExitNewlineStatement(c *NewlineStatementContext)
 
-	// ExitFuncguts is called when exiting the funcguts production.
-	ExitFuncguts(c *FuncgutsContext)
+	// ExitIfstat is called when exiting the ifstat production.
+	ExitIfstat(c *IfstatContext)
 
-	// ExitFuncdef is called when exiting the funcdef production.
-	ExitFuncdef(c *FuncdefContext)
+	// ExitReturnstat is called when exiting the returnstat production.
+	ExitReturnstat(c *ReturnstatContext)
 
-	// ExitFncall is called when exiting the fncall production.
-	ExitFncall(c *FncallContext)
+	// ExitStructexpr is called when exiting the structexpr production.
+	ExitStructexpr(c *StructexprContext)
 
-	// ExitExprIfStatement is called when exiting the exprIfStatement production.
-	ExitExprIfStatement(c *ExprIfStatementContext)
-
-	// ExitFncallIfStatement is called when exiting the fncallIfStatement production.
-	ExitFncallIfStatement(c *FncallIfStatementContext)
-
-	// ExitExprReturn is called when exiting the exprReturn production.
-	ExitExprReturn(c *ExprReturnContext)
-
-	// ExitFncallReturn is called when exiting the fncallReturn production.
-	ExitFncallReturn(c *FncallReturnContext)
+	// ExitAssignstat is called when exiting the assignstat production.
+	ExitAssignstat(c *AssignstatContext)
 
 	// ExitExprAssign is called when exiting the exprAssign production.
 	ExitExprAssign(c *ExprAssignContext)
@@ -134,27 +194,87 @@ type BeepBoopListener interface {
 	// ExitFncallAssign is called when exiting the fncallAssign production.
 	ExitFncallAssign(c *FncallAssignContext)
 
-	// ExitUnaryMinusExpr is called when exiting the unaryMinusExpr production.
-	ExitUnaryMinusExpr(c *UnaryMinusExprContext)
+	// ExitParen_fncall is called when exiting the paren_fncall production.
+	ExitParen_fncall(c *Paren_fncallContext)
 
-	// ExitTermExpr is called when exiting the termExpr production.
-	ExitTermExpr(c *TermExprContext)
-
-	// ExitAdditiveExpr is called when exiting the additiveExpr production.
-	ExitAdditiveExpr(c *AdditiveExprContext)
-
-	// ExitPipe is called when exiting the pipe production.
-	ExitPipe(c *PipeContext)
+	// ExitFncall is called when exiting the fncall production.
+	ExitFncall(c *FncallContext)
 
 	// ExitLabelTerm is called when exiting the labelTerm production.
 	ExitLabelTerm(c *LabelTermContext)
 
-	// ExitStringTerm is called when exiting the stringTerm production.
-	ExitStringTerm(c *StringTermContext)
+	// ExitLiteralTerm is called when exiting the literalTerm production.
+	ExitLiteralTerm(c *LiteralTermContext)
 
-	// ExitIntTerm is called when exiting the intTerm production.
-	ExitIntTerm(c *IntTermContext)
+	// ExitMathTerm is called when exiting the mathTerm production.
+	ExitMathTerm(c *MathTermContext)
+
+	// ExitParenfncallTerm is called when exiting the parenfncallTerm production.
+	ExitParenfncallTerm(c *ParenfncallTermContext)
+
+	// ExitStructTerm is called when exiting the structTerm production.
+	ExitStructTerm(c *StructTermContext)
+
+	// ExitListTerm is called when exiting the listTerm production.
+	ExitListTerm(c *ListTermContext)
+
+	// ExitList is called when exiting the list production.
+	ExitList(c *ListContext)
+
+	// ExitListterm is called when exiting the listterm production.
+	ExitListterm(c *ListtermContext)
+
+	// ExitGthanequalsCond is called when exiting the gthanequalsCond production.
+	ExitGthanequalsCond(c *GthanequalsCondContext)
+
+	// ExitEqualsCond is called when exiting the equalsCond production.
+	ExitEqualsCond(c *EqualsCondContext)
+
+	// ExitOrCond is called when exiting the orCond production.
+	ExitOrCond(c *OrCondContext)
+
+	// ExitGthanCond is called when exiting the gthanCond production.
+	ExitGthanCond(c *GthanCondContext)
+
+	// ExitAndCond is called when exiting the andCond production.
+	ExitAndCond(c *AndCondContext)
+
+	// ExitLthanCond is called when exiting the lthanCond production.
+	ExitLthanCond(c *LthanCondContext)
+
+	// ExitLthanequalsCond is called when exiting the lthanequalsCond production.
+	ExitLthanequalsCond(c *LthanequalsCondContext)
+
+	// ExitBoolCond is called when exiting the boolCond production.
+	ExitBoolCond(c *BoolCondContext)
+
+	// ExitSoloMath is called when exiting the soloMath production.
+	ExitSoloMath(c *SoloMathContext)
+
+	// ExitAdditiveMath is called when exiting the additiveMath production.
+	ExitAdditiveMath(c *AdditiveMathContext)
+
+	// ExitUnarySubMath is called when exiting the unarySubMath production.
+	ExitUnarySubMath(c *UnarySubMathContext)
+
+	// ExitLiteral is called when exiting the literal production.
+	ExitLiteral(c *LiteralContext)
+
+	// ExitNum is called when exiting the num production.
+	ExitNum(c *NumContext)
+
+	// ExitBoolexpr is called when exiting the boolexpr production.
+	ExitBoolexpr(c *BoolexprContext)
+
+	// ExitPipe is called when exiting the pipe production.
+	ExitPipe(c *PipeContext)
 
 	// ExitLabel is called when exiting the label production.
 	ExitLabel(c *LabelContext)
+
+	// ExitQuoted is called when exiting the quoted production.
+	ExitQuoted(c *QuotedContext)
+
+	// ExitStringornew is called when exiting the stringornew production.
+	ExitStringornew(c *StringornewContext)
 }

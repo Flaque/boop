@@ -7,13 +7,13 @@ import (
 )
 
 func TestComment(t *testing.T) {
-	output := run(`# echo goodbye 
-    echo hello`)
+	output := run(`# :echo goodbye 
+    :echo hello`)
 
 	assert.Equal(t, "hello\n", output)
 }
 
 func TestCommentAfter(t *testing.T) {
-	output := run(`echo hello # $a = goodbye`)
+	output := run(`:echo hello # :a = goodbye`)
 	assert.Equal(t, "hello\n", output)
 }

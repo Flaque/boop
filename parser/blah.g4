@@ -1,47 +1,27 @@
 grammar BeepBoop;
 
-boop: (NEWLINE | NEWLINE+) (code | code+) EOF
-	| (code | code+) EOF;
-
-code: funcdef # funcdefCode | statement # statementCode;
+boop: NEWLINE+ funcdef+ EOF | NEWLINE+ statement+ EOF;
 
 funcdef:
 	FUNC label DO END
 	| FUNC label+ DO END
-	| FUNC label DO funcguts END
-	| FUNC label+ DO funcguts END;
-
-funcguts: statement+;
+	| FUNC label DO statement+ END
+	| FUNC label+ DO statement+ END;
 
 statement:
-	assignstat			# assignStatement
-	| returnstat		# returnStatement
-	| fncall NEWLINE	# fncallStatement
-	| ifstat NEWLINE	# ifStatement
-	| pipe NEWLINE		# pipeStatement
-	| NEWLINE			# newlineStatement;
+	assignstat
+	| fncall NEWLINE
+	| ifstat NEWLINE
+	| pipe NEWLINE
+	| NEWLINE;
 
 ifstat:
 	IF conditional DO statement+ END
 	| IF conditional DO END;
 
-returnstat:
-	RETURN term
-	| RETURN term (NEWLINE | NEWLINE+)
-	| RETURN (NEWLINE | NEWLINE+);
-
-structexpr:
-	LSQUIG RSQUIG
-	| LSQUIG NEWLINE (assignstat | assignstat+) RSQUIG
-	| LSQUIG (assignstat | assignstat+) RSQUIG
-	| LSQUIG assign RSQUIG
-	| LSQUIG NEWLINE assign RSQUIG;
-
 assignstat: assign NEWLINE;
 
-assign:
-	label ASSIGN term		# exprAssign
-	| label ASSIGN fncall	# fncallAssign;
+assign: label ASSIGN term | label ASSIGN fncall;
 
 paren_fncall: LPAREN fncall RPAREN;
 
@@ -52,15 +32,12 @@ term:
 	| literal		# literalTerm
 	| math			# mathTerm
 	| paren_fncall	# parenfncallTerm
-	| structexpr	# structTerm
+	| struct		# structTerm
 	| list			# listTerm;
 
-list:
-	LBLOCK RBLOCK
-	| LBLOCK listterm+ RBLOCK
-	| LBLOCK NEWLINE listterm+ RBLOCK;
+struct: LSQUIG RSQUIG | LSQUIG assignstat+ RSQUIG;
 
-listterm: term | term NEWLINE;
+list: LBLOCK RBLOCK | LBLOCK term+ RBLOCK;
 
 conditional:
 	term EQUALS term				# equalsCond
@@ -70,16 +47,16 @@ conditional:
 	| term GTHAN_EQUALS term		# gthanequalsCond
 	| conditional OR conditional	# orCond
 	| conditional AND conditional	# andCond
-	| boolexpr						# boolCond;
+	| bool							# boolCond;
 
 math:
-	math op = (PLUS | SUB) math	# additiveMath
-	| SUB math					# unarySubMath
+	num op = (PLUS | SUB) num	# additiveMath
+	| SUB num					# unarySubMath
 	| num						# soloMath;
 
-literal: num | STRING | boolexpr | quoted;
+literal: num | STRING | bool;
 num: INT;
-boolexpr: TRUE | FALSE;
+bool: TRUE | FALSE;
 
 pipe: term PIPE fncall | term PIPE pipe | fncall PIPE pipe;
 
@@ -95,7 +72,7 @@ END: 'end';
 FUNC: 'func';
 RETURN: 'return';
 FOR: 'for';
-PLUS: 'add';
+PLUS: 'plus';
 SUB: 'sub';
 DIV: 'div';
 MULT: 'mult';
@@ -105,10 +82,6 @@ OR: 'or';
 AND: 'and';
 
 label: ':' STRING;
-quoted: '"' (stringornew | stringornew+) '"';
-
-stringornew: (STRING | NEWLINE);
-
 EQUALS: '==';
 ASSIGN: '=';
 PIPE: '|';
