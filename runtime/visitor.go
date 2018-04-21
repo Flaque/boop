@@ -67,7 +67,7 @@ func (v *BeepBoopVisitor) VisitExprAssign(ctx *parser.ExprAssignContext) interfa
 
 	// Grab expression value
 	value := v.Visit(ctx.Term())
-	label := ctx.LABEL().GetText()
+	label := ctx.Label().GetText()
 
 	v.tree.Set(label, value)
 
@@ -78,7 +78,7 @@ func (v *BeepBoopVisitor) VisitFncallAssign(ctx *parser.FncallAssignContext) int
 
 	// Grab expression value
 	value := v.Visit(ctx.Fncall())
-	label := ctx.LABEL().GetText()
+	label := ctx.Label().GetText()
 
 	v.tree.Set(label, value)
 
@@ -94,10 +94,10 @@ func (v *BeepBoopVisitor) VisitFuncguts(ctx *parser.FuncgutsContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
-	name := ctx.LABEL(0).GetText()
+	name := ctx.Label(0).GetText()
 
 	args := []string{}
-	for i, label := range ctx.AllLABEL() {
+	for i, label := range ctx.AllLabel() {
 
 		// Skip name
 		if i == 0 {
@@ -126,7 +126,7 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	}
 
 	// Collect function name
-	name := ctx.LABEL().GetText()
+	name := ctx.Label().GetText()
 	fn, err := v.tree.Get(name)
 
 	// Run a real function
@@ -163,12 +163,23 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	return output
 }
 
-func (v *BeepBoopVisitor) VisitLiteral(ctx *parser.LiteralContext) interface{} {
-	return util.RemoveQuotes(ctx.GetText())
+func (v *BeepBoopVisitor) VisitQuotedLiteral(ctx *parser.QuotedLiteralContext) interface{} {
+	val := util.RemoveQuotes(ctx.QUOTED().GetText())
+	return NewVariable(STRING, val)
+}
+
+func (v *BeepBoopVisitor) VisitLettersLiteral(ctx *parser.LettersLiteralContext) interface{} {
+	val := ctx.LETTERS().GetText()
+	return NewVariable(STRING, val)
+}
+
+func (v *BeepBoopVisitor) VisitBoolLiteral(ctx *parser.BoolLiteralContext) interface{} {
+	val := ctx.Boolexpr().GetText()
+	return GetVariableFromString(val)
 }
 
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
-	label := ctx.LABEL().GetText()
+	label := ctx.Label().GetText()
 
 	val, err := v.tree.Get(label)
 
@@ -197,18 +208,10 @@ func (v *BeepBoopVisitor) VisitNum(ctx *parser.NumContext) interface{} {
 	val, _ := strconv.Atoi(ctx.GetText())
 
 	// TODO: Throw error
-	return val
+	return NewVariable(INT, val)
 }
 
 func (v *BeepBoopVisitor) VisitBoolexpr(ctx *parser.BoolexprContext) interface{} {
-	txt := ctx.GetText()
-	if txt == "true" {
-		return true
-	}
-	if txt == "false" {
-		return false
-	}
-
 	// TODO: Throw error
-	return nil
+	return GetVariableFromString(ctx.GetText())
 }

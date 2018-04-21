@@ -1,15 +1,14 @@
 grammar BeepBoop;
-
 boop: (NEWLINE | NEWLINE+) (code | code+) EOF
 	| (code | code+) EOF;
 
 code: funcdef # funcdefCode | statement # statementCode;
 
 funcdef:
-	FUNC LABEL DO END
-	| FUNC LABEL+ DO END
-	| FUNC LABEL DO funcguts END
-	| FUNC LABEL+ DO funcguts END;
+	FUNC label DO END
+	| FUNC label+ DO END
+	| FUNC label DO funcguts END
+	| FUNC label+ DO funcguts END;
 
 funcguts: statement+;
 
@@ -40,15 +39,15 @@ structexpr:
 assignstat: assign NEWLINE;
 
 assign:
-	LABEL ASSIGN term		# exprAssign
-	| LABEL ASSIGN fncall	# fncallAssign;
+	label ASSIGN term		# exprAssign
+	| label ASSIGN fncall	# fncallAssign;
 
 paren_fncall: LPAREN fncall RPAREN;
 
-fncall: LABEL term+ | LABEL;
+fncall: label term+ | label;
 
 term:
-	LABEL			# labelTerm // Also a function call
+	label			# labelTerm // Also a function call
 	| literal		# literalTerm
 	| math			# mathTerm
 	| paren_fncall	# parenfncallTerm
@@ -77,11 +76,18 @@ math:
 	| SUB math					# unarySubMath
 	| num						# soloMath;
 
-literal: num | STRING | boolexpr | QUOTED;
+literal:
+	num			# numLiteral
+	| LETTERS	# lettersLiteral
+	| boolexpr	# boolLiteral
+	| QUOTED	# quotedLiteral;
+
 num: INT;
 boolexpr: TRUE | FALSE;
 
 pipe: term PIPE fncall | term PIPE pipe | fncall PIPE pipe;
+
+label: ':' LETTERS;
 
 // Comments and whitespace
 COMMENT: '#' ~[\r\n]* -> skip;
@@ -101,8 +107,6 @@ LSQUIG: '{';
 RSQUIG: '}';
 LBLOCK: '[';
 RBLOCK: ']';
-
-LABEL: ':' [a-zA-Z]+; // TODO Refactor unicode so this works
 
 // Keywords
 IF: 'if';
@@ -128,7 +132,6 @@ QUOTED: '"' (STRINGORNEW+)* '"';
 fragment STRINGORNEW: (STRING | NEWLINE);
 
 // Strings matching all unicode 
+LETTERS: [a-zA-Z]+;
 STRING: (ESC | ~["\\]);
-fragment ESC: '\\' (["\\/bfnrt] | UNICODE);
-fragment UNICODE: 'u' HEX HEX HEX HEX;
-fragment HEX: [0-9a-fA-F];
+fragment ESC: '\\' (["\\/bfnrt] | LETTERS);

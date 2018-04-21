@@ -160,7 +160,19 @@ func (v *BaseBeepBoopVisitor) VisitUnarySubMath(ctx *UnarySubMathContext) interf
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitLiteral(ctx *LiteralContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitNumLiteral(ctx *NumLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLettersLiteral(ctx *LettersLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitBoolLiteral(ctx *BoolLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitQuotedLiteral(ctx *QuotedLiteralContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -173,5 +185,9 @@ func (v *BaseBeepBoopVisitor) VisitBoolexpr(ctx *BoolexprContext) interface{} {
 }
 
 func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLabel(ctx *LabelContext) interface{} {
 	return v.VisitChildren(ctx)
 }

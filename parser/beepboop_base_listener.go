@@ -249,11 +249,29 @@ func (s *BaseBeepBoopListener) EnterUnarySubMath(ctx *UnarySubMathContext) {}
 // ExitUnarySubMath is called when production unarySubMath is exited.
 func (s *BaseBeepBoopListener) ExitUnarySubMath(ctx *UnarySubMathContext) {}
 
-// EnterLiteral is called when production literal is entered.
-func (s *BaseBeepBoopListener) EnterLiteral(ctx *LiteralContext) {}
+// EnterNumLiteral is called when production numLiteral is entered.
+func (s *BaseBeepBoopListener) EnterNumLiteral(ctx *NumLiteralContext) {}
 
-// ExitLiteral is called when production literal is exited.
-func (s *BaseBeepBoopListener) ExitLiteral(ctx *LiteralContext) {}
+// ExitNumLiteral is called when production numLiteral is exited.
+func (s *BaseBeepBoopListener) ExitNumLiteral(ctx *NumLiteralContext) {}
+
+// EnterLettersLiteral is called when production lettersLiteral is entered.
+func (s *BaseBeepBoopListener) EnterLettersLiteral(ctx *LettersLiteralContext) {}
+
+// ExitLettersLiteral is called when production lettersLiteral is exited.
+func (s *BaseBeepBoopListener) ExitLettersLiteral(ctx *LettersLiteralContext) {}
+
+// EnterBoolLiteral is called when production boolLiteral is entered.
+func (s *BaseBeepBoopListener) EnterBoolLiteral(ctx *BoolLiteralContext) {}
+
+// ExitBoolLiteral is called when production boolLiteral is exited.
+func (s *BaseBeepBoopListener) ExitBoolLiteral(ctx *BoolLiteralContext) {}
+
+// EnterQuotedLiteral is called when production quotedLiteral is entered.
+func (s *BaseBeepBoopListener) EnterQuotedLiteral(ctx *QuotedLiteralContext) {}
+
+// ExitQuotedLiteral is called when production quotedLiteral is exited.
+func (s *BaseBeepBoopListener) ExitQuotedLiteral(ctx *QuotedLiteralContext) {}
 
 // EnterNum is called when production num is entered.
 func (s *BaseBeepBoopListener) EnterNum(ctx *NumContext) {}
@@ -272,3 +290,9 @@ func (s *BaseBeepBoopListener) EnterPipe(ctx *PipeContext) {}
 
 // ExitPipe is called when production pipe is exited.
 func (s *BaseBeepBoopListener) ExitPipe(ctx *PipeContext) {}
+
+// EnterLabel is called when production label is entered.
+func (s *BaseBeepBoopListener) EnterLabel(ctx *LabelContext) {}
+
+// ExitLabel is called when production label is exited.
+func (s *BaseBeepBoopListener) ExitLabel(ctx *LabelContext) {}

@@ -27,11 +27,10 @@ func TestNum(t *testing.T) {
 
 	v, p := getInterpreters(code)
 
-	total := v.Visit(p.Num())
+	val := GetVariable(v.Visit(p.Num()))
 
-	val, ok := total.(int)
-	assert.True(t, ok)
-	assert.Equal(t, 2, val)
+	assert.True(t, val.Is(INT))
+	assert.True(t, val.Equals(2))
 }
 
 func TestBoolExprTrue(t *testing.T) {
@@ -39,11 +38,10 @@ func TestBoolExprTrue(t *testing.T) {
 
 	v, p := getInterpreters(code)
 
-	val := v.Visit(p.Boolexpr())
+	val := GetVariable(v.Visit(p.Boolexpr()))
 
-	b, ok := val.(bool)
-	assert.True(t, ok)
-	assert.True(t, b)
+	assert.True(t, val.Is(BOOL))
+	assert.True(t, val.Equals(true))
 }
 
 func TestBoolExprFalse(t *testing.T) {
@@ -51,11 +49,10 @@ func TestBoolExprFalse(t *testing.T) {
 
 	v, p := getInterpreters(code)
 
-	val := v.Visit(p.Boolexpr())
+	val := GetVariable(v.Visit(p.Boolexpr()))
 
-	b, ok := val.(bool)
-	assert.True(t, ok)
-	assert.True(t, !b)
+	assert.True(t, val.Is(BOOL))
+	assert.True(t, val.Equals(false))
 }
 
 func TestQuotedLiteral(t *testing.T) {
@@ -63,10 +60,35 @@ func TestQuotedLiteral(t *testing.T) {
 
 	for _, code := range samples {
 		v, p := getInterpreters(code)
-		val := v.Visit(p.Literal())
+		val := GetVariable(v.Visit(p.Literal()))
 
-		str, ok := val.(string)
-		assert.True(t, ok)
-		assert.Equal(t, util.RemoveQuotes(code), str)
+		assert.True(t, val.Is(STRING))
+		assert.Equal(t, util.RemoveQuotes(code), val.AsString())
 	}
+}
+
+func TestStringLiteral(t *testing.T) {
+	samples := []string{"hello", "dogs", "cats"}
+
+	for _, code := range samples {
+		v, p := getInterpreters(code)
+
+		val := GetVariable(v.Visit(p.Literal()))
+
+		assert.True(t, val.Is(STRING))
+		assert.Equal(t, code, val.AsString())
+	}
+}
+
+func TestBoolLiteral(t *testing.T) {
+
+	// true
+	v, p := getInterpreters("true")
+	val := GetVariable(v.Visit(p.Literal()))
+	assert.True(t, val.Equals(true), val.Is(BOOL))
+
+	// false
+	v, p = getInterpreters("false")
+	val = GetVariable(v.Visit(p.Literal()))
+	assert.True(t, val.Equals(false), val.Is(BOOL))
 }

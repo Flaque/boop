@@ -122,8 +122,17 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#unarySubMath.
 	VisitUnarySubMath(ctx *UnarySubMathContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#literal.
-	VisitLiteral(ctx *LiteralContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#numLiteral.
+	VisitNumLiteral(ctx *NumLiteralContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#lettersLiteral.
+	VisitLettersLiteral(ctx *LettersLiteralContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#boolLiteral.
+	VisitBoolLiteral(ctx *BoolLiteralContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#quotedLiteral.
+	VisitQuotedLiteral(ctx *QuotedLiteralContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#num.
 	VisitNum(ctx *NumContext) interface{}
@@ -133,4 +142,7 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#pipe.
 	VisitPipe(ctx *PipeContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#label.
+	VisitLabel(ctx *LabelContext) interface{}
 }

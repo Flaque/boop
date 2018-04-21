@@ -122,8 +122,17 @@ type BeepBoopListener interface {
 	// EnterUnarySubMath is called when entering the unarySubMath production.
 	EnterUnarySubMath(c *UnarySubMathContext)
 
-	// EnterLiteral is called when entering the literal production.
-	EnterLiteral(c *LiteralContext)
+	// EnterNumLiteral is called when entering the numLiteral production.
+	EnterNumLiteral(c *NumLiteralContext)
+
+	// EnterLettersLiteral is called when entering the lettersLiteral production.
+	EnterLettersLiteral(c *LettersLiteralContext)
+
+	// EnterBoolLiteral is called when entering the boolLiteral production.
+	EnterBoolLiteral(c *BoolLiteralContext)
+
+	// EnterQuotedLiteral is called when entering the quotedLiteral production.
+	EnterQuotedLiteral(c *QuotedLiteralContext)
 
 	// EnterNum is called when entering the num production.
 	EnterNum(c *NumContext)
@@ -133,6 +142,9 @@ type BeepBoopListener interface {
 
 	// EnterPipe is called when entering the pipe production.
 	EnterPipe(c *PipeContext)
+
+	// EnterLabel is called when entering the label production.
+	EnterLabel(c *LabelContext)
 
 	// ExitBoop is called when exiting the boop production.
 	ExitBoop(c *BoopContext)
@@ -248,8 +260,17 @@ type BeepBoopListener interface {
 	// ExitUnarySubMath is called when exiting the unarySubMath production.
 	ExitUnarySubMath(c *UnarySubMathContext)
 
-	// ExitLiteral is called when exiting the literal production.
-	ExitLiteral(c *LiteralContext)
+	// ExitNumLiteral is called when exiting the numLiteral production.
+	ExitNumLiteral(c *NumLiteralContext)
+
+	// ExitLettersLiteral is called when exiting the lettersLiteral production.
+	ExitLettersLiteral(c *LettersLiteralContext)
+
+	// ExitBoolLiteral is called when exiting the boolLiteral production.
+	ExitBoolLiteral(c *BoolLiteralContext)
+
+	// ExitQuotedLiteral is called when exiting the quotedLiteral production.
+	ExitQuotedLiteral(c *QuotedLiteralContext)
 
 	// ExitNum is called when exiting the num production.
 	ExitNum(c *NumContext)
@@ -259,4 +280,7 @@ type BeepBoopListener interface {
 
 	// ExitPipe is called when exiting the pipe production.
 	ExitPipe(c *PipeContext)
+
+	// ExitLabel is called when exiting the label production.
+	ExitLabel(c *LabelContext)
 }
