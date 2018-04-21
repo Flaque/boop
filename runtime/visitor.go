@@ -187,3 +187,10 @@ func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface
 
 	return str
 }
+
+func (v *BeepBoopVisitor) VisitNum(ctx *parser.NumContext) interface{} {
+	val, _ := strconv.Atoi(ctx.GetText())
+
+	// TODO: Throw error
+	return val
+}

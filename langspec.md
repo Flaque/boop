@@ -15,10 +15,10 @@ there
 cat of the hat   # 4 single strings
 "cat of the hat" # one single string
 
-` # this line is ignored
+"
 multiline string
 goes here
-` # So is this line
+"
 
 # booleans
 true
