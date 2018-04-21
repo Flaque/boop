@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"github.com/Flaque/boop/parser"
+	"github.com/Flaque/boop/util"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
@@ -66,7 +67,7 @@ func (v *BeepBoopVisitor) VisitExprAssign(ctx *parser.ExprAssignContext) interfa
 
 	// Grab expression value
 	value := v.Visit(ctx.Term())
-	label := ctx.Label().GetText()
+	label := ctx.LABEL().GetText()
 
 	v.tree.Set(label, value)
 
@@ -77,7 +78,7 @@ func (v *BeepBoopVisitor) VisitFncallAssign(ctx *parser.FncallAssignContext) int
 
 	// Grab expression value
 	value := v.Visit(ctx.Fncall())
-	label := ctx.Label().GetText()
+	label := ctx.LABEL().GetText()
 
 	v.tree.Set(label, value)
 
@@ -93,10 +94,10 @@ func (v *BeepBoopVisitor) VisitFuncguts(ctx *parser.FuncgutsContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitFuncdef(ctx *parser.FuncdefContext) interface{} {
-	name := ctx.Label(0).GetText()
+	name := ctx.LABEL(0).GetText()
 
 	args := []string{}
-	for i, label := range ctx.AllLabel() {
+	for i, label := range ctx.AllLABEL() {
 
 		// Skip name
 		if i == 0 {
@@ -125,7 +126,7 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	}
 
 	// Collect function name
-	name := ctx.Label().GetText()
+	name := ctx.LABEL().GetText()
 	fn, err := v.tree.Get(name)
 
 	// Run a real function
@@ -162,8 +163,12 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	return output
 }
 
+func (v *BeepBoopVisitor) VisitLiteral(ctx *parser.LiteralContext) interface{} {
+	return util.RemoveQuotes(ctx.GetText())
+}
+
 func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface{} {
-	label := ctx.Label().GetText()
+	label := ctx.LABEL().GetText()
 
 	val, err := v.tree.Get(label)
 
@@ -193,4 +198,17 @@ func (v *BeepBoopVisitor) VisitNum(ctx *parser.NumContext) interface{} {
 
 	// TODO: Throw error
 	return val
+}
+
+func (v *BeepBoopVisitor) VisitBoolexpr(ctx *parser.BoolexprContext) interface{} {
+	txt := ctx.GetText()
+	if txt == "true" {
+		return true
+	}
+	if txt == "false" {
+		return false
+	}
+
+	// TODO: Throw error
+	return nil
 }

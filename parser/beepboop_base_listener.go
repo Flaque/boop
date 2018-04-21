@@ -272,21 +272,3 @@ func (s *BaseBeepBoopListener) EnterPipe(ctx *PipeContext) {}
 
 // ExitPipe is called when production pipe is exited.
 func (s *BaseBeepBoopListener) ExitPipe(ctx *PipeContext) {}
-
-// EnterLabel is called when production label is entered.
-func (s *BaseBeepBoopListener) EnterLabel(ctx *LabelContext) {}
-
-// ExitLabel is called when production label is exited.
-func (s *BaseBeepBoopListener) ExitLabel(ctx *LabelContext) {}
-
-// EnterQuoted is called when production quoted is entered.
-func (s *BaseBeepBoopListener) EnterQuoted(ctx *QuotedContext) {}
-
-// ExitQuoted is called when production quoted is exited.
-func (s *BaseBeepBoopListener) ExitQuoted(ctx *QuotedContext) {}
-
-// EnterStringornew is called when production stringornew is entered.
-func (s *BaseBeepBoopListener) EnterStringornew(ctx *StringornewContext) {}
-
-// ExitStringornew is called when production stringornew is exited.
-func (s *BaseBeepBoopListener) ExitStringornew(ctx *StringornewContext) {}

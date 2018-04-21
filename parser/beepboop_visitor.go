@@ -133,13 +133,4 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#pipe.
 	VisitPipe(ctx *PipeContext) interface{}
-
-	// Visit a parse tree produced by BeepBoopParser#label.
-	VisitLabel(ctx *LabelContext) interface{}
-
-	// Visit a parse tree produced by BeepBoopParser#quoted.
-	VisitQuoted(ctx *QuotedContext) interface{}
-
-	// Visit a parse tree produced by BeepBoopParser#stringornew.
-	VisitStringornew(ctx *StringornewContext) interface{}
 }

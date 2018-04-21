@@ -6,10 +6,10 @@ boop: (NEWLINE | NEWLINE+) (code | code+) EOF
 code: funcdef # funcdefCode | statement # statementCode;
 
 funcdef:
-	FUNC label DO END
-	| FUNC label+ DO END
-	| FUNC label DO funcguts END
-	| FUNC label+ DO funcguts END;
+	FUNC LABEL DO END
+	| FUNC LABEL+ DO END
+	| FUNC LABEL DO funcguts END
+	| FUNC LABEL+ DO funcguts END;
 
 funcguts: statement+;
 
@@ -40,15 +40,15 @@ structexpr:
 assignstat: assign NEWLINE;
 
 assign:
-	label ASSIGN term		# exprAssign
-	| label ASSIGN fncall	# fncallAssign;
+	LABEL ASSIGN term		# exprAssign
+	| LABEL ASSIGN fncall	# fncallAssign;
 
 paren_fncall: LPAREN fncall RPAREN;
 
-fncall: label term+ | label;
+fncall: LABEL term+ | LABEL;
 
 term:
-	label			# labelTerm // Also a function call
+	LABEL			# labelTerm // Also a function call
 	| literal		# literalTerm
 	| math			# mathTerm
 	| paren_fncall	# parenfncallTerm
@@ -77,7 +77,7 @@ math:
 	| SUB math					# unarySubMath
 	| num						# soloMath;
 
-literal: num | STRING | boolexpr | quoted;
+literal: num | STRING | boolexpr | QUOTED;
 num: INT;
 boolexpr: TRUE | FALSE;
 
@@ -87,6 +87,22 @@ pipe: term PIPE fncall | term PIPE pipe | fncall PIPE pipe;
 COMMENT: '#' ~[\r\n]* -> skip;
 NEWLINE: [\r\n] | [\r\n]+;
 WHITESPACE: (' ' | '\t')+ -> channel(HIDDEN);
+
+EQUALS: '==';
+ASSIGN: '=';
+PIPE: '|';
+LTHAN: '<';
+GTHAN: '>';
+LTHAN_EQUALS: '<=';
+GTHAN_EQUALS: '>=';
+LPAREN: '(';
+RPAREN: ')';
+LSQUIG: '{';
+RSQUIG: '}';
+LBLOCK: '[';
+RBLOCK: ']';
+
+LABEL: ':' [a-zA-Z]+; // TODO Refactor unicode so this works
 
 // Keywords
 IF: 'if';
@@ -104,23 +120,15 @@ FALSE: 'false';
 OR: 'or';
 AND: 'and';
 
-label: ':' STRING;
-quoted: '"' (stringornew | stringornew+) '"';
-
-stringornew: (STRING | NEWLINE);
-
-EQUALS: '==';
-ASSIGN: '=';
-PIPE: '|';
-LTHAN: '<';
-GTHAN: '>';
-LTHAN_EQUALS: '<=';
-GTHAN_EQUALS: '>=';
-LPAREN: '(';
-RPAREN: ')';
-LSQUIG: '{';
-RSQUIG: '}';
-LBLOCK: '[';
-RBLOCK: ']';
+// Int is above so we recognize it as as a number and not a string
 INT: [0-9]+;
-STRING: [a-zA-Z]+;
+
+// Multiline strings
+QUOTED: '"' (STRINGORNEW+)* '"';
+fragment STRINGORNEW: (STRING | NEWLINE);
+
+// Strings matching all unicode 
+STRING: (ESC | ~["\\]);
+fragment ESC: '\\' (["\\/bfnrt] | UNICODE);
+fragment UNICODE: 'u' HEX HEX HEX HEX;
+fragment HEX: [0-9a-fA-F];

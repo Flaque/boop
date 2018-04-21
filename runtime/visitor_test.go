@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"github.com/Flaque/boop/parser"
+	"github.com/Flaque/boop/util"
 )
 
 func getVisitor() BeepBoopVisitor {
@@ -17,11 +18,14 @@ func getVisitor() BeepBoopVisitor {
 	return BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &tree, &logger}
 }
 
+func getInterpreters(code string) (BeepBoopVisitor, *parser.BeepBoopParser) {
+	return getVisitor(), getParser(code)
+}
+
 func TestNum(t *testing.T) {
 	code := "2"
 
-	p := getParser(code)
-	v := getVisitor()
+	v, p := getInterpreters(code)
 
 	total := v.Visit(p.Num())
 
@@ -33,8 +37,7 @@ func TestNum(t *testing.T) {
 func TestBoolExprTrue(t *testing.T) {
 	code := "true"
 
-	p := getParser(code)
-	v := getVisitor()
+	v, p := getInterpreters(code)
 
 	val := v.Visit(p.Boolexpr())
 
@@ -46,12 +49,24 @@ func TestBoolExprTrue(t *testing.T) {
 func TestBoolExprFalse(t *testing.T) {
 	code := "false"
 
-	p := getParser(code)
-	v := getVisitor()
+	v, p := getInterpreters(code)
 
 	val := v.Visit(p.Boolexpr())
 
 	b, ok := val.(bool)
 	assert.True(t, ok)
 	assert.True(t, !b)
+}
+
+func TestQuotedLiteral(t *testing.T) {
+	samples := []string{`"hello there"`, "\"hi \n there\"", `""`, `"hey"`}
+
+	for _, code := range samples {
+		v, p := getInterpreters(code)
+		val := v.Visit(p.Literal())
+
+		str, ok := val.(string)
+		assert.True(t, ok)
+		assert.Equal(t, util.RemoveQuotes(code), str)
+	}
 }

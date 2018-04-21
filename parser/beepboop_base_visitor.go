@@ -175,15 +175,3 @@ func (v *BaseBeepBoopVisitor) VisitBoolexpr(ctx *BoolexprContext) interface{} {
 func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
-
-func (v *BaseBeepBoopVisitor) VisitLabel(ctx *LabelContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitQuoted(ctx *QuotedContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitStringornew(ctx *StringornewContext) interface{} {
-	return v.VisitChildren(ctx)
-}

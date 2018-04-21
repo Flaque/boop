@@ -134,15 +134,6 @@ type BeepBoopListener interface {
 	// EnterPipe is called when entering the pipe production.
 	EnterPipe(c *PipeContext)
 
-	// EnterLabel is called when entering the label production.
-	EnterLabel(c *LabelContext)
-
-	// EnterQuoted is called when entering the quoted production.
-	EnterQuoted(c *QuotedContext)
-
-	// EnterStringornew is called when entering the stringornew production.
-	EnterStringornew(c *StringornewContext)
-
 	// ExitBoop is called when exiting the boop production.
 	ExitBoop(c *BoopContext)
 
@@ -268,13 +259,4 @@ type BeepBoopListener interface {
 
 	// ExitPipe is called when exiting the pipe production.
 	ExitPipe(c *PipeContext)
-
-	// ExitLabel is called when exiting the label production.
-	ExitLabel(c *LabelContext)
-
-	// ExitQuoted is called when exiting the quoted production.
-	ExitQuoted(c *QuotedContext)
-
-	// ExitStringornew is called when exiting the stringornew production.
-	ExitStringornew(c *StringornewContext)
 }
