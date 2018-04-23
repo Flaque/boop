@@ -13,12 +13,17 @@ funcdef:
 funcguts: statement+;
 
 statement:
-	assignstat			# assignStatement
-	| returnstat		# returnStatement
-	| fncall NEWLINE	# fncallStatement
-	| ifstat NEWLINE	# ifStatement
-	| pipe NEWLINE		# pipeStatement
-	| NEWLINE			# newlineStatement;
+	assignstat				# assignStatement
+	| returnstat			# returnStatement
+	| exportstat			# exportStatement
+	| importstat NEWLINE	# importStatement
+	| fncall NEWLINE		# fncallStatement
+	| ifstat NEWLINE		# ifStatement
+	| pipe NEWLINE			# pipeStatement
+	| NEWLINE				# newlineStatement;
+
+importstat: IMPORT words | IMPORT words AS label;
+exportstat: EXPORT term | label;
 
 ifstat:
 	IF conditional DO statement+ END
@@ -44,7 +49,9 @@ assign:
 
 paren_fncall: LPAREN fncall RPAREN;
 
-fncall: label term+ | label;
+fncall: label fnargs+ | label;
+
+fnargs: FLAG | MULT | DIV | term;
 
 term:
 	label			# labelTerm // Also a function call
@@ -72,22 +79,29 @@ conditional:
 	| boolexpr						# boolCond;
 
 math:
-	math op = (PLUS | SUB) math	# additiveMath
-	| SUB math					# unarySubMath
-	| num						# soloMath;
+	math op = (PLUS | SUB) math		# additiveMath
+	| math op = (MULT | DIV) math	# multiplicativeMath
+	| SUB math						# unarySubMath
+	| num							# soloMath;
 
 literal:
 	num			# numLiteral
-	| LETTERS	# lettersLiteral
-	| boolexpr	# boolLiteral
-	| QUOTED	# quotedLiteral;
+	| words		# wordsLiteral
+	| boolexpr	# boolLiteral;
 
-num: INT;
+num: INT | FLOAT;
+words: LETTERS | STRING | QUOTED;
 boolexpr: TRUE | FALSE;
 
-pipe: term PIPE fncall | term PIPE pipe | fncall PIPE pipe;
+pipe:
+	pipe PIPE fncall
+	| pipe PIPE pipe
+	| pipe NEWLINE PIPE pipe
+	| fncall
+	| term;
 
 label: ':' LETTERS;
+FLAG: '-'+ LETTERS+;
 
 // Comments and whitespace
 COMMENT: '#' ~[\r\n]* -> skip;
@@ -107,18 +121,21 @@ LSQUIG: '{';
 RSQUIG: '}';
 LBLOCK: '[';
 RBLOCK: ']';
+PLUS: '+';
+SUB: '-';
+DIV: '/';
+MULT: '*';
 
 // Keywords
+IMPORT: 'import';
+EXPORT: 'export';
+AS: 'as';
 IF: 'if';
 DO: 'do';
 END: 'end';
 FUNC: 'func';
 RETURN: 'return';
 FOR: 'for';
-PLUS: 'add';
-SUB: 'sub';
-DIV: 'div';
-MULT: 'mult';
 TRUE: 'true';
 FALSE: 'false';
 OR: 'or';
@@ -126,6 +143,7 @@ AND: 'and';
 
 // Int is above so we recognize it as as a number and not a string
 INT: [0-9]+;
+FLOAT: INT '.' INT;
 
 // Multiline strings
 QUOTED: '"' (STRINGORNEW+)* '"';

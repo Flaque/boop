@@ -29,6 +29,12 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#returnStatement.
 	VisitReturnStatement(ctx *ReturnStatementContext) interface{}
 
+	// Visit a parse tree produced by BeepBoopParser#exportStatement.
+	VisitExportStatement(ctx *ExportStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#importStatement.
+	VisitImportStatement(ctx *ImportStatementContext) interface{}
+
 	// Visit a parse tree produced by BeepBoopParser#fncallStatement.
 	VisitFncallStatement(ctx *FncallStatementContext) interface{}
 
@@ -40,6 +46,12 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#newlineStatement.
 	VisitNewlineStatement(ctx *NewlineStatementContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#importstat.
+	VisitImportstat(ctx *ImportstatContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#exportstat.
+	VisitExportstat(ctx *ExportstatContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#ifstat.
 	VisitIfstat(ctx *IfstatContext) interface{}
@@ -64,6 +76,9 @@ type BeepBoopVisitor interface {
 
 	// Visit a parse tree produced by BeepBoopParser#fncall.
 	VisitFncall(ctx *FncallContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#fnargs.
+	VisitFnargs(ctx *FnargsContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#labelTerm.
 	VisitLabelTerm(ctx *LabelTermContext) interface{}
@@ -116,6 +131,9 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#soloMath.
 	VisitSoloMath(ctx *SoloMathContext) interface{}
 
+	// Visit a parse tree produced by BeepBoopParser#multiplicativeMath.
+	VisitMultiplicativeMath(ctx *MultiplicativeMathContext) interface{}
+
 	// Visit a parse tree produced by BeepBoopParser#additiveMath.
 	VisitAdditiveMath(ctx *AdditiveMathContext) interface{}
 
@@ -125,17 +143,17 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#numLiteral.
 	VisitNumLiteral(ctx *NumLiteralContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#lettersLiteral.
-	VisitLettersLiteral(ctx *LettersLiteralContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#wordsLiteral.
+	VisitWordsLiteral(ctx *WordsLiteralContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#boolLiteral.
 	VisitBoolLiteral(ctx *BoolLiteralContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#quotedLiteral.
-	VisitQuotedLiteral(ctx *QuotedLiteralContext) interface{}
-
 	// Visit a parse tree produced by BeepBoopParser#num.
 	VisitNum(ctx *NumContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#words.
+	VisitWords(ctx *WordsContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#boolexpr.
 	VisitBoolexpr(ctx *BoolexprContext) interface{}

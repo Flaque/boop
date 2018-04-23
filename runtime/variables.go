@@ -28,6 +28,10 @@ func NewVariable(t Type, val interface{}) *Variable {
 
 func GetVariable(val interface{}) *Variable {
 
+	if val == nil {
+		return NewVariable(UNKNOWN, nil)
+	}
+
 	if v, ok := val.(*Variable); ok {
 		return v
 	}
@@ -77,6 +81,12 @@ func (v *Variable) Is(t Type) bool {
 
 // Equals returns true if the interface matches the stored val
 func (v *Variable) Equals(val interface{}) bool {
+
+	// Unknowns never equal each other
+	if v.Type == UNKNOWN {
+		return false
+	}
+
 	return v.Value == val
 }
 
@@ -85,4 +95,17 @@ func (v *Variable) Equals(val interface{}) bool {
 func (v *Variable) AsString() string {
 	str, _ := v.Value.(string)
 	return str
+}
+
+func (v *Variable) Plus(other *Variable) *Variable {
+
+	// TODO: Allow FLOAT to add too
+	if v.Type != INT || other.Type != INT {
+		return NewVariable(UNKNOWN, nil)
+	}
+
+	// Add ints
+	aval, _ := v.Value.(int)
+	bval, _ := v.Value.(int)
+	return NewVariable(INT, aval+bval)
 }

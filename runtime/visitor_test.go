@@ -2,6 +2,7 @@ package runtime
 
 import (
 	"bytes"
+	"strconv"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -91,4 +92,17 @@ func TestBoolLiteral(t *testing.T) {
 	v, p = getInterpreters("false")
 	val = GetVariable(v.Visit(p.Literal()))
 	assert.True(t, val.Equals(false), val.Is(BOOL))
+}
+
+func TestIntLiteral(t *testing.T) {
+
+	samples := []string{"1", "23", "123905920309443523"}
+
+	for _, code := range samples {
+		v, p := getInterpreters(code)
+
+		val := GetVariable(v.Visit(p.Literal()))
+		expected, _ := strconv.Atoi(code)
+		assert.True(t, val.Equals(expected), val.Is(INT))
+	}
 }

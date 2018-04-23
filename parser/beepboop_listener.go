@@ -29,6 +29,12 @@ type BeepBoopListener interface {
 	// EnterReturnStatement is called when entering the returnStatement production.
 	EnterReturnStatement(c *ReturnStatementContext)
 
+	// EnterExportStatement is called when entering the exportStatement production.
+	EnterExportStatement(c *ExportStatementContext)
+
+	// EnterImportStatement is called when entering the importStatement production.
+	EnterImportStatement(c *ImportStatementContext)
+
 	// EnterFncallStatement is called when entering the fncallStatement production.
 	EnterFncallStatement(c *FncallStatementContext)
 
@@ -40,6 +46,12 @@ type BeepBoopListener interface {
 
 	// EnterNewlineStatement is called when entering the newlineStatement production.
 	EnterNewlineStatement(c *NewlineStatementContext)
+
+	// EnterImportstat is called when entering the importstat production.
+	EnterImportstat(c *ImportstatContext)
+
+	// EnterExportstat is called when entering the exportstat production.
+	EnterExportstat(c *ExportstatContext)
 
 	// EnterIfstat is called when entering the ifstat production.
 	EnterIfstat(c *IfstatContext)
@@ -64,6 +76,9 @@ type BeepBoopListener interface {
 
 	// EnterFncall is called when entering the fncall production.
 	EnterFncall(c *FncallContext)
+
+	// EnterFnargs is called when entering the fnargs production.
+	EnterFnargs(c *FnargsContext)
 
 	// EnterLabelTerm is called when entering the labelTerm production.
 	EnterLabelTerm(c *LabelTermContext)
@@ -116,6 +131,9 @@ type BeepBoopListener interface {
 	// EnterSoloMath is called when entering the soloMath production.
 	EnterSoloMath(c *SoloMathContext)
 
+	// EnterMultiplicativeMath is called when entering the multiplicativeMath production.
+	EnterMultiplicativeMath(c *MultiplicativeMathContext)
+
 	// EnterAdditiveMath is called when entering the additiveMath production.
 	EnterAdditiveMath(c *AdditiveMathContext)
 
@@ -125,17 +143,17 @@ type BeepBoopListener interface {
 	// EnterNumLiteral is called when entering the numLiteral production.
 	EnterNumLiteral(c *NumLiteralContext)
 
-	// EnterLettersLiteral is called when entering the lettersLiteral production.
-	EnterLettersLiteral(c *LettersLiteralContext)
+	// EnterWordsLiteral is called when entering the wordsLiteral production.
+	EnterWordsLiteral(c *WordsLiteralContext)
 
 	// EnterBoolLiteral is called when entering the boolLiteral production.
 	EnterBoolLiteral(c *BoolLiteralContext)
 
-	// EnterQuotedLiteral is called when entering the quotedLiteral production.
-	EnterQuotedLiteral(c *QuotedLiteralContext)
-
 	// EnterNum is called when entering the num production.
 	EnterNum(c *NumContext)
+
+	// EnterWords is called when entering the words production.
+	EnterWords(c *WordsContext)
 
 	// EnterBoolexpr is called when entering the boolexpr production.
 	EnterBoolexpr(c *BoolexprContext)
@@ -167,6 +185,12 @@ type BeepBoopListener interface {
 	// ExitReturnStatement is called when exiting the returnStatement production.
 	ExitReturnStatement(c *ReturnStatementContext)
 
+	// ExitExportStatement is called when exiting the exportStatement production.
+	ExitExportStatement(c *ExportStatementContext)
+
+	// ExitImportStatement is called when exiting the importStatement production.
+	ExitImportStatement(c *ImportStatementContext)
+
 	// ExitFncallStatement is called when exiting the fncallStatement production.
 	ExitFncallStatement(c *FncallStatementContext)
 
@@ -178,6 +202,12 @@ type BeepBoopListener interface {
 
 	// ExitNewlineStatement is called when exiting the newlineStatement production.
 	ExitNewlineStatement(c *NewlineStatementContext)
+
+	// ExitImportstat is called when exiting the importstat production.
+	ExitImportstat(c *ImportstatContext)
+
+	// ExitExportstat is called when exiting the exportstat production.
+	ExitExportstat(c *ExportstatContext)
 
 	// ExitIfstat is called when exiting the ifstat production.
 	ExitIfstat(c *IfstatContext)
@@ -202,6 +232,9 @@ type BeepBoopListener interface {
 
 	// ExitFncall is called when exiting the fncall production.
 	ExitFncall(c *FncallContext)
+
+	// ExitFnargs is called when exiting the fnargs production.
+	ExitFnargs(c *FnargsContext)
 
 	// ExitLabelTerm is called when exiting the labelTerm production.
 	ExitLabelTerm(c *LabelTermContext)
@@ -254,6 +287,9 @@ type BeepBoopListener interface {
 	// ExitSoloMath is called when exiting the soloMath production.
 	ExitSoloMath(c *SoloMathContext)
 
+	// ExitMultiplicativeMath is called when exiting the multiplicativeMath production.
+	ExitMultiplicativeMath(c *MultiplicativeMathContext)
+
 	// ExitAdditiveMath is called when exiting the additiveMath production.
 	ExitAdditiveMath(c *AdditiveMathContext)
 
@@ -263,17 +299,17 @@ type BeepBoopListener interface {
 	// ExitNumLiteral is called when exiting the numLiteral production.
 	ExitNumLiteral(c *NumLiteralContext)
 
-	// ExitLettersLiteral is called when exiting the lettersLiteral production.
-	ExitLettersLiteral(c *LettersLiteralContext)
+	// ExitWordsLiteral is called when exiting the wordsLiteral production.
+	ExitWordsLiteral(c *WordsLiteralContext)
 
 	// ExitBoolLiteral is called when exiting the boolLiteral production.
 	ExitBoolLiteral(c *BoolLiteralContext)
 
-	// ExitQuotedLiteral is called when exiting the quotedLiteral production.
-	ExitQuotedLiteral(c *QuotedLiteralContext)
-
 	// ExitNum is called when exiting the num production.
 	ExitNum(c *NumContext)
+
+	// ExitWords is called when exiting the words production.
+	ExitWords(c *WordsContext)
 
 	// ExitBoolexpr is called when exiting the boolexpr production.
 	ExitBoolexpr(c *BoolexprContext)

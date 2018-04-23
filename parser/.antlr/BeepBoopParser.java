@@ -16,37 +16,38 @@ public class BeepBoopParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, COMMENT=2, NEWLINE=3, WHITESPACE=4, EQUALS=5, ASSIGN=6, PIPE=7, 
-		LTHAN=8, GTHAN=9, LTHAN_EQUALS=10, GTHAN_EQUALS=11, LPAREN=12, RPAREN=13, 
-		LSQUIG=14, RSQUIG=15, LBLOCK=16, RBLOCK=17, IF=18, DO=19, END=20, FUNC=21, 
-		RETURN=22, FOR=23, PLUS=24, SUB=25, DIV=26, MULT=27, TRUE=28, FALSE=29, 
-		OR=30, AND=31, INT=32, QUOTED=33, LETTERS=34, STRING=35;
+		T__0=1, FLAG=2, COMMENT=3, NEWLINE=4, WHITESPACE=5, EQUALS=6, ASSIGN=7, 
+		PIPE=8, LTHAN=9, GTHAN=10, LTHAN_EQUALS=11, GTHAN_EQUALS=12, LPAREN=13, 
+		RPAREN=14, LSQUIG=15, RSQUIG=16, LBLOCK=17, RBLOCK=18, PLUS=19, SUB=20, 
+		DIV=21, MULT=22, IMPORT=23, EXPORT=24, AS=25, IF=26, DO=27, END=28, FUNC=29, 
+		RETURN=30, FOR=31, TRUE=32, FALSE=33, OR=34, AND=35, INT=36, FLOAT=37, 
+		QUOTED=38, LETTERS=39, STRING=40;
 	public static final int
 		RULE_boop = 0, RULE_code = 1, RULE_funcdef = 2, RULE_funcguts = 3, RULE_statement = 4, 
-		RULE_ifstat = 5, RULE_returnstat = 6, RULE_structexpr = 7, RULE_assignstat = 8, 
-		RULE_assign = 9, RULE_paren_fncall = 10, RULE_fncall = 11, RULE_term = 12, 
-		RULE_list = 13, RULE_listterm = 14, RULE_conditional = 15, RULE_math = 16, 
-		RULE_literal = 17, RULE_num = 18, RULE_boolexpr = 19, RULE_pipe = 20, 
-		RULE_label = 21;
+		RULE_importstat = 5, RULE_exportstat = 6, RULE_ifstat = 7, RULE_returnstat = 8, 
+		RULE_structexpr = 9, RULE_assignstat = 10, RULE_assign = 11, RULE_paren_fncall = 12, 
+		RULE_fncall = 13, RULE_fnargs = 14, RULE_term = 15, RULE_list = 16, RULE_listterm = 17, 
+		RULE_conditional = 18, RULE_math = 19, RULE_literal = 20, RULE_num = 21, 
+		RULE_words = 22, RULE_boolexpr = 23, RULE_pipe = 24, RULE_label = 25;
 	public static final String[] ruleNames = {
-		"boop", "code", "funcdef", "funcguts", "statement", "ifstat", "returnstat", 
-		"structexpr", "assignstat", "assign", "paren_fncall", "fncall", "term", 
-		"list", "listterm", "conditional", "math", "literal", "num", "boolexpr", 
-		"pipe", "label"
+		"boop", "code", "funcdef", "funcguts", "statement", "importstat", "exportstat", 
+		"ifstat", "returnstat", "structexpr", "assignstat", "assign", "paren_fncall", 
+		"fncall", "fnargs", "term", "list", "listterm", "conditional", "math", 
+		"literal", "num", "words", "boolexpr", "pipe", "label"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "':'", null, null, null, "'=='", "'='", "'|'", "'<'", "'>'", "'<='", 
-		"'>='", "'('", "')'", "'{'", "'}'", "'['", "']'", "'if'", "'do'", "'end'", 
-		"'func'", "'return'", "'for'", "'add'", "'sub'", "'div'", "'mult'", "'true'", 
-		"'false'", "'or'", "'and'"
+		null, "':'", null, null, null, null, "'=='", "'='", "'|'", "'<'", "'>'", 
+		"'<='", "'>='", "'('", "')'", "'{'", "'}'", "'['", "']'", "'+'", "'-'", 
+		"'/'", "'*'", "'import'", "'export'", "'as'", "'if'", "'do'", "'end'", 
+		"'func'", "'return'", "'for'", "'true'", "'false'", "'or'", "'and'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "COMMENT", "NEWLINE", "WHITESPACE", "EQUALS", "ASSIGN", "PIPE", 
-		"LTHAN", "GTHAN", "LTHAN_EQUALS", "GTHAN_EQUALS", "LPAREN", "RPAREN", 
-		"LSQUIG", "RSQUIG", "LBLOCK", "RBLOCK", "IF", "DO", "END", "FUNC", "RETURN", 
-		"FOR", "PLUS", "SUB", "DIV", "MULT", "TRUE", "FALSE", "OR", "AND", "INT", 
-		"QUOTED", "LETTERS", "STRING"
+		null, null, "FLAG", "COMMENT", "NEWLINE", "WHITESPACE", "EQUALS", "ASSIGN", 
+		"PIPE", "LTHAN", "GTHAN", "LTHAN_EQUALS", "GTHAN_EQUALS", "LPAREN", "RPAREN", 
+		"LSQUIG", "RSQUIG", "LBLOCK", "RBLOCK", "PLUS", "SUB", "DIV", "MULT", 
+		"IMPORT", "EXPORT", "AS", "IF", "DO", "END", "FUNC", "RETURN", "FOR", 
+		"TRUE", "FALSE", "OR", "AND", "INT", "FLOAT", "QUOTED", "LETTERS", "STRING"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -121,24 +122,24 @@ public class BeepBoopParser extends Parser {
 		int _la;
 		try {
 			int _alt;
-			setState(72);
+			setState(80);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(50);
+				setState(58);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 				case 1:
 					{
-					setState(44);
+					setState(52);
 					match(NEWLINE);
 					}
 					break;
 				case 2:
 					{
-					setState(46); 
+					setState(54); 
 					_errHandler.sync(this);
 					_alt = 1;
 					do {
@@ -146,7 +147,7 @@ public class BeepBoopParser extends Parser {
 						case 1:
 							{
 							{
-							setState(45);
+							setState(53);
 							match(NEWLINE);
 							}
 							}
@@ -154,77 +155,77 @@ public class BeepBoopParser extends Parser {
 						default:
 							throw new NoViableAltException(this);
 						}
-						setState(48); 
+						setState(56); 
 						_errHandler.sync(this);
 						_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 					} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 					}
 					break;
 				}
-				setState(58);
+				setState(66);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 				case 1:
 					{
-					setState(52);
+					setState(60);
 					code();
 					}
 					break;
 				case 2:
 					{
-					setState(54); 
+					setState(62); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
 						{
 						{
-						setState(53);
+						setState(61);
 						code();
 						}
 						}
-						setState(56); 
+						setState(64); 
 						_errHandler.sync(this);
 						_la = _input.LA(1);
-					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << IF) | (1L << FUNC) | (1L << RETURN) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
+					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << IMPORT) | (1L << EXPORT) | (1L << IF) | (1L << FUNC) | (1L << RETURN) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
 					}
 					break;
 				}
-				setState(60);
+				setState(68);
 				match(EOF);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(68);
+				setState(76);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 				case 1:
 					{
-					setState(62);
+					setState(70);
 					code();
 					}
 					break;
 				case 2:
 					{
-					setState(64); 
+					setState(72); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
 						{
 						{
-						setState(63);
+						setState(71);
 						code();
 						}
 						}
-						setState(66); 
+						setState(74); 
 						_errHandler.sync(this);
 						_la = _input.LA(1);
-					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << IF) | (1L << FUNC) | (1L << RETURN) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
+					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << IMPORT) | (1L << EXPORT) | (1L << IF) | (1L << FUNC) | (1L << RETURN) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
 					}
 					break;
 				}
-				setState(70);
+				setState(78);
 				match(EOF);
 				}
 				break;
@@ -269,14 +270,14 @@ public class BeepBoopParser extends Parser {
 		CodeContext _localctx = new CodeContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_code);
 		try {
-			setState(76);
+			setState(84);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case FUNC:
 				_localctx = new FuncdefCodeContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(74);
+				setState(82);
 				funcdef();
 				}
 				break;
@@ -285,18 +286,22 @@ public class BeepBoopParser extends Parser {
 			case LPAREN:
 			case LSQUIG:
 			case LBLOCK:
+			case SUB:
+			case IMPORT:
+			case EXPORT:
 			case IF:
 			case RETURN:
-			case SUB:
 			case TRUE:
 			case FALSE:
 			case INT:
+			case FLOAT:
 			case QUOTED:
 			case LETTERS:
+			case STRING:
 				_localctx = new StatementCodeContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(75);
+				setState(83);
 				statement();
 				}
 				break;
@@ -339,86 +344,86 @@ public class BeepBoopParser extends Parser {
 		enterRule(_localctx, 4, RULE_funcdef);
 		int _la;
 		try {
-			setState(108);
+			setState(116);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(78);
+				setState(86);
 				match(FUNC);
-				setState(79);
+				setState(87);
 				label();
-				setState(80);
+				setState(88);
 				match(DO);
-				setState(81);
+				setState(89);
 				match(END);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(83);
+				setState(91);
 				match(FUNC);
-				setState(85); 
+				setState(93); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(84);
+					setState(92);
 					label();
 					}
 					}
-					setState(87); 
+					setState(95); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==T__0 );
-				setState(89);
+				setState(97);
 				match(DO);
-				setState(90);
+				setState(98);
 				match(END);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(92);
+				setState(100);
 				match(FUNC);
-				setState(93);
+				setState(101);
 				label();
-				setState(94);
+				setState(102);
 				match(DO);
-				setState(95);
+				setState(103);
 				funcguts();
-				setState(96);
+				setState(104);
 				match(END);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(98);
+				setState(106);
 				match(FUNC);
-				setState(100); 
+				setState(108); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(99);
+					setState(107);
 					label();
 					}
 					}
-					setState(102); 
+					setState(110); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==T__0 );
-				setState(104);
+				setState(112);
 				match(DO);
-				setState(105);
+				setState(113);
 				funcguts();
-				setState(106);
+				setState(114);
 				match(END);
 				}
 				break;
@@ -455,20 +460,20 @@ public class BeepBoopParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(111); 
+			setState(119); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(110);
+				setState(118);
 				statement();
 				}
 				}
-				setState(113); 
+				setState(121); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << IF) | (1L << RETURN) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << IMPORT) | (1L << EXPORT) | (1L << IF) | (1L << RETURN) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -499,6 +504,19 @@ public class BeepBoopParser extends Parser {
 		}
 		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
 		public PipeStatementContext(StatementContext ctx) { copyFrom(ctx); }
+	}
+	public static class ExportStatementContext extends StatementContext {
+		public ExportstatContext exportstat() {
+			return getRuleContext(ExportstatContext.class,0);
+		}
+		public ExportStatementContext(StatementContext ctx) { copyFrom(ctx); }
+	}
+	public static class ImportStatementContext extends StatementContext {
+		public ImportstatContext importstat() {
+			return getRuleContext(ImportstatContext.class,0);
+		}
+		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
+		public ImportStatementContext(StatementContext ctx) { copyFrom(ctx); }
 	}
 	public static class AssignStatementContext extends StatementContext {
 		public AssignstatContext assignstat() {
@@ -535,14 +553,14 @@ public class BeepBoopParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_statement);
 		try {
-			setState(127);
+			setState(139);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				_localctx = new AssignStatementContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(115);
+				setState(123);
 				assignstat();
 				}
 				break;
@@ -550,48 +568,175 @@ public class BeepBoopParser extends Parser {
 				_localctx = new ReturnStatementContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(116);
+				setState(124);
 				returnstat();
 				}
 				break;
 			case 3:
-				_localctx = new FncallStatementContext(_localctx);
+				_localctx = new ExportStatementContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(117);
-				fncall();
-				setState(118);
-				match(NEWLINE);
+				setState(125);
+				exportstat();
 				}
 				break;
 			case 4:
-				_localctx = new IfStatementContext(_localctx);
+				_localctx = new ImportStatementContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(120);
-				ifstat();
-				setState(121);
+				setState(126);
+				importstat();
+				setState(127);
 				match(NEWLINE);
 				}
 				break;
 			case 5:
-				_localctx = new PipeStatementContext(_localctx);
+				_localctx = new FncallStatementContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(123);
-				pipe();
-				setState(124);
+				setState(129);
+				fncall();
+				setState(130);
 				match(NEWLINE);
 				}
 				break;
 			case 6:
-				_localctx = new NewlineStatementContext(_localctx);
+				_localctx = new IfStatementContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(126);
+				setState(132);
+				ifstat();
+				setState(133);
 				match(NEWLINE);
 				}
 				break;
+			case 7:
+				_localctx = new PipeStatementContext(_localctx);
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(135);
+				pipe(0);
+				setState(136);
+				match(NEWLINE);
+				}
+				break;
+			case 8:
+				_localctx = new NewlineStatementContext(_localctx);
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(138);
+				match(NEWLINE);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ImportstatContext extends ParserRuleContext {
+		public TerminalNode IMPORT() { return getToken(BeepBoopParser.IMPORT, 0); }
+		public WordsContext words() {
+			return getRuleContext(WordsContext.class,0);
+		}
+		public TerminalNode AS() { return getToken(BeepBoopParser.AS, 0); }
+		public LabelContext label() {
+			return getRuleContext(LabelContext.class,0);
+		}
+		public ImportstatContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_importstat; }
+	}
+
+	public final ImportstatContext importstat() throws RecognitionException {
+		ImportstatContext _localctx = new ImportstatContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_importstat);
+		try {
+			setState(148);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(141);
+				match(IMPORT);
+				setState(142);
+				words();
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(143);
+				match(IMPORT);
+				setState(144);
+				words();
+				setState(145);
+				match(AS);
+				setState(146);
+				label();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ExportstatContext extends ParserRuleContext {
+		public TerminalNode EXPORT() { return getToken(BeepBoopParser.EXPORT, 0); }
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public LabelContext label() {
+			return getRuleContext(LabelContext.class,0);
+		}
+		public ExportstatContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_exportstat; }
+	}
+
+	public final ExportstatContext exportstat() throws RecognitionException {
+		ExportstatContext _localctx = new ExportstatContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_exportstat);
+		try {
+			setState(153);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case EXPORT:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(150);
+				match(EXPORT);
+				setState(151);
+				term();
+				}
+				break;
+			case T__0:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(152);
+				label();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -626,49 +771,49 @@ public class BeepBoopParser extends Parser {
 
 	public final IfstatContext ifstat() throws RecognitionException {
 		IfstatContext _localctx = new IfstatContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_ifstat);
+		enterRule(_localctx, 14, RULE_ifstat);
 		int _la;
 		try {
-			setState(144);
+			setState(170);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(129);
+				setState(155);
 				match(IF);
-				setState(130);
+				setState(156);
 				conditional(0);
-				setState(131);
+				setState(157);
 				match(DO);
-				setState(133); 
+				setState(159); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(132);
+					setState(158);
 					statement();
 					}
 					}
-					setState(135); 
+					setState(161); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << IF) | (1L << RETURN) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
-				setState(137);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NEWLINE) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << IMPORT) | (1L << EXPORT) | (1L << IF) | (1L << RETURN) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
+				setState(163);
 				match(END);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(139);
+				setState(165);
 				match(IF);
-				setState(140);
+				setState(166);
 				conditional(0);
-				setState(141);
+				setState(167);
 				match(DO);
-				setState(142);
+				setState(168);
 				match(END);
 				}
 				break;
@@ -702,40 +847,40 @@ public class BeepBoopParser extends Parser {
 
 	public final ReturnstatContext returnstat() throws RecognitionException {
 		ReturnstatContext _localctx = new ReturnstatContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_returnstat);
+		enterRule(_localctx, 16, RULE_returnstat);
 		try {
 			int _alt;
-			setState(167);
+			setState(193);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,19,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(146);
+				setState(172);
 				match(RETURN);
-				setState(147);
+				setState(173);
 				term();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(148);
+				setState(174);
 				match(RETURN);
-				setState(149);
+				setState(175);
 				term();
-				setState(156);
+				setState(182);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
 				case 1:
 					{
-					setState(150);
+					setState(176);
 					match(NEWLINE);
 					}
 					break;
 				case 2:
 					{
-					setState(152); 
+					setState(178); 
 					_errHandler.sync(this);
 					_alt = 1;
 					do {
@@ -743,7 +888,7 @@ public class BeepBoopParser extends Parser {
 						case 1:
 							{
 							{
-							setState(151);
+							setState(177);
 							match(NEWLINE);
 							}
 							}
@@ -751,9 +896,9 @@ public class BeepBoopParser extends Parser {
 						default:
 							throw new NoViableAltException(this);
 						}
-						setState(154); 
+						setState(180); 
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 					} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 					}
 					break;
@@ -763,20 +908,20 @@ public class BeepBoopParser extends Parser {
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(158);
+				setState(184);
 				match(RETURN);
-				setState(165);
+				setState(191);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,20,_ctx) ) {
 				case 1:
 					{
-					setState(159);
+					setState(185);
 					match(NEWLINE);
 					}
 					break;
 				case 2:
 					{
-					setState(161); 
+					setState(187); 
 					_errHandler.sync(this);
 					_alt = 1;
 					do {
@@ -784,7 +929,7 @@ public class BeepBoopParser extends Parser {
 						case 1:
 							{
 							{
-							setState(160);
+							setState(186);
 							match(NEWLINE);
 							}
 							}
@@ -792,9 +937,9 @@ public class BeepBoopParser extends Parser {
 						default:
 							throw new NoViableAltException(this);
 						}
-						setState(163); 
+						setState(189); 
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 					} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 					}
 					break;
@@ -835,118 +980,118 @@ public class BeepBoopParser extends Parser {
 
 	public final StructexprContext structexpr() throws RecognitionException {
 		StructexprContext _localctx = new StructexprContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_structexpr);
+		enterRule(_localctx, 18, RULE_structexpr);
 		int _la;
 		try {
-			setState(203);
+			setState(229);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(169);
+				setState(195);
 				match(LSQUIG);
-				setState(170);
+				setState(196);
 				match(RSQUIG);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(171);
+				setState(197);
 				match(LSQUIG);
-				setState(172);
+				setState(198);
 				match(NEWLINE);
-				setState(179);
+				setState(205);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
 				case 1:
 					{
-					setState(173);
+					setState(199);
 					assignstat();
 					}
 					break;
 				case 2:
 					{
-					setState(175); 
+					setState(201); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
 						{
 						{
-						setState(174);
+						setState(200);
 						assignstat();
 						}
 						}
-						setState(177); 
+						setState(203); 
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					} while ( _la==T__0 );
 					}
 					break;
 				}
-				setState(181);
+				setState(207);
 				match(RSQUIG);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(183);
+				setState(209);
 				match(LSQUIG);
-				setState(190);
+				setState(216);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
 				case 1:
 					{
-					setState(184);
+					setState(210);
 					assignstat();
 					}
 					break;
 				case 2:
 					{
-					setState(186); 
+					setState(212); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
 						{
 						{
-						setState(185);
+						setState(211);
 						assignstat();
 						}
 						}
-						setState(188); 
+						setState(214); 
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					} while ( _la==T__0 );
 					}
 					break;
 				}
-				setState(192);
+				setState(218);
 				match(RSQUIG);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(194);
+				setState(220);
 				match(LSQUIG);
-				setState(195);
+				setState(221);
 				assign();
-				setState(196);
+				setState(222);
 				match(RSQUIG);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(198);
+				setState(224);
 				match(LSQUIG);
-				setState(199);
+				setState(225);
 				match(NEWLINE);
-				setState(200);
+				setState(226);
 				assign();
-				setState(201);
+				setState(227);
 				match(RSQUIG);
 				}
 				break;
@@ -976,13 +1121,13 @@ public class BeepBoopParser extends Parser {
 
 	public final AssignstatContext assignstat() throws RecognitionException {
 		AssignstatContext _localctx = new AssignstatContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_assignstat);
+		enterRule(_localctx, 20, RULE_assignstat);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(205);
+			setState(231);
 			assign();
-			setState(206);
+			setState(232);
 			match(NEWLINE);
 			}
 		}
@@ -1031,20 +1176,20 @@ public class BeepBoopParser extends Parser {
 
 	public final AssignContext assign() throws RecognitionException {
 		AssignContext _localctx = new AssignContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_assign);
+		enterRule(_localctx, 22, RULE_assign);
 		try {
-			setState(216);
+			setState(242);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,27,_ctx) ) {
 			case 1:
 				_localctx = new ExprAssignContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(208);
+				setState(234);
 				label();
-				setState(209);
+				setState(235);
 				match(ASSIGN);
-				setState(210);
+				setState(236);
 				term();
 				}
 				break;
@@ -1052,11 +1197,11 @@ public class BeepBoopParser extends Parser {
 				_localctx = new FncallAssignContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(212);
+				setState(238);
 				label();
-				setState(213);
+				setState(239);
 				match(ASSIGN);
-				setState(214);
+				setState(240);
 				fncall();
 				}
 				break;
@@ -1087,15 +1232,15 @@ public class BeepBoopParser extends Parser {
 
 	public final Paren_fncallContext paren_fncall() throws RecognitionException {
 		Paren_fncallContext _localctx = new Paren_fncallContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_paren_fncall);
+		enterRule(_localctx, 24, RULE_paren_fncall);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(218);
+			setState(244);
 			match(LPAREN);
-			setState(219);
+			setState(245);
 			fncall();
-			setState(220);
+			setState(246);
 			match(RPAREN);
 			}
 		}
@@ -1114,11 +1259,11 @@ public class BeepBoopParser extends Parser {
 		public LabelContext label() {
 			return getRuleContext(LabelContext.class,0);
 		}
-		public List<TermContext> term() {
-			return getRuleContexts(TermContext.class);
+		public List<FnargsContext> fnargs() {
+			return getRuleContexts(FnargsContext.class);
 		}
-		public TermContext term(int i) {
-			return getRuleContext(TermContext.class,i);
+		public FnargsContext fnargs(int i) {
+			return getRuleContext(FnargsContext.class,i);
 		}
 		public FncallContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1128,40 +1273,120 @@ public class BeepBoopParser extends Parser {
 
 	public final FncallContext fncall() throws RecognitionException {
 		FncallContext _localctx = new FncallContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_fncall);
-		int _la;
+		enterRule(_localctx, 26, RULE_fncall);
 		try {
-			setState(229);
+			int _alt;
+			setState(255);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,27,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,29,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(222);
+				setState(248);
 				label();
-				setState(224); 
+				setState(250); 
 				_errHandler.sync(this);
-				_la = _input.LA(1);
+				_alt = 1;
 				do {
-					{
-					{
-					setState(223);
-					term();
+					switch (_alt) {
+					case 1:
+						{
+						{
+						setState(249);
+						fnargs();
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
 					}
-					}
-					setState(226); 
+					setState(252); 
 					_errHandler.sync(this);
-					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
+					_alt = getInterpreter().adaptivePredict(_input,28,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(228);
+				setState(254);
 				label();
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FnargsContext extends ParserRuleContext {
+		public TerminalNode FLAG() { return getToken(BeepBoopParser.FLAG, 0); }
+		public TerminalNode MULT() { return getToken(BeepBoopParser.MULT, 0); }
+		public TerminalNode DIV() { return getToken(BeepBoopParser.DIV, 0); }
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public FnargsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_fnargs; }
+	}
+
+	public final FnargsContext fnargs() throws RecognitionException {
+		FnargsContext _localctx = new FnargsContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_fnargs);
+		try {
+			setState(261);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case FLAG:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(257);
+				match(FLAG);
+				}
+				break;
+			case MULT:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(258);
+				match(MULT);
+				}
+				break;
+			case DIV:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(259);
+				match(DIV);
+				}
+				break;
+			case T__0:
+			case LPAREN:
+			case LSQUIG:
+			case LBLOCK:
+			case SUB:
+			case TRUE:
+			case FALSE:
+			case INT:
+			case FLOAT:
+			case QUOTED:
+			case LETTERS:
+			case STRING:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(260);
+				term();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1225,16 +1450,16 @@ public class BeepBoopParser extends Parser {
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_term);
+		enterRule(_localctx, 30, RULE_term);
 		try {
-			setState(237);
+			setState(269);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,31,_ctx) ) {
 			case 1:
 				_localctx = new LabelTermContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(231);
+				setState(263);
 				label();
 				}
 				break;
@@ -1242,7 +1467,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new LiteralTermContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(232);
+				setState(264);
 				literal();
 				}
 				break;
@@ -1250,7 +1475,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new MathTermContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(233);
+				setState(265);
 				math(0);
 				}
 				break;
@@ -1258,7 +1483,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new ParenfncallTermContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(234);
+				setState(266);
 				paren_fncall();
 				}
 				break;
@@ -1266,7 +1491,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new StructTermContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(235);
+				setState(267);
 				structexpr();
 				}
 				break;
@@ -1274,7 +1499,7 @@ public class BeepBoopParser extends Parser {
 				_localctx = new ListTermContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(236);
+				setState(268);
 				list();
 				}
 				break;
@@ -1309,66 +1534,66 @@ public class BeepBoopParser extends Parser {
 
 	public final ListContext list() throws RecognitionException {
 		ListContext _localctx = new ListContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_list);
+		enterRule(_localctx, 32, RULE_list);
 		int _la;
 		try {
-			setState(258);
+			setState(290);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,31,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,34,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(239);
+				setState(271);
 				match(LBLOCK);
-				setState(240);
+				setState(272);
 				match(RBLOCK);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(241);
+				setState(273);
 				match(LBLOCK);
-				setState(243); 
+				setState(275); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(242);
+					setState(274);
 					listterm();
 					}
 					}
-					setState(245); 
+					setState(277); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
-				setState(247);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
+				setState(279);
 				match(RBLOCK);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(249);
+				setState(281);
 				match(LBLOCK);
-				setState(250);
+				setState(282);
 				match(NEWLINE);
-				setState(252); 
+				setState(284); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(251);
+					setState(283);
 					listterm();
 					}
 					}
-					setState(254); 
+					setState(286); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << QUOTED) | (1L << LETTERS))) != 0) );
-				setState(256);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << LPAREN) | (1L << LSQUIG) | (1L << LBLOCK) | (1L << SUB) | (1L << TRUE) | (1L << FALSE) | (1L << INT) | (1L << FLOAT) | (1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0) );
+				setState(288);
 				match(RBLOCK);
 				}
 				break;
@@ -1398,24 +1623,24 @@ public class BeepBoopParser extends Parser {
 
 	public final ListtermContext listterm() throws RecognitionException {
 		ListtermContext _localctx = new ListtermContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_listterm);
+		enterRule(_localctx, 34, RULE_listterm);
 		try {
-			setState(264);
+			setState(296);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,32,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,35,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(260);
+				setState(292);
 				term();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(261);
+				setState(293);
 				term();
-				setState(262);
+				setState(294);
 				match(NEWLINE);
 				}
 				break;
@@ -1529,26 +1754,26 @@ public class BeepBoopParser extends Parser {
 		int _parentState = getState();
 		ConditionalContext _localctx = new ConditionalContext(_ctx, _parentState);
 		ConditionalContext _prevctx = _localctx;
-		int _startState = 30;
-		enterRecursionRule(_localctx, 30, RULE_conditional, _p);
+		int _startState = 36;
+		enterRecursionRule(_localctx, 36, RULE_conditional, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(288);
+			setState(320);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,33,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,36,_ctx) ) {
 			case 1:
 				{
 				_localctx = new EqualsCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(267);
+				setState(299);
 				term();
-				setState(268);
+				setState(300);
 				match(EQUALS);
-				setState(269);
+				setState(301);
 				term();
 				}
 				break;
@@ -1557,11 +1782,11 @@ public class BeepBoopParser extends Parser {
 				_localctx = new LthanCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(271);
+				setState(303);
 				term();
-				setState(272);
+				setState(304);
 				match(LTHAN);
-				setState(273);
+				setState(305);
 				term();
 				}
 				break;
@@ -1570,11 +1795,11 @@ public class BeepBoopParser extends Parser {
 				_localctx = new GthanCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(275);
+				setState(307);
 				term();
-				setState(276);
+				setState(308);
 				match(GTHAN);
-				setState(277);
+				setState(309);
 				term();
 				}
 				break;
@@ -1583,11 +1808,11 @@ public class BeepBoopParser extends Parser {
 				_localctx = new LthanequalsCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(279);
+				setState(311);
 				term();
-				setState(280);
+				setState(312);
 				match(LTHAN_EQUALS);
-				setState(281);
+				setState(313);
 				term();
 				}
 				break;
@@ -1596,11 +1821,11 @@ public class BeepBoopParser extends Parser {
 				_localctx = new GthanequalsCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(283);
+				setState(315);
 				term();
-				setState(284);
+				setState(316);
 				match(GTHAN_EQUALS);
-				setState(285);
+				setState(317);
 				term();
 				}
 				break;
@@ -1609,32 +1834,32 @@ public class BeepBoopParser extends Parser {
 				_localctx = new BoolCondContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(287);
+				setState(319);
 				boolexpr();
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(298);
+			setState(330);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,35,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,38,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(296);
+					setState(328);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,34,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,37,_ctx) ) {
 					case 1:
 						{
 						_localctx = new OrCondContext(new ConditionalContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_conditional);
-						setState(290);
+						setState(322);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(291);
+						setState(323);
 						match(OR);
-						setState(292);
+						setState(324);
 						conditional(4);
 						}
 						break;
@@ -1642,20 +1867,20 @@ public class BeepBoopParser extends Parser {
 						{
 						_localctx = new AndCondContext(new ConditionalContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_conditional);
-						setState(293);
+						setState(325);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(294);
+						setState(326);
 						match(AND);
-						setState(295);
+						setState(327);
 						conditional(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(300);
+				setState(332);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,35,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,38,_ctx);
 			}
 			}
 		}
@@ -1687,6 +1912,18 @@ public class BeepBoopParser extends Parser {
 		}
 		public SoloMathContext(MathContext ctx) { copyFrom(ctx); }
 	}
+	public static class MultiplicativeMathContext extends MathContext {
+		public Token op;
+		public List<MathContext> math() {
+			return getRuleContexts(MathContext.class);
+		}
+		public MathContext math(int i) {
+			return getRuleContext(MathContext.class,i);
+		}
+		public TerminalNode MULT() { return getToken(BeepBoopParser.MULT, 0); }
+		public TerminalNode DIV() { return getToken(BeepBoopParser.DIV, 0); }
+		public MultiplicativeMathContext(MathContext ctx) { copyFrom(ctx); }
+	}
 	public static class AdditiveMathContext extends MathContext {
 		public Token op;
 		public List<MathContext> math() {
@@ -1716,14 +1953,14 @@ public class BeepBoopParser extends Parser {
 		int _parentState = getState();
 		MathContext _localctx = new MathContext(_ctx, _parentState);
 		MathContext _prevctx = _localctx;
-		int _startState = 32;
-		enterRecursionRule(_localctx, 32, RULE_math, _p);
+		int _startState = 38;
+		enterRecursionRule(_localctx, 38, RULE_math, _p);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(305);
+			setState(337);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case SUB:
@@ -1732,18 +1969,19 @@ public class BeepBoopParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(302);
+				setState(334);
 				match(SUB);
-				setState(303);
+				setState(335);
 				math(2);
 				}
 				break;
 			case INT:
+			case FLOAT:
 				{
 				_localctx = new SoloMathContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(304);
+				setState(336);
 				num();
 				}
 				break;
@@ -1751,38 +1989,65 @@ public class BeepBoopParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(312);
+			setState(347);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,37,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,41,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					{
-					_localctx = new AdditiveMathContext(new MathContext(_parentctx, _parentState));
-					pushNewRecursionContext(_localctx, _startState, RULE_math);
-					setState(307);
-					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-					setState(308);
-					((AdditiveMathContext)_localctx).op = _input.LT(1);
-					_la = _input.LA(1);
-					if ( !(_la==PLUS || _la==SUB) ) {
-						((AdditiveMathContext)_localctx).op = (Token)_errHandler.recoverInline(this);
-					}
-					else {
-						if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-						_errHandler.reportMatch(this);
-						consume();
-					}
-					setState(309);
-					math(4);
+					setState(345);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,40,_ctx) ) {
+					case 1:
+						{
+						_localctx = new AdditiveMathContext(new MathContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_math);
+						setState(339);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(340);
+						((AdditiveMathContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==PLUS || _la==SUB) ) {
+							((AdditiveMathContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						}
+						else {
+							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+							_errHandler.reportMatch(this);
+							consume();
+						}
+						setState(341);
+						math(5);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new MultiplicativeMathContext(new MathContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_math);
+						setState(342);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						setState(343);
+						((MultiplicativeMathContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==DIV || _la==MULT) ) {
+							((MultiplicativeMathContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						}
+						else {
+							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+							_errHandler.reportMatch(this);
+							consume();
+						}
+						setState(344);
+						math(4);
+						}
+						break;
 					}
 					} 
 				}
-				setState(314);
+				setState(349);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,37,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,41,_ctx);
 			}
 			}
 		}
@@ -1808,19 +2073,17 @@ public class BeepBoopParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class QuotedLiteralContext extends LiteralContext {
-		public TerminalNode QUOTED() { return getToken(BeepBoopParser.QUOTED, 0); }
-		public QuotedLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
-	}
 	public static class NumLiteralContext extends LiteralContext {
 		public NumContext num() {
 			return getRuleContext(NumContext.class,0);
 		}
 		public NumLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
 	}
-	public static class LettersLiteralContext extends LiteralContext {
-		public TerminalNode LETTERS() { return getToken(BeepBoopParser.LETTERS, 0); }
-		public LettersLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+	public static class WordsLiteralContext extends LiteralContext {
+		public WordsContext words() {
+			return getRuleContext(WordsContext.class,0);
+		}
+		public WordsLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
 	}
 	public static class BoolLiteralContext extends LiteralContext {
 		public BoolexprContext boolexpr() {
@@ -1831,25 +2094,28 @@ public class BeepBoopParser extends Parser {
 
 	public final LiteralContext literal() throws RecognitionException {
 		LiteralContext _localctx = new LiteralContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_literal);
+		enterRule(_localctx, 40, RULE_literal);
 		try {
-			setState(319);
+			setState(353);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INT:
+			case FLOAT:
 				_localctx = new NumLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(315);
+				setState(350);
 				num();
 				}
 				break;
+			case QUOTED:
 			case LETTERS:
-				_localctx = new LettersLiteralContext(_localctx);
+			case STRING:
+				_localctx = new WordsLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(316);
-				match(LETTERS);
+				setState(351);
+				words();
 				}
 				break;
 			case TRUE:
@@ -1857,16 +2123,8 @@ public class BeepBoopParser extends Parser {
 				_localctx = new BoolLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(317);
+				setState(352);
 				boolexpr();
-				}
-				break;
-			case QUOTED:
-				_localctx = new QuotedLiteralContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(318);
-				match(QUOTED);
 				}
 				break;
 			default:
@@ -1886,6 +2144,7 @@ public class BeepBoopParser extends Parser {
 
 	public static class NumContext extends ParserRuleContext {
 		public TerminalNode INT() { return getToken(BeepBoopParser.INT, 0); }
+		public TerminalNode FLOAT() { return getToken(BeepBoopParser.FLOAT, 0); }
 		public NumContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1894,12 +2153,61 @@ public class BeepBoopParser extends Parser {
 
 	public final NumContext num() throws RecognitionException {
 		NumContext _localctx = new NumContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_num);
+		enterRule(_localctx, 42, RULE_num);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(321);
-			match(INT);
+			setState(355);
+			_la = _input.LA(1);
+			if ( !(_la==INT || _la==FLOAT) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class WordsContext extends ParserRuleContext {
+		public TerminalNode LETTERS() { return getToken(BeepBoopParser.LETTERS, 0); }
+		public TerminalNode STRING() { return getToken(BeepBoopParser.STRING, 0); }
+		public TerminalNode QUOTED() { return getToken(BeepBoopParser.QUOTED, 0); }
+		public WordsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_words; }
+	}
+
+	public final WordsContext words() throws RecognitionException {
+		WordsContext _localctx = new WordsContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_words);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(357);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << QUOTED) | (1L << LETTERS) | (1L << STRING))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1924,12 +2232,12 @@ public class BeepBoopParser extends Parser {
 
 	public final BoolexprContext boolexpr() throws RecognitionException {
 		BoolexprContext _localctx = new BoolexprContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_boolexpr);
+		enterRule(_localctx, 46, RULE_boolexpr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(323);
+			setState(359);
 			_la = _input.LA(1);
 			if ( !(_la==TRUE || _la==FALSE) ) {
 			_errHandler.recoverInline(this);
@@ -1953,16 +2261,20 @@ public class BeepBoopParser extends Parser {
 	}
 
 	public static class PipeContext extends ParserRuleContext {
-		public TermContext term() {
-			return getRuleContext(TermContext.class,0);
-		}
-		public TerminalNode PIPE() { return getToken(BeepBoopParser.PIPE, 0); }
 		public FncallContext fncall() {
 			return getRuleContext(FncallContext.class,0);
 		}
-		public PipeContext pipe() {
-			return getRuleContext(PipeContext.class,0);
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
 		}
+		public List<PipeContext> pipe() {
+			return getRuleContexts(PipeContext.class);
+		}
+		public PipeContext pipe(int i) {
+			return getRuleContext(PipeContext.class,i);
+		}
+		public TerminalNode PIPE() { return getToken(BeepBoopParser.PIPE, 0); }
+		public TerminalNode NEWLINE() { return getToken(BeepBoopParser.NEWLINE, 0); }
 		public PipeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1970,45 +2282,93 @@ public class BeepBoopParser extends Parser {
 	}
 
 	public final PipeContext pipe() throws RecognitionException {
-		PipeContext _localctx = new PipeContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_pipe);
+		return pipe(0);
+	}
+
+	private PipeContext pipe(int _p) throws RecognitionException {
+		ParserRuleContext _parentctx = _ctx;
+		int _parentState = getState();
+		PipeContext _localctx = new PipeContext(_ctx, _parentState);
+		PipeContext _prevctx = _localctx;
+		int _startState = 48;
+		enterRecursionRule(_localctx, 48, RULE_pipe, _p);
 		try {
-			setState(337);
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(364);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,39,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,43,_ctx) ) {
 			case 1:
-				enterOuterAlt(_localctx, 1);
 				{
-				setState(325);
-				term();
-				setState(326);
-				match(PIPE);
-				setState(327);
+				setState(362);
 				fncall();
 				}
 				break;
 			case 2:
-				enterOuterAlt(_localctx, 2);
 				{
-				setState(329);
+				setState(363);
 				term();
-				setState(330);
-				match(PIPE);
-				setState(331);
-				pipe();
 				}
 				break;
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(333);
-				fncall();
-				setState(334);
-				match(PIPE);
-				setState(335);
-				pipe();
+			}
+			_ctx.stop = _input.LT(-1);
+			setState(378);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,45,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					if ( _parseListeners!=null ) triggerExitRuleEvent();
+					_prevctx = _localctx;
+					{
+					setState(376);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,44,_ctx) ) {
+					case 1:
+						{
+						_localctx = new PipeContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_pipe);
+						setState(366);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(367);
+						match(PIPE);
+						setState(368);
+						pipe(5);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new PipeContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_pipe);
+						setState(369);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						setState(370);
+						match(NEWLINE);
+						setState(371);
+						match(PIPE);
+						setState(372);
+						pipe(4);
+						}
+						break;
+					case 3:
+						{
+						_localctx = new PipeContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_pipe);
+						setState(373);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(374);
+						match(PIPE);
+						setState(375);
+						fncall();
+						}
+						break;
+					}
+					} 
 				}
-				break;
+				setState(380);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,45,_ctx);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2017,7 +2377,7 @@ public class BeepBoopParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			exitRule();
+			unrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
 	}
@@ -2032,13 +2392,13 @@ public class BeepBoopParser extends Parser {
 
 	public final LabelContext label() throws RecognitionException {
 		LabelContext _localctx = new LabelContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_label);
+		enterRule(_localctx, 50, RULE_label);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(339);
+			setState(381);
 			match(T__0);
-			setState(340);
+			setState(382);
 			match(LETTERS);
 			}
 		}
@@ -2055,10 +2415,12 @@ public class BeepBoopParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 15:
+		case 18:
 			return conditional_sempred((ConditionalContext)_localctx, predIndex);
-		case 16:
+		case 19:
 			return math_sempred((MathContext)_localctx, predIndex);
+		case 24:
+			return pipe_sempred((PipeContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -2074,137 +2436,168 @@ public class BeepBoopParser extends Parser {
 	private boolean math_sempred(MathContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 2:
+			return precpred(_ctx, 4);
+		case 3:
 			return precpred(_ctx, 3);
+		}
+		return true;
+	}
+	private boolean pipe_sempred(PipeContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 4:
+			return precpred(_ctx, 4);
+		case 5:
+			return precpred(_ctx, 3);
+		case 6:
+			return precpred(_ctx, 5);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u0159\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3*\u0183\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\6\2\61\n\2"+
-		"\r\2\16\2\62\5\2\65\n\2\3\2\3\2\6\29\n\2\r\2\16\2:\5\2=\n\2\3\2\3\2\3"+
-		"\2\3\2\6\2C\n\2\r\2\16\2D\5\2G\n\2\3\2\3\2\5\2K\n\2\3\3\3\3\5\3O\n\3\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\6\4X\n\4\r\4\16\4Y\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\6\4g\n\4\r\4\16\4h\3\4\3\4\3\4\3\4\5\4o\n\4\3\5\6"+
-		"\5r\n\5\r\5\16\5s\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6"+
-		"\u0082\n\6\3\7\3\7\3\7\3\7\6\7\u0088\n\7\r\7\16\7\u0089\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\5\7\u0093\n\7\3\b\3\b\3\b\3\b\3\b\3\b\6\b\u009b\n\b\r\b"+
-		"\16\b\u009c\5\b\u009f\n\b\3\b\3\b\3\b\6\b\u00a4\n\b\r\b\16\b\u00a5\5\b"+
-		"\u00a8\n\b\5\b\u00aa\n\b\3\t\3\t\3\t\3\t\3\t\3\t\6\t\u00b2\n\t\r\t\16"+
-		"\t\u00b3\5\t\u00b6\n\t\3\t\3\t\3\t\3\t\3\t\6\t\u00bd\n\t\r\t\16\t\u00be"+
-		"\5\t\u00c1\n\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t\u00ce\n"+
-		"\t\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13\u00db\n\13"+
-		"\3\f\3\f\3\f\3\f\3\r\3\r\6\r\u00e3\n\r\r\r\16\r\u00e4\3\r\5\r\u00e8\n"+
-		"\r\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u00f0\n\16\3\17\3\17\3\17\3\17\6"+
-		"\17\u00f6\n\17\r\17\16\17\u00f7\3\17\3\17\3\17\3\17\3\17\6\17\u00ff\n"+
-		"\17\r\17\16\17\u0100\3\17\3\17\5\17\u0105\n\17\3\20\3\20\3\20\3\20\5\20"+
-		"\u010b\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21"+
-		"\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u0123\n\21\3\21"+
-		"\3\21\3\21\3\21\3\21\3\21\7\21\u012b\n\21\f\21\16\21\u012e\13\21\3\22"+
-		"\3\22\3\22\3\22\5\22\u0134\n\22\3\22\3\22\3\22\7\22\u0139\n\22\f\22\16"+
-		"\22\u013c\13\22\3\23\3\23\3\23\3\23\5\23\u0142\n\23\3\24\3\24\3\25\3\25"+
-		"\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\5\26\u0154"+
-		"\n\26\3\27\3\27\3\27\3\27\2\4 \"\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34"+
-		"\36 \"$&(*,\2\4\3\2\32\33\3\2\36\37\2\u0180\2J\3\2\2\2\4N\3\2\2\2\6n\3"+
-		"\2\2\2\bq\3\2\2\2\n\u0081\3\2\2\2\f\u0092\3\2\2\2\16\u00a9\3\2\2\2\20"+
-		"\u00cd\3\2\2\2\22\u00cf\3\2\2\2\24\u00da\3\2\2\2\26\u00dc\3\2\2\2\30\u00e7"+
-		"\3\2\2\2\32\u00ef\3\2\2\2\34\u0104\3\2\2\2\36\u010a\3\2\2\2 \u0122\3\2"+
-		"\2\2\"\u0133\3\2\2\2$\u0141\3\2\2\2&\u0143\3\2\2\2(\u0145\3\2\2\2*\u0153"+
-		"\3\2\2\2,\u0155\3\2\2\2.\65\7\5\2\2/\61\7\5\2\2\60/\3\2\2\2\61\62\3\2"+
-		"\2\2\62\60\3\2\2\2\62\63\3\2\2\2\63\65\3\2\2\2\64.\3\2\2\2\64\60\3\2\2"+
-		"\2\65<\3\2\2\2\66=\5\4\3\2\679\5\4\3\28\67\3\2\2\29:\3\2\2\2:8\3\2\2\2"+
-		":;\3\2\2\2;=\3\2\2\2<\66\3\2\2\2<8\3\2\2\2=>\3\2\2\2>?\7\2\2\3?K\3\2\2"+
-		"\2@G\5\4\3\2AC\5\4\3\2BA\3\2\2\2CD\3\2\2\2DB\3\2\2\2DE\3\2\2\2EG\3\2\2"+
-		"\2F@\3\2\2\2FB\3\2\2\2GH\3\2\2\2HI\7\2\2\3IK\3\2\2\2J\64\3\2\2\2JF\3\2"+
-		"\2\2K\3\3\2\2\2LO\5\6\4\2MO\5\n\6\2NL\3\2\2\2NM\3\2\2\2O\5\3\2\2\2PQ\7"+
-		"\27\2\2QR\5,\27\2RS\7\25\2\2ST\7\26\2\2To\3\2\2\2UW\7\27\2\2VX\5,\27\2"+
-		"WV\3\2\2\2XY\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z[\3\2\2\2[\\\7\25\2\2\\]\7\26"+
-		"\2\2]o\3\2\2\2^_\7\27\2\2_`\5,\27\2`a\7\25\2\2ab\5\b\5\2bc\7\26\2\2co"+
-		"\3\2\2\2df\7\27\2\2eg\5,\27\2fe\3\2\2\2gh\3\2\2\2hf\3\2\2\2hi\3\2\2\2"+
-		"ij\3\2\2\2jk\7\25\2\2kl\5\b\5\2lm\7\26\2\2mo\3\2\2\2nP\3\2\2\2nU\3\2\2"+
-		"\2n^\3\2\2\2nd\3\2\2\2o\7\3\2\2\2pr\5\n\6\2qp\3\2\2\2rs\3\2\2\2sq\3\2"+
-		"\2\2st\3\2\2\2t\t\3\2\2\2u\u0082\5\22\n\2v\u0082\5\16\b\2wx\5\30\r\2x"+
-		"y\7\5\2\2y\u0082\3\2\2\2z{\5\f\7\2{|\7\5\2\2|\u0082\3\2\2\2}~\5*\26\2"+
-		"~\177\7\5\2\2\177\u0082\3\2\2\2\u0080\u0082\7\5\2\2\u0081u\3\2\2\2\u0081"+
-		"v\3\2\2\2\u0081w\3\2\2\2\u0081z\3\2\2\2\u0081}\3\2\2\2\u0081\u0080\3\2"+
-		"\2\2\u0082\13\3\2\2\2\u0083\u0084\7\24\2\2\u0084\u0085\5 \21\2\u0085\u0087"+
-		"\7\25\2\2\u0086\u0088\5\n\6\2\u0087\u0086\3\2\2\2\u0088\u0089\3\2\2\2"+
-		"\u0089\u0087\3\2\2\2\u0089\u008a\3\2\2\2\u008a\u008b\3\2\2\2\u008b\u008c"+
-		"\7\26\2\2\u008c\u0093\3\2\2\2\u008d\u008e\7\24\2\2\u008e\u008f\5 \21\2"+
-		"\u008f\u0090\7\25\2\2\u0090\u0091\7\26\2\2\u0091\u0093\3\2\2\2\u0092\u0083"+
-		"\3\2\2\2\u0092\u008d\3\2\2\2\u0093\r\3\2\2\2\u0094\u0095\7\30\2\2\u0095"+
-		"\u00aa\5\32\16\2\u0096\u0097\7\30\2\2\u0097\u009e\5\32\16\2\u0098\u009f"+
-		"\7\5\2\2\u0099\u009b\7\5\2\2\u009a\u0099\3\2\2\2\u009b\u009c\3\2\2\2\u009c"+
-		"\u009a\3\2\2\2\u009c\u009d\3\2\2\2\u009d\u009f\3\2\2\2\u009e\u0098\3\2"+
-		"\2\2\u009e\u009a\3\2\2\2\u009f\u00aa\3\2\2\2\u00a0\u00a7\7\30\2\2\u00a1"+
-		"\u00a8\7\5\2\2\u00a2\u00a4\7\5\2\2\u00a3\u00a2\3\2\2\2\u00a4\u00a5\3\2"+
-		"\2\2\u00a5\u00a3\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6\u00a8\3\2\2\2\u00a7"+
-		"\u00a1\3\2\2\2\u00a7\u00a3\3\2\2\2\u00a8\u00aa\3\2\2\2\u00a9\u0094\3\2"+
-		"\2\2\u00a9\u0096\3\2\2\2\u00a9\u00a0\3\2\2\2\u00aa\17\3\2\2\2\u00ab\u00ac"+
-		"\7\20\2\2\u00ac\u00ce\7\21\2\2\u00ad\u00ae\7\20\2\2\u00ae\u00b5\7\5\2"+
-		"\2\u00af\u00b6\5\22\n\2\u00b0\u00b2\5\22\n\2\u00b1\u00b0\3\2\2\2\u00b2"+
-		"\u00b3\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b4\3\2\2\2\u00b4\u00b6\3\2"+
-		"\2\2\u00b5\u00af\3\2\2\2\u00b5\u00b1\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7"+
-		"\u00b8\7\21\2\2\u00b8\u00ce\3\2\2\2\u00b9\u00c0\7\20\2\2\u00ba\u00c1\5"+
-		"\22\n\2\u00bb\u00bd\5\22\n\2\u00bc\u00bb\3\2\2\2\u00bd\u00be\3\2\2\2\u00be"+
-		"\u00bc\3\2\2\2\u00be\u00bf\3\2\2\2\u00bf\u00c1\3\2\2\2\u00c0\u00ba\3\2"+
-		"\2\2\u00c0\u00bc\3\2\2\2\u00c1\u00c2\3\2\2\2\u00c2\u00c3\7\21\2\2\u00c3"+
-		"\u00ce\3\2\2\2\u00c4\u00c5\7\20\2\2\u00c5\u00c6\5\24\13\2\u00c6\u00c7"+
-		"\7\21\2\2\u00c7\u00ce\3\2\2\2\u00c8\u00c9\7\20\2\2\u00c9\u00ca\7\5\2\2"+
-		"\u00ca\u00cb\5\24\13\2\u00cb\u00cc\7\21\2\2\u00cc\u00ce\3\2\2\2\u00cd"+
-		"\u00ab\3\2\2\2\u00cd\u00ad\3\2\2\2\u00cd\u00b9\3\2\2\2\u00cd\u00c4\3\2"+
-		"\2\2\u00cd\u00c8\3\2\2\2\u00ce\21\3\2\2\2\u00cf\u00d0\5\24\13\2\u00d0"+
-		"\u00d1\7\5\2\2\u00d1\23\3\2\2\2\u00d2\u00d3\5,\27\2\u00d3\u00d4\7\b\2"+
-		"\2\u00d4\u00d5\5\32\16\2\u00d5\u00db\3\2\2\2\u00d6\u00d7\5,\27\2\u00d7"+
-		"\u00d8\7\b\2\2\u00d8\u00d9\5\30\r\2\u00d9\u00db\3\2\2\2\u00da\u00d2\3"+
-		"\2\2\2\u00da\u00d6\3\2\2\2\u00db\25\3\2\2\2\u00dc\u00dd\7\16\2\2\u00dd"+
-		"\u00de\5\30\r\2\u00de\u00df\7\17\2\2\u00df\27\3\2\2\2\u00e0\u00e2\5,\27"+
-		"\2\u00e1\u00e3\5\32\16\2\u00e2\u00e1\3\2\2\2\u00e3\u00e4\3\2\2\2\u00e4"+
-		"\u00e2\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5\u00e8\3\2\2\2\u00e6\u00e8\5,"+
-		"\27\2\u00e7\u00e0\3\2\2\2\u00e7\u00e6\3\2\2\2\u00e8\31\3\2\2\2\u00e9\u00f0"+
-		"\5,\27\2\u00ea\u00f0\5$\23\2\u00eb\u00f0\5\"\22\2\u00ec\u00f0\5\26\f\2"+
-		"\u00ed\u00f0\5\20\t\2\u00ee\u00f0\5\34\17\2\u00ef\u00e9\3\2\2\2\u00ef"+
-		"\u00ea\3\2\2\2\u00ef\u00eb\3\2\2\2\u00ef\u00ec\3\2\2\2\u00ef\u00ed\3\2"+
-		"\2\2\u00ef\u00ee\3\2\2\2\u00f0\33\3\2\2\2\u00f1\u00f2\7\22\2\2\u00f2\u0105"+
-		"\7\23\2\2\u00f3\u00f5\7\22\2\2\u00f4\u00f6\5\36\20\2\u00f5\u00f4\3\2\2"+
-		"\2\u00f6\u00f7\3\2\2\2\u00f7\u00f5\3\2\2\2\u00f7\u00f8\3\2\2\2\u00f8\u00f9"+
-		"\3\2\2\2\u00f9\u00fa\7\23\2\2\u00fa\u0105\3\2\2\2\u00fb\u00fc\7\22\2\2"+
-		"\u00fc\u00fe\7\5\2\2\u00fd\u00ff\5\36\20\2\u00fe\u00fd\3\2\2\2\u00ff\u0100"+
-		"\3\2\2\2\u0100\u00fe\3\2\2\2\u0100\u0101\3\2\2\2\u0101\u0102\3\2\2\2\u0102"+
-		"\u0103\7\23\2\2\u0103\u0105\3\2\2\2\u0104\u00f1\3\2\2\2\u0104\u00f3\3"+
-		"\2\2\2\u0104\u00fb\3\2\2\2\u0105\35\3\2\2\2\u0106\u010b\5\32\16\2\u0107"+
-		"\u0108\5\32\16\2\u0108\u0109\7\5\2\2\u0109\u010b\3\2\2\2\u010a\u0106\3"+
-		"\2\2\2\u010a\u0107\3\2\2\2\u010b\37\3\2\2\2\u010c\u010d\b\21\1\2\u010d"+
-		"\u010e\5\32\16\2\u010e\u010f\7\7\2\2\u010f\u0110\5\32\16\2\u0110\u0123"+
-		"\3\2\2\2\u0111\u0112\5\32\16\2\u0112\u0113\7\n\2\2\u0113\u0114\5\32\16"+
-		"\2\u0114\u0123\3\2\2\2\u0115\u0116\5\32\16\2\u0116\u0117\7\13\2\2\u0117"+
-		"\u0118\5\32\16\2\u0118\u0123\3\2\2\2\u0119\u011a\5\32\16\2\u011a\u011b"+
-		"\7\f\2\2\u011b\u011c\5\32\16\2\u011c\u0123\3\2\2\2\u011d\u011e\5\32\16"+
-		"\2\u011e\u011f\7\r\2\2\u011f\u0120\5\32\16\2\u0120\u0123\3\2\2\2\u0121"+
-		"\u0123\5(\25\2\u0122\u010c\3\2\2\2\u0122\u0111\3\2\2\2\u0122\u0115\3\2"+
-		"\2\2\u0122\u0119\3\2\2\2\u0122\u011d\3\2\2\2\u0122\u0121\3\2\2\2\u0123"+
-		"\u012c\3\2\2\2\u0124\u0125\f\5\2\2\u0125\u0126\7 \2\2\u0126\u012b\5 \21"+
-		"\6\u0127\u0128\f\4\2\2\u0128\u0129\7!\2\2\u0129\u012b\5 \21\5\u012a\u0124"+
-		"\3\2\2\2\u012a\u0127\3\2\2\2\u012b\u012e\3\2\2\2\u012c\u012a\3\2\2\2\u012c"+
-		"\u012d\3\2\2\2\u012d!\3\2\2\2\u012e\u012c\3\2\2\2\u012f\u0130\b\22\1\2"+
-		"\u0130\u0131\7\33\2\2\u0131\u0134\5\"\22\4\u0132\u0134\5&\24\2\u0133\u012f"+
-		"\3\2\2\2\u0133\u0132\3\2\2\2\u0134\u013a\3\2\2\2\u0135\u0136\f\5\2\2\u0136"+
-		"\u0137\t\2\2\2\u0137\u0139\5\"\22\6\u0138\u0135\3\2\2\2\u0139\u013c\3"+
-		"\2\2\2\u013a\u0138\3\2\2\2\u013a\u013b\3\2\2\2\u013b#\3\2\2\2\u013c\u013a"+
-		"\3\2\2\2\u013d\u0142\5&\24\2\u013e\u0142\7$\2\2\u013f\u0142\5(\25\2\u0140"+
-		"\u0142\7#\2\2\u0141\u013d\3\2\2\2\u0141\u013e\3\2\2\2\u0141\u013f\3\2"+
-		"\2\2\u0141\u0140\3\2\2\2\u0142%\3\2\2\2\u0143\u0144\7\"\2\2\u0144\'\3"+
-		"\2\2\2\u0145\u0146\t\3\2\2\u0146)\3\2\2\2\u0147\u0148\5\32\16\2\u0148"+
-		"\u0149\7\t\2\2\u0149\u014a\5\30\r\2\u014a\u0154\3\2\2\2\u014b\u014c\5"+
-		"\32\16\2\u014c\u014d\7\t\2\2\u014d\u014e\5*\26\2\u014e\u0154\3\2\2\2\u014f"+
-		"\u0150\5\30\r\2\u0150\u0151\7\t\2\2\u0151\u0152\5*\26\2\u0152\u0154\3"+
-		"\2\2\2\u0153\u0147\3\2\2\2\u0153\u014b\3\2\2\2\u0153\u014f\3\2\2\2\u0154"+
-		"+\3\2\2\2\u0155\u0156\7\3\2\2\u0156\u0157\7$\2\2\u0157-\3\2\2\2*\62\64"+
-		":<DFJNYhns\u0081\u0089\u0092\u009c\u009e\u00a5\u00a7\u00a9\u00b3\u00b5"+
-		"\u00be\u00c0\u00cd\u00da\u00e4\u00e7\u00ef\u00f7\u0100\u0104\u010a\u0122"+
-		"\u012a\u012c\u0133\u013a\u0141\u0153";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
+		"\4\32\t\32\4\33\t\33\3\2\3\2\6\29\n\2\r\2\16\2:\5\2=\n\2\3\2\3\2\6\2A"+
+		"\n\2\r\2\16\2B\5\2E\n\2\3\2\3\2\3\2\3\2\6\2K\n\2\r\2\16\2L\5\2O\n\2\3"+
+		"\2\3\2\5\2S\n\2\3\3\3\3\5\3W\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\6\4`\n\4"+
+		"\r\4\16\4a\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\6\4o\n\4\r\4\16"+
+		"\4p\3\4\3\4\3\4\3\4\5\4w\n\4\3\5\6\5z\n\5\r\5\16\5{\3\6\3\6\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6\u008e\n\6\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\7\5\7\u0097\n\7\3\b\3\b\3\b\5\b\u009c\n\b\3\t\3\t\3\t"+
+		"\3\t\6\t\u00a2\n\t\r\t\16\t\u00a3\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t\u00ad"+
+		"\n\t\3\n\3\n\3\n\3\n\3\n\3\n\6\n\u00b5\n\n\r\n\16\n\u00b6\5\n\u00b9\n"+
+		"\n\3\n\3\n\3\n\6\n\u00be\n\n\r\n\16\n\u00bf\5\n\u00c2\n\n\5\n\u00c4\n"+
+		"\n\3\13\3\13\3\13\3\13\3\13\3\13\6\13\u00cc\n\13\r\13\16\13\u00cd\5\13"+
+		"\u00d0\n\13\3\13\3\13\3\13\3\13\3\13\6\13\u00d7\n\13\r\13\16\13\u00d8"+
+		"\5\13\u00db\n\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13"+
+		"\5\13\u00e8\n\13\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u00f5"+
+		"\n\r\3\16\3\16\3\16\3\16\3\17\3\17\6\17\u00fd\n\17\r\17\16\17\u00fe\3"+
+		"\17\5\17\u0102\n\17\3\20\3\20\3\20\3\20\5\20\u0108\n\20\3\21\3\21\3\21"+
+		"\3\21\3\21\3\21\5\21\u0110\n\21\3\22\3\22\3\22\3\22\6\22\u0116\n\22\r"+
+		"\22\16\22\u0117\3\22\3\22\3\22\3\22\3\22\6\22\u011f\n\22\r\22\16\22\u0120"+
+		"\3\22\3\22\5\22\u0125\n\22\3\23\3\23\3\23\3\23\5\23\u012b\n\23\3\24\3"+
+		"\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3"+
+		"\24\3\24\3\24\3\24\3\24\3\24\3\24\5\24\u0143\n\24\3\24\3\24\3\24\3\24"+
+		"\3\24\3\24\7\24\u014b\n\24\f\24\16\24\u014e\13\24\3\25\3\25\3\25\3\25"+
+		"\5\25\u0154\n\25\3\25\3\25\3\25\3\25\3\25\3\25\7\25\u015c\n\25\f\25\16"+
+		"\25\u015f\13\25\3\26\3\26\3\26\5\26\u0164\n\26\3\27\3\27\3\30\3\30\3\31"+
+		"\3\31\3\32\3\32\3\32\5\32\u016f\n\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32"+
+		"\3\32\3\32\3\32\7\32\u017b\n\32\f\32\16\32\u017e\13\32\3\33\3\33\3\33"+
+		"\3\33\2\5&(\62\34\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62"+
+		"\64\2\7\3\2\25\26\3\2\27\30\3\2&\'\3\2(*\3\2\"#\2\u01af\2R\3\2\2\2\4V"+
+		"\3\2\2\2\6v\3\2\2\2\by\3\2\2\2\n\u008d\3\2\2\2\f\u0096\3\2\2\2\16\u009b"+
+		"\3\2\2\2\20\u00ac\3\2\2\2\22\u00c3\3\2\2\2\24\u00e7\3\2\2\2\26\u00e9\3"+
+		"\2\2\2\30\u00f4\3\2\2\2\32\u00f6\3\2\2\2\34\u0101\3\2\2\2\36\u0107\3\2"+
+		"\2\2 \u010f\3\2\2\2\"\u0124\3\2\2\2$\u012a\3\2\2\2&\u0142\3\2\2\2(\u0153"+
+		"\3\2\2\2*\u0163\3\2\2\2,\u0165\3\2\2\2.\u0167\3\2\2\2\60\u0169\3\2\2\2"+
+		"\62\u016e\3\2\2\2\64\u017f\3\2\2\2\66=\7\6\2\2\679\7\6\2\28\67\3\2\2\2"+
+		"9:\3\2\2\2:8\3\2\2\2:;\3\2\2\2;=\3\2\2\2<\66\3\2\2\2<8\3\2\2\2=D\3\2\2"+
+		"\2>E\5\4\3\2?A\5\4\3\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2CE\3\2\2"+
+		"\2D>\3\2\2\2D@\3\2\2\2EF\3\2\2\2FG\7\2\2\3GS\3\2\2\2HO\5\4\3\2IK\5\4\3"+
+		"\2JI\3\2\2\2KL\3\2\2\2LJ\3\2\2\2LM\3\2\2\2MO\3\2\2\2NH\3\2\2\2NJ\3\2\2"+
+		"\2OP\3\2\2\2PQ\7\2\2\3QS\3\2\2\2R<\3\2\2\2RN\3\2\2\2S\3\3\2\2\2TW\5\6"+
+		"\4\2UW\5\n\6\2VT\3\2\2\2VU\3\2\2\2W\5\3\2\2\2XY\7\37\2\2YZ\5\64\33\2Z"+
+		"[\7\35\2\2[\\\7\36\2\2\\w\3\2\2\2]_\7\37\2\2^`\5\64\33\2_^\3\2\2\2`a\3"+
+		"\2\2\2a_\3\2\2\2ab\3\2\2\2bc\3\2\2\2cd\7\35\2\2de\7\36\2\2ew\3\2\2\2f"+
+		"g\7\37\2\2gh\5\64\33\2hi\7\35\2\2ij\5\b\5\2jk\7\36\2\2kw\3\2\2\2ln\7\37"+
+		"\2\2mo\5\64\33\2nm\3\2\2\2op\3\2\2\2pn\3\2\2\2pq\3\2\2\2qr\3\2\2\2rs\7"+
+		"\35\2\2st\5\b\5\2tu\7\36\2\2uw\3\2\2\2vX\3\2\2\2v]\3\2\2\2vf\3\2\2\2v"+
+		"l\3\2\2\2w\7\3\2\2\2xz\5\n\6\2yx\3\2\2\2z{\3\2\2\2{y\3\2\2\2{|\3\2\2\2"+
+		"|\t\3\2\2\2}\u008e\5\26\f\2~\u008e\5\22\n\2\177\u008e\5\16\b\2\u0080\u0081"+
+		"\5\f\7\2\u0081\u0082\7\6\2\2\u0082\u008e\3\2\2\2\u0083\u0084\5\34\17\2"+
+		"\u0084\u0085\7\6\2\2\u0085\u008e\3\2\2\2\u0086\u0087\5\20\t\2\u0087\u0088"+
+		"\7\6\2\2\u0088\u008e\3\2\2\2\u0089\u008a\5\62\32\2\u008a\u008b\7\6\2\2"+
+		"\u008b\u008e\3\2\2\2\u008c\u008e\7\6\2\2\u008d}\3\2\2\2\u008d~\3\2\2\2"+
+		"\u008d\177\3\2\2\2\u008d\u0080\3\2\2\2\u008d\u0083\3\2\2\2\u008d\u0086"+
+		"\3\2\2\2\u008d\u0089\3\2\2\2\u008d\u008c\3\2\2\2\u008e\13\3\2\2\2\u008f"+
+		"\u0090\7\31\2\2\u0090\u0097\5.\30\2\u0091\u0092\7\31\2\2\u0092\u0093\5"+
+		".\30\2\u0093\u0094\7\33\2\2\u0094\u0095\5\64\33\2\u0095\u0097\3\2\2\2"+
+		"\u0096\u008f\3\2\2\2\u0096\u0091\3\2\2\2\u0097\r\3\2\2\2\u0098\u0099\7"+
+		"\32\2\2\u0099\u009c\5 \21\2\u009a\u009c\5\64\33\2\u009b\u0098\3\2\2\2"+
+		"\u009b\u009a\3\2\2\2\u009c\17\3\2\2\2\u009d\u009e\7\34\2\2\u009e\u009f"+
+		"\5&\24\2\u009f\u00a1\7\35\2\2\u00a0\u00a2\5\n\6\2\u00a1\u00a0\3\2\2\2"+
+		"\u00a2\u00a3\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4\u00a5"+
+		"\3\2\2\2\u00a5\u00a6\7\36\2\2\u00a6\u00ad\3\2\2\2\u00a7\u00a8\7\34\2\2"+
+		"\u00a8\u00a9\5&\24\2\u00a9\u00aa\7\35\2\2\u00aa\u00ab\7\36\2\2\u00ab\u00ad"+
+		"\3\2\2\2\u00ac\u009d\3\2\2\2\u00ac\u00a7\3\2\2\2\u00ad\21\3\2\2\2\u00ae"+
+		"\u00af\7 \2\2\u00af\u00c4\5 \21\2\u00b0\u00b1\7 \2\2\u00b1\u00b8\5 \21"+
+		"\2\u00b2\u00b9\7\6\2\2\u00b3\u00b5\7\6\2\2\u00b4\u00b3\3\2\2\2\u00b5\u00b6"+
+		"\3\2\2\2\u00b6\u00b4\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7\u00b9\3\2\2\2\u00b8"+
+		"\u00b2\3\2\2\2\u00b8\u00b4\3\2\2\2\u00b9\u00c4\3\2\2\2\u00ba\u00c1\7 "+
+		"\2\2\u00bb\u00c2\7\6\2\2\u00bc\u00be\7\6\2\2\u00bd\u00bc\3\2\2\2\u00be"+
+		"\u00bf\3\2\2\2\u00bf\u00bd\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\u00c2\3\2"+
+		"\2\2\u00c1\u00bb\3\2\2\2\u00c1\u00bd\3\2\2\2\u00c2\u00c4\3\2\2\2\u00c3"+
+		"\u00ae\3\2\2\2\u00c3\u00b0\3\2\2\2\u00c3\u00ba\3\2\2\2\u00c4\23\3\2\2"+
+		"\2\u00c5\u00c6\7\21\2\2\u00c6\u00e8\7\22\2\2\u00c7\u00c8\7\21\2\2\u00c8"+
+		"\u00cf\7\6\2\2\u00c9\u00d0\5\26\f\2\u00ca\u00cc\5\26\f\2\u00cb\u00ca\3"+
+		"\2\2\2\u00cc\u00cd\3\2\2\2\u00cd\u00cb\3\2\2\2\u00cd\u00ce\3\2\2\2\u00ce"+
+		"\u00d0\3\2\2\2\u00cf\u00c9\3\2\2\2\u00cf\u00cb\3\2\2\2\u00d0\u00d1\3\2"+
+		"\2\2\u00d1\u00d2\7\22\2\2\u00d2\u00e8\3\2\2\2\u00d3\u00da\7\21\2\2\u00d4"+
+		"\u00db\5\26\f\2\u00d5\u00d7\5\26\f\2\u00d6\u00d5\3\2\2\2\u00d7\u00d8\3"+
+		"\2\2\2\u00d8\u00d6\3\2\2\2\u00d8\u00d9\3\2\2\2\u00d9\u00db\3\2\2\2\u00da"+
+		"\u00d4\3\2\2\2\u00da\u00d6\3\2\2\2\u00db\u00dc\3\2\2\2\u00dc\u00dd\7\22"+
+		"\2\2\u00dd\u00e8\3\2\2\2\u00de\u00df\7\21\2\2\u00df\u00e0\5\30\r\2\u00e0"+
+		"\u00e1\7\22\2\2\u00e1\u00e8\3\2\2\2\u00e2\u00e3\7\21\2\2\u00e3\u00e4\7"+
+		"\6\2\2\u00e4\u00e5\5\30\r\2\u00e5\u00e6\7\22\2\2\u00e6\u00e8\3\2\2\2\u00e7"+
+		"\u00c5\3\2\2\2\u00e7\u00c7\3\2\2\2\u00e7\u00d3\3\2\2\2\u00e7\u00de\3\2"+
+		"\2\2\u00e7\u00e2\3\2\2\2\u00e8\25\3\2\2\2\u00e9\u00ea\5\30\r\2\u00ea\u00eb"+
+		"\7\6\2\2\u00eb\27\3\2\2\2\u00ec\u00ed\5\64\33\2\u00ed\u00ee\7\t\2\2\u00ee"+
+		"\u00ef\5 \21\2\u00ef\u00f5\3\2\2\2\u00f0\u00f1\5\64\33\2\u00f1\u00f2\7"+
+		"\t\2\2\u00f2\u00f3\5\34\17\2\u00f3\u00f5\3\2\2\2\u00f4\u00ec\3\2\2\2\u00f4"+
+		"\u00f0\3\2\2\2\u00f5\31\3\2\2\2\u00f6\u00f7\7\17\2\2\u00f7\u00f8\5\34"+
+		"\17\2\u00f8\u00f9\7\20\2\2\u00f9\33\3\2\2\2\u00fa\u00fc\5\64\33\2\u00fb"+
+		"\u00fd\5\36\20\2\u00fc\u00fb\3\2\2\2\u00fd\u00fe\3\2\2\2\u00fe\u00fc\3"+
+		"\2\2\2\u00fe\u00ff\3\2\2\2\u00ff\u0102\3\2\2\2\u0100\u0102\5\64\33\2\u0101"+
+		"\u00fa\3\2\2\2\u0101\u0100\3\2\2\2\u0102\35\3\2\2\2\u0103\u0108\7\4\2"+
+		"\2\u0104\u0108\7\30\2\2\u0105\u0108\7\27\2\2\u0106\u0108\5 \21\2\u0107"+
+		"\u0103\3\2\2\2\u0107\u0104\3\2\2\2\u0107\u0105\3\2\2\2\u0107\u0106\3\2"+
+		"\2\2\u0108\37\3\2\2\2\u0109\u0110\5\64\33\2\u010a\u0110\5*\26\2\u010b"+
+		"\u0110\5(\25\2\u010c\u0110\5\32\16\2\u010d\u0110\5\24\13\2\u010e\u0110"+
+		"\5\"\22\2\u010f\u0109\3\2\2\2\u010f\u010a\3\2\2\2\u010f\u010b\3\2\2\2"+
+		"\u010f\u010c\3\2\2\2\u010f\u010d\3\2\2\2\u010f\u010e\3\2\2\2\u0110!\3"+
+		"\2\2\2\u0111\u0112\7\23\2\2\u0112\u0125\7\24\2\2\u0113\u0115\7\23\2\2"+
+		"\u0114\u0116\5$\23\2\u0115\u0114\3\2\2\2\u0116\u0117\3\2\2\2\u0117\u0115"+
+		"\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u0119\3\2\2\2\u0119\u011a\7\24\2\2"+
+		"\u011a\u0125\3\2\2\2\u011b\u011c\7\23\2\2\u011c\u011e\7\6\2\2\u011d\u011f"+
+		"\5$\23\2\u011e\u011d\3\2\2\2\u011f\u0120\3\2\2\2\u0120\u011e\3\2\2\2\u0120"+
+		"\u0121\3\2\2\2\u0121\u0122\3\2\2\2\u0122\u0123\7\24\2\2\u0123\u0125\3"+
+		"\2\2\2\u0124\u0111\3\2\2\2\u0124\u0113\3\2\2\2\u0124\u011b\3\2\2\2\u0125"+
+		"#\3\2\2\2\u0126\u012b\5 \21\2\u0127\u0128\5 \21\2\u0128\u0129\7\6\2\2"+
+		"\u0129\u012b\3\2\2\2\u012a\u0126\3\2\2\2\u012a\u0127\3\2\2\2\u012b%\3"+
+		"\2\2\2\u012c\u012d\b\24\1\2\u012d\u012e\5 \21\2\u012e\u012f\7\b\2\2\u012f"+
+		"\u0130\5 \21\2\u0130\u0143\3\2\2\2\u0131\u0132\5 \21\2\u0132\u0133\7\13"+
+		"\2\2\u0133\u0134\5 \21\2\u0134\u0143\3\2\2\2\u0135\u0136\5 \21\2\u0136"+
+		"\u0137\7\f\2\2\u0137\u0138\5 \21\2\u0138\u0143\3\2\2\2\u0139\u013a\5 "+
+		"\21\2\u013a\u013b\7\r\2\2\u013b\u013c\5 \21\2\u013c\u0143\3\2\2\2\u013d"+
+		"\u013e\5 \21\2\u013e\u013f\7\16\2\2\u013f\u0140\5 \21\2\u0140\u0143\3"+
+		"\2\2\2\u0141\u0143\5\60\31\2\u0142\u012c\3\2\2\2\u0142\u0131\3\2\2\2\u0142"+
+		"\u0135\3\2\2\2\u0142\u0139\3\2\2\2\u0142\u013d\3\2\2\2\u0142\u0141\3\2"+
+		"\2\2\u0143\u014c\3\2\2\2\u0144\u0145\f\5\2\2\u0145\u0146\7$\2\2\u0146"+
+		"\u014b\5&\24\6\u0147\u0148\f\4\2\2\u0148\u0149\7%\2\2\u0149\u014b\5&\24"+
+		"\5\u014a\u0144\3\2\2\2\u014a\u0147\3\2\2\2\u014b\u014e\3\2\2\2\u014c\u014a"+
+		"\3\2\2\2\u014c\u014d\3\2\2\2\u014d\'\3\2\2\2\u014e\u014c\3\2\2\2\u014f"+
+		"\u0150\b\25\1\2\u0150\u0151\7\26\2\2\u0151\u0154\5(\25\4\u0152\u0154\5"+
+		",\27\2\u0153\u014f\3\2\2\2\u0153\u0152\3\2\2\2\u0154\u015d\3\2\2\2\u0155"+
+		"\u0156\f\6\2\2\u0156\u0157\t\2\2\2\u0157\u015c\5(\25\7\u0158\u0159\f\5"+
+		"\2\2\u0159\u015a\t\3\2\2\u015a\u015c\5(\25\6\u015b\u0155\3\2\2\2\u015b"+
+		"\u0158\3\2\2\2\u015c\u015f\3\2\2\2\u015d\u015b\3\2\2\2\u015d\u015e\3\2"+
+		"\2\2\u015e)\3\2\2\2\u015f\u015d\3\2\2\2\u0160\u0164\5,\27\2\u0161\u0164"+
+		"\5.\30\2\u0162\u0164\5\60\31\2\u0163\u0160\3\2\2\2\u0163\u0161\3\2\2\2"+
+		"\u0163\u0162\3\2\2\2\u0164+\3\2\2\2\u0165\u0166\t\4\2\2\u0166-\3\2\2\2"+
+		"\u0167\u0168\t\5\2\2\u0168/\3\2\2\2\u0169\u016a\t\6\2\2\u016a\61\3\2\2"+
+		"\2\u016b\u016c\b\32\1\2\u016c\u016f\5\34\17\2\u016d\u016f\5 \21\2\u016e"+
+		"\u016b\3\2\2\2\u016e\u016d\3\2\2\2\u016f\u017c\3\2\2\2\u0170\u0171\f\6"+
+		"\2\2\u0171\u0172\7\n\2\2\u0172\u017b\5\62\32\7\u0173\u0174\f\5\2\2\u0174"+
+		"\u0175\7\6\2\2\u0175\u0176\7\n\2\2\u0176\u017b\5\62\32\6\u0177\u0178\f"+
+		"\7\2\2\u0178\u0179\7\n\2\2\u0179\u017b\5\34\17\2\u017a\u0170\3\2\2\2\u017a"+
+		"\u0173\3\2\2\2\u017a\u0177\3\2\2\2\u017b\u017e\3\2\2\2\u017c\u017a\3\2"+
+		"\2\2\u017c\u017d\3\2\2\2\u017d\63\3\2\2\2\u017e\u017c\3\2\2\2\u017f\u0180"+
+		"\7\3\2\2\u0180\u0181\7)\2\2\u0181\65\3\2\2\2\60:<BDLNRVapv{\u008d\u0096"+
+		"\u009b\u00a3\u00ac\u00b6\u00b8\u00bf\u00c1\u00c3\u00cd\u00cf\u00d8\u00da"+
+		"\u00e7\u00f4\u00fe\u0101\u0107\u010f\u0117\u0120\u0124\u012a\u0142\u014a"+
+		"\u014c\u0153\u015b\u015d\u0163\u016e\u017a\u017c";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

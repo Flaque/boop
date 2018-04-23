@@ -63,6 +63,18 @@ func (s *BaseBeepBoopListener) EnterReturnStatement(ctx *ReturnStatementContext)
 // ExitReturnStatement is called when production returnStatement is exited.
 func (s *BaseBeepBoopListener) ExitReturnStatement(ctx *ReturnStatementContext) {}
 
+// EnterExportStatement is called when production exportStatement is entered.
+func (s *BaseBeepBoopListener) EnterExportStatement(ctx *ExportStatementContext) {}
+
+// ExitExportStatement is called when production exportStatement is exited.
+func (s *BaseBeepBoopListener) ExitExportStatement(ctx *ExportStatementContext) {}
+
+// EnterImportStatement is called when production importStatement is entered.
+func (s *BaseBeepBoopListener) EnterImportStatement(ctx *ImportStatementContext) {}
+
+// ExitImportStatement is called when production importStatement is exited.
+func (s *BaseBeepBoopListener) ExitImportStatement(ctx *ImportStatementContext) {}
+
 // EnterFncallStatement is called when production fncallStatement is entered.
 func (s *BaseBeepBoopListener) EnterFncallStatement(ctx *FncallStatementContext) {}
 
@@ -86,6 +98,18 @@ func (s *BaseBeepBoopListener) EnterNewlineStatement(ctx *NewlineStatementContex
 
 // ExitNewlineStatement is called when production newlineStatement is exited.
 func (s *BaseBeepBoopListener) ExitNewlineStatement(ctx *NewlineStatementContext) {}
+
+// EnterImportstat is called when production importstat is entered.
+func (s *BaseBeepBoopListener) EnterImportstat(ctx *ImportstatContext) {}
+
+// ExitImportstat is called when production importstat is exited.
+func (s *BaseBeepBoopListener) ExitImportstat(ctx *ImportstatContext) {}
+
+// EnterExportstat is called when production exportstat is entered.
+func (s *BaseBeepBoopListener) EnterExportstat(ctx *ExportstatContext) {}
+
+// ExitExportstat is called when production exportstat is exited.
+func (s *BaseBeepBoopListener) ExitExportstat(ctx *ExportstatContext) {}
 
 // EnterIfstat is called when production ifstat is entered.
 func (s *BaseBeepBoopListener) EnterIfstat(ctx *IfstatContext) {}
@@ -134,6 +158,12 @@ func (s *BaseBeepBoopListener) EnterFncall(ctx *FncallContext) {}
 
 // ExitFncall is called when production fncall is exited.
 func (s *BaseBeepBoopListener) ExitFncall(ctx *FncallContext) {}
+
+// EnterFnargs is called when production fnargs is entered.
+func (s *BaseBeepBoopListener) EnterFnargs(ctx *FnargsContext) {}
+
+// ExitFnargs is called when production fnargs is exited.
+func (s *BaseBeepBoopListener) ExitFnargs(ctx *FnargsContext) {}
 
 // EnterLabelTerm is called when production labelTerm is entered.
 func (s *BaseBeepBoopListener) EnterLabelTerm(ctx *LabelTermContext) {}
@@ -237,6 +267,12 @@ func (s *BaseBeepBoopListener) EnterSoloMath(ctx *SoloMathContext) {}
 // ExitSoloMath is called when production soloMath is exited.
 func (s *BaseBeepBoopListener) ExitSoloMath(ctx *SoloMathContext) {}
 
+// EnterMultiplicativeMath is called when production multiplicativeMath is entered.
+func (s *BaseBeepBoopListener) EnterMultiplicativeMath(ctx *MultiplicativeMathContext) {}
+
+// ExitMultiplicativeMath is called when production multiplicativeMath is exited.
+func (s *BaseBeepBoopListener) ExitMultiplicativeMath(ctx *MultiplicativeMathContext) {}
+
 // EnterAdditiveMath is called when production additiveMath is entered.
 func (s *BaseBeepBoopListener) EnterAdditiveMath(ctx *AdditiveMathContext) {}
 
@@ -255,11 +291,11 @@ func (s *BaseBeepBoopListener) EnterNumLiteral(ctx *NumLiteralContext) {}
 // ExitNumLiteral is called when production numLiteral is exited.
 func (s *BaseBeepBoopListener) ExitNumLiteral(ctx *NumLiteralContext) {}
 
-// EnterLettersLiteral is called when production lettersLiteral is entered.
-func (s *BaseBeepBoopListener) EnterLettersLiteral(ctx *LettersLiteralContext) {}
+// EnterWordsLiteral is called when production wordsLiteral is entered.
+func (s *BaseBeepBoopListener) EnterWordsLiteral(ctx *WordsLiteralContext) {}
 
-// ExitLettersLiteral is called when production lettersLiteral is exited.
-func (s *BaseBeepBoopListener) ExitLettersLiteral(ctx *LettersLiteralContext) {}
+// ExitWordsLiteral is called when production wordsLiteral is exited.
+func (s *BaseBeepBoopListener) ExitWordsLiteral(ctx *WordsLiteralContext) {}
 
 // EnterBoolLiteral is called when production boolLiteral is entered.
 func (s *BaseBeepBoopListener) EnterBoolLiteral(ctx *BoolLiteralContext) {}
@@ -267,17 +303,17 @@ func (s *BaseBeepBoopListener) EnterBoolLiteral(ctx *BoolLiteralContext) {}
 // ExitBoolLiteral is called when production boolLiteral is exited.
 func (s *BaseBeepBoopListener) ExitBoolLiteral(ctx *BoolLiteralContext) {}
 
-// EnterQuotedLiteral is called when production quotedLiteral is entered.
-func (s *BaseBeepBoopListener) EnterQuotedLiteral(ctx *QuotedLiteralContext) {}
-
-// ExitQuotedLiteral is called when production quotedLiteral is exited.
-func (s *BaseBeepBoopListener) ExitQuotedLiteral(ctx *QuotedLiteralContext) {}
-
 // EnterNum is called when production num is entered.
 func (s *BaseBeepBoopListener) EnterNum(ctx *NumContext) {}
 
 // ExitNum is called when production num is exited.
 func (s *BaseBeepBoopListener) ExitNum(ctx *NumContext) {}
+
+// EnterWords is called when production words is entered.
+func (s *BaseBeepBoopListener) EnterWords(ctx *WordsContext) {}
+
+// ExitWords is called when production words is exited.
+func (s *BaseBeepBoopListener) ExitWords(ctx *WordsContext) {}
 
 // EnterBoolexpr is called when production boolexpr is entered.
 func (s *BaseBeepBoopListener) EnterBoolexpr(ctx *BoolexprContext) {}

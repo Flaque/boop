@@ -25,12 +25,10 @@ true
 false
 
 # Math
-3   plus  3
-2.0 sub  1
-48  mult 2
-23  div  0.3
-2   pow  2
-10  mod  2
+3   +  3
+2.0 -  1
+48  * 2
+23  /  0.3
 
 # Variables
 :a = hello
@@ -126,3 +124,25 @@ export :ledger # Exports it as a cmd line tool or as an importable function somw
 import ./foo/jazz # Auto imports :jazz
 import ./foo/jazz as :j
 ```
+
+## Embedded Library
+
+Boop has a number of functions that come with the language by default. They're written in go. These are functions that you can't overwrite and don't need to import. 
+
+```ruby
+# OS info
+:exit
+:in     # stdin
+:out    # stdout (TODO: might not be included)
+:flags  # passed flags to the script (not the function)
+:args   # args passed to the script 
+
+# Math functions
+:pow 2 3  # 8
+:sqrt 4   # 2 
+:mod 12 7 # 5
+```
+
+## Standard Library
+
+The standard library is similar, though it's written in boop, not in go.

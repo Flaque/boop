@@ -36,6 +36,14 @@ func (v *BaseBeepBoopVisitor) VisitReturnStatement(ctx *ReturnStatementContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitExportStatement(ctx *ExportStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitImportStatement(ctx *ImportStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -49,6 +57,14 @@ func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) inte
 }
 
 func (v *BaseBeepBoopVisitor) VisitNewlineStatement(ctx *NewlineStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitImportstat(ctx *ImportstatContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitExportstat(ctx *ExportstatContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -81,6 +97,10 @@ func (v *BaseBeepBoopVisitor) VisitParen_fncall(ctx *Paren_fncallContext) interf
 }
 
 func (v *BaseBeepBoopVisitor) VisitFncall(ctx *FncallContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFnargs(ctx *FnargsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -152,6 +172,10 @@ func (v *BaseBeepBoopVisitor) VisitSoloMath(ctx *SoloMathContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitMultiplicativeMath(ctx *MultiplicativeMathContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitAdditiveMath(ctx *AdditiveMathContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -164,7 +188,7 @@ func (v *BaseBeepBoopVisitor) VisitNumLiteral(ctx *NumLiteralContext) interface{
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitLettersLiteral(ctx *LettersLiteralContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitWordsLiteral(ctx *WordsLiteralContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -172,11 +196,11 @@ func (v *BaseBeepBoopVisitor) VisitBoolLiteral(ctx *BoolLiteralContext) interfac
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitQuotedLiteral(ctx *QuotedLiteralContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitNum(ctx *NumContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitNum(ctx *NumContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitWords(ctx *WordsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
