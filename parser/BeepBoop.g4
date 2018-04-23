@@ -83,10 +83,10 @@ conditional:
 	| boolexpr					        	# boolCond;
 
 math:
-	math op = (PLUS | SUB) math		# additiveMath
-	| math op = (MULT | DIV) math	# multiplicativeMath
-	| SUB math			        			# unarySubMath
-	| num						            	# soloMath;
+	SUB math			        		    	# unarySubMath
+	| math op = (PLUS | SUB) math		# additiveMath
+	| math op = (MULT | DIV) math	  # multiplicativeMath
+	| num						            	  # soloMath;
 
 literal:
 	num			    # numLiteral

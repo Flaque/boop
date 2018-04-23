@@ -124,7 +124,7 @@ func TestSoloMath(t *testing.T) {
 		v, p := getInterpreters(code)
 
 		val := GetVariable(v.Visit(p.Math()))
-		assert.True(t, (val.Is(FLOAT) || val.Is(INT)))
+		assert.True(t, val.IsNum())
 	}
 }
 
@@ -143,4 +143,26 @@ func TestUnarySubMath(t *testing.T) {
 	val = GetVariable(v.Visit(p.Math()))
 	assert.True(t, val.Is(FLOAT))
 	assert.Equal(t, -2.34, val.AsFloat())
+}
+
+func TestAdditiveMath(t *testing.T) {
+
+	samples := []struct {
+		code     string
+		expected int
+	}{
+		{"1 + 35", 36},
+		{"34 + -20", 14},
+		{"10 - 23", -13},
+		{"-10 + 10", 0},
+		{"-12 - 2", -14},
+	}
+
+	for _, sample := range samples {
+		v, p := getInterpreters(sample.code)
+
+		val := GetVariable(v.Visit(p.Math()))
+		assert.True(t, val.Is(INT))
+		assert.Equal(t, sample.expected, val.AsInt())
+	}
 }

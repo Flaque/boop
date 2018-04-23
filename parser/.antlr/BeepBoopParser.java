@@ -1992,7 +1992,7 @@ public class BeepBoopParser extends Parser {
 				setState(334);
 				match(SUB);
 				setState(335);
-				math(2);
+				math(4);
 				}
 				break;
 			case INT:
@@ -2025,7 +2025,7 @@ public class BeepBoopParser extends Parser {
 						_localctx = new AdditiveMathContext(new MathContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_math);
 						setState(339);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(340);
 						((AdditiveMathContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2038,7 +2038,7 @@ public class BeepBoopParser extends Parser {
 							consume();
 						}
 						setState(341);
-						math(5);
+						math(4);
 						}
 						break;
 					case 2:
@@ -2046,7 +2046,7 @@ public class BeepBoopParser extends Parser {
 						_localctx = new MultiplicativeMathContext(new MathContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_math);
 						setState(342);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						setState(343);
 						((MultiplicativeMathContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2059,7 +2059,7 @@ public class BeepBoopParser extends Parser {
 							consume();
 						}
 						setState(344);
-						math(4);
+						math(3);
 						}
 						break;
 					}
@@ -2546,9 +2546,9 @@ public class BeepBoopParser extends Parser {
 	private boolean math_sempred(MathContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 2:
-			return precpred(_ctx, 4);
-		case 3:
 			return precpred(_ctx, 3);
+		case 3:
+			return precpred(_ctx, 2);
 		}
 		return true;
 	}
@@ -2689,10 +2689,10 @@ public class BeepBoopParser extends Parser {
 		"\2\2\u0148\u0149\7%\2\2\u0149\u014b\5&\24\5\u014a\u0144\3\2\2\2\u014a"+
 		"\u0147\3\2\2\2\u014b\u014e\3\2\2\2\u014c\u014a\3\2\2\2\u014c\u014d\3\2"+
 		"\2\2\u014d\'\3\2\2\2\u014e\u014c\3\2\2\2\u014f\u0150\b\25\1\2\u0150\u0151"+
-		"\7\26\2\2\u0151\u0154\5(\25\4\u0152\u0154\5,\27\2\u0153\u014f\3\2\2\2"+
-		"\u0153\u0152\3\2\2\2\u0154\u015d\3\2\2\2\u0155\u0156\f\6\2\2\u0156\u0157"+
-		"\t\2\2\2\u0157\u015c\5(\25\7\u0158\u0159\f\5\2\2\u0159\u015a\t\3\2\2\u015a"+
-		"\u015c\5(\25\6\u015b\u0155\3\2\2\2\u015b\u0158\3\2\2\2\u015c\u015f\3\2"+
+		"\7\26\2\2\u0151\u0154\5(\25\6\u0152\u0154\5,\27\2\u0153\u014f\3\2\2\2"+
+		"\u0153\u0152\3\2\2\2\u0154\u015d\3\2\2\2\u0155\u0156\f\5\2\2\u0156\u0157"+
+		"\t\2\2\2\u0157\u015c\5(\25\6\u0158\u0159\f\4\2\2\u0159\u015a\t\3\2\2\u015a"+
+		"\u015c\5(\25\5\u015b\u0155\3\2\2\2\u015b\u0158\3\2\2\2\u015c\u015f\3\2"+
 		"\2\2\u015d\u015b\3\2\2\2\u015d\u015e\3\2\2\2\u015e)\3\2\2\2\u015f\u015d"+
 		"\3\2\2\2\u0160\u0164\5,\27\2\u0161\u0164\5.\30\2\u0162\u0164\5\60\31\2"+
 		"\u0163\u0160\3\2\2\2\u0163\u0161\3\2\2\2\u0163\u0162\3\2\2\2\u0164+\3"+

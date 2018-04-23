@@ -79,6 +79,10 @@ func (v *Variable) Is(t Type) bool {
 	return v.Type == t
 }
 
+func (v *Variable) IsNum() bool {
+	return v.Is(INT) || v.Is(FLOAT)
+}
+
 // Equals returns true if the interface matches the stored val
 func (v *Variable) Equals(val interface{}) bool {
 
@@ -116,12 +120,16 @@ func (v *Variable) Plus(other *Variable) *Variable {
 
 	// Add ints
 	aval, _ := v.Value.(int)
-	bval, _ := v.Value.(int)
+	bval, _ := other.Value.(int)
 	return NewVariable(INT, aval+bval)
 }
 
+func (v *Variable) Minus(other *Variable) *Variable {
+	return v.Plus(other.Negate())
+}
+
 func (v *Variable) Negate() *Variable {
-	if !(v.Type == INT || v.Type == FLOAT) {
+	if !v.IsNum() {
 		return NewVariable(UNKNOWN, nil)
 	}
 

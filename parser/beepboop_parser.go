@@ -173,10 +173,10 @@ var parserATN = []uint16{
 	4, 2, 2, 328, 329, 7, 37, 2, 2, 329, 331, 5, 38, 20, 5, 330, 324, 3, 2,
 	2, 2, 330, 327, 3, 2, 2, 2, 331, 334, 3, 2, 2, 2, 332, 330, 3, 2, 2, 2,
 	332, 333, 3, 2, 2, 2, 333, 39, 3, 2, 2, 2, 334, 332, 3, 2, 2, 2, 335, 336,
-	8, 21, 1, 2, 336, 337, 7, 22, 2, 2, 337, 340, 5, 40, 21, 4, 338, 340, 5,
+	8, 21, 1, 2, 336, 337, 7, 22, 2, 2, 337, 340, 5, 40, 21, 6, 338, 340, 5,
 	44, 23, 2, 339, 335, 3, 2, 2, 2, 339, 338, 3, 2, 2, 2, 340, 349, 3, 2,
-	2, 2, 341, 342, 12, 6, 2, 2, 342, 343, 9, 2, 2, 2, 343, 348, 5, 40, 21,
-	7, 344, 345, 12, 5, 2, 2, 345, 346, 9, 3, 2, 2, 346, 348, 5, 40, 21, 6,
+	2, 2, 341, 342, 12, 5, 2, 2, 342, 343, 9, 2, 2, 2, 343, 348, 5, 40, 21,
+	6, 344, 345, 12, 4, 2, 2, 345, 346, 9, 3, 2, 2, 346, 348, 5, 40, 21, 5,
 	347, 341, 3, 2, 2, 2, 347, 344, 3, 2, 2, 2, 348, 351, 3, 2, 2, 2, 349,
 	347, 3, 2, 2, 2, 349, 350, 3, 2, 2, 2, 350, 41, 3, 2, 2, 2, 351, 349, 3,
 	2, 2, 2, 352, 356, 5, 44, 23, 2, 353, 356, 5, 46, 24, 2, 354, 356, 5, 48,
@@ -5456,7 +5456,7 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 		}
 		{
 			p.SetState(335)
-			p.math(2)
+			p.math(4)
 		}
 
 	case BeepBoopParserINT, BeepBoopParserFLOAT:
@@ -5490,8 +5490,8 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
 				p.SetState(339)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
+					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
 				{
 					p.SetState(340)
@@ -5513,7 +5513,7 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(341)
-					p.math(5)
+					p.math(4)
 				}
 
 			case 2:
@@ -5521,8 +5521,8 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_math)
 				p.SetState(342)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
+					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 				}
 				{
 					p.SetState(343)
@@ -5544,7 +5544,7 @@ func (p *BeepBoopParser) math(_p int) (localctx IMathContext) {
 				}
 				{
 					p.SetState(344)
-					p.math(4)
+					p.math(3)
 				}
 
 			}
@@ -6984,10 +6984,10 @@ func (p *BeepBoopParser) Conditional_Sempred(localctx antlr.RuleContext, predInd
 func (p *BeepBoopParser) Math_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 2:
-		return p.Precpred(p.GetParserRuleContext(), 4)
+		return p.Precpred(p.GetParserRuleContext(), 3)
 
 	case 3:
-		return p.Precpred(p.GetParserRuleContext(), 3)
+		return p.Precpred(p.GetParserRuleContext(), 2)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

@@ -269,12 +269,23 @@ func (v *BeepBoopVisitor) VisitMultiplicativeMath(ctx *parser.MultiplicativeMath
 }
 
 func (v *BeepBoopVisitor) VisitAdditiveMath(ctx *parser.AdditiveMathContext) interface{} {
-	panic("not implemented")
+
+	va := GetVariable(v.Visit(ctx.Math(0)))
+	vb := GetVariable(v.Visit(ctx.Math(1)))
+
+	fmt.Println("add", va.AsInt(), vb.AsInt())
+
+	if ctx.PLUS() != nil {
+		return va.Plus(vb)
+	} else {
+		return va.Minus(vb)
+	}
 }
 
 func (v *BeepBoopVisitor) VisitUnarySubMath(ctx *parser.UnarySubMathContext) interface{} {
 	va := GetVariable(v.Visit(ctx.Math()))
 	total := va.Negate()
+	fmt.Println("un", total.AsInt())
 
 	if total.Is(UNKNOWN) {
 		v.errs = append(v.errs, fmt.Errorf("unexpected UNKNOWN value when attempting to negate at %s", ctx.GetText()))
