@@ -43,7 +43,7 @@ func Validate(code string) {
 
 	p := getParser(code)
 	listener := &Listener{}
-	antlr.ParseTreeWalkerDefault.Walk(listener, p.Beepboop())
+	antlr.ParseTreeWalkerDefault.Walk(listener, p.Boop())
 }
 
 // Run runs code and returns visiter output
@@ -52,14 +52,9 @@ func Run(code string, out io.Writer) interface{} {
 
 	// Setup ANTLR's parser
 	p := getParser(code)
-	tree := p.Beepboop()
+	tree := p.Boop()
 
-	// Stack of Hashtree's to store variables
-	stack := NewTree(nil)
-	logger := NewLogger(out)
-	visits := []string{}
-
-	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &stack, &logger, visits}
+	visitor := NewBeepBoopVisitor(out)
 	output := visitor.Visit(tree)
 
 	return output

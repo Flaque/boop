@@ -27,7 +27,7 @@ func TestGetFromParent(t *testing.T) {
 	root := NewTree(nil)
 	root.Set("$a", "hello")
 
-	child := NewTree(&root)
+	child := NewTree(root)
 
 	val, err := child.Get("$a")
 
@@ -39,8 +39,8 @@ func TestGetFromGrandParent(t *testing.T) {
 	root := NewTree(nil)
 	root.Set("$a", "hello")
 
-	parent := NewTree(&root)
-	child := NewTree(&parent)
+	parent := NewTree(root)
+	child := NewTree(parent)
 
 	val, err := child.Get("$a")
 
@@ -51,10 +51,10 @@ func TestGetFromGrandParent(t *testing.T) {
 func TestGetFromParentWithGrandparent(t *testing.T) {
 	root := NewTree(nil)
 
-	parent := NewTree(&root)
+	parent := NewTree(root)
 	parent.Set("$a", "hello")
 
-	child := NewTree(&parent)
+	child := NewTree(parent)
 
 	val, err := child.Get("$a")
 	assert.Nil(t, err)
@@ -65,7 +65,7 @@ func TestSetFromChildWithPredefinedVariable(t *testing.T) {
 	root := NewTree(nil)
 	root.Set("$a", "hello")
 
-	child := NewTree(&root)
+	child := NewTree(root)
 	child.Set("$a", "goodbye")
 
 	// Test child has correct element
@@ -83,8 +83,8 @@ func TestSetFromChildWithGrandparentVariable(t *testing.T) {
 	root := NewTree(nil)
 	root.Set("$a", "hello")
 
-	parent := NewTree(&root)
-	child := NewTree(&parent)
+	parent := NewTree(root)
+	child := NewTree(parent)
 	child.Set("$a", "goodbye")
 
 	// Test child has correct element
@@ -105,7 +105,7 @@ func TestSetFromChildWithGrandparentVariable(t *testing.T) {
 
 func TestSetFromChildWithNoPredefinedVariable(t *testing.T) {
 	root := NewTree(nil)
-	child := NewTree(&root)
+	child := NewTree(root)
 
 	child.Set("$a", "hello")
 

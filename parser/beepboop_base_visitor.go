@@ -8,11 +8,7 @@ type BaseBeepBoopVisitor struct {
 	*antlr.BaseParseTreeVisitor
 }
 
-func (v *BaseBeepBoopVisitor) VisitBeepboop(ctx *BeepboopContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitStatementCode(ctx *StatementCodeContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitBoop(ctx *BoopContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -20,7 +16,15 @@ func (v *BaseBeepBoopVisitor) VisitFuncdefCode(ctx *FuncdefCodeContext) interfac
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitStatementCode(ctx *StatementCodeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFuncguts(ctx *FuncgutsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -32,19 +36,63 @@ func (v *BaseBeepBoopVisitor) VisitReturnStatement(ctx *ReturnStatementContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseBeepBoopVisitor) VisitExportStatement(ctx *ExportStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitImportStatement(ctx *ImportStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallStatement(ctx *FncallStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitIfStatement(ctx *IfStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseBeepBoopVisitor) VisitPipeStatement(ctx *PipeStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitNoopStatement(ctx *NoopStatementContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitNewlineStatement(ctx *NewlineStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitFuncguts(ctx *FuncgutsContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitImportstat(ctx *ImportstatContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitFuncdef(ctx *FuncdefContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitExportstat(ctx *ExportstatContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitIfstat(ctx *IfstatContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitReturnstat(ctx *ReturnstatContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitStructexpr(ctx *StructexprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitAssignstat(ctx *AssignstatContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitExprAssign(ctx *ExprAssignContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallAssign(ctx *FncallAssignContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitParen_fncall(ctx *Paren_fncallContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -52,39 +100,19 @@ func (v *BaseBeepBoopVisitor) VisitFncall(ctx *FncallContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitExprIfStatement(ctx *ExprIfStatementContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitFlagFnargs(ctx *FlagFnargsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitFncallIfStatement(ctx *FncallIfStatementContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitMultFnargs(ctx *MultFnargsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitExprReturn(ctx *ExprReturnContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitDivFnargs(ctx *DivFnargsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitFncallReturn(ctx *FncallReturnContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitAssignment(ctx *AssignmentContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitUnaryMinusExpr(ctx *UnaryMinusExprContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitTermExpr(ctx *TermExprContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitAdditiveExpr(ctx *AdditiveExprContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseBeepBoopVisitor) VisitPipe(ctx *PipeContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitTermFnargs(ctx *TermFnargsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -92,11 +120,135 @@ func (v *BaseBeepBoopVisitor) VisitLabelTerm(ctx *LabelTermContext) interface{} 
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitStringTerm(ctx *StringTermContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitLiteralTerm(ctx *LiteralTermContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseBeepBoopVisitor) VisitIntTerm(ctx *IntTermContext) interface{} {
+func (v *BaseBeepBoopVisitor) VisitMathTerm(ctx *MathTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitParenfncallTerm(ctx *ParenfncallTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitStructTerm(ctx *StructTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitListTerm(ctx *ListTermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitList(ctx *ListContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitListterm(ctx *ListtermContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitGthanequalsCond(ctx *GthanequalsCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitEqualsCond(ctx *EqualsCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitOrCond(ctx *OrCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitGthanCond(ctx *GthanCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitAndCond(ctx *AndCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLthanCond(ctx *LthanCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLthanequalsCond(ctx *LthanequalsCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitBoolCond(ctx *BoolCondContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitSoloMath(ctx *SoloMathContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitMultiplicativeMath(ctx *MultiplicativeMathContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitAdditiveMath(ctx *AdditiveMathContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitUnarySubMath(ctx *UnarySubMathContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitNumLiteral(ctx *NumLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitWordsLiteral(ctx *WordsLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitBoolLiteral(ctx *BoolLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitIntNum(ctx *IntNumContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFloatNum(ctx *FloatNumContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitLetterWords(ctx *LetterWordsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitStringWords(ctx *StringWordsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitQuotedWords(ctx *QuotedWordsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitBoolexpr(ctx *BoolexprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitPipeToFncallPipe(ctx *PipeToFncallPipeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitPipeToPipe(ctx *PipeToPipeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitTermPipe(ctx *TermPipeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitNewlinePipe(ctx *NewlinePipeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseBeepBoopVisitor) VisitFncallPipe(ctx *FncallPipeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

@@ -11,8 +11,8 @@ type Logger struct {
 	out io.Writer
 }
 
-func NewLogger(to io.Writer) Logger {
-	return Logger{to}
+func NewLogger(to io.Writer) *Logger {
+	return &Logger{to}
 }
 
 func (l *Logger) Print(a ...interface{}) (n int, err error) {
