@@ -77,8 +77,17 @@ type BeepBoopListener interface {
 	// EnterFncall is called when entering the fncall production.
 	EnterFncall(c *FncallContext)
 
-	// EnterFnargs is called when entering the fnargs production.
-	EnterFnargs(c *FnargsContext)
+	// EnterFlagFnargs is called when entering the flagFnargs production.
+	EnterFlagFnargs(c *FlagFnargsContext)
+
+	// EnterMultFnargs is called when entering the multFnargs production.
+	EnterMultFnargs(c *MultFnargsContext)
+
+	// EnterDivFnargs is called when entering the divFnargs production.
+	EnterDivFnargs(c *DivFnargsContext)
+
+	// EnterTermFnargs is called when entering the termFnargs production.
+	EnterTermFnargs(c *TermFnargsContext)
 
 	// EnterLabelTerm is called when entering the labelTerm production.
 	EnterLabelTerm(c *LabelTermContext)
@@ -149,17 +158,38 @@ type BeepBoopListener interface {
 	// EnterBoolLiteral is called when entering the boolLiteral production.
 	EnterBoolLiteral(c *BoolLiteralContext)
 
-	// EnterNum is called when entering the num production.
-	EnterNum(c *NumContext)
+	// EnterIntNum is called when entering the intNum production.
+	EnterIntNum(c *IntNumContext)
 
-	// EnterWords is called when entering the words production.
-	EnterWords(c *WordsContext)
+	// EnterFloatNum is called when entering the floatNum production.
+	EnterFloatNum(c *FloatNumContext)
+
+	// EnterLetterWords is called when entering the letterWords production.
+	EnterLetterWords(c *LetterWordsContext)
+
+	// EnterStringWords is called when entering the stringWords production.
+	EnterStringWords(c *StringWordsContext)
+
+	// EnterQuotedWords is called when entering the quotedWords production.
+	EnterQuotedWords(c *QuotedWordsContext)
 
 	// EnterBoolexpr is called when entering the boolexpr production.
 	EnterBoolexpr(c *BoolexprContext)
 
-	// EnterPipe is called when entering the pipe production.
-	EnterPipe(c *PipeContext)
+	// EnterPipeToFncallPipe is called when entering the pipeToFncallPipe production.
+	EnterPipeToFncallPipe(c *PipeToFncallPipeContext)
+
+	// EnterPipeToPipe is called when entering the pipeToPipe production.
+	EnterPipeToPipe(c *PipeToPipeContext)
+
+	// EnterTermPipe is called when entering the termPipe production.
+	EnterTermPipe(c *TermPipeContext)
+
+	// EnterNewlinePipe is called when entering the newlinePipe production.
+	EnterNewlinePipe(c *NewlinePipeContext)
+
+	// EnterFncallPipe is called when entering the fncallPipe production.
+	EnterFncallPipe(c *FncallPipeContext)
 
 	// EnterLabel is called when entering the label production.
 	EnterLabel(c *LabelContext)
@@ -233,8 +263,17 @@ type BeepBoopListener interface {
 	// ExitFncall is called when exiting the fncall production.
 	ExitFncall(c *FncallContext)
 
-	// ExitFnargs is called when exiting the fnargs production.
-	ExitFnargs(c *FnargsContext)
+	// ExitFlagFnargs is called when exiting the flagFnargs production.
+	ExitFlagFnargs(c *FlagFnargsContext)
+
+	// ExitMultFnargs is called when exiting the multFnargs production.
+	ExitMultFnargs(c *MultFnargsContext)
+
+	// ExitDivFnargs is called when exiting the divFnargs production.
+	ExitDivFnargs(c *DivFnargsContext)
+
+	// ExitTermFnargs is called when exiting the termFnargs production.
+	ExitTermFnargs(c *TermFnargsContext)
 
 	// ExitLabelTerm is called when exiting the labelTerm production.
 	ExitLabelTerm(c *LabelTermContext)
@@ -305,17 +344,38 @@ type BeepBoopListener interface {
 	// ExitBoolLiteral is called when exiting the boolLiteral production.
 	ExitBoolLiteral(c *BoolLiteralContext)
 
-	// ExitNum is called when exiting the num production.
-	ExitNum(c *NumContext)
+	// ExitIntNum is called when exiting the intNum production.
+	ExitIntNum(c *IntNumContext)
 
-	// ExitWords is called when exiting the words production.
-	ExitWords(c *WordsContext)
+	// ExitFloatNum is called when exiting the floatNum production.
+	ExitFloatNum(c *FloatNumContext)
+
+	// ExitLetterWords is called when exiting the letterWords production.
+	ExitLetterWords(c *LetterWordsContext)
+
+	// ExitStringWords is called when exiting the stringWords production.
+	ExitStringWords(c *StringWordsContext)
+
+	// ExitQuotedWords is called when exiting the quotedWords production.
+	ExitQuotedWords(c *QuotedWordsContext)
 
 	// ExitBoolexpr is called when exiting the boolexpr production.
 	ExitBoolexpr(c *BoolexprContext)
 
-	// ExitPipe is called when exiting the pipe production.
-	ExitPipe(c *PipeContext)
+	// ExitPipeToFncallPipe is called when exiting the pipeToFncallPipe production.
+	ExitPipeToFncallPipe(c *PipeToFncallPipeContext)
+
+	// ExitPipeToPipe is called when exiting the pipeToPipe production.
+	ExitPipeToPipe(c *PipeToPipeContext)
+
+	// ExitTermPipe is called when exiting the termPipe production.
+	ExitTermPipe(c *TermPipeContext)
+
+	// ExitNewlinePipe is called when exiting the newlinePipe production.
+	ExitNewlinePipe(c *NewlinePipeContext)
+
+	// ExitFncallPipe is called when exiting the fncallPipe production.
+	ExitFncallPipe(c *FncallPipeContext)
 
 	// ExitLabel is called when exiting the label production.
 	ExitLabel(c *LabelContext)

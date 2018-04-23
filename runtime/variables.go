@@ -97,6 +97,16 @@ func (v *Variable) AsString() string {
 	return str
 }
 
+func (v *Variable) AsFloat() float64 {
+	fl, _ := v.Value.(float64)
+	return fl
+}
+
+func (v *Variable) AsInt() int {
+	i, _ := v.Value.(int)
+	return i
+}
+
 func (v *Variable) Plus(other *Variable) *Variable {
 
 	// TODO: Allow FLOAT to add too
@@ -108,4 +118,19 @@ func (v *Variable) Plus(other *Variable) *Variable {
 	aval, _ := v.Value.(int)
 	bval, _ := v.Value.(int)
 	return NewVariable(INT, aval+bval)
+}
+
+func (v *Variable) Negate() *Variable {
+	if !(v.Type == INT || v.Type == FLOAT) {
+		return NewVariable(UNKNOWN, nil)
+	}
+
+	if v.Type == FLOAT {
+		fl := v.AsFloat()
+		return NewVariable(FLOAT, -fl)
+	}
+
+	// int
+	i := v.AsInt()
+	return NewVariable(INT, -i)
 }

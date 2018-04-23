@@ -13,17 +13,17 @@ funcdef:
 funcguts: statement+;
 
 statement:
-	assignstat				# assignStatement
-	| returnstat			# returnStatement
-	| exportstat			# exportStatement
+	assignstat				    # assignStatement
+	| returnstat			    # returnStatement
+	| exportstat		    	# exportStatement
 	| importstat NEWLINE	# importStatement
-	| fncall NEWLINE		# fncallStatement
-	| ifstat NEWLINE		# ifStatement
-	| pipe NEWLINE			# pipeStatement
-	| NEWLINE				# newlineStatement;
+	| fncall NEWLINE		  # fncallStatement
+	| ifstat NEWLINE		  # ifStatement
+	| pipe NEWLINE			  # pipeStatement
+	| NEWLINE			      	# newlineStatement;
 
 importstat: IMPORT words | IMPORT words AS label;
-exportstat: EXPORT term | label;
+exportstat: EXPORT (term | label);
 
 ifstat:
 	IF conditional DO statement+ END
@@ -35,7 +35,7 @@ returnstat:
 	| RETURN (NEWLINE | NEWLINE+);
 
 structexpr:
-	LSQUIG RSQUIG
+	LSQUIG RSQUIG 
 	| LSQUIG NEWLINE (assignstat | assignstat+) RSQUIG
 	| LSQUIG (assignstat | assignstat+) RSQUIG
 	| LSQUIG assign RSQUIG
@@ -44,22 +44,26 @@ structexpr:
 assignstat: assign NEWLINE;
 
 assign:
-	label ASSIGN term		# exprAssign
+	label ASSIGN term	  	# exprAssign
 	| label ASSIGN fncall	# fncallAssign;
 
 paren_fncall: LPAREN fncall RPAREN;
 
 fncall: label fnargs+ | label;
 
-fnargs: FLAG | MULT | DIV | term;
+fnargs: FLAG #flagFnargs
+	| MULT     #multFnargs
+	| DIV      #divFnargs
+	| term     #termFnargs
+	; 
 
 term:
-	label			# labelTerm // Also a function call
-	| literal		# literalTerm
-	| math			# mathTerm
+	label			      # labelTerm // Also a function call
+	| literal		    # literalTerm
+	| math			    # mathTerm
 	| paren_fncall	# parenfncallTerm
-	| structexpr	# structTerm
-	| list			# listTerm;
+	| structexpr	  # structTerm
+	| list		    	# listTerm;
 
 list:
 	LBLOCK RBLOCK
@@ -71,34 +75,39 @@ listterm: term | term NEWLINE;
 conditional:
 	term EQUALS term				# equalsCond
 	| term LTHAN term				# lthanCond
-	| term GTHAN term				# gthanCond
-	| term LTHAN_EQUALS term		# lthanequalsCond
-	| term GTHAN_EQUALS term		# gthanequalsCond
+	| term GTHAN term				      # gthanCond
+	| term LTHAN_EQUALS term		  # lthanequalsCond
+	| term GTHAN_EQUALS term	  	# gthanequalsCond
 	| conditional OR conditional	# orCond
 	| conditional AND conditional	# andCond
-	| boolexpr						# boolCond;
+	| boolexpr					        	# boolCond;
 
 math:
 	math op = (PLUS | SUB) math		# additiveMath
 	| math op = (MULT | DIV) math	# multiplicativeMath
-	| SUB math						# unarySubMath
-	| num							# soloMath;
+	| SUB math			        			# unarySubMath
+	| num						            	# soloMath;
 
 literal:
-	num			# numLiteral
-	| words		# wordsLiteral
+	num			    # numLiteral
+	| words	   	# wordsLiteral
 	| boolexpr	# boolLiteral;
 
-num: INT | FLOAT;
-words: LETTERS | STRING | QUOTED;
+num: INT  #intNum 
+	| FLOAT #floatNum;
+
+words: LETTERS #letterWords
+	| STRING     #stringWords
+	| QUOTED     #quotedWords;
+
 boolexpr: TRUE | FALSE;
 
 pipe:
-	pipe PIPE fncall
-	| pipe PIPE pipe
-	| pipe NEWLINE PIPE pipe
-	| fncall
-	| term;
+	pipe PIPE fncall          #pipeToFncallPipe
+	| pipe PIPE pipe          #pipeToPipe
+	| pipe NEWLINE PIPE pipe  #newlinePipe
+	| fncall					 				#fncallPipe
+	| term  						 			#termPipe;
 
 label: ':' LETTERS;
 FLAG: '-'+ LETTERS+;

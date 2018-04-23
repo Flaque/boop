@@ -11,15 +11,12 @@ import (
 	"github.com/Flaque/boop/util"
 )
 
-func getVisitor() BeepBoopVisitor {
+func getVisitor() *BeepBoopVisitor {
 	var buf bytes.Buffer
-	tree := NewTree(nil)
-	logger := NewLogger(&buf)
-
-	return BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &tree, &logger}
+	return NewBeepBoopVisitor(&buf)
 }
 
-func getInterpreters(code string) (BeepBoopVisitor, *parser.BeepBoopParser) {
+func getInterpreters(code string) (*BeepBoopVisitor, *parser.BeepBoopParser) {
 	return getVisitor(), getParser(code)
 }
 
@@ -105,4 +102,45 @@ func TestIntLiteral(t *testing.T) {
 		expected, _ := strconv.Atoi(code)
 		assert.True(t, val.Equals(expected), val.Is(INT))
 	}
+}
+
+func TestFloatNum(t *testing.T) {
+	samples := []string{"1.0", "0.432", "23123.30"}
+
+	for _, code := range samples {
+		v, p := getInterpreters(code)
+
+		val := GetVariable(v.Visit(p.Literal()))
+		expected, _ := strconv.ParseFloat(code, 64)
+		assert.True(t, val.Equals(expected))
+		assert.True(t, val.Is(FLOAT))
+	}
+}
+
+func TestSoloMath(t *testing.T) {
+	samples := []string{"1", "3", "234.0"}
+
+	for _, code := range samples {
+		v, p := getInterpreters(code)
+
+		val := GetVariable(v.Visit(p.Math()))
+		assert.True(t, (val.Is(FLOAT) || val.Is(INT)))
+	}
+}
+
+func TestUnarySubMath(t *testing.T) {
+
+	// ints
+	v, p := getInterpreters("-1")
+
+	val := GetVariable(v.Visit(p.Math()))
+	assert.True(t, val.Is(INT))
+	assert.Equal(t, -1, val.AsInt())
+
+	// Floats
+	v, p = getInterpreters("-2.34")
+
+	val = GetVariable(v.Visit(p.Math()))
+	assert.True(t, val.Is(FLOAT))
+	assert.Equal(t, -2.34, val.AsFloat())
 }

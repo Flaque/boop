@@ -54,11 +54,7 @@ func Run(code string, out io.Writer) interface{} {
 	p := getParser(code)
 	tree := p.Boop()
 
-	// Stack of Hashtree's to store variables
-	stack := NewTree(nil)
-	logger := NewLogger(out)
-
-	visitor := BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, &stack, &logger}
+	visitor := NewBeepBoopVisitor(out)
 	output := visitor.Visit(tree)
 
 	return output

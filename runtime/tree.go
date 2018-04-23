@@ -9,10 +9,10 @@ type Tree struct {
 	Parent *Tree
 }
 
-func NewTree(parent *Tree) Tree {
+func NewTree(parent *Tree) *Tree {
 	f := NewFrame()
 
-	return Tree{
+	return &Tree{
 		&f,
 		parent,
 	}

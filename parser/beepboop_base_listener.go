@@ -159,11 +159,29 @@ func (s *BaseBeepBoopListener) EnterFncall(ctx *FncallContext) {}
 // ExitFncall is called when production fncall is exited.
 func (s *BaseBeepBoopListener) ExitFncall(ctx *FncallContext) {}
 
-// EnterFnargs is called when production fnargs is entered.
-func (s *BaseBeepBoopListener) EnterFnargs(ctx *FnargsContext) {}
+// EnterFlagFnargs is called when production flagFnargs is entered.
+func (s *BaseBeepBoopListener) EnterFlagFnargs(ctx *FlagFnargsContext) {}
 
-// ExitFnargs is called when production fnargs is exited.
-func (s *BaseBeepBoopListener) ExitFnargs(ctx *FnargsContext) {}
+// ExitFlagFnargs is called when production flagFnargs is exited.
+func (s *BaseBeepBoopListener) ExitFlagFnargs(ctx *FlagFnargsContext) {}
+
+// EnterMultFnargs is called when production multFnargs is entered.
+func (s *BaseBeepBoopListener) EnterMultFnargs(ctx *MultFnargsContext) {}
+
+// ExitMultFnargs is called when production multFnargs is exited.
+func (s *BaseBeepBoopListener) ExitMultFnargs(ctx *MultFnargsContext) {}
+
+// EnterDivFnargs is called when production divFnargs is entered.
+func (s *BaseBeepBoopListener) EnterDivFnargs(ctx *DivFnargsContext) {}
+
+// ExitDivFnargs is called when production divFnargs is exited.
+func (s *BaseBeepBoopListener) ExitDivFnargs(ctx *DivFnargsContext) {}
+
+// EnterTermFnargs is called when production termFnargs is entered.
+func (s *BaseBeepBoopListener) EnterTermFnargs(ctx *TermFnargsContext) {}
+
+// ExitTermFnargs is called when production termFnargs is exited.
+func (s *BaseBeepBoopListener) ExitTermFnargs(ctx *TermFnargsContext) {}
 
 // EnterLabelTerm is called when production labelTerm is entered.
 func (s *BaseBeepBoopListener) EnterLabelTerm(ctx *LabelTermContext) {}
@@ -303,17 +321,35 @@ func (s *BaseBeepBoopListener) EnterBoolLiteral(ctx *BoolLiteralContext) {}
 // ExitBoolLiteral is called when production boolLiteral is exited.
 func (s *BaseBeepBoopListener) ExitBoolLiteral(ctx *BoolLiteralContext) {}
 
-// EnterNum is called when production num is entered.
-func (s *BaseBeepBoopListener) EnterNum(ctx *NumContext) {}
+// EnterIntNum is called when production intNum is entered.
+func (s *BaseBeepBoopListener) EnterIntNum(ctx *IntNumContext) {}
 
-// ExitNum is called when production num is exited.
-func (s *BaseBeepBoopListener) ExitNum(ctx *NumContext) {}
+// ExitIntNum is called when production intNum is exited.
+func (s *BaseBeepBoopListener) ExitIntNum(ctx *IntNumContext) {}
 
-// EnterWords is called when production words is entered.
-func (s *BaseBeepBoopListener) EnterWords(ctx *WordsContext) {}
+// EnterFloatNum is called when production floatNum is entered.
+func (s *BaseBeepBoopListener) EnterFloatNum(ctx *FloatNumContext) {}
 
-// ExitWords is called when production words is exited.
-func (s *BaseBeepBoopListener) ExitWords(ctx *WordsContext) {}
+// ExitFloatNum is called when production floatNum is exited.
+func (s *BaseBeepBoopListener) ExitFloatNum(ctx *FloatNumContext) {}
+
+// EnterLetterWords is called when production letterWords is entered.
+func (s *BaseBeepBoopListener) EnterLetterWords(ctx *LetterWordsContext) {}
+
+// ExitLetterWords is called when production letterWords is exited.
+func (s *BaseBeepBoopListener) ExitLetterWords(ctx *LetterWordsContext) {}
+
+// EnterStringWords is called when production stringWords is entered.
+func (s *BaseBeepBoopListener) EnterStringWords(ctx *StringWordsContext) {}
+
+// ExitStringWords is called when production stringWords is exited.
+func (s *BaseBeepBoopListener) ExitStringWords(ctx *StringWordsContext) {}
+
+// EnterQuotedWords is called when production quotedWords is entered.
+func (s *BaseBeepBoopListener) EnterQuotedWords(ctx *QuotedWordsContext) {}
+
+// ExitQuotedWords is called when production quotedWords is exited.
+func (s *BaseBeepBoopListener) ExitQuotedWords(ctx *QuotedWordsContext) {}
 
 // EnterBoolexpr is called when production boolexpr is entered.
 func (s *BaseBeepBoopListener) EnterBoolexpr(ctx *BoolexprContext) {}
@@ -321,11 +357,35 @@ func (s *BaseBeepBoopListener) EnterBoolexpr(ctx *BoolexprContext) {}
 // ExitBoolexpr is called when production boolexpr is exited.
 func (s *BaseBeepBoopListener) ExitBoolexpr(ctx *BoolexprContext) {}
 
-// EnterPipe is called when production pipe is entered.
-func (s *BaseBeepBoopListener) EnterPipe(ctx *PipeContext) {}
+// EnterPipeToFncallPipe is called when production pipeToFncallPipe is entered.
+func (s *BaseBeepBoopListener) EnterPipeToFncallPipe(ctx *PipeToFncallPipeContext) {}
 
-// ExitPipe is called when production pipe is exited.
-func (s *BaseBeepBoopListener) ExitPipe(ctx *PipeContext) {}
+// ExitPipeToFncallPipe is called when production pipeToFncallPipe is exited.
+func (s *BaseBeepBoopListener) ExitPipeToFncallPipe(ctx *PipeToFncallPipeContext) {}
+
+// EnterPipeToPipe is called when production pipeToPipe is entered.
+func (s *BaseBeepBoopListener) EnterPipeToPipe(ctx *PipeToPipeContext) {}
+
+// ExitPipeToPipe is called when production pipeToPipe is exited.
+func (s *BaseBeepBoopListener) ExitPipeToPipe(ctx *PipeToPipeContext) {}
+
+// EnterTermPipe is called when production termPipe is entered.
+func (s *BaseBeepBoopListener) EnterTermPipe(ctx *TermPipeContext) {}
+
+// ExitTermPipe is called when production termPipe is exited.
+func (s *BaseBeepBoopListener) ExitTermPipe(ctx *TermPipeContext) {}
+
+// EnterNewlinePipe is called when production newlinePipe is entered.
+func (s *BaseBeepBoopListener) EnterNewlinePipe(ctx *NewlinePipeContext) {}
+
+// ExitNewlinePipe is called when production newlinePipe is exited.
+func (s *BaseBeepBoopListener) ExitNewlinePipe(ctx *NewlinePipeContext) {}
+
+// EnterFncallPipe is called when production fncallPipe is entered.
+func (s *BaseBeepBoopListener) EnterFncallPipe(ctx *FncallPipeContext) {}
+
+// ExitFncallPipe is called when production fncallPipe is exited.
+func (s *BaseBeepBoopListener) ExitFncallPipe(ctx *FncallPipeContext) {}
 
 // EnterLabel is called when production label is entered.
 func (s *BaseBeepBoopListener) EnterLabel(ctx *LabelContext) {}

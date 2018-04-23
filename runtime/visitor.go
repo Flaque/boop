@@ -1,9 +1,12 @@
 package runtime
 
 import (
+	"fmt"
+	"io"
 	"strconv"
 
 	"github.com/Flaque/boop/parser"
+	"github.com/Flaque/boop/util"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
@@ -15,11 +18,20 @@ type BeepBoopVisitor struct {
 
 	// where to print to
 	logger *Logger
+
+	// Errors
+	errs []error
+}
+
+func NewBeepBoopVisitor(out io.Writer) *BeepBoopVisitor {
+	tree := NewTree(nil)
+	logger := NewLogger(out)
+	return &BeepBoopVisitor{&parser.BaseBeepBoopVisitor{}, tree, logger, []error{}}
 }
 
 func (v *BeepBoopVisitor) StartScope() {
 	tree := NewTree(v.tree)
-	v.tree = &tree
+	v.tree = tree
 }
 
 func (v *BeepBoopVisitor) EndScope() {
@@ -51,8 +63,7 @@ func (v *BeepBoopVisitor) VisitBeepboop(ctx *parser.BoopContext) interface{} {
 }
 
 func (v *BeepBoopVisitor) VisitNumLiteral(ctx *parser.NumLiteralContext) interface{} {
-	val, _ := strconv.Atoi(ctx.Num().GetText())
-	return NewVariable(INT, val)
+	return v.Visit(ctx.Num())
 }
 
 func (v *BeepBoopVisitor) VisitBoolLiteral(ctx *parser.BoolLiteralContext) interface{} {
@@ -61,19 +72,12 @@ func (v *BeepBoopVisitor) VisitBoolLiteral(ctx *parser.BoolLiteralContext) inter
 }
 
 func (v *BeepBoopVisitor) VisitNum(ctx *parser.NumContext) interface{} {
-	val, _ := strconv.Atoi(ctx.GetText())
-
-	// TODO: Throw error
-	return NewVariable(INT, val)
+	return v.VisitChildren(ctx)
 }
 
 func (v *BeepBoopVisitor) VisitBoolexpr(ctx *parser.BoolexprContext) interface{} {
 	// TODO: Throw error
 	return GetVariableFromString(ctx.GetText())
-}
-
-func (v *BeepBoopVisitor) VisitChildren(node antlr.RuleNode) interface{} {
-	panic("not implemented")
 }
 
 func (v *BeepBoopVisitor) VisitTerminal(node antlr.TerminalNode) interface{} {
@@ -176,7 +180,19 @@ func (v *BeepBoopVisitor) VisitFncall(ctx *parser.FncallContext) interface{} {
 	panic("not implemented")
 }
 
-func (v *BeepBoopVisitor) VisitFnargs(ctx *parser.FnargsContext) interface{} {
+func (v *BeepBoopVisitor) VisitFlagFnargs(ctx *parser.FlagFnargsContext) interface{} {
+	panic("not implemented")
+}
+
+func (v *BeepBoopVisitor) VisitMultFnargs(ctx *parser.MultFnargsContext) interface{} {
+	panic("not implemented")
+}
+
+func (v *BeepBoopVisitor) VisitDivFnargs(ctx *parser.DivFnargsContext) interface{} {
+	panic("not implemented")
+}
+
+func (v *BeepBoopVisitor) VisitTermFnargs(ctx *parser.TermFnargsContext) interface{} {
 	panic("not implemented")
 }
 
@@ -185,11 +201,11 @@ func (v *BeepBoopVisitor) VisitLabelTerm(ctx *parser.LabelTermContext) interface
 }
 
 func (v *BeepBoopVisitor) VisitLiteralTerm(ctx *parser.LiteralTermContext) interface{} {
-	panic("not implemented")
+	return v.Visit(ctx.TermContext)
 }
 
 func (v *BeepBoopVisitor) VisitMathTerm(ctx *parser.MathTermContext) interface{} {
-	panic("not implemented")
+	return v.Visit(ctx.Math())
 }
 
 func (v *BeepBoopVisitor) VisitParenfncallTerm(ctx *parser.ParenfncallTermContext) interface{} {
@@ -245,7 +261,7 @@ func (v *BeepBoopVisitor) VisitBoolCond(ctx *parser.BoolCondContext) interface{}
 }
 
 func (v *BeepBoopVisitor) VisitSoloMath(ctx *parser.SoloMathContext) interface{} {
-	panic("not implemented")
+	return v.Visit(ctx.Num())
 }
 
 func (v *BeepBoopVisitor) VisitMultiplicativeMath(ctx *parser.MultiplicativeMathContext) interface{} {
@@ -257,18 +273,63 @@ func (v *BeepBoopVisitor) VisitAdditiveMath(ctx *parser.AdditiveMathContext) int
 }
 
 func (v *BeepBoopVisitor) VisitUnarySubMath(ctx *parser.UnarySubMathContext) interface{} {
-	panic("not implemented")
+	va := GetVariable(v.Visit(ctx.Math()))
+	total := va.Negate()
+
+	if total.Is(UNKNOWN) {
+		v.errs = append(v.errs, fmt.Errorf("unexpected UNKNOWN value when attempting to negate at %s", ctx.GetText()))
+	}
+
+	return total
 }
 
 func (v *BeepBoopVisitor) VisitWordsLiteral(ctx *parser.WordsLiteralContext) interface{} {
+	return v.Visit(ctx.Words())
+}
+
+func (v *BeepBoopVisitor) VisitIntNum(ctx *parser.IntNumContext) interface{} {
+	val, err := strconv.Atoi(ctx.GetText())
+	v.errs = append(v.errs, err)
+
+	return NewVariable(INT, val)
+}
+
+func (v *BeepBoopVisitor) VisitFloatNum(ctx *parser.FloatNumContext) interface{} {
+	val, err := strconv.ParseFloat(ctx.GetText(), 64)
+	v.errs = append(v.errs, err)
+
+	return NewVariable(FLOAT, val)
+}
+
+func (v *BeepBoopVisitor) VisitLetterWords(ctx *parser.LetterWordsContext) interface{} {
+	return ctx.GetText()
+}
+
+func (v *BeepBoopVisitor) VisitStringWords(ctx *parser.StringWordsContext) interface{} {
+	return ctx.GetText()
+}
+
+func (v *BeepBoopVisitor) VisitQuotedWords(ctx *parser.QuotedWordsContext) interface{} {
+	return util.RemoveQuotes(ctx.GetText())
+}
+
+func (v *BeepBoopVisitor) VisitPipeToFncallPipe(ctx *parser.PipeToFncallPipeContext) interface{} {
 	panic("not implemented")
 }
 
-func (v *BeepBoopVisitor) VisitWords(ctx *parser.WordsContext) interface{} {
+func (v *BeepBoopVisitor) VisitPipeToPipe(ctx *parser.PipeToPipeContext) interface{} {
 	panic("not implemented")
 }
 
-func (v *BeepBoopVisitor) VisitPipe(ctx *parser.PipeContext) interface{} {
+func (v *BeepBoopVisitor) VisitTermPipe(ctx *parser.TermPipeContext) interface{} {
+	panic("not implemented")
+}
+
+func (v *BeepBoopVisitor) VisitNewlinePipe(ctx *parser.NewlinePipeContext) interface{} {
+	panic("not implemented")
+}
+
+func (v *BeepBoopVisitor) VisitFncallPipe(ctx *parser.FncallPipeContext) interface{} {
 	panic("not implemented")
 }
 

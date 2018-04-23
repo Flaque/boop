@@ -77,8 +77,17 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#fncall.
 	VisitFncall(ctx *FncallContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#fnargs.
-	VisitFnargs(ctx *FnargsContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#flagFnargs.
+	VisitFlagFnargs(ctx *FlagFnargsContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#multFnargs.
+	VisitMultFnargs(ctx *MultFnargsContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#divFnargs.
+	VisitDivFnargs(ctx *DivFnargsContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#termFnargs.
+	VisitTermFnargs(ctx *TermFnargsContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#labelTerm.
 	VisitLabelTerm(ctx *LabelTermContext) interface{}
@@ -149,17 +158,38 @@ type BeepBoopVisitor interface {
 	// Visit a parse tree produced by BeepBoopParser#boolLiteral.
 	VisitBoolLiteral(ctx *BoolLiteralContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#num.
-	VisitNum(ctx *NumContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#intNum.
+	VisitIntNum(ctx *IntNumContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#words.
-	VisitWords(ctx *WordsContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#floatNum.
+	VisitFloatNum(ctx *FloatNumContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#letterWords.
+	VisitLetterWords(ctx *LetterWordsContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#stringWords.
+	VisitStringWords(ctx *StringWordsContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#quotedWords.
+	VisitQuotedWords(ctx *QuotedWordsContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#boolexpr.
 	VisitBoolexpr(ctx *BoolexprContext) interface{}
 
-	// Visit a parse tree produced by BeepBoopParser#pipe.
-	VisitPipe(ctx *PipeContext) interface{}
+	// Visit a parse tree produced by BeepBoopParser#pipeToFncallPipe.
+	VisitPipeToFncallPipe(ctx *PipeToFncallPipeContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#pipeToPipe.
+	VisitPipeToPipe(ctx *PipeToPipeContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#termPipe.
+	VisitTermPipe(ctx *TermPipeContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#newlinePipe.
+	VisitNewlinePipe(ctx *NewlinePipeContext) interface{}
+
+	// Visit a parse tree produced by BeepBoopParser#fncallPipe.
+	VisitFncallPipe(ctx *FncallPipeContext) interface{}
 
 	// Visit a parse tree produced by BeepBoopParser#label.
 	VisitLabel(ctx *LabelContext) interface{}

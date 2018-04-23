@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 42, 387,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 42, 392,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
@@ -54,147 +54,150 @@ var parserATN = []uint16{
 	20, 3, 20, 7, 20, 331, 10, 20, 12, 20, 14, 20, 334, 11, 20, 3, 21, 3, 21,
 	3, 21, 3, 21, 5, 21, 340, 10, 21, 3, 21, 3, 21, 3, 21, 3, 21, 3, 21, 3,
 	21, 7, 21, 348, 10, 21, 12, 21, 14, 21, 351, 11, 21, 3, 22, 3, 22, 3, 22,
-	5, 22, 356, 10, 22, 3, 23, 3, 23, 3, 24, 3, 24, 3, 25, 3, 25, 3, 26, 3,
-	26, 3, 26, 5, 26, 367, 10, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26,
-	3, 26, 3, 26, 3, 26, 3, 26, 7, 26, 379, 10, 26, 12, 26, 14, 26, 382, 11,
-	26, 3, 27, 3, 27, 3, 27, 3, 27, 2, 5, 38, 40, 50, 28, 2, 4, 6, 8, 10, 12,
-	14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
-	50, 52, 2, 7, 3, 2, 21, 22, 3, 2, 23, 24, 3, 2, 38, 39, 3, 2, 40, 42, 3,
-	2, 34, 35, 2, 431, 2, 82, 3, 2, 2, 2, 4, 86, 3, 2, 2, 2, 6, 118, 3, 2,
-	2, 2, 8, 121, 3, 2, 2, 2, 10, 141, 3, 2, 2, 2, 12, 150, 3, 2, 2, 2, 14,
-	155, 3, 2, 2, 2, 16, 172, 3, 2, 2, 2, 18, 195, 3, 2, 2, 2, 20, 231, 3,
-	2, 2, 2, 22, 233, 3, 2, 2, 2, 24, 244, 3, 2, 2, 2, 26, 246, 3, 2, 2, 2,
-	28, 257, 3, 2, 2, 2, 30, 263, 3, 2, 2, 2, 32, 271, 3, 2, 2, 2, 34, 292,
-	3, 2, 2, 2, 36, 298, 3, 2, 2, 2, 38, 322, 3, 2, 2, 2, 40, 339, 3, 2, 2,
-	2, 42, 355, 3, 2, 2, 2, 44, 357, 3, 2, 2, 2, 46, 359, 3, 2, 2, 2, 48, 361,
-	3, 2, 2, 2, 50, 366, 3, 2, 2, 2, 52, 383, 3, 2, 2, 2, 54, 61, 7, 6, 2,
-	2, 55, 57, 7, 6, 2, 2, 56, 55, 3, 2, 2, 2, 57, 58, 3, 2, 2, 2, 58, 56,
-	3, 2, 2, 2, 58, 59, 3, 2, 2, 2, 59, 61, 3, 2, 2, 2, 60, 54, 3, 2, 2, 2,
-	60, 56, 3, 2, 2, 2, 61, 68, 3, 2, 2, 2, 62, 69, 5, 4, 3, 2, 63, 65, 5,
-	4, 3, 2, 64, 63, 3, 2, 2, 2, 65, 66, 3, 2, 2, 2, 66, 64, 3, 2, 2, 2, 66,
-	67, 3, 2, 2, 2, 67, 69, 3, 2, 2, 2, 68, 62, 3, 2, 2, 2, 68, 64, 3, 2, 2,
-	2, 69, 70, 3, 2, 2, 2, 70, 71, 7, 2, 2, 3, 71, 83, 3, 2, 2, 2, 72, 79,
-	5, 4, 3, 2, 73, 75, 5, 4, 3, 2, 74, 73, 3, 2, 2, 2, 75, 76, 3, 2, 2, 2,
-	76, 74, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 79, 3, 2, 2, 2, 78, 72, 3,
-	2, 2, 2, 78, 74, 3, 2, 2, 2, 79, 80, 3, 2, 2, 2, 80, 81, 7, 2, 2, 3, 81,
-	83, 3, 2, 2, 2, 82, 60, 3, 2, 2, 2, 82, 78, 3, 2, 2, 2, 83, 3, 3, 2, 2,
-	2, 84, 87, 5, 6, 4, 2, 85, 87, 5, 10, 6, 2, 86, 84, 3, 2, 2, 2, 86, 85,
-	3, 2, 2, 2, 87, 5, 3, 2, 2, 2, 88, 89, 7, 31, 2, 2, 89, 90, 5, 52, 27,
-	2, 90, 91, 7, 29, 2, 2, 91, 92, 7, 30, 2, 2, 92, 119, 3, 2, 2, 2, 93, 95,
-	7, 31, 2, 2, 94, 96, 5, 52, 27, 2, 95, 94, 3, 2, 2, 2, 96, 97, 3, 2, 2,
-	2, 97, 95, 3, 2, 2, 2, 97, 98, 3, 2, 2, 2, 98, 99, 3, 2, 2, 2, 99, 100,
-	7, 29, 2, 2, 100, 101, 7, 30, 2, 2, 101, 119, 3, 2, 2, 2, 102, 103, 7,
-	31, 2, 2, 103, 104, 5, 52, 27, 2, 104, 105, 7, 29, 2, 2, 105, 106, 5, 8,
-	5, 2, 106, 107, 7, 30, 2, 2, 107, 119, 3, 2, 2, 2, 108, 110, 7, 31, 2,
-	2, 109, 111, 5, 52, 27, 2, 110, 109, 3, 2, 2, 2, 111, 112, 3, 2, 2, 2,
-	112, 110, 3, 2, 2, 2, 112, 113, 3, 2, 2, 2, 113, 114, 3, 2, 2, 2, 114,
-	115, 7, 29, 2, 2, 115, 116, 5, 8, 5, 2, 116, 117, 7, 30, 2, 2, 117, 119,
-	3, 2, 2, 2, 118, 88, 3, 2, 2, 2, 118, 93, 3, 2, 2, 2, 118, 102, 3, 2, 2,
-	2, 118, 108, 3, 2, 2, 2, 119, 7, 3, 2, 2, 2, 120, 122, 5, 10, 6, 2, 121,
-	120, 3, 2, 2, 2, 122, 123, 3, 2, 2, 2, 123, 121, 3, 2, 2, 2, 123, 124,
-	3, 2, 2, 2, 124, 9, 3, 2, 2, 2, 125, 142, 5, 22, 12, 2, 126, 142, 5, 18,
-	10, 2, 127, 142, 5, 14, 8, 2, 128, 129, 5, 12, 7, 2, 129, 130, 7, 6, 2,
-	2, 130, 142, 3, 2, 2, 2, 131, 132, 5, 28, 15, 2, 132, 133, 7, 6, 2, 2,
-	133, 142, 3, 2, 2, 2, 134, 135, 5, 16, 9, 2, 135, 136, 7, 6, 2, 2, 136,
-	142, 3, 2, 2, 2, 137, 138, 5, 50, 26, 2, 138, 139, 7, 6, 2, 2, 139, 142,
-	3, 2, 2, 2, 140, 142, 7, 6, 2, 2, 141, 125, 3, 2, 2, 2, 141, 126, 3, 2,
-	2, 2, 141, 127, 3, 2, 2, 2, 141, 128, 3, 2, 2, 2, 141, 131, 3, 2, 2, 2,
-	141, 134, 3, 2, 2, 2, 141, 137, 3, 2, 2, 2, 141, 140, 3, 2, 2, 2, 142,
-	11, 3, 2, 2, 2, 143, 144, 7, 25, 2, 2, 144, 151, 5, 46, 24, 2, 145, 146,
-	7, 25, 2, 2, 146, 147, 5, 46, 24, 2, 147, 148, 7, 27, 2, 2, 148, 149, 5,
-	52, 27, 2, 149, 151, 3, 2, 2, 2, 150, 143, 3, 2, 2, 2, 150, 145, 3, 2,
-	2, 2, 151, 13, 3, 2, 2, 2, 152, 153, 7, 26, 2, 2, 153, 156, 5, 32, 17,
-	2, 154, 156, 5, 52, 27, 2, 155, 152, 3, 2, 2, 2, 155, 154, 3, 2, 2, 2,
-	156, 15, 3, 2, 2, 2, 157, 158, 7, 28, 2, 2, 158, 159, 5, 38, 20, 2, 159,
-	161, 7, 29, 2, 2, 160, 162, 5, 10, 6, 2, 161, 160, 3, 2, 2, 2, 162, 163,
-	3, 2, 2, 2, 163, 161, 3, 2, 2, 2, 163, 164, 3, 2, 2, 2, 164, 165, 3, 2,
-	2, 2, 165, 166, 7, 30, 2, 2, 166, 173, 3, 2, 2, 2, 167, 168, 7, 28, 2,
-	2, 168, 169, 5, 38, 20, 2, 169, 170, 7, 29, 2, 2, 170, 171, 7, 30, 2, 2,
-	171, 173, 3, 2, 2, 2, 172, 157, 3, 2, 2, 2, 172, 167, 3, 2, 2, 2, 173,
-	17, 3, 2, 2, 2, 174, 175, 7, 32, 2, 2, 175, 196, 5, 32, 17, 2, 176, 177,
-	7, 32, 2, 2, 177, 184, 5, 32, 17, 2, 178, 185, 7, 6, 2, 2, 179, 181, 7,
-	6, 2, 2, 180, 179, 3, 2, 2, 2, 181, 182, 3, 2, 2, 2, 182, 180, 3, 2, 2,
-	2, 182, 183, 3, 2, 2, 2, 183, 185, 3, 2, 2, 2, 184, 178, 3, 2, 2, 2, 184,
-	180, 3, 2, 2, 2, 185, 196, 3, 2, 2, 2, 186, 193, 7, 32, 2, 2, 187, 194,
-	7, 6, 2, 2, 188, 190, 7, 6, 2, 2, 189, 188, 3, 2, 2, 2, 190, 191, 3, 2,
-	2, 2, 191, 189, 3, 2, 2, 2, 191, 192, 3, 2, 2, 2, 192, 194, 3, 2, 2, 2,
-	193, 187, 3, 2, 2, 2, 193, 189, 3, 2, 2, 2, 194, 196, 3, 2, 2, 2, 195,
-	174, 3, 2, 2, 2, 195, 176, 3, 2, 2, 2, 195, 186, 3, 2, 2, 2, 196, 19, 3,
-	2, 2, 2, 197, 198, 7, 17, 2, 2, 198, 232, 7, 18, 2, 2, 199, 200, 7, 17,
-	2, 2, 200, 207, 7, 6, 2, 2, 201, 208, 5, 22, 12, 2, 202, 204, 5, 22, 12,
-	2, 203, 202, 3, 2, 2, 2, 204, 205, 3, 2, 2, 2, 205, 203, 3, 2, 2, 2, 205,
-	206, 3, 2, 2, 2, 206, 208, 3, 2, 2, 2, 207, 201, 3, 2, 2, 2, 207, 203,
-	3, 2, 2, 2, 208, 209, 3, 2, 2, 2, 209, 210, 7, 18, 2, 2, 210, 232, 3, 2,
-	2, 2, 211, 218, 7, 17, 2, 2, 212, 219, 5, 22, 12, 2, 213, 215, 5, 22, 12,
-	2, 214, 213, 3, 2, 2, 2, 215, 216, 3, 2, 2, 2, 216, 214, 3, 2, 2, 2, 216,
-	217, 3, 2, 2, 2, 217, 219, 3, 2, 2, 2, 218, 212, 3, 2, 2, 2, 218, 214,
-	3, 2, 2, 2, 219, 220, 3, 2, 2, 2, 220, 221, 7, 18, 2, 2, 221, 232, 3, 2,
-	2, 2, 222, 223, 7, 17, 2, 2, 223, 224, 5, 24, 13, 2, 224, 225, 7, 18, 2,
-	2, 225, 232, 3, 2, 2, 2, 226, 227, 7, 17, 2, 2, 227, 228, 7, 6, 2, 2, 228,
-	229, 5, 24, 13, 2, 229, 230, 7, 18, 2, 2, 230, 232, 3, 2, 2, 2, 231, 197,
-	3, 2, 2, 2, 231, 199, 3, 2, 2, 2, 231, 211, 3, 2, 2, 2, 231, 222, 3, 2,
-	2, 2, 231, 226, 3, 2, 2, 2, 232, 21, 3, 2, 2, 2, 233, 234, 5, 24, 13, 2,
-	234, 235, 7, 6, 2, 2, 235, 23, 3, 2, 2, 2, 236, 237, 5, 52, 27, 2, 237,
-	238, 7, 9, 2, 2, 238, 239, 5, 32, 17, 2, 239, 245, 3, 2, 2, 2, 240, 241,
-	5, 52, 27, 2, 241, 242, 7, 9, 2, 2, 242, 243, 5, 28, 15, 2, 243, 245, 3,
-	2, 2, 2, 244, 236, 3, 2, 2, 2, 244, 240, 3, 2, 2, 2, 245, 25, 3, 2, 2,
-	2, 246, 247, 7, 15, 2, 2, 247, 248, 5, 28, 15, 2, 248, 249, 7, 16, 2, 2,
-	249, 27, 3, 2, 2, 2, 250, 252, 5, 52, 27, 2, 251, 253, 5, 30, 16, 2, 252,
-	251, 3, 2, 2, 2, 253, 254, 3, 2, 2, 2, 254, 252, 3, 2, 2, 2, 254, 255,
-	3, 2, 2, 2, 255, 258, 3, 2, 2, 2, 256, 258, 5, 52, 27, 2, 257, 250, 3,
-	2, 2, 2, 257, 256, 3, 2, 2, 2, 258, 29, 3, 2, 2, 2, 259, 264, 7, 4, 2,
-	2, 260, 264, 7, 24, 2, 2, 261, 264, 7, 23, 2, 2, 262, 264, 5, 32, 17, 2,
-	263, 259, 3, 2, 2, 2, 263, 260, 3, 2, 2, 2, 263, 261, 3, 2, 2, 2, 263,
-	262, 3, 2, 2, 2, 264, 31, 3, 2, 2, 2, 265, 272, 5, 52, 27, 2, 266, 272,
-	5, 42, 22, 2, 267, 272, 5, 40, 21, 2, 268, 272, 5, 26, 14, 2, 269, 272,
-	5, 20, 11, 2, 270, 272, 5, 34, 18, 2, 271, 265, 3, 2, 2, 2, 271, 266, 3,
-	2, 2, 2, 271, 267, 3, 2, 2, 2, 271, 268, 3, 2, 2, 2, 271, 269, 3, 2, 2,
-	2, 271, 270, 3, 2, 2, 2, 272, 33, 3, 2, 2, 2, 273, 274, 7, 19, 2, 2, 274,
-	293, 7, 20, 2, 2, 275, 277, 7, 19, 2, 2, 276, 278, 5, 36, 19, 2, 277, 276,
-	3, 2, 2, 2, 278, 279, 3, 2, 2, 2, 279, 277, 3, 2, 2, 2, 279, 280, 3, 2,
-	2, 2, 280, 281, 3, 2, 2, 2, 281, 282, 7, 20, 2, 2, 282, 293, 3, 2, 2, 2,
-	283, 284, 7, 19, 2, 2, 284, 286, 7, 6, 2, 2, 285, 287, 5, 36, 19, 2, 286,
-	285, 3, 2, 2, 2, 287, 288, 3, 2, 2, 2, 288, 286, 3, 2, 2, 2, 288, 289,
-	3, 2, 2, 2, 289, 290, 3, 2, 2, 2, 290, 291, 7, 20, 2, 2, 291, 293, 3, 2,
-	2, 2, 292, 273, 3, 2, 2, 2, 292, 275, 3, 2, 2, 2, 292, 283, 3, 2, 2, 2,
-	293, 35, 3, 2, 2, 2, 294, 299, 5, 32, 17, 2, 295, 296, 5, 32, 17, 2, 296,
-	297, 7, 6, 2, 2, 297, 299, 3, 2, 2, 2, 298, 294, 3, 2, 2, 2, 298, 295,
-	3, 2, 2, 2, 299, 37, 3, 2, 2, 2, 300, 301, 8, 20, 1, 2, 301, 302, 5, 32,
-	17, 2, 302, 303, 7, 8, 2, 2, 303, 304, 5, 32, 17, 2, 304, 323, 3, 2, 2,
-	2, 305, 306, 5, 32, 17, 2, 306, 307, 7, 11, 2, 2, 307, 308, 5, 32, 17,
-	2, 308, 323, 3, 2, 2, 2, 309, 310, 5, 32, 17, 2, 310, 311, 7, 12, 2, 2,
-	311, 312, 5, 32, 17, 2, 312, 323, 3, 2, 2, 2, 313, 314, 5, 32, 17, 2, 314,
-	315, 7, 13, 2, 2, 315, 316, 5, 32, 17, 2, 316, 323, 3, 2, 2, 2, 317, 318,
-	5, 32, 17, 2, 318, 319, 7, 14, 2, 2, 319, 320, 5, 32, 17, 2, 320, 323,
-	3, 2, 2, 2, 321, 323, 5, 48, 25, 2, 322, 300, 3, 2, 2, 2, 322, 305, 3,
-	2, 2, 2, 322, 309, 3, 2, 2, 2, 322, 313, 3, 2, 2, 2, 322, 317, 3, 2, 2,
-	2, 322, 321, 3, 2, 2, 2, 323, 332, 3, 2, 2, 2, 324, 325, 12, 5, 2, 2, 325,
-	326, 7, 36, 2, 2, 326, 331, 5, 38, 20, 6, 327, 328, 12, 4, 2, 2, 328, 329,
-	7, 37, 2, 2, 329, 331, 5, 38, 20, 5, 330, 324, 3, 2, 2, 2, 330, 327, 3,
-	2, 2, 2, 331, 334, 3, 2, 2, 2, 332, 330, 3, 2, 2, 2, 332, 333, 3, 2, 2,
-	2, 333, 39, 3, 2, 2, 2, 334, 332, 3, 2, 2, 2, 335, 336, 8, 21, 1, 2, 336,
-	337, 7, 22, 2, 2, 337, 340, 5, 40, 21, 4, 338, 340, 5, 44, 23, 2, 339,
-	335, 3, 2, 2, 2, 339, 338, 3, 2, 2, 2, 340, 349, 3, 2, 2, 2, 341, 342,
-	12, 6, 2, 2, 342, 343, 9, 2, 2, 2, 343, 348, 5, 40, 21, 7, 344, 345, 12,
-	5, 2, 2, 345, 346, 9, 3, 2, 2, 346, 348, 5, 40, 21, 6, 347, 341, 3, 2,
-	2, 2, 347, 344, 3, 2, 2, 2, 348, 351, 3, 2, 2, 2, 349, 347, 3, 2, 2, 2,
-	349, 350, 3, 2, 2, 2, 350, 41, 3, 2, 2, 2, 351, 349, 3, 2, 2, 2, 352, 356,
-	5, 44, 23, 2, 353, 356, 5, 46, 24, 2, 354, 356, 5, 48, 25, 2, 355, 352,
-	3, 2, 2, 2, 355, 353, 3, 2, 2, 2, 355, 354, 3, 2, 2, 2, 356, 43, 3, 2,
-	2, 2, 357, 358, 9, 4, 2, 2, 358, 45, 3, 2, 2, 2, 359, 360, 9, 5, 2, 2,
-	360, 47, 3, 2, 2, 2, 361, 362, 9, 6, 2, 2, 362, 49, 3, 2, 2, 2, 363, 364,
-	8, 26, 1, 2, 364, 367, 5, 28, 15, 2, 365, 367, 5, 32, 17, 2, 366, 363,
-	3, 2, 2, 2, 366, 365, 3, 2, 2, 2, 367, 380, 3, 2, 2, 2, 368, 369, 12, 6,
-	2, 2, 369, 370, 7, 10, 2, 2, 370, 379, 5, 50, 26, 7, 371, 372, 12, 5, 2,
-	2, 372, 373, 7, 6, 2, 2, 373, 374, 7, 10, 2, 2, 374, 379, 5, 50, 26, 6,
-	375, 376, 12, 7, 2, 2, 376, 377, 7, 10, 2, 2, 377, 379, 5, 28, 15, 2, 378,
-	368, 3, 2, 2, 2, 378, 371, 3, 2, 2, 2, 378, 375, 3, 2, 2, 2, 379, 382,
-	3, 2, 2, 2, 380, 378, 3, 2, 2, 2, 380, 381, 3, 2, 2, 2, 381, 51, 3, 2,
-	2, 2, 382, 380, 3, 2, 2, 2, 383, 384, 7, 3, 2, 2, 384, 385, 7, 41, 2, 2,
-	385, 53, 3, 2, 2, 2, 48, 58, 60, 66, 68, 76, 78, 82, 86, 97, 112, 118,
-	123, 141, 150, 155, 163, 172, 182, 184, 191, 193, 195, 205, 207, 216, 218,
-	231, 244, 254, 257, 263, 271, 279, 288, 292, 298, 322, 330, 332, 339, 347,
-	349, 355, 366, 378, 380,
+	5, 22, 356, 10, 22, 3, 23, 3, 23, 5, 23, 360, 10, 23, 3, 24, 3, 24, 3,
+	24, 5, 24, 365, 10, 24, 3, 25, 3, 25, 3, 26, 3, 26, 3, 26, 5, 26, 372,
+	10, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26, 3, 26,
+	3, 26, 7, 26, 384, 10, 26, 12, 26, 14, 26, 387, 11, 26, 3, 27, 3, 27, 3,
+	27, 3, 27, 2, 5, 38, 40, 50, 28, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22,
+	24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 2, 5, 3, 2,
+	21, 22, 3, 2, 23, 24, 3, 2, 34, 35, 2, 439, 2, 82, 3, 2, 2, 2, 4, 86, 3,
+	2, 2, 2, 6, 118, 3, 2, 2, 2, 8, 121, 3, 2, 2, 2, 10, 141, 3, 2, 2, 2, 12,
+	150, 3, 2, 2, 2, 14, 152, 3, 2, 2, 2, 16, 172, 3, 2, 2, 2, 18, 195, 3,
+	2, 2, 2, 20, 231, 3, 2, 2, 2, 22, 233, 3, 2, 2, 2, 24, 244, 3, 2, 2, 2,
+	26, 246, 3, 2, 2, 2, 28, 257, 3, 2, 2, 2, 30, 263, 3, 2, 2, 2, 32, 271,
+	3, 2, 2, 2, 34, 292, 3, 2, 2, 2, 36, 298, 3, 2, 2, 2, 38, 322, 3, 2, 2,
+	2, 40, 339, 3, 2, 2, 2, 42, 355, 3, 2, 2, 2, 44, 359, 3, 2, 2, 2, 46, 364,
+	3, 2, 2, 2, 48, 366, 3, 2, 2, 2, 50, 371, 3, 2, 2, 2, 52, 388, 3, 2, 2,
+	2, 54, 61, 7, 6, 2, 2, 55, 57, 7, 6, 2, 2, 56, 55, 3, 2, 2, 2, 57, 58,
+	3, 2, 2, 2, 58, 56, 3, 2, 2, 2, 58, 59, 3, 2, 2, 2, 59, 61, 3, 2, 2, 2,
+	60, 54, 3, 2, 2, 2, 60, 56, 3, 2, 2, 2, 61, 68, 3, 2, 2, 2, 62, 69, 5,
+	4, 3, 2, 63, 65, 5, 4, 3, 2, 64, 63, 3, 2, 2, 2, 65, 66, 3, 2, 2, 2, 66,
+	64, 3, 2, 2, 2, 66, 67, 3, 2, 2, 2, 67, 69, 3, 2, 2, 2, 68, 62, 3, 2, 2,
+	2, 68, 64, 3, 2, 2, 2, 69, 70, 3, 2, 2, 2, 70, 71, 7, 2, 2, 3, 71, 83,
+	3, 2, 2, 2, 72, 79, 5, 4, 3, 2, 73, 75, 5, 4, 3, 2, 74, 73, 3, 2, 2, 2,
+	75, 76, 3, 2, 2, 2, 76, 74, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 79, 3,
+	2, 2, 2, 78, 72, 3, 2, 2, 2, 78, 74, 3, 2, 2, 2, 79, 80, 3, 2, 2, 2, 80,
+	81, 7, 2, 2, 3, 81, 83, 3, 2, 2, 2, 82, 60, 3, 2, 2, 2, 82, 78, 3, 2, 2,
+	2, 83, 3, 3, 2, 2, 2, 84, 87, 5, 6, 4, 2, 85, 87, 5, 10, 6, 2, 86, 84,
+	3, 2, 2, 2, 86, 85, 3, 2, 2, 2, 87, 5, 3, 2, 2, 2, 88, 89, 7, 31, 2, 2,
+	89, 90, 5, 52, 27, 2, 90, 91, 7, 29, 2, 2, 91, 92, 7, 30, 2, 2, 92, 119,
+	3, 2, 2, 2, 93, 95, 7, 31, 2, 2, 94, 96, 5, 52, 27, 2, 95, 94, 3, 2, 2,
+	2, 96, 97, 3, 2, 2, 2, 97, 95, 3, 2, 2, 2, 97, 98, 3, 2, 2, 2, 98, 99,
+	3, 2, 2, 2, 99, 100, 7, 29, 2, 2, 100, 101, 7, 30, 2, 2, 101, 119, 3, 2,
+	2, 2, 102, 103, 7, 31, 2, 2, 103, 104, 5, 52, 27, 2, 104, 105, 7, 29, 2,
+	2, 105, 106, 5, 8, 5, 2, 106, 107, 7, 30, 2, 2, 107, 119, 3, 2, 2, 2, 108,
+	110, 7, 31, 2, 2, 109, 111, 5, 52, 27, 2, 110, 109, 3, 2, 2, 2, 111, 112,
+	3, 2, 2, 2, 112, 110, 3, 2, 2, 2, 112, 113, 3, 2, 2, 2, 113, 114, 3, 2,
+	2, 2, 114, 115, 7, 29, 2, 2, 115, 116, 5, 8, 5, 2, 116, 117, 7, 30, 2,
+	2, 117, 119, 3, 2, 2, 2, 118, 88, 3, 2, 2, 2, 118, 93, 3, 2, 2, 2, 118,
+	102, 3, 2, 2, 2, 118, 108, 3, 2, 2, 2, 119, 7, 3, 2, 2, 2, 120, 122, 5,
+	10, 6, 2, 121, 120, 3, 2, 2, 2, 122, 123, 3, 2, 2, 2, 123, 121, 3, 2, 2,
+	2, 123, 124, 3, 2, 2, 2, 124, 9, 3, 2, 2, 2, 125, 142, 5, 22, 12, 2, 126,
+	142, 5, 18, 10, 2, 127, 142, 5, 14, 8, 2, 128, 129, 5, 12, 7, 2, 129, 130,
+	7, 6, 2, 2, 130, 142, 3, 2, 2, 2, 131, 132, 5, 28, 15, 2, 132, 133, 7,
+	6, 2, 2, 133, 142, 3, 2, 2, 2, 134, 135, 5, 16, 9, 2, 135, 136, 7, 6, 2,
+	2, 136, 142, 3, 2, 2, 2, 137, 138, 5, 50, 26, 2, 138, 139, 7, 6, 2, 2,
+	139, 142, 3, 2, 2, 2, 140, 142, 7, 6, 2, 2, 141, 125, 3, 2, 2, 2, 141,
+	126, 3, 2, 2, 2, 141, 127, 3, 2, 2, 2, 141, 128, 3, 2, 2, 2, 141, 131,
+	3, 2, 2, 2, 141, 134, 3, 2, 2, 2, 141, 137, 3, 2, 2, 2, 141, 140, 3, 2,
+	2, 2, 142, 11, 3, 2, 2, 2, 143, 144, 7, 25, 2, 2, 144, 151, 5, 46, 24,
+	2, 145, 146, 7, 25, 2, 2, 146, 147, 5, 46, 24, 2, 147, 148, 7, 27, 2, 2,
+	148, 149, 5, 52, 27, 2, 149, 151, 3, 2, 2, 2, 150, 143, 3, 2, 2, 2, 150,
+	145, 3, 2, 2, 2, 151, 13, 3, 2, 2, 2, 152, 155, 7, 26, 2, 2, 153, 156,
+	5, 32, 17, 2, 154, 156, 5, 52, 27, 2, 155, 153, 3, 2, 2, 2, 155, 154, 3,
+	2, 2, 2, 156, 15, 3, 2, 2, 2, 157, 158, 7, 28, 2, 2, 158, 159, 5, 38, 20,
+	2, 159, 161, 7, 29, 2, 2, 160, 162, 5, 10, 6, 2, 161, 160, 3, 2, 2, 2,
+	162, 163, 3, 2, 2, 2, 163, 161, 3, 2, 2, 2, 163, 164, 3, 2, 2, 2, 164,
+	165, 3, 2, 2, 2, 165, 166, 7, 30, 2, 2, 166, 173, 3, 2, 2, 2, 167, 168,
+	7, 28, 2, 2, 168, 169, 5, 38, 20, 2, 169, 170, 7, 29, 2, 2, 170, 171, 7,
+	30, 2, 2, 171, 173, 3, 2, 2, 2, 172, 157, 3, 2, 2, 2, 172, 167, 3, 2, 2,
+	2, 173, 17, 3, 2, 2, 2, 174, 175, 7, 32, 2, 2, 175, 196, 5, 32, 17, 2,
+	176, 177, 7, 32, 2, 2, 177, 184, 5, 32, 17, 2, 178, 185, 7, 6, 2, 2, 179,
+	181, 7, 6, 2, 2, 180, 179, 3, 2, 2, 2, 181, 182, 3, 2, 2, 2, 182, 180,
+	3, 2, 2, 2, 182, 183, 3, 2, 2, 2, 183, 185, 3, 2, 2, 2, 184, 178, 3, 2,
+	2, 2, 184, 180, 3, 2, 2, 2, 185, 196, 3, 2, 2, 2, 186, 193, 7, 32, 2, 2,
+	187, 194, 7, 6, 2, 2, 188, 190, 7, 6, 2, 2, 189, 188, 3, 2, 2, 2, 190,
+	191, 3, 2, 2, 2, 191, 189, 3, 2, 2, 2, 191, 192, 3, 2, 2, 2, 192, 194,
+	3, 2, 2, 2, 193, 187, 3, 2, 2, 2, 193, 189, 3, 2, 2, 2, 194, 196, 3, 2,
+	2, 2, 195, 174, 3, 2, 2, 2, 195, 176, 3, 2, 2, 2, 195, 186, 3, 2, 2, 2,
+	196, 19, 3, 2, 2, 2, 197, 198, 7, 17, 2, 2, 198, 232, 7, 18, 2, 2, 199,
+	200, 7, 17, 2, 2, 200, 207, 7, 6, 2, 2, 201, 208, 5, 22, 12, 2, 202, 204,
+	5, 22, 12, 2, 203, 202, 3, 2, 2, 2, 204, 205, 3, 2, 2, 2, 205, 203, 3,
+	2, 2, 2, 205, 206, 3, 2, 2, 2, 206, 208, 3, 2, 2, 2, 207, 201, 3, 2, 2,
+	2, 207, 203, 3, 2, 2, 2, 208, 209, 3, 2, 2, 2, 209, 210, 7, 18, 2, 2, 210,
+	232, 3, 2, 2, 2, 211, 218, 7, 17, 2, 2, 212, 219, 5, 22, 12, 2, 213, 215,
+	5, 22, 12, 2, 214, 213, 3, 2, 2, 2, 215, 216, 3, 2, 2, 2, 216, 214, 3,
+	2, 2, 2, 216, 217, 3, 2, 2, 2, 217, 219, 3, 2, 2, 2, 218, 212, 3, 2, 2,
+	2, 218, 214, 3, 2, 2, 2, 219, 220, 3, 2, 2, 2, 220, 221, 7, 18, 2, 2, 221,
+	232, 3, 2, 2, 2, 222, 223, 7, 17, 2, 2, 223, 224, 5, 24, 13, 2, 224, 225,
+	7, 18, 2, 2, 225, 232, 3, 2, 2, 2, 226, 227, 7, 17, 2, 2, 227, 228, 7,
+	6, 2, 2, 228, 229, 5, 24, 13, 2, 229, 230, 7, 18, 2, 2, 230, 232, 3, 2,
+	2, 2, 231, 197, 3, 2, 2, 2, 231, 199, 3, 2, 2, 2, 231, 211, 3, 2, 2, 2,
+	231, 222, 3, 2, 2, 2, 231, 226, 3, 2, 2, 2, 232, 21, 3, 2, 2, 2, 233, 234,
+	5, 24, 13, 2, 234, 235, 7, 6, 2, 2, 235, 23, 3, 2, 2, 2, 236, 237, 5, 52,
+	27, 2, 237, 238, 7, 9, 2, 2, 238, 239, 5, 32, 17, 2, 239, 245, 3, 2, 2,
+	2, 240, 241, 5, 52, 27, 2, 241, 242, 7, 9, 2, 2, 242, 243, 5, 28, 15, 2,
+	243, 245, 3, 2, 2, 2, 244, 236, 3, 2, 2, 2, 244, 240, 3, 2, 2, 2, 245,
+	25, 3, 2, 2, 2, 246, 247, 7, 15, 2, 2, 247, 248, 5, 28, 15, 2, 248, 249,
+	7, 16, 2, 2, 249, 27, 3, 2, 2, 2, 250, 252, 5, 52, 27, 2, 251, 253, 5,
+	30, 16, 2, 252, 251, 3, 2, 2, 2, 253, 254, 3, 2, 2, 2, 254, 252, 3, 2,
+	2, 2, 254, 255, 3, 2, 2, 2, 255, 258, 3, 2, 2, 2, 256, 258, 5, 52, 27,
+	2, 257, 250, 3, 2, 2, 2, 257, 256, 3, 2, 2, 2, 258, 29, 3, 2, 2, 2, 259,
+	264, 7, 4, 2, 2, 260, 264, 7, 24, 2, 2, 261, 264, 7, 23, 2, 2, 262, 264,
+	5, 32, 17, 2, 263, 259, 3, 2, 2, 2, 263, 260, 3, 2, 2, 2, 263, 261, 3,
+	2, 2, 2, 263, 262, 3, 2, 2, 2, 264, 31, 3, 2, 2, 2, 265, 272, 5, 52, 27,
+	2, 266, 272, 5, 42, 22, 2, 267, 272, 5, 40, 21, 2, 268, 272, 5, 26, 14,
+	2, 269, 272, 5, 20, 11, 2, 270, 272, 5, 34, 18, 2, 271, 265, 3, 2, 2, 2,
+	271, 266, 3, 2, 2, 2, 271, 267, 3, 2, 2, 2, 271, 268, 3, 2, 2, 2, 271,
+	269, 3, 2, 2, 2, 271, 270, 3, 2, 2, 2, 272, 33, 3, 2, 2, 2, 273, 274, 7,
+	19, 2, 2, 274, 293, 7, 20, 2, 2, 275, 277, 7, 19, 2, 2, 276, 278, 5, 36,
+	19, 2, 277, 276, 3, 2, 2, 2, 278, 279, 3, 2, 2, 2, 279, 277, 3, 2, 2, 2,
+	279, 280, 3, 2, 2, 2, 280, 281, 3, 2, 2, 2, 281, 282, 7, 20, 2, 2, 282,
+	293, 3, 2, 2, 2, 283, 284, 7, 19, 2, 2, 284, 286, 7, 6, 2, 2, 285, 287,
+	5, 36, 19, 2, 286, 285, 3, 2, 2, 2, 287, 288, 3, 2, 2, 2, 288, 286, 3,
+	2, 2, 2, 288, 289, 3, 2, 2, 2, 289, 290, 3, 2, 2, 2, 290, 291, 7, 20, 2,
+	2, 291, 293, 3, 2, 2, 2, 292, 273, 3, 2, 2, 2, 292, 275, 3, 2, 2, 2, 292,
+	283, 3, 2, 2, 2, 293, 35, 3, 2, 2, 2, 294, 299, 5, 32, 17, 2, 295, 296,
+	5, 32, 17, 2, 296, 297, 7, 6, 2, 2, 297, 299, 3, 2, 2, 2, 298, 294, 3,
+	2, 2, 2, 298, 295, 3, 2, 2, 2, 299, 37, 3, 2, 2, 2, 300, 301, 8, 20, 1,
+	2, 301, 302, 5, 32, 17, 2, 302, 303, 7, 8, 2, 2, 303, 304, 5, 32, 17, 2,
+	304, 323, 3, 2, 2, 2, 305, 306, 5, 32, 17, 2, 306, 307, 7, 11, 2, 2, 307,
+	308, 5, 32, 17, 2, 308, 323, 3, 2, 2, 2, 309, 310, 5, 32, 17, 2, 310, 311,
+	7, 12, 2, 2, 311, 312, 5, 32, 17, 2, 312, 323, 3, 2, 2, 2, 313, 314, 5,
+	32, 17, 2, 314, 315, 7, 13, 2, 2, 315, 316, 5, 32, 17, 2, 316, 323, 3,
+	2, 2, 2, 317, 318, 5, 32, 17, 2, 318, 319, 7, 14, 2, 2, 319, 320, 5, 32,
+	17, 2, 320, 323, 3, 2, 2, 2, 321, 323, 5, 48, 25, 2, 322, 300, 3, 2, 2,
+	2, 322, 305, 3, 2, 2, 2, 322, 309, 3, 2, 2, 2, 322, 313, 3, 2, 2, 2, 322,
+	317, 3, 2, 2, 2, 322, 321, 3, 2, 2, 2, 323, 332, 3, 2, 2, 2, 324, 325,
+	12, 5, 2, 2, 325, 326, 7, 36, 2, 2, 326, 331, 5, 38, 20, 6, 327, 328, 12,
+	4, 2, 2, 328, 329, 7, 37, 2, 2, 329, 331, 5, 38, 20, 5, 330, 324, 3, 2,
+	2, 2, 330, 327, 3, 2, 2, 2, 331, 334, 3, 2, 2, 2, 332, 330, 3, 2, 2, 2,
+	332, 333, 3, 2, 2, 2, 333, 39, 3, 2, 2, 2, 334, 332, 3, 2, 2, 2, 335, 336,
+	8, 21, 1, 2, 336, 337, 7, 22, 2, 2, 337, 340, 5, 40, 21, 4, 338, 340, 5,
+	44, 23, 2, 339, 335, 3, 2, 2, 2, 339, 338, 3, 2, 2, 2, 340, 349, 3, 2,
+	2, 2, 341, 342, 12, 6, 2, 2, 342, 343, 9, 2, 2, 2, 343, 348, 5, 40, 21,
+	7, 344, 345, 12, 5, 2, 2, 345, 346, 9, 3, 2, 2, 346, 348, 5, 40, 21, 6,
+	347, 341, 3, 2, 2, 2, 347, 344, 3, 2, 2, 2, 348, 351, 3, 2, 2, 2, 349,
+	347, 3, 2, 2, 2, 349, 350, 3, 2, 2, 2, 350, 41, 3, 2, 2, 2, 351, 349, 3,
+	2, 2, 2, 352, 356, 5, 44, 23, 2, 353, 356, 5, 46, 24, 2, 354, 356, 5, 48,
+	25, 2, 355, 352, 3, 2, 2, 2, 355, 353, 3, 2, 2, 2, 355, 354, 3, 2, 2, 2,
+	356, 43, 3, 2, 2, 2, 357, 360, 7, 38, 2, 2, 358, 360, 7, 39, 2, 2, 359,
+	357, 3, 2, 2, 2, 359, 358, 3, 2, 2, 2, 360, 45, 3, 2, 2, 2, 361, 365, 7,
+	41, 2, 2, 362, 365, 7, 42, 2, 2, 363, 365, 7, 40, 2, 2, 364, 361, 3, 2,
+	2, 2, 364, 362, 3, 2, 2, 2, 364, 363, 3, 2, 2, 2, 365, 47, 3, 2, 2, 2,
+	366, 367, 9, 4, 2, 2, 367, 49, 3, 2, 2, 2, 368, 369, 8, 26, 1, 2, 369,
+	372, 5, 28, 15, 2, 370, 372, 5, 32, 17, 2, 371, 368, 3, 2, 2, 2, 371, 370,
+	3, 2, 2, 2, 372, 385, 3, 2, 2, 2, 373, 374, 12, 6, 2, 2, 374, 375, 7, 10,
+	2, 2, 375, 384, 5, 50, 26, 7, 376, 377, 12, 5, 2, 2, 377, 378, 7, 6, 2,
+	2, 378, 379, 7, 10, 2, 2, 379, 384, 5, 50, 26, 6, 380, 381, 12, 7, 2, 2,
+	381, 382, 7, 10, 2, 2, 382, 384, 5, 28, 15, 2, 383, 373, 3, 2, 2, 2, 383,
+	376, 3, 2, 2, 2, 383, 380, 3, 2, 2, 2, 384, 387, 3, 2, 2, 2, 385, 383,
+	3, 2, 2, 2, 385, 386, 3, 2, 2, 2, 386, 51, 3, 2, 2, 2, 387, 385, 3, 2,
+	2, 2, 388, 389, 7, 3, 2, 2, 389, 390, 7, 41, 2, 2, 390, 53, 3, 2, 2, 2,
+	50, 58, 60, 66, 68, 76, 78, 82, 86, 97, 112, 118, 123, 141, 150, 155, 163,
+	172, 182, 184, 191, 193, 195, 205, 207, 216, 218, 231, 244, 254, 257, 263,
+	271, 279, 288, 292, 298, 322, 330, 332, 339, 347, 349, 355, 359, 364, 371,
+	383, 385,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -1959,30 +1962,26 @@ func (p *BeepBoopParser) Exportstat() (localctx IExportstatContext) {
 		}
 	}()
 
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(150)
+		p.Match(BeepBoopParserEXPORT)
+	}
 	p.SetState(153)
 	p.GetErrorHandler().Sync(p)
-
-	switch p.GetTokenStream().LA(1) {
-	case BeepBoopParserEXPORT:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(150)
-			p.Match(BeepBoopParserEXPORT)
-		}
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext()) {
+	case 1:
 		{
 			p.SetState(151)
 			p.Term()
 		}
 
-	case BeepBoopParserT__0:
-		p.EnterOuterAlt(localctx, 2)
+	case 2:
 		{
 			p.SetState(152)
 			p.Label()
 		}
 
-	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -3336,26 +3335,8 @@ func NewFnargsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 
 func (s *FnargsContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FnargsContext) FLAG() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserFLAG, 0)
-}
-
-func (s *FnargsContext) MULT() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserMULT, 0)
-}
-
-func (s *FnargsContext) DIV() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserDIV, 0)
-}
-
-func (s *FnargsContext) Term() ITermContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ITermContext)
+func (s *FnargsContext) CopyFrom(ctx *FnargsContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *FnargsContext) GetRuleContext() antlr.RuleContext {
@@ -3366,22 +3347,182 @@ func (s *FnargsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *FnargsContext) EnterRule(listener antlr.ParseTreeListener) {
+type TermFnargsContext struct {
+	*FnargsContext
+}
+
+func NewTermFnargsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TermFnargsContext {
+	var p = new(TermFnargsContext)
+
+	p.FnargsContext = NewEmptyFnargsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*FnargsContext))
+
+	return p
+}
+
+func (s *TermFnargsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *TermFnargsContext) Term() ITermContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITermContext)
+}
+
+func (s *TermFnargsContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterFnargs(s)
+		listenerT.EnterTermFnargs(s)
 	}
 }
 
-func (s *FnargsContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *TermFnargsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitFnargs(s)
+		listenerT.ExitTermFnargs(s)
 	}
 }
 
-func (s *FnargsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *TermFnargsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitFnargs(s)
+		return t.VisitTermFnargs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type DivFnargsContext struct {
+	*FnargsContext
+}
+
+func NewDivFnargsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DivFnargsContext {
+	var p = new(DivFnargsContext)
+
+	p.FnargsContext = NewEmptyFnargsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*FnargsContext))
+
+	return p
+}
+
+func (s *DivFnargsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *DivFnargsContext) DIV() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserDIV, 0)
+}
+
+func (s *DivFnargsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterDivFnargs(s)
+	}
+}
+
+func (s *DivFnargsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitDivFnargs(s)
+	}
+}
+
+func (s *DivFnargsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitDivFnargs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type FlagFnargsContext struct {
+	*FnargsContext
+}
+
+func NewFlagFnargsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FlagFnargsContext {
+	var p = new(FlagFnargsContext)
+
+	p.FnargsContext = NewEmptyFnargsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*FnargsContext))
+
+	return p
+}
+
+func (s *FlagFnargsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FlagFnargsContext) FLAG() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserFLAG, 0)
+}
+
+func (s *FlagFnargsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterFlagFnargs(s)
+	}
+}
+
+func (s *FlagFnargsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitFlagFnargs(s)
+	}
+}
+
+func (s *FlagFnargsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitFlagFnargs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type MultFnargsContext struct {
+	*FnargsContext
+}
+
+func NewMultFnargsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *MultFnargsContext {
+	var p = new(MultFnargsContext)
+
+	p.FnargsContext = NewEmptyFnargsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*FnargsContext))
+
+	return p
+}
+
+func (s *MultFnargsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MultFnargsContext) MULT() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserMULT, 0)
+}
+
+func (s *MultFnargsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterMultFnargs(s)
+	}
+}
+
+func (s *MultFnargsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitMultFnargs(s)
+	}
+}
+
+func (s *MultFnargsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitMultFnargs(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -3413,6 +3554,7 @@ func (p *BeepBoopParser) Fnargs() (localctx IFnargsContext) {
 
 	switch p.GetTokenStream().LA(1) {
 	case BeepBoopParserFLAG:
+		localctx = NewFlagFnargsContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(257)
@@ -3420,6 +3562,7 @@ func (p *BeepBoopParser) Fnargs() (localctx IFnargsContext) {
 		}
 
 	case BeepBoopParserMULT:
+		localctx = NewMultFnargsContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(258)
@@ -3427,6 +3570,7 @@ func (p *BeepBoopParser) Fnargs() (localctx IFnargsContext) {
 		}
 
 	case BeepBoopParserDIV:
+		localctx = NewDivFnargsContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(259)
@@ -3434,6 +3578,7 @@ func (p *BeepBoopParser) Fnargs() (localctx IFnargsContext) {
 		}
 
 	case BeepBoopParserT__0, BeepBoopParserLPAREN, BeepBoopParserLSQUIG, BeepBoopParserLBLOCK, BeepBoopParserSUB, BeepBoopParserTRUE, BeepBoopParserFALSE, BeepBoopParserINT, BeepBoopParserFLOAT, BeepBoopParserQUOTED, BeepBoopParserLETTERS, BeepBoopParserSTRING:
+		localctx = NewTermFnargsContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(260)
@@ -5706,12 +5851,8 @@ func NewNumContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoking
 
 func (s *NumContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *NumContext) INT() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserINT, 0)
-}
-
-func (s *NumContext) FLOAT() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserFLOAT, 0)
+func (s *NumContext) CopyFrom(ctx *NumContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *NumContext) GetRuleContext() antlr.RuleContext {
@@ -5722,22 +5863,88 @@ func (s *NumContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) st
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *NumContext) EnterRule(listener antlr.ParseTreeListener) {
+type FloatNumContext struct {
+	*NumContext
+}
+
+func NewFloatNumContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FloatNumContext {
+	var p = new(FloatNumContext)
+
+	p.NumContext = NewEmptyNumContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*NumContext))
+
+	return p
+}
+
+func (s *FloatNumContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FloatNumContext) FLOAT() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserFLOAT, 0)
+}
+
+func (s *FloatNumContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterNum(s)
+		listenerT.EnterFloatNum(s)
 	}
 }
 
-func (s *NumContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *FloatNumContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitNum(s)
+		listenerT.ExitFloatNum(s)
 	}
 }
 
-func (s *NumContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *FloatNumContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitNum(s)
+		return t.VisitFloatNum(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type IntNumContext struct {
+	*NumContext
+}
+
+func NewIntNumContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IntNumContext {
+	var p = new(IntNumContext)
+
+	p.NumContext = NewEmptyNumContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*NumContext))
+
+	return p
+}
+
+func (s *IntNumContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IntNumContext) INT() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserINT, 0)
+}
+
+func (s *IntNumContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterIntNum(s)
+	}
+}
+
+func (s *IntNumContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitIntNum(s)
+	}
+}
+
+func (s *IntNumContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitIntNum(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -5747,7 +5954,6 @@ func (s *NumContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 func (p *BeepBoopParser) Num() (localctx INumContext) {
 	localctx = NewNumContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 42, BeepBoopParserRULE_num)
-	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -5765,17 +5971,28 @@ func (p *BeepBoopParser) Num() (localctx INumContext) {
 		}
 	}()
 
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(355)
-		_la = p.GetTokenStream().LA(1)
+	p.SetState(357)
+	p.GetErrorHandler().Sync(p)
 
-		if !(_la == BeepBoopParserINT || _la == BeepBoopParserFLOAT) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+	switch p.GetTokenStream().LA(1) {
+	case BeepBoopParserINT:
+		localctx = NewIntNumContext(p, localctx)
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(355)
+			p.Match(BeepBoopParserINT)
 		}
+
+	case BeepBoopParserFLOAT:
+		localctx = NewFloatNumContext(p, localctx)
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(356)
+			p.Match(BeepBoopParserFLOAT)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -5819,16 +6036,8 @@ func NewWordsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 
 func (s *WordsContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *WordsContext) LETTERS() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserLETTERS, 0)
-}
-
-func (s *WordsContext) STRING() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserSTRING, 0)
-}
-
-func (s *WordsContext) QUOTED() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserQUOTED, 0)
+func (s *WordsContext) CopyFrom(ctx *WordsContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
 }
 
 func (s *WordsContext) GetRuleContext() antlr.RuleContext {
@@ -5839,22 +6048,132 @@ func (s *WordsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *WordsContext) EnterRule(listener antlr.ParseTreeListener) {
+type QuotedWordsContext struct {
+	*WordsContext
+}
+
+func NewQuotedWordsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QuotedWordsContext {
+	var p = new(QuotedWordsContext)
+
+	p.WordsContext = NewEmptyWordsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*WordsContext))
+
+	return p
+}
+
+func (s *QuotedWordsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *QuotedWordsContext) QUOTED() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserQUOTED, 0)
+}
+
+func (s *QuotedWordsContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterWords(s)
+		listenerT.EnterQuotedWords(s)
 	}
 }
 
-func (s *WordsContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *QuotedWordsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitWords(s)
+		listenerT.ExitQuotedWords(s)
 	}
 }
 
-func (s *WordsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *QuotedWordsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitWords(s)
+		return t.VisitQuotedWords(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type LetterWordsContext struct {
+	*WordsContext
+}
+
+func NewLetterWordsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LetterWordsContext {
+	var p = new(LetterWordsContext)
+
+	p.WordsContext = NewEmptyWordsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*WordsContext))
+
+	return p
+}
+
+func (s *LetterWordsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *LetterWordsContext) LETTERS() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserLETTERS, 0)
+}
+
+func (s *LetterWordsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterLetterWords(s)
+	}
+}
+
+func (s *LetterWordsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitLetterWords(s)
+	}
+}
+
+func (s *LetterWordsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitLetterWords(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type StringWordsContext struct {
+	*WordsContext
+}
+
+func NewStringWordsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *StringWordsContext {
+	var p = new(StringWordsContext)
+
+	p.WordsContext = NewEmptyWordsContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*WordsContext))
+
+	return p
+}
+
+func (s *StringWordsContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StringWordsContext) STRING() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserSTRING, 0)
+}
+
+func (s *StringWordsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterStringWords(s)
+	}
+}
+
+func (s *StringWordsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitStringWords(s)
+	}
+}
+
+func (s *StringWordsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitStringWords(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -5864,7 +6183,6 @@ func (s *WordsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 func (p *BeepBoopParser) Words() (localctx IWordsContext) {
 	localctx = NewWordsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 44, BeepBoopParserRULE_words)
-	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -5882,17 +6200,36 @@ func (p *BeepBoopParser) Words() (localctx IWordsContext) {
 		}
 	}()
 
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(357)
-		_la = p.GetTokenStream().LA(1)
+	p.SetState(362)
+	p.GetErrorHandler().Sync(p)
 
-		if !(((_la-38)&-(0x1f+1)) == 0 && ((1<<uint((_la-38)))&((1<<(BeepBoopParserQUOTED-38))|(1<<(BeepBoopParserLETTERS-38))|(1<<(BeepBoopParserSTRING-38)))) != 0) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+	switch p.GetTokenStream().LA(1) {
+	case BeepBoopParserLETTERS:
+		localctx = NewLetterWordsContext(p, localctx)
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(359)
+			p.Match(BeepBoopParserLETTERS)
 		}
+
+	case BeepBoopParserSTRING:
+		localctx = NewStringWordsContext(p, localctx)
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(360)
+			p.Match(BeepBoopParserSTRING)
+		}
+
+	case BeepBoopParserQUOTED:
+		localctx = NewQuotedWordsContext(p, localctx)
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(361)
+			p.Match(BeepBoopParserQUOTED)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 
 	return localctx
@@ -5997,7 +6334,7 @@ func (p *BeepBoopParser) Boolexpr() (localctx IBoolexprContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(359)
+		p.SetState(364)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == BeepBoopParserTRUE || _la == BeepBoopParserFALSE) {
@@ -6049,7 +6386,51 @@ func NewPipeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *PipeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *PipeContext) Fncall() IFncallContext {
+func (s *PipeContext) CopyFrom(ctx *PipeContext) {
+	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+}
+
+func (s *PipeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *PipeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+type PipeToFncallPipeContext struct {
+	*PipeContext
+}
+
+func NewPipeToFncallPipeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PipeToFncallPipeContext {
+	var p = new(PipeToFncallPipeContext)
+
+	p.PipeContext = NewEmptyPipeContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*PipeContext))
+
+	return p
+}
+
+func (s *PipeToFncallPipeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *PipeToFncallPipeContext) Pipe() IPipeContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPipeContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IPipeContext)
+}
+
+func (s *PipeToFncallPipeContext) PIPE() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserPIPE, 0)
+}
+
+func (s *PipeToFncallPipeContext) Fncall() IFncallContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFncallContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -6059,17 +6440,47 @@ func (s *PipeContext) Fncall() IFncallContext {
 	return t.(IFncallContext)
 }
 
-func (s *PipeContext) Term() ITermContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
+func (s *PipeToFncallPipeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterPipeToFncallPipe(s)
 	}
-
-	return t.(ITermContext)
 }
 
-func (s *PipeContext) AllPipe() []IPipeContext {
+func (s *PipeToFncallPipeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitPipeToFncallPipe(s)
+	}
+}
+
+func (s *PipeToFncallPipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitPipeToFncallPipe(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type PipeToPipeContext struct {
+	*PipeContext
+}
+
+func NewPipeToPipeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PipeToPipeContext {
+	var p = new(PipeToPipeContext)
+
+	p.PipeContext = NewEmptyPipeContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*PipeContext))
+
+	return p
+}
+
+func (s *PipeToPipeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *PipeToPipeContext) AllPipe() []IPipeContext {
 	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IPipeContext)(nil)).Elem())
 	var tst = make([]IPipeContext, len(ts))
 
@@ -6082,7 +6493,7 @@ func (s *PipeContext) AllPipe() []IPipeContext {
 	return tst
 }
 
-func (s *PipeContext) Pipe(i int) IPipeContext {
+func (s *PipeToPipeContext) Pipe(i int) IPipeContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPipeContext)(nil)).Elem(), i)
 
 	if t == nil {
@@ -6092,38 +6503,197 @@ func (s *PipeContext) Pipe(i int) IPipeContext {
 	return t.(IPipeContext)
 }
 
-func (s *PipeContext) PIPE() antlr.TerminalNode {
+func (s *PipeToPipeContext) PIPE() antlr.TerminalNode {
 	return s.GetToken(BeepBoopParserPIPE, 0)
 }
 
-func (s *PipeContext) NEWLINE() antlr.TerminalNode {
-	return s.GetToken(BeepBoopParserNEWLINE, 0)
+func (s *PipeToPipeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterPipeToPipe(s)
+	}
 }
 
-func (s *PipeContext) GetRuleContext() antlr.RuleContext {
+func (s *PipeToPipeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitPipeToPipe(s)
+	}
+}
+
+func (s *PipeToPipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitPipeToPipe(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type TermPipeContext struct {
+	*PipeContext
+}
+
+func NewTermPipeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TermPipeContext {
+	var p = new(TermPipeContext)
+
+	p.PipeContext = NewEmptyPipeContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*PipeContext))
+
+	return p
+}
+
+func (s *TermPipeContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *PipeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
+func (s *TermPipeContext) Term() ITermContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITermContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITermContext)
 }
 
-func (s *PipeContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *TermPipeContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.EnterPipe(s)
+		listenerT.EnterTermPipe(s)
 	}
 }
 
-func (s *PipeContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *TermPipeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(BeepBoopListener); ok {
-		listenerT.ExitPipe(s)
+		listenerT.ExitTermPipe(s)
 	}
 }
 
-func (s *PipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *TermPipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case BeepBoopVisitor:
-		return t.VisitPipe(s)
+		return t.VisitTermPipe(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type NewlinePipeContext struct {
+	*PipeContext
+}
+
+func NewNewlinePipeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *NewlinePipeContext {
+	var p = new(NewlinePipeContext)
+
+	p.PipeContext = NewEmptyPipeContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*PipeContext))
+
+	return p
+}
+
+func (s *NewlinePipeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *NewlinePipeContext) AllPipe() []IPipeContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IPipeContext)(nil)).Elem())
+	var tst = make([]IPipeContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IPipeContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *NewlinePipeContext) Pipe(i int) IPipeContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPipeContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IPipeContext)
+}
+
+func (s *NewlinePipeContext) NEWLINE() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserNEWLINE, 0)
+}
+
+func (s *NewlinePipeContext) PIPE() antlr.TerminalNode {
+	return s.GetToken(BeepBoopParserPIPE, 0)
+}
+
+func (s *NewlinePipeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterNewlinePipe(s)
+	}
+}
+
+func (s *NewlinePipeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitNewlinePipe(s)
+	}
+}
+
+func (s *NewlinePipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitNewlinePipe(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type FncallPipeContext struct {
+	*PipeContext
+}
+
+func NewFncallPipeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FncallPipeContext {
+	var p = new(FncallPipeContext)
+
+	p.PipeContext = NewEmptyPipeContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*PipeContext))
+
+	return p
+}
+
+func (s *FncallPipeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *FncallPipeContext) Fncall() IFncallContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IFncallContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFncallContext)
+}
+
+func (s *FncallPipeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.EnterFncallPipe(s)
+	}
+}
+
+func (s *FncallPipeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(BeepBoopListener); ok {
+		listenerT.ExitFncallPipe(s)
+	}
+}
+
+func (s *FncallPipeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case BeepBoopVisitor:
+		return t.VisitFncallPipe(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -6162,26 +6732,33 @@ func (p *BeepBoopParser) pipe(_p int) (localctx IPipeContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(364)
+	p.SetState(369)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 43, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 45, p.GetParserRuleContext()) {
 	case 1:
+		localctx = NewFncallPipeContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
+
 		{
-			p.SetState(362)
+			p.SetState(367)
 			p.Fncall()
 		}
 
 	case 2:
+		localctx = NewTermPipeContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
 		{
-			p.SetState(363)
+			p.SetState(368)
 			p.Term()
 		}
 
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(378)
+	p.SetState(383)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 45, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 47, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
@@ -6189,70 +6766,70 @@ func (p *BeepBoopParser) pipe(_p int) (localctx IPipeContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(376)
+			p.SetState(381)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 44, p.GetParserRuleContext()) {
+			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 46, p.GetParserRuleContext()) {
 			case 1:
-				localctx = NewPipeContext(p, _parentctx, _parentState)
+				localctx = NewPipeToPipeContext(p, NewPipeContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_pipe)
-				p.SetState(366)
+				p.SetState(371)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
 				}
 				{
-					p.SetState(367)
+					p.SetState(372)
 					p.Match(BeepBoopParserPIPE)
 				}
 				{
-					p.SetState(368)
+					p.SetState(373)
 					p.pipe(5)
 				}
 
 			case 2:
-				localctx = NewPipeContext(p, _parentctx, _parentState)
+				localctx = NewNewlinePipeContext(p, NewPipeContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_pipe)
-				p.SetState(369)
+				p.SetState(374)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
 				{
-					p.SetState(370)
+					p.SetState(375)
 					p.Match(BeepBoopParserNEWLINE)
 				}
 				{
-					p.SetState(371)
+					p.SetState(376)
 					p.Match(BeepBoopParserPIPE)
 				}
 				{
-					p.SetState(372)
+					p.SetState(377)
 					p.pipe(4)
 				}
 
 			case 3:
-				localctx = NewPipeContext(p, _parentctx, _parentState)
+				localctx = NewPipeToFncallPipeContext(p, NewPipeContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, BeepBoopParserRULE_pipe)
-				p.SetState(373)
+				p.SetState(378)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
 				}
 				{
-					p.SetState(374)
+					p.SetState(379)
 					p.Match(BeepBoopParserPIPE)
 				}
 				{
-					p.SetState(375)
+					p.SetState(380)
 					p.Fncall()
 				}
 
 			}
 
 		}
-		p.SetState(380)
+		p.SetState(385)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 45, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 47, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -6352,11 +6929,11 @@ func (p *BeepBoopParser) Label() (localctx ILabelContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(381)
+		p.SetState(386)
 		p.Match(BeepBoopParserT__0)
 	}
 	{
-		p.SetState(382)
+		p.SetState(387)
 		p.Match(BeepBoopParserLETTERS)
 	}
 
