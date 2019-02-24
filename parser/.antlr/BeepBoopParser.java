@@ -1,4 +1,4 @@
-// Generated from /home/flaque/projects/go/src/github.com/Flaque/boop/parser/BeepBoop.g4 by ANTLR 4.7.1
+// Generated from /Users/evanconrad/dev/src/github.com/Flaque/boop/parser/BeepBoop.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;

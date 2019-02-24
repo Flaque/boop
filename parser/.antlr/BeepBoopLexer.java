@@ -1,4 +1,4 @@
-// Generated from /home/flaque/projects/go/src/github.com/Flaque/boop/parser/BeepBoop.g4 by ANTLR 4.7.1
+// Generated from /Users/evanconrad/dev/src/github.com/Flaque/boop/parser/BeepBoop.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
